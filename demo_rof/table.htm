@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+// ----------------------------------------------
+// Quick and dirty prototype of Risk of failure visualization
+// ----------------------------------------------
+// Author: Angie, 2014, konzeptmeister@gmail.com
+// A project with ABB, Sweden
+// ----------------------------------------------
+// Implementation is based on the D3.js library (http://d3js.org/) by Mike Bostock (http://bost.ocks.org/mike/)
+// To run the code use a modern web-browser. Code files and data/ folder have to be on a web-server
+// D3 is released under BSD license (http://opensource.org/licenses/BSD-3-Clause)
+-->
+
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,user-scalable=no">
+
+<style>
+    body {
+        font-size: 14pt;
+        font-family: Open Sans Light;
+        text-anchor: left;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .nav {float: right; background-color: #f0ebd0; padding: 5px 50px 10px 50px; }
+
+
+
+    .header{fill: black; font-size: 14px;}
+
+    text.table.sep.TRANSFORMERS, text.table.sep.CIRCUIT.BREAKERS, text.table.sep.BATTERIES {
+        fill: grey;
+        font-size: 14px;
+    }
+
+    line.table.sep.TRANSFORMERS, line.table.sep.CIRCUIT.BREAKERS, line.table.sep.BATTERIES {
+        stroke: lightgrey;
+    }
+
+    .historyCtrl{fill: blue; font-size: 8px;}
+
+    .historyCtrl.mouseover{cursor: pointer; text-decoration: underline; }
+    .historyCtrl.active{fill: black; backface-visibility:visible;}
+
+    .overlay{fill: #e8e8e8; opacity: 0.7;}
+
+
+    line.idplot, line.customer{stroke: #888888;  stroke-width: 1px;}
+    circle.idplot, circle.customer{fill: #888888}
+
+
+    .history.ticks{fill: white; opacity: 0;}
+
+    .voltbar{stroke:none}
+    .voltbar.on{fill:#aa6bff}
+    .voltbar.off{fill:#d6d6d6}
+    .beard.on{fill:#b7b7b7;}
+
+    text.idplot{fill:black; font-size:8px;}
+    text.beardbar {fill:grey; font-size:14px}
+
+    text.idplot.active, text.rofbar.active, text.voltbar.active, text.customer.active, text.beardbar.active {fill:black; font-size:14px}
+
+
+
+</style>
+
+<body>
+    <div  class = "nav">
+        Risk Of Failure visualization interactive mockup: <!--a href='index.htm'>[trend example]</a--> [table example] <a href='radar.htm'>[radar example]</a></div>
+
+    <div class="chart tableContainer"></div>
+
+
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+    <script src="table_view.js" charset="utf-8"></script>
+    <script src="table_parts.js" charset="utf-8"></script>
+    <script src="HistoryCtl.js" charset="utf-8"></script>
+    <script src="utilities.js" charset="utf-8"></script>
+    <script src="model.js" charset="utf-8"></script>
+    <script src="constants.js" charset="utf-8"></script>
+
+    <script>
+        // initialize the app
+        var app = new AppModel();
+
+        // initialize the data model
+        var model = new DataModel("data/rof_data_fake.tsv");
+
+        // initialize the view
+        function init(){
+            // calculate ROF historical values for the past 7 days
+            model.historyPoints(7);
+            table = new TableView();
+            table.update();
+        }
+    </script>
+
+
+</body>

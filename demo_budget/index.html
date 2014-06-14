@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<!-- Mirrored from budget.datalaboratory.ru/ by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 13 Feb 2014 21:10:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="i/favicon.ico">
+<title>Budget Chart</title>
+<meta charset="utf-8">
+</head>
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin: auto;
+  position: relative;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.xAaxis path {
+  display: none;
+}
+
+.xAxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  margin-top:20px;
+}
+
+.xAxis path,
+.xAxis line {
+    fill: none;
+    stroke: white;
+    opacity: 0.25;
+}
+
+.xAxis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.yAxis1 path {
+  display: none;
+}
+
+.yAxis1 line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  margin-top:20px;
+}
+
+.yAxis1 path,
+.yAxis1 line {
+    fill: none;
+    stroke: white;
+    opacity: 0.25;
+}
+
+.yAxis1 text {
+    font-family: sans-serif;
+    font-size: 11px;
+  }
+
+.yAxis1 path {
+  display: none;
+}
+
+.yAxis2 line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  margin-top:20px;
+}
+
+.yAxis2 path,
+.yAxis2 line {
+    fill: none;
+    stroke: white;
+    opacity: 0.25;
+}
+
+.yAxis2 text {
+    font-family: sans-serif;
+    font-size: 11px;
+  }
+
+.group-label {
+  font-weight: bold;
+  text-anchor: end;
+}
+
+.group-sum {
+  font-weight: bold;
+  text-anchor: end;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: left;
+  padding: 3px;
+  font: 11px sans-serif;
+  background: #eee;
+  pointer-events: none;
+}
+
+img.geo {
+  position: absolute;
+}
+
+form {
+  position: absolute;
+  top: 0px;
+  left:80px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top:10px;
+}
+
+</style>
+
+<form>
+  <h1>100 000 sek, <span style="font-weight: normal; font-size:13px;">spent in 2012 and 2013, <label><input type="radio" name="mode" value="stacked" checked>alltogether </label> or
+  <label><input type="radio" name="mode" value="multiples">by categories</label></span></h1>
+
+</form>
+
+<script src="d3.v3.js"></script>
+<script src="moment.min.js"></script>
+<script src="ru.js"></script>
+
+<script>
+
+var parseDate = d3.time.format("%Y-%m-%d").parse,
+    formatYear = d3.format("04d")
+
+var div = d3.select("body").append("div")
+    .classed("tooltip", true)
+    .style("opacity", 0);
+
+var opac = 1;
+
+function chOpac (opct) {
+        opac = Math.abs(opct - 1.5);
+        return opac;
+    };
+
+var margin = {top: 50, right: 80, bottom: 20, left: 80},
+    width = window.innerWidth - margin.left - margin.right,
+    height = 650 - margin.top - margin.bottom;
+
+var x = d3.time.scale().domain([new Date(2012,0,1), new Date(2014,3,1)])
+    .range([0, width])
+
+var y0 = d3.scale.linear().domain([0, 5000])
+    .range([0, height])
+
+var y1 = d3.scale.linear().domain([0, 5000])
+    .range([height, 0])
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(12)
+    .tickFormat(d3.time.format('%b'));
+
+var yAxis1 = d3.svg.axis()
+    .scale(y1)
+    .orient("left")
+    .ticks(10)
+    .tickFormat(d3.format("d"));;
+
+
+var yAxis2 = d3.svg.axis()
+    .scale(y1)
+    .orient("left")
+    .ticks(10)
+    .tickFormat(d3.format("d"));;
+
+var nest = d3.nest()
+    .key(function(d) { return d.category; });
+
+var nest2 = d3.nest()
+    .key(function(d) { return d.date; });
+
+var nest3 = d3.nest()
+    .key(function(d) { return d.week; });
+
+//var color = ['#1f77b4', '#aec7e8','#ff7f0e', '#ffbb78', '#98df8a', '#dee2e2', '#d62728', '#ff9896','#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#dbdb8d', '#9edae5','#7f7f7f','#fee5cd', '#1f77b4', "f7b6d2", "#2ca02c", "#e377c2", "#94e9d4", "#f1529d", "#4f89ff", "#fde456"];
+
+//var color = d3.scale.category20();
+
+var color = ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5', '#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#637939', '#8ca252', '#b5cf6b', '#cedb9c', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b', '#e7969c', '#7b4173', '#a55194', '#ce6dbd', '#de9ed6'];
+
+var floor = [3, 11, 7, 10, 13, 23.5, 5, 14, 16, 20, 23.5, 24];
+var sum = [3, 11, 7, 10, 13, 23.5, 5, 14, 16, 20, 23.5, 24]
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+d3.tsv("all-data.txt", function(error, data) {
+  var categories = [];
+
+  data = data.filter(function(d) {return d.category != 'Presents' && d.category != 'Investment' && d.category != 'Unclassified'})
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date.substring(0, 10));
+    d.week = d.week;
+    d.weekday = d.weekday;
+    d.value = +d.value.replace(',', '.').replace(/\s/g, '');
+    categories.push(d.category);
+  });
+
+  categories = d3.set(categories).values();
+
+  var dataByGroup = nest.entries(data);
+  var dataByWeek = nest3.entries(data);
+  var i = 0;
+
+  dataByWeek.forEach(function(group) {
+    var offset = 0
+    var offsetByCategory = [];
+
+    group.values.forEach(function(value) {
+
+    if (offsetByCategory[value.category]) {
+        value.categoryOffset = offsetByCategory[value.category];
+        offsetByCategory[value.category] += Math.floor(value.value)+10;
+      } else {
+        value.categoryOffset = 0;
+        offsetByCategory[value.category] = value.value;
+      }
+
+      value.valueOffset = offset;
+      offset += Math.floor(value.value)+10;
+
+    })
+
+
+  });
+
+  var date = new Date()
+  var day = width/(365+365+31+10);
+
+  var group = svg.selectAll(".group")
+      .data(dataByGroup)
+      .enter().append("g")
+      .attr("class", "group")
+      .attr("transform", function(d) { return "translate(0,0)"; });
+
+  group.append("text")
+      .attr("class", "group-label")
+      .attr("x", -6)
+      .attr("y", height+100)
+      .attr("dy", ".35em")
+      .style("fill", function(d) { return color[categories.indexOf(d.key)]; })
+      .text(function(d) { return d.key });
+
+    group.append("text")
+      .attr("class", "group-sum")
+      .attr("x", width)
+      .attr("y", height+100)
+      .attr("dy", ".35em")
+      .style("fill", function(d) { return color[categories.indexOf(d.key)]; })
+      .text(function(d) { return sum[categories.indexOf(d.key)] });
+
+  group.selectAll("rect")
+      .data(function(d) { return d.values; })
+      .enter().append("rect")
+      .style("fill", function(d) { return color[categories.indexOf(d.category)]; })
+      .attr("x", function(d) { return x(d.date)-day*(d.weekday); })
+      .attr("y", function(d) { return y1(d.value+d.valueOffset); })
+      .attr("width", day*6.5)
+      .attr("height", function(d) { return y0(d.value); })
+      .on('mouseover', function(d, i){
+            d3.selectAll("rect").transition().delay(100)
+            .attr('opacity', function(d, j){
+                return i==j && 1 || 1
+            });
+
+            div.transition()
+                .duration(100)
+                .style("opacity", 0.9);
+
+            div.html(d.category + " (" + d.target + "): " + d.value + "")
+                .style("left", (d3.event.pageX-165) + "px")
+                .style("top", (d3.event.pageY-10) + "px");
+        })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(100)
+                .style("opacity", 0);
+        });
+
+
+    svg.append("g")
+      .attr("class", "xAxis")
+      .attr("transform", "translate(0," + 576 + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "yAxis1")
+      .attr("transform", "translate(0,0)")
+      .call(yAxis1);
+
+    svg.append("g")
+      .attr("class", "yAxis2")
+      .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis2);
+
+
+  d3.tsv("geo.txt", function(error, data) {
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.path = d.path;
+  });
+
+  var div = d3.select("body").append("div")
+    .classed("tooltip", true)
+    .style("opacity", 0);
+
+    var group = d3.select("body").selectAll("img")
+      .data(data)
+      .enter().append("img")
+      .attr("class", "geo")
+      .attr("src", function(d) { return d.path; })
+      .attr("title", function(d) { return d.country; })
+      .attr("style", function(d) {
+        var xFlag=x(d.date)+margin.left-10;
+        return "left:" + xFlag + "px; top:648px";
+      });
+  })
+
+  d3.selectAll("input").on("change", change);
+
+  function change() {
+    if (this.value == "multiples") transitionMultiples();
+    else transitionStacked();
+  }
+
+
+  function transitionMultiples() {
+
+        var t = svg.transition().duration(500);
+
+        t.select(".yAxis1")
+        .attr("transform", "translate(-100,0)")
+
+        t.select(".yAxis2")
+        .attr("transform", "translate("+window.innerWidth+",0)")
+
+        g = t.selectAll(".group")
+        .attr("transform", function(d,i) { return "translate(0,"+ floor[i]*height/25 +")"; });
+
+        g.selectAll("rect")
+        .attr("height", function(d) { return d3.scale.linear().domain([0, 300]).range([0, 24])(d.value); })
+        .attr("y", function(d) { return d3.scale.linear().domain([0, 300]).range([24, 0])(d.value+d.categoryOffset)});
+
+        g.select(".group-label").attr("y", function(d) { return (floor[i]-2)*height/25; })
+        g.select(".group-sum").attr("y", function(d) { return (floor[i]-2)*height/25; })
+   }
+
+  function transitionStacked() {
+
+        var t = svg.transition().duration(500);
+
+        t.select(".yAxis1")
+        .attr("transform", "translate(0,0)");
+
+        t.select(".yAxis2")
+        .attr("transform", "translate("+width+",0)");
+
+        g = t.selectAll(".group")
+        .attr("transform", "translate(0,0)");
+
+        g.selectAll("rect")
+        .transition().duration(500)
+        .attr("y", function(d) { return y1(d.value+d.valueOffset); })
+        .attr("height", function(d) { return y0(d.value); })
+
+        g.select(".group-label").attr("y", height+100)
+        g.select(".group-sum").attr("y", height+100)
+
+   }
+
+});
+
+</script>

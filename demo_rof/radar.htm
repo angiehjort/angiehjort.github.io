@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+// ----------------------------------------------
+// Quick and dirty prototype of Risk of failure visualization
+// ----------------------------------------------
+// Author: Angie, 2014, konzeptmeister@gmail.com
+// A project with ABB, Sweden
+// ----------------------------------------------
+// Implementation is based on the D3.js library (http://d3js.org/) by Mike Bostock (http://bost.ocks.org/mike/)
+// To run the code use a modern web-browser. Code files and data/ folder have to be on a web-server
+// D3 is released under BSD license (http://opensource.org/licenses/BSD-3-Clause)
+-->
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,user-scalable=no">
+
+<style>
+    body {
+        font-size: 14pt;
+        font-family: Open Sans Light;
+        text-anchor: left;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .nav {float: right; background-color: #f0ebd0; padding: 5px 50px 10px 50px; }
+
+    .grid{opacity: 0.3}
+    line.grid{stroke: lightgrey; stroke-width: 3px;}
+
+    div.tooltip {
+        position: absolute;
+        text-align: left;
+        width: 120px;
+        height: 90px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 2px;
+        pointer-events: none;
+        padding: 5px;
+    }
+
+
+    .radar.point.circ{opacity:0.8}
+
+    .radar.point.circ.mouseover {
+        opacity:1;
+        stroke-width:5px;
+        fill: "lightsteelblue";
+    }
+
+
+    text.sectorsCtrl.header, .historyCtrl.header{fill: black; font-size: 28px;}
+
+
+    text.sectorsCtrl{fill: black; font-size: 10px;}
+    line.sectorsCtrl, circle.sectorsCtrl{stroke: green; opacity: 0.5;}
+    circle.sectorsCtrl{cursor: pointer; fill: white;}
+    .sectorsCtrl.mouseover, .sectorsCtrl.active{fill:green}
+
+
+    .historyCtrl{fill: blue; font-size: 14px;}
+    .historyCtrl.mouseover{cursor: pointer; text-decoration: underline;}
+    .historyCtrl.active{fill: black;}
+
+
+</style>
+
+<body>
+    <div class = "nav">
+        Risk Of Failure visualization interactive mockup:
+
+        <!--a href='index.htm'>[trend example]</a--> <a href='table.htm'>[table example]</a> [radar example]</div>
+
+    <div class="chart radarContainer"></div>
+
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+    <script src="radar_view.js" charset="utf-8"></script>
+    <script src="table_parts.js" charset="utf-8"></script>
+    <script src="utilities.js" charset="utf-8"></script>
+    <script src="HistoryCtl.js" charset="utf-8"></script>
+    <script src="model.js" charset="utf-8"></script>
+    <script src="constants.js" charset="utf-8"></script>
+
+    <script>
+        // initialize the app
+        var app = new AppModel();
+        // initialize the data model
+        var model = new DataModel("data/rof_data_fake.tsv");
+
+        // initialize the view
+        function init(){
+            // calculate ROF historical values for the past 7 days
+            model.historyPoints(7);
+            radar = new RadarView();
+            radar.update();
+        }
+    </script>
+
+
+</body>

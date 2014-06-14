@@ -1,0 +1,311 @@
+date	week	weekday	value	currency	target	Food/Household	Local Transport	Rent	Sport	Phone/Internet	Fees	Special	category	place
+2012-05-16	21	3	2104.84	sek (from rur x4.979)	Vim-avia SVX-MOW-SVX							Travels	Travels	Moscow
+2012-07-23	31	1	438.56	sek (from rur x4.979)	Train from Piter to Moscow							Travels	Travels	Moscow
+2012-07-26	31	4	77.77	sek (from rur x4.979)	Bus from Stockholm Airport							Travels	Travels	Moscow
+2012-07-27	31	5	1097.91	sek (from rur x4.979)	Estonian Airlines SVO-ARN							Travels	Travels	Moscow
+2012-08-03	32	5	20.08	sek (from rur x4.979)	Megafon							Phone/Internet	Phone/Internet	Moscow
+2012-08-04	32	6	85.36	sek (from rur x4.979)	Hiking rug Sportmaster Moscow							Sport	Sport	Moscow
+2012-08-05	32	7	64.27	sek (from rur x4.979)	Aeroexpress Moscow							Travels	Travels	Moscow
+2012-08-06	33	1	98.01	sek (from rur x4.979)	Comviq SIM-card					Phone/Internet			Phone/Internet	Lappland
+2012-08-06	33	1	74.31	sek (from rur x4.979)	Comviq Kompis 75					Phone/Internet			Phone/Internet	Lappland
+2012-08-06	33	1	71.30	sek (from rur x4.979)	SL metro							Local Transport	Local Transport	Lappland
+2012-08-07	33	2	475.80	sek (from rur x4.979)	Abisko Lapporten Food for a hike (481sek)							Travels	Travels	Lappland
+2012-08-07	33	2	29.65	sek (from rur x4.979)	"STF Abisko Matches, Food"							Travels	Travels	Lappland
+2012-08-07	33	2	247.26	sek (from rur x4.979)	"STF Abiskojaure House (100sek), tourist card (150sek)"							Travels	Travels	Lappland
+2012-08-07	33	2	73.05	sek (from rur x4.979)	Food on the train Boden							Travels	Travels	Lappland
+2012-08-08	33	3	128.58	sek (from rur x4.979)	STF Alesjaure House (130sek)							Travels	Travels	Lappland
+2012-08-09	33	4	131.57	sek (from rur x4.979)	STF Salka House (130sek)							Travels	Travels	Lappland
+2012-08-10	33	5	100.00	sek (from rur x4.979)	STF Singi House (100sek)							Travels	Travels	Lappland
+2012-08-10	33	5	45.57	sek (from rur x4.979)	STF Salka Food (45sek)							Travels	Travels	Lappland
+2012-08-11	33	6	396.37	sek (from rur x4.979)	STF Kebnekaise fj?llstation House 2 days (400sek)							Travels	Travels	Lappland
+2012-08-13	34	1	97.53	sek (from rur x4.979)	STF Tarfala House (100sek)							Travels	Travels	Lappland
+2012-08-14	34	2	208.19	sek (from rur x4.979)	Nikkaluokta Sarri Cash out							Travels	Travels	Lappland
+2012-08-14	34	2	39.67	sek (from rur x4.979)	Nikkaluokta Sarri Food							Travels	Travels	Lappland
+2012-08-14	34	2	89.23	sek (from rur x4.979)	Bus Nikkaluokta-Kiruna (90sek)							Travels	Travels	Lappland
+2012-08-15	34	3	49.41	sek (from rur x4.979)	Food on the train to Stockholm							Travels	Travels	Lappland
+2012-08-15	34	3	500.00	sek	Cash							Cash	Cash	Stockholm
+2012-08-15	34	3	580.00	sek	SL monthly fee							Local Transport	Local Transport	Stockholm
+2012-08-20	35	1	1011.54	sek (from rur x4.979)	KTH Kista Rent							Rent	Rent	Stockholm
+2012-08-21	35	2	98.26	sek (from rur x4.979)	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-08-23	35	4	24.84	sek (from rur x4.979)	7-Eleven Stockholm							Food/Household	Food/Household	Stockholm
+2012-08-25	35	6	20.08	sek (from rur x4.979)	Megafon							Phone/Internet	Phone/Internet	Stockholm
+2012-08-27	36	1	15.87	sek (from rur x4.979)	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-08-27	36	1	20.78	sek (from rur x4.979)	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-08-28	36	2	91.93	sek (from rur x4.979)	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-09-01	36	6	2078.46	sek (from rur x4.979)	KTH Kista Rent							Rent	Rent	Stockholm
+2012-09-04	37	2	192.61	sek (from rur x4.979)	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-09-06	37	4	3.56	sek (from rur x4.979)	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-09-14	38	5	100.00	sek	Cash							Cash	Cash	Stockholm
+2012-09-28	40	5	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2012-09-19	39	3	1377.45	sek (from rur x4.979)	GREECE TRIPSTA ARN-MOW-ARN							Travels	Travels	Stockholm
+2012-09-19	39	3	34.08	sek (from rur x4.979)	Earplugs from Apotek							Other	Other	Stockholm
+2012-09-21	39	5	353.86	sek	Flowers - Alisa is learning to walk							Presents	Presents	Stockholm
+2012-09-26	40	3	18.00	sek	?OB Kista	Food/Household							Food/Household	Stockholm
+2012-09-26	40	3	10.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-09-28	40	5	400.00	sek	ID-card fee						Fees		Fees	Stockholm
+2012-10-01	41	1	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2012-10-01	41	1	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Stockholm
+2012-10-01	41	1	246.40	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-10-07	41	7	10.00	sek	IKEA food							Food/Household	Food/Household	Stockholm
+2012-10-08	42	1	400.00	sek	Cash							Cash	Cash	Stockholm
+2012-10-11	42	4	200.00	sek	Haircut							Other	Other	Stockholm
+2012-10-12	42	5	1314.95	sek (from rur x4.979)	Hotel Maxima Slavia in Moscow							Travels	Travels	Stockholm
+2012-10-14	42	7	47.90	sek	?OB Kista	Food/Household							Food/Household	Stockholm
+2012-10-16	43	2	190.54	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-10-19	43	5	43.36	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2012-10-19	43	5	86.90	sek	Bafucin&Strepsils from ?OB							Other	Other	Stockholm
+2012-10-19	43	5	79.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-10-26	44	5	24.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-11-01	45	4	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2012-10-29	45	1	155.00	sek	Shampoo at Hon&Han							Other	Other	Stockholm
+2012-10-28	44	7	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2012-10-30	45	2	30.85	sek	Coop Stockholm	Food/Household							Food/Household	Stockholm
+2012-10-31	45	3	136.33	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-11-05	46	1	150.00	sek	KTH something							Unclassified	Unclassified	Stockholm
+2012-11-06	46	2	65.20	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-11-07	46	3	79.00	sek	Bus to Stockholm Airport (Moscow)							Travels	Travels	Stockholm
+2012-11-07	46	3	79.00	sek	Bus from Stockholm Airport (Moscow)							Travels	Travels	Stockholm
+2012-11-09	46	5	200.84	sek (from rur x4.979)	Cash							Cash	Cash	Moscow
+2012-11-09	46	5	128.54	sek (from rur x4.979)	Aeroexpress Moscow							Travels	Travels	Moscow
+2012-11-13	47	2	47.65	sek (from rur x4.979)	Food in Moscow							Food/Household	Food/Household	Moscow
+2012-11-18	47	7	266.01	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-11-22	48	4	63.74	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2012-12-01	49	6	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2012-11-28	49	3	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2012-11-30	49	5	100.42	sek (from rur x4.979)	Card fee						Fees		Fees	Stockholm
+2012-12-02	49	7	186.98	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-07	50	5	13.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-10	51	1	300.00	sek	Cash							Cash	Cash	Stockholm
+2012-12-13	51	4	31.95	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-16	51	7	50.00	sek	Cristmas market - hearts							Presents	Presents	Stockholm
+2012-12-16	51	7	40.00	sek	Cristmas market - souveniers							Presents	Presents	Stockholm
+2012-12-16	51	7	59.00	sek	Cristmas market - souveniers							Presents	Presents	Stockholm
+2012-12-16	51	7	234.24	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-16	51	7	174.00	sek	Cristmas market - earrings from Halldor							Presents	Presents	Stockholm
+2012-12-16	51	7	45.00	sek	Cristmas market							Presents	Presents	Stockholm
+2012-12-19	52	3	123.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-20	52	4	400.00	sek	Cash							Cash	Cash	Stockholm
+2012-12-20	52	4	100.00	sek	Cash							Cash	Cash	Stockholm
+2012-12-20	52	4	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Stockholm
+2012-12-21	52	5	7.90	sek	Multiple G-calendar support app							Phone/Internet	Phone/Internet	Stockholm
+2012-12-21	52	5	39.75	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-24	53	1	59.56	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2012-12-26	53	3	19.85	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2012-12-27	53	4	30.00	sek	Phone ad on Blocket							Fees	Fees	Stockholm
+2013-01-01	55	2	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2012-12-30	53	7	137.00	sek	Plastic bindings and lamps from Clas Ohlson							Food/Household	Food/Household	Stockholm
+2012-12-31	54	1	80.00	sek	David LaChapelle p? Fotografiska Museet							Other	Other	Stockholm
+2012-12-28	53	5	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-01-02	55	3	274.42	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-01-07	56	1	49.60	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2013-01-09	56	3	11.90	sek	Earth Moon Sun App							Phone/Internet	Phone/Internet	Stockholm
+2013-01-10	56	4	638.00	sek	"Initial fees, Kl?ttercentret i Solna"							Sport	Sport	Stockholm
+2013-01-16	57	3	875.75	sek (from rur x4.979)	Alisa antagning.se appl fee							Fees	Fees	Stockholm
+2013-02-01	59	5	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2013-01-20	57	7	159.35	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-01-26	58	6	85.00	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-01-26	58	6	66.00	sek	Tea from Kahls							Presents	Presents	Stockholm
+2013-01-28	59	1	67.04	sek (from rur x4.979)	Behance							Fees	Fees	Stockholm
+2013-01-28	59	1	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-02-02	59	6	19.97	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-04	60	1	184.08	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-09	60	6	16.90	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2013-02-12	61	2	10068.48	sek	FundedByMe							Investment	Investment	Stockholm
+2013-01-28	59	1	370.00	sek	K-C SOLNA				Sport				Sport	Stockholm
+2013-02-15	61	5	150.60	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-16	61	6	69.80	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-17	61	7	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Stockholm
+2013-02-19	62	2	9.90	sek	KISTA GROSSE/13-02-19	Food/Household							Food/Household	Stockholm
+2013-02-21	62	4	60.00	sek	Swimming pool i Husby							Sport	Sport	Stockholm
+2013-03-01	63	5	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2013-02-25	63	1	20.00	sek	Foodbar from KC							Food/Household	Food/Household	Stockholm
+2013-02-27	63	3	11.90	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-27	63	3	225.06	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-02-28	63	4	68.25	sek (from rur x4.979)	Behance							Fees	Fees	Stockholm
+2013-02-28	63	4	370.00	sek	K-C SOLNA				Sport				Sport	Stockholm
+2013-02-28	63	4	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-03-01	63	5	69.90	sek	Vitamins							Other	Other	Stockholm
+2013-03-16	65	6	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Stockholm
+2013-03-17	65	7	200.39	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-03-22	66	5	9.40	sek (from rur x4.979)	D3 tips and tricks book from Leanpub							Other	Other	Stockholm
+2013-03-23	66	6	113.70	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2013-03-28	67	4	40.00	sek	NIGHTMARE OU							Unclassified	Unclassified	Stockholm
+2013-03-29	67	5	399.00	sek	Shoes and socks							Sport	Sport	Stockholm
+2013-04-01	68	1	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2013-03-30	67	6	251.21	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-03-28	67	4	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-03-28	67	4	69.36	sek (from rur x4.979)	Behance							Fees	Fees	Stockholm
+2013-03-28	67	4	370.00	sek	K-C SOLNA				Sport				Sport	Stockholm
+2013-04-06	68	6	6.99	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-04-10	69	3	118.75	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-04-13	69	6	13.48	sek	Coop Stockholm	Food/Household							Food/Household	Stockholm
+2013-04-13	69	6	24.90	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-05-01	72	3	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2013-04-18	70	4	50.00	sek	COMVIQ VESTA/13-04-18					Phone/Internet			Phone/Internet	Stockholm
+2013-04-21	70	7	180.12	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-04-24	71	3	1380.88	sek (from rur x4.979)	Athina e travel ARN-PUL-ARN							Travels	Travels	Stockholm
+2013-04-26	71	5	79.00	sek	Stickers from Clas Ohlson							Other	Other	Stockholm
+2013-04-26	71	5	79.50	sek	T-shirt H&M							Other	Other	Stockholm
+2013-04-27	71	6	75.00	sek	Train to Stockholm Airport (Paris)							Travels	Travels	Stockholm
+2013-04-29	72	1	25.00	sek	Card fee						Fees		Fees	Stockholm
+2013-04-30	72	2	68.29	sek (from rur x4.979)	Food in Paris							Food/Household	Food/Household	Paris
+2013-04-30	72	2	112.22	sek (from rur x4.979)	Paris Metro							Travels	Travels	Paris
+2013-04-28	71	7	370.00	sek	K-C SOLNA				Sport				Sport	Paris
+2013-04-28	71	7	69.74	sek (from rur x4.979)	Behance							Fees	Fees	Paris
+2013-05-02	72	4	29.83	sek (from rur x4.979)	Food in Paris							Food/Household	Food/Household	Paris
+2013-05-03	72	5	75.00	sek	Train from Stockholm Airport (Paris)							Travels	Travels	Stockholm
+2013-05-04	72	6	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-05-13	74	1	148.75	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-05-16	74	4	26.80	sek	Kista Grossen	Food/Household							Food/Household	Stockholm
+2013-06-01	76	6	2050.00	sek	KTH Kista Rent			Rent					Rent	Stockholm
+2013-05-16	74	4	1606.75	sek (from rur x4.979)	Hotel Helens home in Piter							Travels	Travels	Stockholm
+2013-05-19	74	7	50.00	sek	Comviq Amigos 50 - Failed					Phone/Internet			Phone/Internet	Stockholm
+2013-05-21	75	2	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Stockholm
+2013-05-22	75	3	130.00	sek	NIGHTMARE OU							Unclassified	Unclassified	Stockholm
+2013-05-23	75	4	2623.07	sek	Finnish Residence Permit							Fees	Fees	Stockholm
+2013-05-23	75	4	22.90	sek	ICA Stockholm	Food/Household							Food/Household	Stockholm
+2013-05-24	75	5	220.00	sek	Haircut							Other	Other	Stockholm
+2013-05-24	75	5	75.00	sek	Train to Stockholm Airport (Piter)							Travels	Travels	Stockholm
+2013-05-27	76	1	40.17	sek (from rur x4.979)	Megafon							Travels	Travels	Piter
+2013-05-27	76	1	6.03	sek (from rur x4.979)	Megafon							Travels	Travels	Piter
+2013-05-28	76	2	742.38	sek	Aegean Airlines BUD-ATH							Travels	Travels	Piter
+2013-05-28	76	2	578.00	sek	Norwegian ARN-BUD							Travels	Travels	Piter
+2013-05-28	76	2	6.03	sek (from rur x4.979)	Megafon							Travels	Travels	Piter
+2013-05-28	76	2	10.04	sek (from rur x4.979)	Megafon							Travels	Travels	Piter
+2013-05-28	76	2	40.97	sek (from rur x4.979)	Medicine for lion cub							Travels	Travels	Piter
+2013-05-29	76	3	75.00	sek	Train from Stockholm Airport (Piter)							Travels	Travels	Stockholm
+2013-05-30	76	4	25.00	sek	Card fee						Fees		Fees	Stockholm
+2013-05-28	76	2	70.33	sek (from rur x4.979)	Behance							Fees	Fees	Stockholm
+2013-05-28	76	2	370.00	sek	K-C SOLNA				Sport				Sport	Stockholm
+2013-06-04	77	2	560.00	sek	SL monthly fee		Local Transport						Local Transport	Stockholm
+2013-06-07	77	5	121.00	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-06-08	77	6	49.30	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-06-23	79	7	41.89	sek	Lidl Stockholm	Food/Household							Food/Household	Stockholm
+2013-06-27	80	4	25.00	sek	Card fee						Fees		Fees	Stockholm
+2013-06-28	80	5	563.50	sek (from rur x4.979)	"Wizzair BUD-HEL - Fail, wasted"							Travels	Travels	Budapest
+2013-06-28	80	5	72.99	sek (from rur x4.979)	Behance							Fees	Fees	Budapest
+2013-07-08	82	1	764.98	sek (from rur x4.979)	Norwegian BUD-HEL							Travels	Travels	Budapest
+2013-07-12	82	5	15.01	sek (from rur x4.979)	Food in Budapest							Food/Household	Food/Household	Budapest
+2013-07-15	83	1	341.92	sek (from rur x4.979)	Cash							Travels	Travels	Budapest
+2013-07-15	83	1	19.14	sek (from rur x4.979)	Food in Budapest							Food/Household	Food/Household	Budapest
+2013-07-22	84	1	470.08	sek (from rur x4.979)	Climbing festival (Food in Litohoro)							Travels	Travels	Greece
+2013-07-29	85	1	923.01	sek (from rur x4.979)	Climbing festival (Cash)							Travels	Travels	Greece
+2013-07-30	85	2	25.00	sek	Card fee						Fees		Fees	Greece
+2013-07-28	84	7	73.31	sek (from rur x4.979)	Behance							Fees	Fees	Greece
+2013-08-06	86	2	361.52	sek (from rur x4.979)	"Transfer to some card, can't remember"							Unclassified	Unclassified	Budapest
+2013-08-07	86	3	73.83	sek (from rur x4.979)	Food in Budapest							Food/Household	Food/Household	Budapest
+2013-08-27	89	2	903.80	sek (from rur x4.979)	Hotel Graffiti in Piter							Travels	Travels	Piter
+2013-08-28	89	3	24.10	sek (from rur x4.979)	Food in Piter							Food/Household	Food/Household	Piter
+2013-08-29	89	4	25.00	sek	Card fee						Fees		Fees	Piter
+2013-08-28	89	3	74.04	sek (from rur x4.979)	Behance							Fees	Fees	Piter
+2013-08-30	89	5	20.04	sek (from rur x4.979)	Food in Piter							Food/Household	Food/Household	Piter
+2013-08-31	89	6	43.70	sek (from eur x8.74)	Lidl household liquids	Food/Household							Food/Household	Helsinki
+2013-08-31	89	6	121.92	sek (from eur x8.74)	Lidl food	Food/Household							Food/Household	Helsinki
+2013-08-31	89	6	33.21	sek (from eur x8.74)	S-market household	Food/Household							Food/Household	Helsinki
+2013-09-02	90	1	34.96	sek (from eur x8.74)	HSL to otaniemi							Local Transport	Local Transport	Helsinki
+2013-09-02	90	1	61.18	sek (from eur x8.74)	DNA simcard							Phone/Internet	Phone/Internet	Helsinki
+2013-09-02	90	1	43.70	sek (from eur x8.74)	HSL card							Local Transport	Local Transport	Helsinki
+2013-09-02	90	1	43.70	sek (from eur x8.74)	HSL travels							Local Transport	Local Transport	Helsinki
+2013-09-02	90	1	73.85	sek (from eur x8.74)	K-market food	Food/Household							Food/Household	Helsinki
+2013-09-02	90	1	50.69	sek (from eur x8.74)	S-market food	Food/Household							Food/Household	Helsinki
+2013-09-02	90	1	865.26	sek (from eur x8.74)	AYY membership							Fees	Fees	Helsinki
+2013-09-02	90	1	131.10	sek (from eur x8.74)	Student card							Fees	Fees	Helsinki
+2013-09-02	90	1	69.92	sek (from eur x8.74)	Tietokiltta							Fees	Fees	Helsinki
+2013-09-02	90	1	2500.00	sek	NerdyByNerds							Investment	Investment	Helsinki
+2013-09-03	90	2	699.00	sek	SAS + Norwegian HEL-ARN-HEL							Travels	Travels	Helsinki
+2013-09-01	89	7	2053.90	sek (from eur x8.74)	HOAS Housing							Rent	Rent	Helsinki
+2013-09-08	90	7	218.06	sek (from eur x8.74)	Lidl food	Food/Household							Food/Household	Helsinki
+2013-09-09	91	1	132.61	sek	WWOOF Sverige fee							Travels	Travels	Helsinki
+2013-09-10	91	2	32.78	sek (from eur x8.74)	posti							Presents	Presents	Helsinki
+2013-09-10	91	2	285.80	sek (from eur x8.74)	HSL travels							Local Transport	Local Transport	Helsinki
+2013-09-12	91	4	57.25	sek (from eur x8.74)	Apoteket							Other	Other	Helsinki
+2013-09-18	92	3	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-09-19	92	4	44.66	sek (from eur x8.74)	S-MARKET ESPOON KESKUS	Food/Household							Food/Household	Helsinki
+2013-09-20	92	5	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-09-23	93	1	200.00	sek	Train to Stockholm							Travels	Travels	Uppsala
+2013-09-23	93	1	25.00	sek	Kista Grossen	Food/Household							Food/Household	Uppsala
+2013-09-23	93	1	93.59	sek (from rur x4.979)	Bus to Uppsala from ARN							Travels	Travels	Uppsala
+2013-09-24	93	2	90.00	sek	Bus to Arlanda							Travels	Travels	Uppsala
+2013-09-25	93	3	102.70	sek (from eur x8.74)	Lidl food	Food/Household							Food/Household	Helsinki
+2013-09-25	93	3	31.11	sek (from eur x8.74)	Alepa Otaniemi	Food/Household							Food/Household	Helsinki
+2013-09-27	93	5	25.00	sek	Card fee						Fees		Fees	Helsinki
+2013-09-27	93	5	255.96	sek	Norwegian HEL-ARN for October							Travels	Travels	Helsinki
+2013-09-30	94	1	38.37	sek (from eur x8.74)	S-market food	Food/Household							Food/Household	Helsinki
+2013-09-28	93	6	72.18	sek (from rur x4.979)	Behance							Fees	Fees	Helsinki
+2013-10-02	94	3	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-10-03	94	4	130.23	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-10-01	94	2	2053.90	sek (from eur x8.74)	HOAS Housing							Rent	Rent	Helsinki
+2013-10-07	95	1	33.30	sek (from eur x8.74)	Alepa Otaniemi	Food/Household							Food/Household	Helsinki
+2013-10-08	95	2	80.00	sek	Viking Line boat							Travels	Travels	Helsinki
+2013-10-15	96	2	123.58	sek (from eur x8.74)	K-market household items	Food/Household							Food/Household	Helsinki
+2013-10-23	97	3	72.00	sek	SL metro							Travels	Travels	Uppsala
+2013-10-23	97	3	56.00	sek	SL metro							Travels	Travels	Uppsala
+2013-10-25	97	5	87.40	sek (from eur x8.74)	Tea from Thehuone							Presents	Presents	Helsinki
+2013-10-28	98	1	195.95	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-10-29	98	2	327.84	sek (from eur x8.74)	Norwegian HEL-ARN for December							Travels	Travels	Helsinki
+2013-10-28	98	1	70.98	sek (from rur x4.979)	Behance							Fees	Fees	Helsinki
+2013-10-30	98	3	25.00	sek	Card fee						Fees		Fees	Helsinki
+2013-11-01	98	5	218.50	sek (from eur x8.74)	WWOOF Sverige fee							Travels	Travels	Helsinki
+2013-11-05	99	2	103.83	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-11-01	98	5	2053.90	sek (from eur x8.74)	HOAS Housing							Rent	Rent	Helsinki
+2013-11-11	100	1	87.40	sek (from eur x8.74)	HSL travels							Local Transport	Local Transport	Helsinki
+2013-11-11	100	1	219.37	sek (from eur x8.74)	HSL travels							Local Transport	Local Transport	Helsinki
+2013-11-12	100	2	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-11-19	101	2	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-11-20	101	3	89.32	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-11-20	101	3	1596.00	sek	Norwegian ARN-MMX-ARN							Travels	Travels	Helsinki
+2013-11-28	102	4	25.00	sek	Card fee						Fees		Fees	Helsinki
+2013-11-29	102	5	22.72	sek (from eur x8.74)	Lunch at Amica	Food/Household							Food/Household	Helsinki
+2013-12-02	103	1	151.38	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-12-01	102	7	2053.90	sek (from eur x8.74)	HOAS Housing							Rent	Rent	Helsinki
+2013-12-12	104	4	1000.00	sek	Swedish residence permit							Fees	Fees	Helsinki
+2013-12-16	105	1	115.54	sek (from eur x8.74)	Lidl Helsinki	Food/Household							Food/Household	Helsinki
+2013-12-16	105	1	311.58	sek (from eur x8.74)	Posti							Presents	Presents	Helsinki
+2013-12-16	105	1	129.79	sek (from eur x8.74)	Body Shop							Presents	Presents	Helsinki
+2013-12-16	105	1	21.85	sek (from eur x8.74)	Mummin packaging paper							Presents	Presents	Helsinki
+2013-12-16	105	1	69.83	sek (from eur x8.74)	Oils and candles							Presents	Presents	Helsinki
+2013-12-17	105	2	366.21	sek (from eur x8.74)	Taxi to Airport							Travels	Travels	Helsinki
+2013-12-17	105	2	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	Uppsala
+2013-12-18	105	3	104.90	sek	Hemk?p Uppsala							Food/Household	Food/Household	Uppsala
+2013-12-18	105	3	30.77	sek	Coop Uppsala	Food/Household							Food/Household	Uppsala
+2013-12-19	105	4	9.90	sek	ICA Uppsala	Food/Household							Food/Household	Uppsala
+2013-12-20	105	5	178.00	sek	Bus from Malm? Airport							Travels	Travels	Sk?ne
+2013-12-20	105	5	108.00	sek	Bus to Arlanda							Travels	Travels	Sk?ne
+2013-12-20	105	5	185.00	sek	Train to Helsingborg							Travels	Travels	Sk?ne
+2013-12-20	105	5	58.00	sek	Bus to Hasslarp							Travels	Travels	Sk?ne
+2013-12-23	106	1	16.61	sek (from eur x8.74)	Nordea Bank Fee							Fees	Fees	Sk?ne
+2013-12-27	106	5	25.00	sek	Card fee						Fees		Fees	Sk?ne
+2014-01-05	107	7	158.00	sek	Bus to Malm? Airport							Travels	Travels	Sk?ne
+2014-01-06	108	1	108.00	sek	But to Uppsala							Travels	Travels	Sk?ne
+2014-01-07	108	2	81.00	sek	Bus to V?ster?s							Local Transport	Local Transport	V?ster?s
+2014-01-07	108	2	280.51	sek	Coop V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-09	108	4	132.15	sek	Coop V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-13	109	1	2500.00	sek	Instrument Champ							Investment	Investment	V?ster?s
+2014-01-13	109	1	39.90	sek	ICA V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-15	109	3	110.04	sek	Coop V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-16	109	4	29.00	sek	Cash							Cash	Cash	V?ster?s
+2014-01-16	109	4	36.97	sek	Coop V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-17	109	5	139.00	sek	Train to Stockholm							Local Transport	Local Transport	V?ster?s
+2014-01-17	109	5	157.00	sek	Train to Stockholm							Local Transport	Local Transport	V?ster?s
+2014-01-17	109	5	50.00	sek	Comviq Amigos 50					Phone/Internet			Phone/Internet	V?ster?s
+2014-01-17	109	5	20.00	sek	SL metro							Local Transport	Local Transport	V?ster?s
+2014-01-17	109	5	20.00	sek	SL metro							Local Transport	Local Transport	V?ster?s
+2014-01-18	109	6	42.95	sek	Coop V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-18	109	6	35.66	sek	Allans Livs V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-19	109	7	29.90	sek	Power extender							Food/Household	Food/Household	V?ster?s
+2014-01-23	110	4	265.02	sek	Lidl V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-01-30	111	4	25.00	sek	Card fee						Fees		Fees	V?ster?s
+2014-01-30	111	4	90.00	sek	Bus to Uppsala							Local Transport	Local Transport	V?ster?s
+2014-01-31	111	5	65.83	sek	Coop Uppsala	Food/Household							Food/Household	V?ster?s
+2014-02-03	112	1	140.00	sek	Bus to V?ster?s + UL card							Local Transport	Local Transport	V?ster?s
+2014-02-05	112	3	295.00	sek	STHLM Startup day ticket							Other	Other	V?ster?s
+2014-02-07	112	5	175.00	sek	Battery for HTC							Other	Other	V?ster?s
+2014-02-08	112	6	49.00	sek	Gina Tricot							Presents	Presents	V?ster?s
+2014-02-08	112	6	50.00	sek	Lindex							Presents	Presents	V?ster?s
+2014-02-10	113	1	174.71	sek	Allans Livs V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-02-10	113	1	221.36	sek	Lidl V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-02-11	113	2	172.00	sek	Train to Stockholm							Local Transport	Local Transport	V?ster?s
+2014-02-13	113	4	190.00	sek	Viking Line boat							Travels	Travels	V?ster?s
+2014-02-15	113	6	112.44	sek	Lidl V?ster?s	Food/Household							Food/Household	V?ster?s
+2014-02-19	114	3	129.74	sek	Lion ears							Presents	Presents	V?ster?s
+2014-02-22	114	6	156.30	sek	Lidl V?ster?s	Food/Household							Food/Household	V?ster?s
