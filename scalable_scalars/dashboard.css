@@ -1,4 +1,18 @@
-svg{width: 100%, height: 100%};
+    *{ /*border-right: 1px solid grey; /* for testing only */
+        padding: 0px;  margin: 0px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+
+        font-size: 14pt;
+        font-family: "Open Sans", Verdana, Helvetica, Sans-Serif;
+        text-anchor: left;
+    }
+svg{width: 100%, height: 100%}
+
 
 
 
@@ -43,19 +57,19 @@ svg{width: 100%, height: 100%};
 
 
 @media all and (max-width: 5000px) and (min-width: 1351px) {
+    .topRow span, text{font-size: 16pt;}
+    .topRow .value {font-size: 20pt;}
+    .axis text{font-size: 16pt;}
+}
+@media all and (max-width: 1350px) and (min-width: 1025px) {
+    .topRow span, text{font-size: 12pt;}
+    .topRow .value {font-size: 16pt;}
+    .axis text{font-size: 12pt;}
+}
+@media all and (max-width: 1024px) and (min-width: 50px) {
     .topRow span, text{font-size: 10pt;}
     .topRow .value {font-size: 14pt;}
     .axis text{font-size: 10pt;}
-}
-@media all and (max-width: 1350px) and (min-width: 1025px) {
-    .topRow span, text{font-size: 8pt;}
-    .topRow .value {font-size: 12pt;}
-    .axis text{font-size: 8pt;}
-}
-@media all and (max-width: 1024px) and (min-width: 50px) {
-    .topRow span, text{font-size: 6pt;}
-    .topRow .value {font-size: 10pt;}
-    .axis text{font-size: 6pt;}
 }
 .dashboard .topRow{position: absolute;}
 .topRow{line-height: 90%;}
