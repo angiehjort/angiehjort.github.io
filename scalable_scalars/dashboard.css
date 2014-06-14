@@ -1,0 +1,65 @@
+svg{width: 100%, height: 100%};
+
+
+
+.axis path{fill: none; stroke: none;}
+
+.axis line {
+    fill: none;
+    stroke: lightgrey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+.axis text {font-size: 10pt; fill: #797979;}
+
+.dashPlot .midLine{stroke: none;}
+
+.dashPlot .background.bad{fill: #dfc27d; opacity: 0.5;}
+.dashPlot .background.good{fill: #80cdc1; opacity: 0.5;}
+
+.dashPlot .dash{stroke: #543005; stroke-width: 3px; opacity: 0.2; }
+.dashPlot .dash.active{stroke-width: 5px; opacity: 1;}
+.dashPlot .dash.hidden{opacity: 0.0;}
+
+.dashPlot .target{stroke: #35978f; stroke-width: 3px; opacity: 1.0;}
+.dashPlot .targetValue{fill: #35978f;}
+
+.dashPlot .dashValue{font-size: 14pt; fill: none;}
+.dashPlot .dashValue.active{fill: #543005;}
+
+.dashPlot .dashValueShadow{font-size: 14pt; fill: none; stroke: none; stroke-width: 6px; opacity: 1;}
+.dashPlot .dashValueShadow.active{fill: #fffaf0; stroke: #fffaf0;}
+
+.dashPlot .connection{stroke: #b2a283; stroke-width: 1px; opacity: 0.1;}
+.dashPlot .connection.active{stroke: #543005; stroke-width: 2px; opacity: 1;}
+.dashPlot .connection.hidden{opacity: 0.0;}
+
+.hoverable{cursor: pointer;}
+/*.hideable{transition: opacity .5s ease;}*/
+.hidden{opacity: 0;}
+
+
+
+
+
+@media all and (max-width: 5000px) and (min-width: 1351px) {
+    .topRow span, text{font-size: 10pt;}
+    .topRow .value {font-size: 14pt;}
+    .axis text{font-size: 10pt;}
+}
+@media all and (max-width: 1350px) and (min-width: 1025px) {
+    .topRow span, text{font-size: 8pt;}
+    .topRow .value {font-size: 12pt;}
+    .axis text{font-size: 8pt;}
+}
+@media all and (max-width: 1024px) and (min-width: 50px) {
+    .topRow span, text{font-size: 6pt;}
+    .topRow .value {font-size: 10pt;}
+    .axis text{font-size: 6pt;}
+}
+.dashboard .topRow{position: absolute;}
+.topRow{line-height: 90%;}
+.topRow .topline, .subline, text{line-height: 90%;}
+.topRow .value{line-height: 100%;}
+.topRow .topline{ text-transform: uppercase;}
+.topRow .subline{ /*text-transform: lowercase;*/}

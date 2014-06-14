@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,user-scalable=no,minimal-ui">
+<title>Scalable scalar visualization</title>
+
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <link href="dashboard.css" rel="stylesheet">
+    <script src="one_dash_plot.js" charset="utf-8"></script>
+
+    <script>
+        function One() {
+            this.p1= Math.random();
+            this.p2= Math.random();
+            this.p3= Math.random();
+        }
+        
+    window.onload = function(){
+
+        samplesAll = [];
+        samplesSelected = [];
+        for (i=0; i<10; i++)samplesAll.push(new One());
+
+        scalarKpiVis = d3.dashPlot()
+            .stepy(100)
+            .height(600)
+            .width(600);
+
+
+        d3.select("#container")
+            .append("svg")
+            .append("g")
+            .attr("class","scalarKpiVis")
+            .attr("transform", "translate(" + (0) + "," + (0) + ")")
+            .data( samplesAll )
+            .call(scalarKpiVis);
+    }
+
+    </script>
+</head>
+<body><div id="container"></div></body>
