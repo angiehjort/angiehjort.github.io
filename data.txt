@@ -1,0 +1,8 @@
+country	population	income	life	smoking
+A	1565	4	64	54
+B	4543	548	97	6
+C	6545646	45	23	7
+D	435	1	54	14
+E	1684	7848	87	84
+F	684	155	59	12
+G	6456	87	12	65
