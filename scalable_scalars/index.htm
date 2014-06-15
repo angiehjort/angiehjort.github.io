@@ -24,16 +24,14 @@
         }
         
         SCALAR_KPI_META = {
-            p1:     {name: "Parameter 1",          nameShort: "Alarm rate",        id:"average_10min",    method: "Average",   methodShort: "Avg",     units: "/10min", targetType: TARGET_LO_ISGOOD, target:1, maximum:20, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//20
-            p2:    {name: "Parameter 2",          nameShort: "rate",        id:"peak_10min_1",     method: "Peak",      methodShort: "Peak",    units: "/10min", targetType: TARGET_LO_ISGOOD, target:10, maximum:200, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//500
-            p3:        {name: "Parameter 3", nameShort: "Time to ackn",      id:"timetoacknow",     method: "Average",   methodShort: "Avg",     units: "min",   targetType: TARGET_LO_ISGOOD, target:3, maximum:20, format: function(n){return (n*60<1)?"0":minutesToMMSS(n)}},//60
-            timeAlarmActive:  {name: "Time alm active",     nameShort: "Time active",       id:"",                 method: "Average",   methodShort: "Avg",     units: "h",     targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: d3.format(".3g")},
-            timeInFlood:      {name: "Time in flood",       nameShort: "Time in flood",     id:"flood_10min_50",   method: "",          methodShort: "",        units: "%",     targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
-            staleAlarms:      {name: "Standing alarms",     nameShort: "Standing alarms",   id:"staleall",         method: "Number of", methodShort: "",        units: "total",     targetType: TARGET_LO_ISGOOD, target:5, maximum:50, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//50
-            staleAlarmsOldest:{name: "Standing alarm",      nameShort: "",    id:"staleoldest",      method: "Longest",   methodShort: "Longest", units: "months",  targetType: TARGET_LO_ISGOOD, target:1, maximum:12, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//24
-            trainingsPassed:  {name: "Training passed",     nameShort: "Training passed",   id:"",                 method: "total",     methodShort: "",        units: "",      targetType: TARGET_HI_ISGOOD, target:0, maximum:1, format: d3.format(".3g")},
-            improvements:     {name: "Improvements",        nameShort: "Improves",          id:"",                 method: "total",     methodShort: "",        units: "",      targetType: TARGET_HI_ISGOOD, target:0, maximum:1, format: d3.format(".3g")},
-            empty:            {name: "",                    nameShort: "",                  id:"",                 method: "",          methodShort: "",        units: "",      targetType: TARGET_LO_ISGOOD, target:0, maximum:1, format: d3.format(".3g")}
+            p1:     {name: "Fuel consumption",  method: "",     methodShort: "",        units: "liters/100km",          targetType: TARGET_LO_ISGOOD, target:5, maximum:50, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//50
+            p2:     {name: "Acceleration",      method: "",     methodShort: "",        units: "s to 100km/h",        targetType: TARGET_LO_ISGOOD, target:1, maximum:20, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//20
+            p3:     {name: "Displacement",      method: "",     methodShort: "",        units: "liters",         targetType: TARGET_LO_ISGOOD, target:10, maximum:200, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//500
+            p4:     {name: "Horse power",       method: "",     methodShort: "",        units: "♞",     targetType: TARGET_LO_ISGOOD, target:3, maximum:20, format: function(n){return (n*60<1)?"0":minutesToMMSS(n)}},//60
+            p5:     {name: "Cylinders",         method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            p6:     {name: "Weight",            method: "",     methodShort: "",        units: "tons",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: d3.format(".3g")},
+            p7:     {name: "Year",              method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            empty:  {name: "",                  method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:0, maximum:1, format: d3.format(".3g")}
         }
 
         N_MAX = 1024;
