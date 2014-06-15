@@ -210,7 +210,7 @@
                         .data([null])
                       .enter().append("line")
                         .attr("class", "loLine")
-                        .attr("x1",x_(d3.median(datum)*0.5))
+                        .attr("x1",x_((d3.min(datum)+d3.median(datum))*0.5))
                         .attr("x2",x_(d3.median(datum))-3)
                         .attr("y1",0)
                         .attr("y2",0);
@@ -220,7 +220,7 @@
                       .enter().append("line")
                         .attr("class", "hiLine")
                         .attr("x1",x_(d3.median(datum))+3)
-                        .attr("x2",x_(d3.median(datum)*1.5))
+                        .attr("x2",x_((d3.max(datum)+d3.median(datum))*0.5))
                         .attr("y1",0)
                         .attr("y2",0);
 
