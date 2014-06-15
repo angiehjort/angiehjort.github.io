@@ -111,7 +111,7 @@
         }
 
         update = function(n){
-            d3.select("#nsamples").text("samples:"+ n);
+            d3.select("#nsamples").text(n);
             kpiGroup.data([samplesAll.slice(0,Math.min(n, samplesAll.length))]).call(scalarKpiVis);
 
             d3.select("head").selectAll("#opacityBasedOnSamples0")
@@ -164,10 +164,15 @@
 <body>
     <div>
     <p>This is an idea of scalable data visualization for sets of scalar values</p>
-    <p>Move the slider to see how the display is changing based on the number of samples</p>
-    <p>i am on it right now. please be back in a short while</p>
+    <p>It transforms Bullet graph → Parallel coordinates → Dash plot → Box plot</p>
+    <p>based on the number of samples in the data. Move the slider to see yourself:</p>
+
 </div>
+
+
+    <span>Samples:</span>
     <input class = "slider" type="range" name="points" min="1" max="50" value="1">
     <span id = "nsamples"></span>
     <div id="container"></div>
+    <div><p>//i am improving it right now. please be back in a short while</p></div>
     </body>

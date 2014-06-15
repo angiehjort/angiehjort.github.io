@@ -1,7 +1,5 @@
     *{ /*border-right: 1px solid grey; /* for testing only */
         padding: 0px;  margin: 0px;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
 
         box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -12,12 +10,13 @@
         text-anchor: left;
     }
 
-#container{width: 80%; height: 50%}
-svg{width: 100%; height: 100%}
-
+body{width: 100%; height: 100%}
+#container{width: 80%; height: 10%}
+svg{width: 100%; height: 50%}
+div{position: relative; }
 
 body {padding: 10px 50px 50px 50px}
-.slider {margin: 10px 10px 50px}
+.slider {margin: 10px 10px 20px}
 
 
 .axis path{fill: none; stroke: none;}
@@ -35,27 +34,27 @@ body {padding: 10px 50px 50px 50px}
 .dashPlot .background.bad{fill: #dfc27d;  opacity: 0;}
 .dashPlot .background.good{fill: #80cdc1; opacity: 0;}
 
-.dashPlot .dash{stroke: #543005; stroke-width: 3px;}
+.dashPlot .dash{stroke: #05541a; stroke-width: 3px;}
 .dashPlot .dash.active{stroke-width: 5px; opacity: 1;}
 .dashPlot .dash.hidden{opacity: 0.0;}
 
-.dashPlot .bulletLine{stroke: #543005;}
+.dashPlot .bulletLine{stroke: #05541a;}
 .dashPlot .bulletLine.active{stroke-width: 5px; opacity: 1;}
 
-.dashPlot .boxplot .hiHiLine,.loLoLine{stroke: #543005; stroke-width: 2px;}
-.dashPlot .boxplot .hiLine,.loLine{stroke: #543005; stroke-width: 5px;}
+.dashPlot .boxplot .hiHiLine,.loLoLine{stroke: #05541a; stroke-width: 2px;}
+.dashPlot .boxplot .hiLine,.loLine{stroke: #05541a; stroke-width: 5px;}
 
 .dashPlot .target{stroke: #35978f; stroke-width: 3px; opacity: 1.0;}
 .dashPlot .targetValue{fill: #35978f;}
 
 .dashPlot .dashValue{font-size: 14pt; fill: none;}
-.dashPlot .dashValue.active{fill: #543005;}
+.dashPlot .dashValue.active{fill: #05541a;}
 
 .dashPlot .dashValueShadow{font-size: 14pt; fill: none; stroke: none; stroke-width: 6px; opacity: 1;}
 .dashPlot .dashValueShadow.active{fill: #FFF; stroke: #FFF;}
 
-.dashPlot .connection{stroke: #b2a283; stroke-width: 1px;}
-.dashPlot .connection.active{stroke: #543005; stroke-width: 2px; opacity: 1;}
+.dashPlot .connection{stroke: #789d7e; stroke-width: 1px;}
+.dashPlot .connection.active{stroke: #05541a; stroke-width: 2px; opacity: 1;}
 .dashPlot .connection.hidden{opacity: 0.0;}
 
 .hoverable{cursor: pointer;}
