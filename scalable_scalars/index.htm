@@ -18,9 +18,9 @@
         var randomStream = new Random();
 
         function One() {
-            this.p1= randomStream.normal(SCALAR_KPI_META.p1.target*2, SCALAR_KPI_META.p1.target*0.5);
-            this.p2= randomStream.normal(SCALAR_KPI_META.p2.target*4, SCALAR_KPI_META.p2.target*0.8);
-            this.p3= randomStream.normal(SCALAR_KPI_META.p3.target, SCALAR_KPI_META.p3.target*0.3);
+            this.p1= randomStream.normal(SCALAR_KPI_META.p1.target*2, SCALAR_KPI_META.p1.target*2);
+            this.p2= randomStream.normal(SCALAR_KPI_META.p2.target*4, SCALAR_KPI_META.p2.target*1.5);
+            this.p3= randomStream.normal(SCALAR_KPI_META.p3.target*5, SCALAR_KPI_META.p3.target*0.9);
         }
         
         SCALAR_KPI_META = {
@@ -37,9 +37,19 @@
         }
 
         N_MAX = 1024;
-        LIMIT_BULLET = 1; // samples
-        LIMIT_PCOORDS = 150; // samples
-        LIMIT_DASHPLOT = 500; // samples
+        LIMIT_BULLET_MIN = 1; // samples
+        LIMIT_BULLET_CEN = 1;
+        LIMIT_BULLET_MAX = 5;
+        LIMIT_PCOORDS_MIN = 5;
+        LIMIT_PCOORDS_CEN = 6;
+        LIMIT_PCOORDS_MAX = 150;
+        LIMIT_DASHPLOT_MIN = 1;
+        LIMIT_DASHPLOT_CEN = 5;
+        LIMIT_DASHPLOT_MAX = 500;
+        LIMIT_BOXPLOT_MIN = 100;
+        LIMIT_BOXPLOT_CEN = 512;
+        LIMIT_BOXPLOT_MAX = 100500;
+
 
 
     window.onload = function(){
@@ -49,8 +59,8 @@
         for (i=0; i<N_MAX; i++)samplesAll.push(new One());
 
 
-        d3.select("#slider")[0][0].onchange = function() {
-            update(Math.ceil(Math.pow(2,this.value/10)))
+        d3.select(".slider")[0][0].onchange = function() {
+            update(Math.ceil(Math.pow(2,this.value/5)))
         }
         iWannaHoverOff = function(assetID){
             d3.selectAll("." + ASSET_ID + "#" + assetID).classed("active", false);
@@ -63,19 +73,53 @@
             .append("svg")
             .append("g")
             .attr("class","scalarKpiVis")
-            .attr("transform", "translate(" + (50) + "," + (50) + ")");
+            .attr("transform", "translate(" + (10) + "," + (50) + ")");
+
+
+        getOpacity = function(n, min, cen, max){
+            if (n<min) return 0;
+            if (n<cen) return Math.log(n-min)/Math.log(cen)
+            if (n<max) return 1-Math.log(n)/Math.log(max)
+            if (n>=max) return 0;
+        }
 
         update = function(n){
             d3.select("#nsamples").text("samples:"+ n);
             kpiGroup.data([samplesAll.slice(0,Math.min(n, samplesAll.length))]).call(scalarKpiVis);
 
-            d3.select("head").selectAll("#connectionOpacity")
+            d3.select("head").selectAll("#opacityBasedOnSamples0")
                 .data([null]).enter().append("style")
-                .attr("id", "connectionOpacity")
+                .attr("id", "opacityBasedOnSamples0")
                 .attr("type", "text/css");
 
-            d3.selectAll("#connectionOpacity")
-                .text(".dashPlot .connection{opacity: "+(1-Math.log(n)/Math.log(LIMIT_PCOORDS))+"}");
+            d3.select("head").selectAll("#opacityBasedOnSamples1")
+                .data([null]).enter().append("style")
+                .attr("id", "opacityBasedOnSamples1")
+                .attr("type", "text/css");
+
+            d3.select("head").selectAll("#opacityBasedOnSamples2")
+                .data([null]).enter().append("style")
+                .attr("id", "opacityBasedOnSamples2")
+                .attr("type", "text/css");
+
+            d3.select("head").selectAll("#opacityBasedOnSamples3")
+                .data([null]).enter().append("style")
+                .attr("id", "opacityBasedOnSamples3")
+                .attr("type", "text/css");
+
+            d3.selectAll("#opacityBasedOnSamples0")
+                .text(".opacityBasedOnSamples0{opacity: "+getOpacity(n, LIMIT_BULLET_MIN,LIMIT_BULLET_CEN,LIMIT_BULLET_MAX)+"}");
+
+            d3.selectAll("#opacityBasedOnSamples1")
+                .text(".opacityBasedOnSamples1{opacity: "+getOpacity(n, LIMIT_PCOORDS_MIN,LIMIT_PCOORDS_CEN,LIMIT_PCOORDS_MAX)+"}");
+
+            d3.selectAll("#opacityBasedOnSamples2")
+                .text(".opacityBasedOnSamples2{opacity: "+getOpacity(n, LIMIT_DASHPLOT_MIN,LIMIT_DASHPLOT_CEN,LIMIT_DASHPLOT_MAX)+"}");
+
+            d3.selectAll("#opacityBasedOnSamples3")
+                .text(".opacityBasedOnSamples3{opacity: "+getOpacity(n, LIMIT_BOXPLOT_MIN,LIMIT_BOXPLOT_CEN,LIMIT_BOXPLOT_MAX)+"}");
+
+
         d3.selectAll("."+ASSET_ID+".hoverable").on("mouseover",
             function () {iWannaHoverOn(d3.select(this).attr("id"))});
         d3.selectAll("."+ASSET_ID+".hoverable").on("mouseout",
@@ -91,7 +135,7 @@
     </script>
 </head>
 <body>
-    <input id = "slider" type="range" name="points" min="0" max="100" value="0">
+    <input class = "slider" type="range" name="points" min="0" max="50" value="0">
     <span id = "nsamples"></span>
     <div id="container"></div>
 </body>

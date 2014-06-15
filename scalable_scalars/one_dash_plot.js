@@ -31,9 +31,7 @@
             var x = [];
             var xAxis = [];
             for(k in kpiArray) {
-
-                var max = Math.min(d3.max(kpiArray[k]), SCALAR_KPI_META[keys[k]].maximum);
-
+                var max = SCALAR_KPI_META[keys[k]].maximum; //Math.min(d3.max(kpiArray[k]), SCALAR_KPI_META[keys[k]].maximum);
                 x.push(d3.scale.linear().nice().range([0, w]).domain([0,max]).clamp(true));
                 xAxis.push(d3.svg.axis().scale(x[k]).orient("bottom").ticks(5).tickFormat(SCALAR_KPI_META[keys[k]].format));
             }
@@ -75,7 +73,7 @@
                         parent.selectAll(".connection")
                             .data(datum)
                           .enter().append("line")
-                            .attr("class", function(d,i){return "connection hoverable hideable "+ASSET_ID})
+                            .attr("class", function(d,i){return "connection hoverable opacityBasedOnSamples1 "+ASSET_ID})
                             .attr("id", function(d,i){return ASSET_ID + i})
                             .attr("x1",function(d,i){return x_(d)})
                             .attr("x2",function(d,i){return x_1(kpiArray[kpiIndex+1][i])})
@@ -166,12 +164,64 @@
                     parent.selectAll(".dash")
                         .data(datum)
                       .enter().append("line")
-                        .attr("class", function(d,i){return "dash "+ASSET_ID+" hoverable hideable"})
+                        .attr("class", function(d,i){return "dash "+ASSET_ID+" hoverable opacityBasedOnSamples2"})
                         .attr("id", function(d,i){return ASSET_ID + i})
                         .attr("x1",function(d,i){return x_(d)})
                         .attr("x2",function(d,i){return x_(d)})
                         .attr("y1",-dashH/2)
                         .attr("y2",+dashH/2);
+
+
+                    parent.selectAll(".bulletLine")
+                        .data(datum)
+                      .enter().append("line")
+                        .attr("class", function(d,i){return "bulletLine opacityBasedOnSamples0 "+ASSET_ID+" hoverable"})
+                        .attr("id", function(d,i){return ASSET_ID + i})
+                        .attr("x1",function(d,i){return x_(0)})
+                        .attr("x2",function(d,i){return x_(d)})
+                        .attr("y1",function(d,i){return (i-datum.length/2)*20/datum.length})
+                        .attr("y2",function(d,i){return (i-datum.length/2)*20/datum.length});
+
+
+                    var boxplot = parent.selectAll(".boxplot")
+                        .data([null])
+                      .enter().append("g").attr("class", "boxplot opacityBasedOnSamples3");
+
+                    boxplot.selectAll("line .minmin")
+                        .data([null])
+                      .enter().append("line")
+                        .attr("class", "loLoLine")
+                        .attr("x1",x_(d3.min(datum)))
+                        .attr("x2",x_(d3.median(datum))-3)
+                        .attr("y1",0)
+                        .attr("y2",0);
+
+                    boxplot.selectAll("line .hiHiLine")
+                        .data([null])
+                      .enter().append("line")
+                        .attr("class", "hiHiLine")
+                        .attr("x1",x_(d3.median(datum))+3)
+                        .attr("x2",x_(d3.max(datum)))
+                        .attr("y1",0)
+                        .attr("y2",0);
+
+                    boxplot.selectAll("line .loLine")
+                        .data([null])
+                      .enter().append("line")
+                        .attr("class", "loLine")
+                        .attr("x1",x_(d3.median(datum)*0.5))
+                        .attr("x2",x_(d3.median(datum))-3)
+                        .attr("y1",0)
+                        .attr("y2",0);
+
+                    boxplot.selectAll("line .hiLine")
+                        .data([null])
+                      .enter().append("line")
+                        .attr("class", "hiLine")
+                        .attr("x1",x_(d3.median(datum))+3)
+                        .attr("x2",x_(d3.median(datum)*1.5))
+                        .attr("y1",0)
+                        .attr("y2",0);
 
 
                     parent.selectAll(".dashValueShadow")
