@@ -37,17 +37,17 @@
         }
 
         N_MAX = 1024;
-        LIMIT_BULLET_MIN = 1; // samples
+        LIMIT_BULLET_MIN = 0; // samples
         LIMIT_BULLET_CEN = 1;
-        LIMIT_BULLET_MAX = 5;
-        LIMIT_PCOORDS_MIN = 5;
-        LIMIT_PCOORDS_CEN = 6;
+        LIMIT_BULLET_MAX = 4;
+        LIMIT_PCOORDS_MIN = 3;
+        LIMIT_PCOORDS_CEN = 4;
         LIMIT_PCOORDS_MAX = 150;
-        LIMIT_DASHPLOT_MIN = 1;
-        LIMIT_DASHPLOT_CEN = 5;
+        LIMIT_DASHPLOT_MIN = 3;
+        LIMIT_DASHPLOT_CEN = 4;
         LIMIT_DASHPLOT_MAX = 500;
         LIMIT_BOXPLOT_MIN = 400;
-        LIMIT_BOXPLOT_CEN = 1024;
+        LIMIT_BOXPLOT_CEN = 1025;
         LIMIT_BOXPLOT_MAX = 100500;
 
 
@@ -77,7 +77,7 @@
 
 
         getOpacity = function(n, min, cen, max){
-            if (n<min) return 0;
+            if (n<=min) return 0;
             if (n<cen) return Math.log(n-min)/Math.log(cen)
             if (n<max) return 1-Math.log(n)/Math.log(max)
             if (n>=max) return 0;

@@ -37,7 +37,7 @@ body {padding: 10px 50px 50px 50px}
 .dashPlot .dash.active{stroke-width: 5px; opacity: 1;}
 .dashPlot .dash.hidden{opacity: 0.0;}
 
-.dashPlot .bulletLine{stroke: #543005; stroke-width: 3px;}
+.dashPlot .bulletLine{stroke: #543005;}
 .dashPlot .bulletLine.active{stroke-width: 5px; opacity: 1;}
 
 .dashPlot .boxplot .hiHiLine,.loLoLine{stroke: #543005; stroke-width: 2px;}

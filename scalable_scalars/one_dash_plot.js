@@ -48,24 +48,24 @@
                     var KPIMETA = SCALAR_KPI_META[keys[kpiIndex]];
                     var x_ = x[kpiIndex];
 
-                    if(kpiIndex==0){
-                      parent.selectAll(".target.legend")
-                        .data([null])
-                      .enter().append("line")
-                        .attr("class", "target legend")
-                        .attr("x1", w-45)
-                        .attr("x2", w-45)
-                        .attr("y1", -dashH*2.8)
-                        .attr("y2", -dashH*1.7);
-
-                    parent.selectAll(".targetValue.legend")
-                        .data([null])
-                      .enter().append("text")
-                        .attr("class", "targetValue legend")
-                        .attr("dx", w-40)
-                        .attr("dy", -dashH*2)
-                        .text("target");
-                    }
+//                    if(kpiIndex==0){
+//                      parent.selectAll(".target.legend")
+//                        .data([null])
+//                      .enter().append("line")
+//                        .attr("class", "target legend")
+//                        .attr("x1", w-45)
+//                        .attr("x2", w-45)
+//                        .attr("y1", -dashH*2.8)
+//                        .attr("y2", -dashH*1.7);
+//
+//                    parent.selectAll(".targetValue.legend")
+//                        .data([null])
+//                      .enter().append("text")
+//                        .attr("class", "targetValue legend")
+//                        .attr("dx", w-40)
+//                        .attr("dy", -dashH*2)
+//                        .text("target");
+//                    }
 
                     if(kpiIndex<kpiArray.length-1){
                         var x_1 = x[kpiIndex+1];
@@ -144,22 +144,22 @@
 
 
 
-                    parent.selectAll(".target.mark")
-                        .data([null])
-                      .enter().append("line")
-                        .attr("class", "target mark")
-                        .attr("x1", x_(KPIMETA.target))
-                        .attr("x2", x_(KPIMETA.target))
-                        .attr("y1",-dashTargetH/2)
-                        .attr("y2",+dashTargetH/2);
-
-                    parent.selectAll(".targetValue.mark")
-                        .data([null])
-                      .enter().append("text")
-                        .attr("class", "targetValue mark")
-                        .attr("dx", x_(KPIMETA.target)-3)
-                        .attr("dy", 27)
-                        .text(KPIMETA.format(KPIMETA.target));
+//                    parent.selectAll(".target.mark")
+//                        .data([null])
+//                      .enter().append("line")
+//                        .attr("class", "target mark")
+//                        .attr("x1", x_(KPIMETA.target))
+//                        .attr("x2", x_(KPIMETA.target))
+//                        .attr("y1",-dashTargetH/2)
+//                        .attr("y2",+dashTargetH/2);
+//
+//                    parent.selectAll(".targetValue.mark")
+//                        .data([null])
+//                      .enter().append("text")
+//                        .attr("class", "targetValue mark")
+//                        .attr("dx", x_(KPIMETA.target)-3)
+//                        .attr("dy", 27)
+//                        .text(KPIMETA.format(KPIMETA.target));
 
                     parent.selectAll(".dash")
                         .data(datum)
@@ -177,10 +177,11 @@
                       .enter().append("line")
                         .attr("class", function(d,i){return "bulletLine opacityBasedOnSamples0 "+ASSET_ID+" hoverable"})
                         .attr("id", function(d,i){return ASSET_ID + i})
+                        .style("stroke-width", 10/datum.length)
                         .attr("x1",function(d,i){return x_(0)})
                         .attr("x2",function(d,i){return x_(d)})
-                        .attr("y1",function(d,i){return (i-datum.length/2)*20/datum.length})
-                        .attr("y2",function(d,i){return (i-datum.length/2)*20/datum.length});
+                        .attr("y1",function(d,i){return (i-datum.length/2+0.5)*20/datum.length})
+                        .attr("y2",function(d,i){return (i-datum.length/2+0.5)*20/datum.length});
 
 
                     var boxplot = parent.selectAll(".boxplot")
