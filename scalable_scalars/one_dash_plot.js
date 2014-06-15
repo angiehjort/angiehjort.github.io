@@ -83,6 +83,8 @@
                             .attr("y2",stepY-dashH/2);
                         }
 
+
+
                     parent.selectAll(".midLine")
                         .data([null])
                       .enter().append("line")

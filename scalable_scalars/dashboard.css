@@ -44,7 +44,7 @@ svg{width: 100%, height: 100%}
 .dashPlot .dashValueShadow{font-size: 14pt; fill: none; stroke: none; stroke-width: 6px; opacity: 1;}
 .dashPlot .dashValueShadow.active{fill: #fffaf0; stroke: #fffaf0;}
 
-.dashPlot .connection{stroke: #b2a283; stroke-width: 1px; opacity: 0.1;}
+.dashPlot .connection{stroke: #b2a283; stroke-width: 1px;}
 .dashPlot .connection.active{stroke: #543005; stroke-width: 2px; opacity: 1;}
 .dashPlot .connection.hidden{opacity: 0.0;}
 

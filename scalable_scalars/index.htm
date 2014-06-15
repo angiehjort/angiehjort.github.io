@@ -12,12 +12,15 @@
     <script src="one_dash_plot.js" charset="utf-8"></script>
     <script src="constants.js" charset="utf-8"></script>
     <script src="utilities.js" charset="utf-8"></script>
+    <script src="random.js" charset="utf-8"></script>
 
     <script>
+        var randomStream = new Random();
+
         function One() {
-            this.p1= SCALAR_KPI_META.p1.target * Math.random() * 10;
-            this.p2= SCALAR_KPI_META.p2.target * Math.random() * 10;
-            this.p3= SCALAR_KPI_META.p3.target * Math.random() * 10;
+            this.p1= randomStream.normal(SCALAR_KPI_META.p1.target*2, SCALAR_KPI_META.p1.target*0.5);
+            this.p2= randomStream.normal(SCALAR_KPI_META.p2.target*4, SCALAR_KPI_META.p2.target*0.8);
+            this.p3= randomStream.normal(SCALAR_KPI_META.p3.target, SCALAR_KPI_META.p3.target*0.3);
         }
         
         SCALAR_KPI_META = {
@@ -33,37 +36,62 @@
             empty:            {name: "",                    nameShort: "",                  id:"",                 method: "",          methodShort: "",        units: "",      targetType: TARGET_LO_ISGOOD, target:0, maximum:1, format: d3.format(".3g")}
         }
 
+        N_MAX = 1024;
+        LIMIT_BULLET = 1; // samples
+        LIMIT_PCOORDS = 150; // samples
+        LIMIT_DASHPLOT = 500; // samples
+
 
     window.onload = function(){
-
+        scalarKpiVis = d3.dashPlot().stepy(100).height(600).width(600);
         samplesAll = [];
         samplesSelected = [];
-        for (i=0; i<10; i++)samplesAll.push(new One());
+        for (i=0; i<N_MAX; i++)samplesAll.push(new One());
 
-        scalarKpiVis = d3.dashPlot()
-            .stepy(100)
-            .height(600)
-            .width(600);
 
+        d3.select("#slider")[0][0].onchange = function() {
+            update(Math.ceil(Math.pow(2,this.value/10)))
+        }
+        iWannaHoverOff = function(assetID){
+            d3.selectAll("." + ASSET_ID + "#" + assetID).classed("active", false);
+        }
+        iWannaHoverOn = function(assetID){
+            d3.selectAll("." + ASSET_ID + "#" + assetID).classed("active", true);
+        }
 
         var kpiGroup = d3.select("#container")
             .append("svg")
             .append("g")
             .attr("class","scalarKpiVis")
-            .attr("transform", "translate(" + (50) + "," + (50) + ")")
-            .data([samplesAll])
-            .call(scalarKpiVis);
+            .attr("transform", "translate(" + (50) + "," + (50) + ")");
 
-        d3.select("#slider")[0][0].onchange = function() {
-            samplesAll = [];
-            for (i=0; i<Math.pow(2,this.value); i++)samplesAll.push(new One());
-            kpiGroup.data([samplesAll]).call(scalarKpiVis);
+        update = function(n){
+            d3.select("#nsamples").text("samples:"+ n);
+            kpiGroup.data([samplesAll.slice(0,Math.min(n, samplesAll.length))]).call(scalarKpiVis);
+
+            d3.select("head").selectAll("#connectionOpacity")
+                .data([null]).enter().append("style")
+                .attr("id", "connectionOpacity")
+                .attr("type", "text/css");
+
+            d3.selectAll("#connectionOpacity")
+                .text(".dashPlot .connection{opacity: "+(1-Math.log(n)/Math.log(LIMIT_PCOORDS))+"}");
+        d3.selectAll("."+ASSET_ID+".hoverable").on("mouseover",
+            function () {iWannaHoverOn(d3.select(this).attr("id"))});
+        d3.selectAll("."+ASSET_ID+".hoverable").on("mouseout",
+            function () {iWannaHoverOff(d3.select(this).attr("id"))});
+
         }
+        update(1);
+
+
+
     }
 
     </script>
 </head>
 <body>
-    <input id = "slider" type="range" name="points" min="1" max="10">
+    <input id = "slider" type="range" name="points" min="0" max="100" value="0">
+    <span id = "nsamples"></span>
     <div id="container"></div>
 </body>
