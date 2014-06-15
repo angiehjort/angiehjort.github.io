@@ -16,49 +16,78 @@
 
     <script>
         var randomStream = new Random();
+        //randomStream.normal(SCALAR_KPI_META.p1.target*2, SCALAR_KPI_META.p1.target*2);
 
         function One() {
-            this.p1= randomStream.normal(SCALAR_KPI_META.p1.target*2, SCALAR_KPI_META.p1.target*2);
-            this.p2= randomStream.normal(SCALAR_KPI_META.p2.target*4, SCALAR_KPI_META.p2.target*1.5);
-            this.p3= randomStream.normal(SCALAR_KPI_META.p3.target*5, SCALAR_KPI_META.p3.target*0.9);
+            this.consumption=1;
+            this.acceleration=1;
+            this.displacement=1;
+            this.horsepower=1;
+//            this.cylinders=1;
+//            this.weight=1;
+//            this.year=1;
+//            this.origin=1;
+//            this.name=1;
         }
         
         SCALAR_KPI_META = {
-            p1:     {name: "Fuel consumption",  method: "",     methodShort: "",        units: "liters/100km",          targetType: TARGET_LO_ISGOOD, target:5, maximum:50, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//50
-            p2:     {name: "Acceleration",      method: "",     methodShort: "",        units: "s to 100km/h",        targetType: TARGET_LO_ISGOOD, target:1, maximum:20, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//20
-            p3:     {name: "Displacement",      method: "",     methodShort: "",        units: "liters",         targetType: TARGET_LO_ISGOOD, target:10, maximum:200, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//500
-            p4:     {name: "Horse power",       method: "",     methodShort: "",        units: "♞",     targetType: TARGET_LO_ISGOOD, target:3, maximum:20, format: function(n){return (n*60<1)?"0":minutesToMMSS(n)}},//60
-            p5:     {name: "Cylinders",         method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
-            p6:     {name: "Weight",            method: "",     methodShort: "",        units: "tons",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: d3.format(".3g")},
-            p7:     {name: "Year",              method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            consumption:     {name: "Fuel consumption",  method: "",     methodShort: "",        units: "liters/100km",          targetType: TARGET_LO_ISGOOD, target:5, maximum:50, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//50
+            acceleration:     {name: "Acceleration",      method: "",     methodShort: "",        units: "s to 100km/h",        targetType: TARGET_HI_ISGOOD, target:1, maximum:20, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//20
+            displacement:     {name: "Displacement",      method: "",     methodShort: "",        units: "liters",         targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//500
+            horsepower:     {name: "Horse power",       method: "",     methodShort: "",        units: "♞",     targetType: TARGET_HI_ISGOOD, target:100, maximum:500, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//500
+            cylinders:     {name: "Cylinders",         method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            weight:     {name: "Weight",            method: "",     methodShort: "",        units: "tons",          targetType: TARGET_NA, target:1, maximum:3, format: d3.format(".3g")},
+            year:     {name: "Year",              method: "",     methodShort: "",        units: "",          targetType: TARGET_HI_ISGOOD, target:1, maximum:90, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            origin:     {name: "Origin",            method: "",     methodShort: "",        units: "",          targetType: TARGET_NA, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
+            name:     {name: "name",            method: "",     methodShort: "",        units: "",          targetType: TARGET_NA, target:1, maximum:10, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//10
             empty:  {name: "",                  method: "",     methodShort: "",        units: "",          targetType: TARGET_LO_ISGOOD, target:0, maximum:1, format: d3.format(".3g")}
         }
 
-        N_MAX = 1024;
         LIMIT_BULLET_MIN = 0; // samples
         LIMIT_BULLET_CEN = 1;
         LIMIT_BULLET_MAX = 4;
         LIMIT_PCOORDS_MIN = 3;
         LIMIT_PCOORDS_CEN = 4;
-        LIMIT_PCOORDS_MAX = 150;
+        LIMIT_PCOORDS_MAX = 200;
         LIMIT_DASHPLOT_MIN = 3;
         LIMIT_DASHPLOT_CEN = 4;
-        LIMIT_DASHPLOT_MAX = 500;
-        LIMIT_BOXPLOT_MIN = 400;
-        LIMIT_BOXPLOT_CEN = 1025;
+        LIMIT_DASHPLOT_MAX = 350;
+        LIMIT_BOXPLOT_MIN = 300;
+        LIMIT_BOXPLOT_CEN = 400;
         LIMIT_BOXPLOT_MAX = 100500;
 
 
-
     window.onload = function(){
-        scalarKpiVis = d3.dashPlot().stepy(100).height(600).width(600);
-        samplesAll = [];
+        d3.tsv("auto-mpg.txt", function(error, data) {
+
+        N_MAX = data.length;
+        d3.select(".slider").attr("max",N_MAX);
+
+
+        data.forEach(function(d) {
+            d.consumption = +d.consumption;
+            d.cylinders = +d.cylinders;
+            d.displacement = +d.displacement/1000;
+            d.horsepower = +d.horsepower;
+            d.weight = +d.weight/1000;
+            d.year = +d.year;
+            d.acceleration = +d.acceleration;
+            d.origin = +1;
+            d.name = +1;
+        });
+
+
+
+            samplesAll = data;
+
+        scalarKpiVis = d3.dashPlot().stepy(75).height(window.innerHeight*0.5).width(600);
+//        samplesAll = [];
         samplesSelected = [];
-        for (i=0; i<N_MAX; i++)samplesAll.push(new One());
+//        for (i=0; i<N_MAX; i++)samplesAll.push(new One());
 
 
         d3.select(".slider")[0][0].onchange = function() {
-            update(Math.ceil(Math.pow(2,this.value/5)))
+            update(this.value)
         }
         iWannaHoverOff = function(assetID){
             d3.selectAll("." + ASSET_ID + "#" + assetID).classed("active", false);
@@ -128,12 +157,17 @@
 
 
 
-    }
+    })}
 
     </script>
 </head>
 <body>
-    <input class = "slider" type="range" name="points" min="0" max="50" value="0">
+    <div>
+    <p>This is an idea of scalable data visualization for sets of scalar values</p>
+    <p>Move the slider to see how the display is changing based on the number of samples</p>
+    <p>i am on it right now. please be back in a short while</p>
+</div>
+    <input class = "slider" type="range" name="points" min="1" max="50" value="1">
     <span id = "nsamples"></span>
     <div id="container"></div>
-</body>
+    </body>

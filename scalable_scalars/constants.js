@@ -44,6 +44,7 @@ var ALARM_PRIORITY_LEVELS = 3;
 var ASSET_ID = "assetID";
 var TARGET_LO_ISGOOD = "low is good";
 var TARGET_HI_ISGOOD = "high is good";
+var TARGET_NA = "not applicable";
 
 
 var HEY_GETTING_ASSET_LIST = 'getting assets list';
