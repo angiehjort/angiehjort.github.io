@@ -67,6 +67,7 @@
 //                        .text("target");
 //                    }
 
+                    if (datum.length < LIMIT_PCOORDS_MAX){
                     if(kpiIndex<kpiArray.length-1){
                         var x_1 = x[kpiIndex+1];
 
@@ -80,7 +81,7 @@
                             .attr("y1",dashH/2)
                             .attr("y2",stepY-dashH/2);
                         }
-
+                    }
 
 
                     parent.selectAll(".midLine")
@@ -171,7 +172,7 @@
                         .attr("y1",-dashH/2)
                         .attr("y2",+dashH/2);
 
-
+                    if (datum.length<LIMIT_BULLET_MAX){
                     parent.selectAll(".bulletLine")
                         .data(datum)
                       .enter().append("line")
@@ -182,7 +183,7 @@
                         .attr("x2",function(d,i){return x_(d)})
                         .attr("y1",function(d,i){return (i-datum.length/2+0.5)*20/datum.length})
                         .attr("y2",function(d,i){return (i-datum.length/2+0.5)*20/datum.length});
-
+                    }
 
                     var boxplot = parent.selectAll(".boxplot")
                         .data([null])
