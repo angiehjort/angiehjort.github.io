@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width,user-scalable=no,minimal-ui">
-<title>Scalable scalar visualization</title>
+<title>Scalable visualizations</title>
 
 <head>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
 //            this.origin=1;
 //            this.name=1;
         }
-        
+
         SCALAR_KPI_META = {
             consumption:     {name: "Fuel consumption",  method: "",     methodShort: "",        units: "liters/100km",          targetType: TARGET_LO_ISGOOD, target:5, maximum:50, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//50
             acceleration:     {name: "Acceleration",      method: "",     methodShort: "",        units: "s to 100km/h",        targetType: TARGET_HI_ISGOOD, target:1, maximum:20, format: function(n){return (d3.round(n,2)==d3.round(n,0))?d3.round(n,0):d3.format(".2r")(n)}},//20
@@ -163,7 +163,8 @@
 </head>
 <body>
     <div>
-    <p>This is an idea of scalable data visualization for sets of scalar values</p>
+	<h3>Dynamic Switching of Data Visualization Methods for Increased Plotting Scalability<h3>
+    <p>This is an idea of scalable data visualization for vector data</p>
     <p>It transforms Bullet graph → Parallel coordinates → Dash plot → Box plot</p>
     <p>based on the number of samples in the data. Move the slider to see yourself:</p>
 
