@@ -2,26 +2,35 @@
 <meta charset="utf-8">
 <style>
 
-    .nodeV, .nodeH {cursor: pointer;}
+    .node {cursor: pointer;}
     * {
-        font: 10px sans-serif;
+        font: 10px Verdana, sans-serif;
+        fill: grey;
     }
-    text:hover {
-        font-size: 12px;
-        font-weight: bold;
-    }
-    line {stroke-width: 3px;}
+    text:hover, g.hover text {font-size: 12px; font-weight: bold; fill: black;}
+    .node.leaf text {fill: lightgrey;}
+
+    line {stroke-width: 3px; }
     line:hover {stroke-width: 7px;}
     div.tooltip{opacity: 0; background-color: #d1d89a;  position: absolute; font-size: 14px}
     .link {
+        cursor: pointer;
+        pointer-events: visible;
         fill: none;
-        stroke: #ccc;
+        stroke: #000;
         stroke-width: 1.5px;
     }
+    .link:hover {fill: #000;}
+
 </style>
 
 <body>
     <script src="d3.v3.min.js"></script>
+    <script src="utilities.js"></script>
+    <script src="jquery-2.1.1.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="picker.js"></script>
+    <script src="picker.date.js"></script>
     <script>
         var margin = {
                 top: 20,
@@ -33,11 +42,12 @@
             height = 960 - margin.top - margin.bottom;
 
         var i = 0,
-            duration = 750,
+            duration = 1000,
             leaves,
             heightOne,
-            rules,
-            root;
+            linksOriginal,
+            linksVisible,
+            globalRoot;
 
         var tree = d3.layout.cluster().separation(function(a, b){return 1})
             .size([height, width]);
@@ -51,10 +61,10 @@
         var tooltip = d3.select("body").append("div").attr("class","tooltip");
 
         d3.json("readme.json", function (error, flare) {
-            root = flare;
-            leaves = getLeaves(root);
-            root.x0 = height / 2;
-            root.y0 = 0;
+            globalRoot = flare;
+            leaves = getLeaves(globalRoot);
+            globalRoot.x0 = height / 2;
+            globalRoot.y0 = 0;
 
             heightOne = height/leaves.length;
 
@@ -68,11 +78,11 @@
             }
 
             //call collapsing of the entire tree
-            //root.children.forEach(collapse);
+            //globalRoot.children.forEach(collapse);
             d3.json("rules.json", function (error, parsed){
-                rules = parsed;
-                update(root);
-                updatematrix(rules.links);
+                linksOriginal = parsed.links;
+                linksVisible = linksOriginal;
+                updateTree(globalRoot);
             });
         });
 
@@ -83,13 +93,24 @@
 
         function getLeaves(d) {
             var result = [];
-                if (d.children) {
-                    for (var i in d.children) result = result.concat(getLeaves(d.children[i]))
-                    return result;
-                }else{
-                    return [d.id];
-                }
+            if (d.children==null)return[d];
+            for (var i in d.children) result = result.concat(getLeaves(d.children[i]))
+            return result;
         }
+
+        function getLeavesEvenHidden(d) {
+            var result = [];
+            if (d.children==null && d._children==null)return [d];
+
+            if (d.children) {
+                for (var i in d.children) result = result.concat(getLeavesEvenHidden(d.children[i]))
+            }
+            if (d._children) {
+                for (var i in d._children) result = result.concat(getLeavesEvenHidden(d._children[i]))
+            }
+            return result;
+        }
+
 
         function getFirstLeaveY(d) {
             return d.children ? getFirstLeaveY(d.children[0]) : d.x;
@@ -99,63 +120,142 @@
             return d.children ? getLastLeaveY(d.children[d.children.length-1]) : d.x;
         }
 
-        function updatematrix (links){
-            var linksRect = linksSvg.selectAll("circle.links").data(links);
-
-            linksRect.enter().append("circle").attr("class","links").on("mouseover",tooltipON).on("mouseout",tooltipOFF);
-            linksRect.exit().remove();
-
-            linksRect.transition().duration(duration)
-                .attr("cy", function(d){return leaves.indexOf(d.if)*heightOne })
-                .attr("cx", function(d){return leaves.indexOf(d.then)*heightOne})
-                .attr("r", function(d){return heightOne/2})
-                .style("opacity", function(d){
-                    if(leaves.indexOf(d.if)==-1|| leaves.indexOf(d.then) ==-1) return 0;
-                    return d.confidence
-                });
-
-        }
-
         function tooltipON(d) {
             d3.select("div.tooltip").style("opacity",0.9)
                 .html(d.if + " → " + d.then + " <br> " + "confidence: " + d.confidence + " <br> " + "hits: " + d.hits)
                 .style("top",d3.event.y+10+"px")
-                .style("left",d3.event.x+10+"px")
-                ;
-
+                .style("left",d3.event.x+10+"px");
+                d3.select("g.vertical.id" + getNodeByNodeID(d.if).id).classed("hover",true);
+                d3.select("g.horizontal.id" + getNodeByNodeID(d.then).id).classed("hover",true);
         }
-
         function tooltipOFF(d) {
             d3.select("div.tooltip").style("opacity",0)
-            .style("top",0)
-            .style("left",0);
+                .style("top",0)
+                .style("left",0);
+                d3.select("g.vertical.id" + getNodeByNodeID(d.if).id).classed("hover",false);
+                d3.select("g.horizontal.id" + getNodeByNodeID(d.then).id).classed("hover",false);
+        }
+        function getNodeByNodeID(id){
+            return nodes.filter(function(d){return d.id==id})[0];
+        }
+        function getLinksByNode(node, inIfs, inThens, includeNestedNodes){
+            //defaults
+            if (inIfs==null)inIfs=true;
+            if (inThens==null)inThens=true; //by default
+            if (includeNestedNodes==null)includeNestedNodes=true; //by default
+
+            if (includeNestedNodes){
+                var result = [];
+                getLeavesEvenHidden(node).forEach(function(n){
+                    result = result.concat(
+                        linksOriginal.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id})
+                    );
+                });
+                return arrayUnique(result);
+            }else{
+                return linksOriginal.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id});
+            }
+        }
+
+        function order(a, b){return a.hits - b.hits; }
+
+        function updatematrix (root){
+//            // get all the links that are affected and need update
+//            var linksAffected = getLinksByNode(root);
+//            // remode all the affected links
+//            linksVisible = linksVisible.filter(function(d){
+//                // filter OK when linksAffected does not contain the current d in linksVisible
+//                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
+//            });
+//
+//            // for every affected leaf node in IF
+//            getLeaves(globalRoot).forEach(function(leaf_If){
+//                // for every affected leaf node in THEN
+//                getLeaves(globalRoot).forEach(function(leaf_Then){
+//
+//                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
+//                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
+//
+//
+//
+//                    var linksToAggregate = linksAffected.filter(function(l){
+//                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
+//                    })
+//
+//                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
+//
+//                    linksToAggregate.forEach(function(l){
+//                        newLink.hits += l.hits;
+//                        newLink.confidence += l.confidence*l.hits;
+//                    });
+//                    newLink.confidence /= newLink.hits;
+//
+//                    if(linksToAggregate.length)linksVisible.push(newLink);
+//
+//                });
+//
+//            });
+//
+//
+//            console.log("affected", linksAffected.map(function(d){return d.hits}))
+//            console.log("visible", linksVisible.map(function(d){return d.hits}))
+//
+
+
+            var linksRect = linksSvg.selectAll("circle.link").data(linksVisible.sort(order));
+            linksRect.exit().transition().duration(duration)
+                .attr("cy", root.x)
+                .attr("cx", root.x)
+                .attr("r", 0)
+                .style("opacity", 0)
+                .remove();
+
+
+            linksRect.enter().append("circle")
+                .attr("class","link")
+                .attr("cy", root.x)
+                .attr("cx", root.x)
+                .attr("r", 0)
+                .style("opacity", 0)
+                .on("mouseover",tooltipON)
+                .on("mouseout",tooltipOFF);
+
+
+            linksRect.transition().duration(duration)
+                .attr("cy", function(d){return leaves.indexOf(d.if)*heightOne + heightOne/2})
+                .attr("cx", function(d){return leaves.indexOf(d.then)*heightOne + heightOne/2})
+                .attr("r", function(d){return Math.sqrt(d.hits)/2})
+                .style("opacity", function(d){return d.confidence})
+                .sort(order);
+
+
         }
 
 
-        function update(source) {
+        function updateTree(root) {
 
-            leaves = getLeaves(root);
+            leaves = getLeaves(globalRoot).map(function(d){return d.id});
 
             // Compute the new tree layout.
-            var nodes = tree.nodes(root).reverse();
+            nodes = tree.nodes(globalRoot).reverse();
 
             // Normalize for fixed-depth.
             nodes.forEach(function (d) { d.y = d.depth * 25; });
 
-            // Update the nodes…
-            var nodeV = svgV.selectAll("g.nodeV")
+            // Bind the data
+            var nodeV = svgV.selectAll("g.node.vertical")
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
-            var nodeH = svgH.selectAll("g.nodeH")
+            var nodeH = svgH.selectAll("g.node.horizontal")
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
 
-            // Enter any new nodes at the parent's previous position.
+            // Enter any new nodes at the parent's position and build the views
             var nodeEnterV = nodeV.enter().append("g")
-                .attr("class", "nodeV")
-                .attr("transform", function (d) {return "translate(" + source.y0 + "," + source.x0 + ")"; })
+                .attr("class", function(d){return "node vertical id"+d.id})
+                .attr("transform", function (d) {return "translate(" + root.y0 + "," + root.x0 + ")"; })
                 .on("click", click);
             var nodeEnterH = nodeH.enter().append("g")
-                .attr("class", "nodeH")
-                .attr("transform", function (d) {return "translate(" + source.x0 + "," + source.y0 + ")"; })
+                .attr("class", function(d){return "node horizontal id"+d.id})
+                .attr("transform", function (d) {return "translate(" + root.x0 + "," + root.y0 + ")"; })
                 .on("click", click);
 
             nodeEnterV.append("line")
@@ -204,16 +304,14 @@
                 .attr("text-anchor", function (d) { return d.children?"middle":"end";})
                 .style("fill-opacity", 1);
 
-
-
-            // Transition exiting nodes to the parent's new position.
+            // Transition the removed nodes to the parent's new position.
             var nodeExitV = nodeV.exit().transition()
                 .duration(duration)
-                .attr("transform", function (d) { return "translate(" + source.y + "," + source.x + ")"; })
+                .attr("transform", function (d) { return "translate(" + root.y + "," + root.x + ")"; })
                 .remove();
             var nodeExitH = nodeH.exit().transition()
                 .duration(duration)
-                .attr("transform", function (d) { return "translate(" + source.x + "," + source.y + ")"; })
+                .attr("transform", function (d) { return "translate(" + root.x + "," + root.y + ")"; })
                 .remove();
 
             nodeExitV.select("line")
@@ -236,7 +334,7 @@
                 d.y0 = d.y;
             });
 
-            updatematrix(rules.links);
+            updatematrix(root);
         }
 
          // Toggle children on click.
@@ -248,6 +346,6 @@
                 d.children = d._children;
                 d._children = null;
             }
-            update(d);
+            updateTree(d);
         }
     </script>

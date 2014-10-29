@@ -1,6 +1,6 @@
 {
     "links": [{
-        "if": "AspectRatioBanker",
+        "if": "Tween",
         "then": "Transitioner",
         "hits": 51,
         "confidence": 0.5
@@ -12,17 +12,17 @@
     }, {
         "if": "Parallel",
         "then": "Transitioner",
-        "hits": 528,
+        "hits": 97,
         "confidence": 0.9
     }, {
-        "if": "Parallel",
+        "if": "GraphMLConverter",
         "then": "Transitioner",
         "hits": 4,
         "confidence": 0.7
     }, {
         "if": "DataSet",
         "then": "GraphMLConverter",
-        "hits": 87,
+        "hits": 134,
         "confidence": 0.8
     }, {
         "if": "Transition",
@@ -37,12 +37,17 @@
     }, {
         "if": "LineSprite",
         "then": "DirtySprite",
-        "hits": 4,
+        "hits": 380,
         "confidence": 0.7
     }, {
         "if": "Converters",
         "then": "LineSprite",
         "hits": 87,
         "confidence": 0.8
+    }, {
+        "if": "DelimitedTextConverter",
+        "then": "LineSprite",
+        "hits": 214,
+        "confidence": 0.4
     }]
 }
