@@ -133,6 +133,7 @@
                 .style("left",d3.event.x+10+"px");
                 d3.selectAll(".vertical.id" + d.if).classed("hover",true);
                 d3.selectAll(".horizontal.id" + d.then).classed("hover",true);
+                d3.select(".link.id" + d.if + d.then).classed("hover",true);
         }
         function tooltipOFF(d) {
             d3.select("div.tooltip").style("opacity",0)
@@ -140,6 +141,7 @@
                 .style("left",0);
                 d3.selectAll(".vertical.id" + d.if).classed("hover",false);
                 d3.selectAll(".horizontal.id" + d.then).classed("hover",false);
+                d3.select(".link.id" + d.if + d.then).classed("hover",false);
         }
         function hoverNodeON(node){
             d3.selectAll(".vertical.id" + node.id).classed("hover",true);
