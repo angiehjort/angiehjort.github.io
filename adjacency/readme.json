@@ -2,10 +2,10 @@
  "id": "Flare",
  "children": [
   {
-   "id": "analytics",
+   "id": "Analytics",
    "children": [
     {
-     "id": "optimization",
+     "id": "Optimization",
      "children": [
       {"id": "AspectRatioBanker", "size": 7074}
      ]
@@ -13,7 +13,7 @@
    ]
   },
   {
-   "id": "animate",
+   "id": "Animate",
    "children": [
     {"id": "Easing", "size": 17010},
     {"id": "FunctionSequence", "size": 5842},
@@ -29,12 +29,12 @@
    ]
   },
   {
-   "id": "data",
+   "id": "Data",
    "children": [
     {
-     "id": "converters",
+     "id": "Converters",
      "children": [
-      {"id": "Converters", "size": 721},
+      {"id": "Converter", "size": 721},
       {"id": "DelimitedTextConverter", "size": 4294},
       {"id": "GraphMLConverter", "size": 9800},
       {"id": "IDataConverter", "size": 1314},
@@ -50,7 +50,7 @@
    ]
   },
   {
-   "id": "display",
+   "id": "Display",
    "children": [
     {"id": "DirtySprite", "size": 8833},
     {"id": "LineSprite", "size": 1732},
@@ -59,13 +59,14 @@
    ]
   },
   {
-   "id": "flex",
+   "id": "Flex",
    "children": [
-    {"id": "FlareVis", "size": 4116}
+    {"id": "FlareVis", "size": 4116},
+    {"id": "SunVis", "size": 4516}
    ]
   },
   {
-   "id": "physics",
+   "id": "Physics",
    "children": [
     {"id": "DragForce", "size": 1082},
     {"id": "GravityForce", "size": 1336},
@@ -78,7 +79,7 @@
    ]
   },
   {
-   "id": "query",
+   "id": "Queries",
    "children": [
     {"id": "AggregateExpression", "size": 1616},
     {"id": "And", "size": 1027},
@@ -111,7 +112,7 @@
    ]
   },
   {
-   "id": "scale",
+   "id": "Scales",
    "children": [
     {"id": "IScaleMap", "size": 2105},
     {"id": "LinearScale", "size": 1316},
@@ -126,7 +127,7 @@
    ]
   },
   {
-   "id": "util",
+   "id": "Utils",
    "children": [
     {"id": "Arrays", "size": 8258},
     {"id": "Colors", "size": 10001},
@@ -147,7 +148,7 @@
    ]
   },
   {
-   "id": "vis",
+   "id": "Vis",
    "children": [
     {"id": "Visualization", "size": 16540}
    ]

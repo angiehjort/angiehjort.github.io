@@ -2,17 +2,17 @@
 <meta charset="utf-8">
 <style>
 
+    text, div {font: 10px Verdana, sans-serif; fill: grey; }
+
+    .grid{stroke: #ebebeb; stroke-width: 1px;}
+    .grid.hover{stroke: #b9b9b9; stroke-width: 1px;}
+
     .node {cursor: pointer;}
-    * {
-        font: 10px Verdana, sans-serif;
-        fill: grey;
-    }
-    text:hover, g.hover text {font-size: 12px; font-weight: bold; fill: black;}
+    .node line {stroke-width: 3px; }
+    .node.hover line {stroke-width: 7px;}
+    .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
     .node.leaf text {fill: lightgrey;}
 
-    line {stroke-width: 3px; }
-    line:hover {stroke-width: 7px;}
-    div.tooltip{opacity: 0; background-color: #d1d89a;  position: absolute; font-size: 14px}
     .link {
         cursor: pointer;
         pointer-events: visible;
@@ -20,8 +20,9 @@
         stroke: #000;
         stroke-width: 1.5px;
     }
-    .link:hover {fill: #000;}
+    .link.hover {fill: #000;}
 
+    div.tooltip{opacity: 0; background-color: #d1d89a;  position: absolute; font-size: 14px}
 </style>
 
 <body>
@@ -38,8 +39,9 @@
                 bottom: 20,
                 left: 20
             },
-            width = 960 - margin.right - margin.left,
-            height = 960 - margin.top - margin.bottom;
+            square = {w: 200, h: 200},
+            width = 1000 - margin.right - margin.left,
+            height = 1000 - margin.top - margin.bottom;
 
         var i = 0,
             duration = 1000,
@@ -47,17 +49,19 @@
             heightOne,
             linksOriginal,
             linksVisible,
+            linksAffected,
             globalRoot;
 
         var tree = d3.layout.cluster().separation(function(a, b){return 1})
-            .size([height, width]);
+            .size([height - square.h, width - square.w]);
 
         var svg = d3.select("body").append("svg")
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom);
-        var svgV = svg.append("g").attr("transform", "translate(" + margin.left + "," + (margin.top+200) + ")");
-        var svgH = svg.append("g").attr("transform", "translate(" + (margin.left+200) + "," + margin.top + ")");
-        var linksSvg = svg.append("g").attr("transform", "translate(" + (margin.left+200) + "," + (margin.top+200) + ")");
+        var gridSvg = svg.append("g").attr("transform", "translate(" + (margin.left+square.w) + "," + (margin.top+square.h) + ")");
+        var svgV = svg.append("g").attr("transform", "translate(" + margin.left + "," + (margin.top+square.h) + ")");
+        var svgH = svg.append("g").attr("transform", "translate(" + (margin.left+square.w) + "," + margin.top + ")");
+        var linksSvg = svg.append("g").attr("transform", "translate(" + (margin.left+square.w) + "," + (margin.top+square.h) + ")");
         var tooltip = d3.select("body").append("div").attr("class","tooltip");
 
         d3.json("readme.json", function (error, flare) {
@@ -66,7 +70,7 @@
             globalRoot.x0 = height / 2;
             globalRoot.y0 = 0;
 
-            heightOne = height/leaves.length;
+            heightOne = (height-square.h)/leaves.length;
 
             //collapse everything starting from d and down the hierarchy
             function collapse(d) {
@@ -82,6 +86,7 @@
             d3.json("rules.json", function (error, parsed){
                 linksOriginal = parsed.links;
                 linksVisible = linksOriginal;
+                linksAffected = getLinksByNode(linksVisible, globalRoot);
                 updateTree(globalRoot);
             });
         });
@@ -125,20 +130,35 @@
                 .html(d.if + " → " + d.then + " <br> " + "confidence: " + d.confidence + " <br> " + "hits: " + d.hits)
                 .style("top",d3.event.y+10+"px")
                 .style("left",d3.event.x+10+"px");
-                d3.select("g.vertical.id" + getNodeByNodeID(d.if).id).classed("hover",true);
-                d3.select("g.horizontal.id" + getNodeByNodeID(d.then).id).classed("hover",true);
+                d3.selectAll(".vertical.id" + d.if).classed("hover",true);
+                d3.selectAll(".horizontal.id" + d.then).classed("hover",true);
         }
         function tooltipOFF(d) {
             d3.select("div.tooltip").style("opacity",0)
                 .style("top",0)
                 .style("left",0);
-                d3.select("g.vertical.id" + getNodeByNodeID(d.if).id).classed("hover",false);
-                d3.select("g.horizontal.id" + getNodeByNodeID(d.then).id).classed("hover",false);
+                d3.selectAll(".vertical.id" + d.if).classed("hover",false);
+                d3.selectAll(".horizontal.id" + d.then).classed("hover",false);
         }
+        function hoverNodeON(node){
+            d3.selectAll(".vertical.id" + node.id).classed("hover",true);
+            d3.selectAll(".horizontal.id" + node.id).classed("hover",true);
+            getLinksByNode(linksVisible, node).forEach(function(l){
+                d3.selectAll(".link.id" + l.if + l.then).classed("hover",true);
+            })
+        }
+        function hoverNodeOFF(node){
+            d3.selectAll(".vertical.id" + node.id).classed("hover",false);
+            d3.selectAll(".horizontal.id" + node.id).classed("hover",false);
+            getLinksByNode(linksVisible, node).forEach(function(l){
+                d3.selectAll(".link.id" + l.if + l.then).classed("hover",false);
+            })
+        }
+
         function getNodeByNodeID(id){
             return nodes.filter(function(d){return d.id==id})[0];
         }
-        function getLinksByNode(node, inIfs, inThens, includeNestedNodes){
+        function getLinksByNode(linksArray, node, inIfs, inThens, includeNestedNodes){
             //defaults
             if (inIfs==null)inIfs=true;
             if (inThens==null)inThens=true; //by default
@@ -147,59 +167,59 @@
             if (includeNestedNodes){
                 var result = [];
                 getLeavesEvenHidden(node).forEach(function(n){
+                    log(n)
                     result = result.concat(
-                        linksOriginal.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id})
+                        linksArray.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id})
                     );
                 });
                 return arrayUnique(result);
             }else{
-                return linksOriginal.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id});
+                return linksArray.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id});
             }
         }
 
         function order(a, b){return a.hits - b.hits; }
 
         function updatematrix (root){
-//            // get all the links that are affected and need update
-//            var linksAffected = getLinksByNode(root);
-//            // remode all the affected links
-//            linksVisible = linksVisible.filter(function(d){
-//                // filter OK when linksAffected does not contain the current d in linksVisible
-//                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
-//            });
-//
-//            // for every affected leaf node in IF
-//            getLeaves(globalRoot).forEach(function(leaf_If){
-//                // for every affected leaf node in THEN
-//                getLeaves(globalRoot).forEach(function(leaf_Then){
-//
-//                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
-//                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
-//
-//
-//
-//                    var linksToAggregate = linksAffected.filter(function(l){
-//                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
-//                    })
-//
-//                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
-//
-//                    linksToAggregate.forEach(function(l){
-//                        newLink.hits += l.hits;
-//                        newLink.confidence += l.confidence*l.hits;
-//                    });
-//                    newLink.confidence /= newLink.hits;
-//
-//                    if(linksToAggregate.length)linksVisible.push(newLink);
-//
-//                });
-//
-//            });
-//
-//
-//            console.log("affected", linksAffected.map(function(d){return d.hits}))
-//            console.log("visible", linksVisible.map(function(d){return d.hits}))
-//
+
+            // remode all the affected links
+            linksVisible = linksVisible.filter(function(d){
+                // filter OK when linksAffected does not contain the current d in linksVisible
+                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
+            });
+
+            // for every affected leaf node in IF
+            getLeaves(globalRoot).forEach(function(leaf_If){
+                // for every affected leaf node in THEN
+                getLeaves(globalRoot).forEach(function(leaf_Then){
+
+                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
+                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
+
+
+
+                    var linksToAggregate = linksAffected.filter(function(l){
+                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
+                    })
+
+                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
+
+                    linksToAggregate.forEach(function(l){
+                        newLink.hits += l.hits;
+                        newLink.confidence += l.confidence*l.hits;
+                    });
+                    newLink.confidence /= newLink.hits;
+
+                    if(linksToAggregate.length)linksVisible.push(newLink);
+
+                });
+
+            });
+
+
+            console.log("affected", linksAffected.map(function(d){return d.hits}))
+            console.log("visible", linksVisible.map(function(d){return d.hits}))
+
 
 
             var linksRect = linksSvg.selectAll("circle.link").data(linksVisible.sort(order));
@@ -212,7 +232,7 @@
 
 
             linksRect.enter().append("circle")
-                .attr("class","link")
+                .attr("class",function(d){return "link id" + d.if + d.then})
                 .attr("cy", root.x)
                 .attr("cx", root.x)
                 .attr("r", 0)
@@ -234,7 +254,8 @@
 
         function updateTree(root) {
 
-            leaves = getLeaves(globalRoot).map(function(d){return d.id});
+            var leavesObj = getLeaves(globalRoot);
+            leaves = leavesObj.map(function(d){return d.id});
 
             // Compute the new tree layout.
             nodes = tree.nodes(globalRoot).reverse();
@@ -248,24 +269,33 @@
             var nodeH = svgH.selectAll("g.node.horizontal")
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
 
+
+            log(leavesObj.length)
+            var gridV = gridSvg.selectAll("line.grid.vertical").data(leavesObj);
+            var gridH = gridSvg.selectAll("line.grid.horizontal").data(leavesObj);
+
             // Enter any new nodes at the parent's position and build the views
             var nodeEnterV = nodeV.enter().append("g")
                 .attr("class", function(d){return "node vertical id"+d.id})
                 .attr("transform", function (d) {return "translate(" + root.y0 + "," + root.x0 + ")"; })
-                .on("click", click);
+                .on("click", click)
+                .on("mouseover", hoverNodeON)
+                .on("mouseout", hoverNodeOFF);
             var nodeEnterH = nodeH.enter().append("g")
                 .attr("class", function(d){return "node horizontal id"+d.id})
                 .attr("transform", function (d) {return "translate(" + root.x0 + "," + root.y0 + ")"; })
-                .on("click", click);
+                .on("click", click)
+                .on("mouseover", hoverNodeON)
+                .on("mouseout", hoverNodeOFF);
 
             nodeEnterV.append("line")
                 .attr("x1", 0)
                 .attr("x2", 0)
-                .style("stroke", function (d) { return d._children ? "green" : "grey"; });
+                .style("stroke", function (d) { return d._children ? "red" : "grey"; });
             nodeEnterH.append("line")
                 .attr("y1", 0)
                 .attr("y2", 0)
-                .style("stroke", function (d) { return d._children ? "green" : "grey"; });
+                .style("stroke", function (d) { return d._children ? "red" : "grey"; });
 
             nodeEnterV.append("text")
                 .text(function (d) { return d.id;})
@@ -273,6 +303,19 @@
             nodeEnterH.append("text")
                 .text(function (d) { return d.id;})
                 .style("fill-opacity", 1e-6);
+
+            gridV.enter().append("line")
+                .attr("class", function(d){return "grid vertical id"+d.id})
+                .attr("x1", 0).attr("x2", width - square.w)
+                .attr("y1", height).attr("y2", height)
+                .attr("stroke-dasharray", "2,1");
+
+            gridH.enter().append("line")
+                .attr("class", function(d){return "grid horizontal id"+d.id})
+                .attr("y1", 0).attr("y2", height  - square.h)
+                .attr("x1", width).attr("x2", width)
+                .attr("stroke-dasharray", "2,1");
+
 
             // Transition nodes to their new position.
             var nodeUpdateV = nodeV.transition()
@@ -285,11 +328,11 @@
             nodeUpdateV.select("line")
                 .attr("y1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("y2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
-                .style("stroke", function (d) {return d._children ? "green" : "grey";});
+                .style("stroke", function (d) {return d._children ? "red" : "grey";});
             nodeUpdateH.select("line")
                 .attr("x1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("x2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
-                .style("stroke", function (d) {return d._children ? "green" : "grey";});
+                .style("stroke", function (d) {return d._children ? "red" : "grey";});
 
             nodeUpdateV.select("text")
                 .attr("transform", function (d) { return "rotate("+ (d.children?-90:0) +")";})
@@ -304,6 +347,13 @@
                 .attr("text-anchor", function (d) { return d.children?"middle":"end";})
                 .style("fill-opacity", 1);
 
+            gridV.transition().duration(duration)
+                .attr("y1", function(d){return d.x})
+                .attr("y2", function(d){return d.x});
+            gridH.transition().duration(duration)
+                .attr("x1", function(d){return d.x})
+                .attr("x2", function(d){return d.x});
+
             // Transition the removed nodes to the parent's new position.
             var nodeExitV = nodeV.exit().transition()
                 .duration(duration)
@@ -314,18 +364,14 @@
                 .attr("transform", function (d) { return "translate(" + root.x + "," + root.y + ")"; })
                 .remove();
 
-            nodeExitV.select("line")
-                .attr("y1", 0)
-                .attr("y2", 0);
-            nodeExitH.select("line")
-                .attr("y1", 0)
-                .attr("y2", 0);
-
-            nodeExitV.select("text")
-                .style("fill-opacity", 1e-6);
-            nodeExitH.select("text")
-                .style("fill-opacity", 1e-6);
-
+            nodeExitV.select("line").style("fill-opacity", 1e-6);
+            nodeExitH.select("line").style("fill-opacity", 1e-6);
+            nodeExitV.select("text").style("fill-opacity", 1e-6);
+            nodeExitH.select("text").style("fill-opacity", 1e-6);
+            gridV.exit().transition().duration(duration)
+                .attr("y1", height).attr("y2", height).remove();
+            gridH.exit().transition().duration(duration)
+                .attr("x1", width).attr("x2", width).remove();
 
 
             // Stash the old positions for transition.
@@ -338,14 +384,17 @@
         }
 
          // Toggle children on click.
-        function click(d) {
-            if (d.children) {
-                d._children = d.children;
-                d.children = null;
+        function click(root) {
+            // get all the links that are affected and need update
+            linksAffected = getLinksByNode(linksVisible, root);
+
+            if (root.children) {
+                root._children = root.children;
+                root.children = null;
             } else {
-                d.children = d._children;
-                d._children = null;
+                root.children = root._children;
+                root._children = null;
             }
-            updateTree(d);
+            updateTree(root);
         }
     </script>

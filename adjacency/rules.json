@@ -1,23 +1,23 @@
 {
     "links": [{
-        "if": "Tween",
-        "then": "Transitioner",
+        "if": "Transitioner",
+        "then": "And",
         "hits": 51,
         "confidence": 0.5
     }, {
-        "if": "AspectRatioBanker",
-        "then": "Transitioner",
+        "if": "Transitioner",
+        "then": "Xor",
         "hits": 81,
         "confidence": 0.8
     }, {
         "if": "Parallel",
-        "then": "Transitioner",
+        "then": "Particle",
         "hits": 97,
         "confidence": 0.9
     }, {
         "if": "GraphMLConverter",
         "then": "Transitioner",
-        "hits": 4,
+        "hits": 32,
         "confidence": 0.7
     }, {
         "if": "DataSet",
@@ -25,12 +25,12 @@
         "hits": 134,
         "confidence": 0.8
     }, {
-        "if": "Transition",
-        "then": "Transitioner",
+        "if": "Converter",
+        "then": "Converter",
         "hits": 81,
         "confidence": 0.8
     }, {
-        "if": "DataField",
+        "if": "Spring",
         "then": "Transitioner",
         "hits": 528,
         "confidence": 0.9
