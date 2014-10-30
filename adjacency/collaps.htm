@@ -33,6 +33,7 @@
     <script src="picker.js"></script>
     <script src="picker.date.js"></script>
     <script>
+        var screenSize = Math.min(window.innerWidth, window.innerHeight);
         var margin = {
                 top: 20,
                 right: 20,
@@ -40,8 +41,8 @@
                 left: 20
             },
             square = {w: 200, h: 200},
-            width = 1000 - margin.right - margin.left,
-            height = 1000 - margin.top - margin.bottom;
+            width = screenSize - margin.right - margin.left,
+            height = screenSize - margin.top - margin.bottom;
 
         var i = 0,
             duration = 1000,
