@@ -253,14 +253,10 @@
 
             linksRect.transition().duration(duration)
                 .attr("cy", function(d){
-                    if(leaves.indexOf(d.if)==-1)
-                        return getFirstVisibleNode(getNodeByNodeID(d.if)).x;
-                    return getNodeByNodeID(d.if).x;
+                    return getFirstVisibleNode(getNodeByNodeID(d.if)).x;
                 })
                 .attr("cx", function(d){
-                    if(leaves.indexOf(d.then)==-1)
-                        return getFirstVisibleNode(getNodeByNodeID(d.then)).x;
-                    return getNodeByNodeID(d.then).x;
+                    return getFirstVisibleNode(getNodeByNodeID(d.then)).x;
                 })
                 .attr("r", function(d){return Math.sqrt(d.hits)/2})
                 .style("opacity", function(d){return d.confidence});
