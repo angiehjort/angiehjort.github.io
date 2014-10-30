@@ -34,6 +34,7 @@
     <script src="picker.date.js"></script>
     <script>
         var screenSize = Math.min(window.innerWidth, window.innerHeight);
+        if (screenSize<960) screenSize = 960;
         var margin = {
                 top: 20,
                 right: 20,
@@ -170,7 +171,6 @@
             if (includeNestedNodes){
                 var result = [];
                 getLeavesEvenHidden(node).forEach(function(n){
-                    log(n)
                     result = result.concat(
                         linksArray.filter(function(d){return inIfs && d.if==n.id || inThens && d.then==n.id})
                     );
@@ -186,38 +186,38 @@
         function updatematrix (root){
 
             // remode all the affected links
-            linksVisible = linksVisible.filter(function(d){
-                // filter OK when linksAffected does not contain the current d in linksVisible
-                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
-            });
-
-            // for every affected leaf node in IF
-            getLeaves(globalRoot).forEach(function(leaf_If){
-                // for every affected leaf node in THEN
-                getLeaves(globalRoot).forEach(function(leaf_Then){
-
-                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
-                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
-
-
-
-                    var linksToAggregate = linksAffected.filter(function(l){
-                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
-                    })
-
-                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
-
-                    linksToAggregate.forEach(function(l){
-                        newLink.hits += l.hits;
-                        newLink.confidence += l.confidence*l.hits;
-                    });
-                    newLink.confidence /= newLink.hits;
-
-                    if(linksToAggregate.length)linksVisible.push(newLink);
-
-                });
-
-            });
+//            linksVisible = linksVisible.filter(function(d){
+//                // filter OK when linksAffected does not contain the current d in linksVisible
+//                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
+//            });
+//
+//            // for every affected leaf node in IF
+//            getLeaves(globalRoot).forEach(function(leaf_If){
+//                // for every affected leaf node in THEN
+//                getLeaves(globalRoot).forEach(function(leaf_Then){
+//
+//                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
+//                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
+//
+//
+//
+//                    var linksToAggregate = linksAffected.filter(function(l){
+//                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
+//                    })
+//
+//                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
+//
+//                    linksToAggregate.forEach(function(l){
+//                        newLink.hits += l.hits;
+//                        newLink.confidence += l.confidence*l.hits;
+//                    });
+//                    newLink.confidence /= newLink.hits;
+//
+//                    if(linksToAggregate.length)linksVisible.push(newLink);
+//
+//                });
+//
+//            });
 
 
             console.log("affected", linksAffected.map(function(d){return d.hits}))
@@ -225,7 +225,7 @@
 
 
 
-            var linksRect = linksSvg.selectAll("circle.link").data(linksVisible.sort(order));
+            var linksRect = linksSvg.selectAll("circle.link").data(linksVisible);
             linksRect.exit().transition().duration(duration)
                 .attr("cy", root.x)
                 .attr("cx", root.x)
@@ -245,11 +245,16 @@
 
 
             linksRect.transition().duration(duration)
-                .attr("cy", function(d){return leaves.indexOf(d.if)*heightOne + heightOne/2})
-                .attr("cx", function(d){return leaves.indexOf(d.then)*heightOne + heightOne/2})
+                .attr("cy", function(d){
+                    if(leaves.indexOf(d.if)==-1) return root.x;
+                    return getNodeByNodeID(d.if).x;
+                })
+                .attr("cx", function(d){
+                    if(leaves.indexOf(d.then)==-1) return root.x;
+                    return getNodeByNodeID(d.then).x;
+                })
                 .attr("r", function(d){return Math.sqrt(d.hits)/2})
-                .style("opacity", function(d){return d.confidence})
-                .sort(order);
+                .style("opacity", function(d){return d.confidence});
 
 
         }
