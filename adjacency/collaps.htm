@@ -49,6 +49,7 @@
             duration = 1000,
             leaves,
             heightOne,
+            nodesOriginal,
             linksOriginal,
             linksVisible,
             linksAffected,
@@ -86,6 +87,7 @@
             //call collapsing of the entire tree
             //globalRoot.children.forEach(collapse);
             d3.json("rules.json", function (error, parsed){
+                nodesOriginal = tree.nodes(globalRoot).reverse();
                 linksOriginal = parsed.links;
                 linksVisible = linksOriginal;
                 linksAffected = getLinksByNode(linksVisible, globalRoot);
@@ -158,9 +160,14 @@
                 d3.selectAll(".link.id" + l.if + l.then).classed("hover",false);
             })
         }
+        function getFirstVisibleNode(node){
+            if(node.parent == null) return node;
+            if(node.parent.children) return node;
+            return getFirstVisibleNode(node.parent);
+        }
 
         function getNodeByNodeID(id){
-            return nodes.filter(function(d){return d.id==id})[0];
+            return nodesOriginal.filter(function(d){return d.id==id})[0];
         }
         function getLinksByNode(linksArray, node, inIfs, inThens, includeNestedNodes){
             //defaults
@@ -219,10 +226,10 @@
 //
 //            });
 
-
-            console.log("affected", linksAffected.map(function(d){return d.hits}))
-            console.log("visible", linksVisible.map(function(d){return d.hits}))
-
+//
+//            console.log("affected", linksAffected.map(function(d){return d.hits}))
+//            console.log("visible", linksVisible.map(function(d){return d.hits}))
+//
 
 
             var linksRect = linksSvg.selectAll("circle.link").data(linksVisible);
@@ -246,11 +253,13 @@
 
             linksRect.transition().duration(duration)
                 .attr("cy", function(d){
-                    if(leaves.indexOf(d.if)==-1) return root.x;
+                    if(leaves.indexOf(d.if)==-1)
+                        return getFirstVisibleNode(getNodeByNodeID(d.if)).x;
                     return getNodeByNodeID(d.if).x;
                 })
                 .attr("cx", function(d){
-                    if(leaves.indexOf(d.then)==-1) return root.x;
+                    if(leaves.indexOf(d.then)==-1)
+                        return getFirstVisibleNode(getNodeByNodeID(d.then)).x;
                     return getNodeByNodeID(d.then).x;
                 })
                 .attr("r", function(d){return Math.sqrt(d.hits)/2})
@@ -278,7 +287,6 @@
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
 
 
-            log(leavesObj.length)
             var gridV = gridSvg.selectAll("line.grid.vertical").data(leavesObj);
             var gridH = gridSvg.selectAll("line.grid.horizontal").data(leavesObj);
 
