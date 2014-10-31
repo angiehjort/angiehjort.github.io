@@ -8,7 +8,7 @@
     .node .tab {stroke-width: 3px; }
     .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
     .node.hover .tab {stroke-width: 7px;}
-    .node.hover .grid {stroke: #b9b9b9; stroke-width: 1px;}
+    .node.hover .grid, .node .grid.hover  {stroke: #b9b9b9; stroke-width: 1px;}
     .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
     .node.leaf text {fill: lightgrey;}
 
@@ -128,7 +128,7 @@
             return d.children ? getLastLeaveY(d.children[d.children.length-1]) : d.x;
         }
 
-        function tooltipON(d) {
+        function hoverLinkON(d) {
             d3.select("div.tooltip").style("opacity",0.9)
                 .html(d.if + " → " + d.then + " <br> " + "confidence: " + d.confidence + " <br> " + "hits: " + d.hits)
                 .style("top",d3.event.y+10+"px")
@@ -137,7 +137,7 @@
                 d3.selectAll(".horizontal.id" + d.then).classed("hover",true);
                 d3.select(".link.id" + d.if + d.then).classed("hover",true);
         }
-        function tooltipOFF(d) {
+        function hoverLinkOFF(d) {
             d3.select("div.tooltip").style("opacity",0)
                 .style("top",0)
                 .style("left",0);
@@ -146,18 +146,22 @@
                 d3.select(".link.id" + d.if + d.then).classed("hover",false);
         }
         function hoverNodeON(node){
-            d3.selectAll(".vertical.id" + node.id).classed("hover",true);
-            d3.selectAll(".horizontal.id" + node.id).classed("hover",true);
+            d3.selectAll(".id" + node.id).classed("hover",true);
+            getLeaves(node).forEach(function(n){
+                d3.selectAll(".id" + n.id + " .grid").classed("hover",true);
+            });
             getLinksByNode(linksVisible, node).forEach(function(l){
                 d3.selectAll(".link.id" + l.if + l.then).classed("hover",true);
             })
         }
         function hoverNodeOFF(node){
-            d3.selectAll(".vertical.id" + node.id).classed("hover",false);
-            d3.selectAll(".horizontal.id" + node.id).classed("hover",false);
+            d3.selectAll(".id" + node.id).classed("hover",false);
+            getLeaves(node).forEach(function(n){
+                d3.selectAll(".id" + n.id + " .grid").classed("hover",false);
+            });
             getLinksByNode(linksVisible, node).forEach(function(l){
                 d3.selectAll(".link.id" + l.if + l.then).classed("hover",false);
-            })
+            });
         }
         function getFirstVisibleNode(node){
             var trail = [];
@@ -257,8 +261,8 @@
                 .attr("cx", root.x)
                 .attr("r", 0)
                 .style("opacity", 0)
-                .on("mouseover",tooltipON)
-                .on("mouseout",tooltipOFF);
+                .on("mouseover",hoverLinkON)
+                .on("mouseout",hoverLinkOFF);
 
 
             linksRect.transition().duration(duration)
