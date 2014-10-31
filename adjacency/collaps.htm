@@ -161,9 +161,20 @@
             })
         }
         function getFirstVisibleNode(node){
-            if(node.parent == null) return node;
-            if(node.parent.children) return node;
-            return getFirstVisibleNode(node.parent);
+            var trail = [];
+
+            while (node!=null){
+                if (node.parent!=null){
+                    trail[node.depth] = node.parent.children!=null?node:null;
+                }else{
+                    trail[node.depth] = node;
+                }
+
+                node = node.parent;
+            }
+
+            if (trail.indexOf(null) == -1) return trail[trail.length-1]
+            return trail[trail.indexOf(null)-1];
         }
 
         function getNodeByNodeID(id){
