@@ -4,12 +4,11 @@
 
     text, div {font: 10px Verdana, sans-serif; fill: grey; }
 
-    .grid{stroke: #ebebeb; stroke-width: 1px;}
-    .grid.hover{stroke: #b9b9b9; stroke-width: 1px;}
-
     .node {cursor: pointer;}
-    .node line {stroke-width: 3px; }
-    .node.hover line {stroke-width: 7px;}
+    .node .tab {stroke-width: 3px; }
+    .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
+    .node.hover .tab {stroke-width: 7px;}
+    .node.hover .grid {stroke: #b9b9b9; stroke-width: 1px;}
     .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
     .node.leaf text {fill: lightgrey;}
 
@@ -294,8 +293,8 @@
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
 
 
-            var gridV = gridSvg.selectAll("line.grid.vertical").data(leavesObj);
-            var gridH = gridSvg.selectAll("line.grid.horizontal").data(leavesObj);
+//            var gridV = gridSvg.selectAll("line.grid.vertical").data(leavesObj);
+//            var gridH = gridSvg.selectAll("line.grid.horizontal").data(leavesObj);
 
             // Enter any new nodes at the parent's position and build the views
             var nodeEnterV = nodeV.enter().append("g")
@@ -312,10 +311,12 @@
                 .on("mouseout", hoverNodeOFF);
 
             nodeEnterV.append("line")
+                .attr("class", "tab")
                 .attr("x1", 0)
                 .attr("x2", 0)
                 .style("stroke", function (d) { return d._children ? "red" : "grey"; });
             nodeEnterH.append("line")
+                .attr("class", "tab")
                 .attr("y1", 0)
                 .attr("y2", 0)
                 .style("stroke", function (d) { return d._children ? "red" : "grey"; });
@@ -327,16 +328,16 @@
                 .text(function (d) { return d.id;})
                 .style("fill-opacity", 1e-6);
 
-            gridV.enter().append("line")
-                .attr("class", function(d){return "grid vertical id"+d.id})
-                .attr("x1", 0).attr("x2", width - square.w)
-                .attr("y1", height).attr("y2", height)
+            nodeEnterV.append("line")
+                .attr("class", "grid")
+                .attr("x1", function(d){return square.w - d.y}).attr("x2", function(d){return width - d.y})
+                .attr("y1", 0).attr("y2", 0)
                 .attr("stroke-dasharray", "2,1");
 
-            gridH.enter().append("line")
-                .attr("class", function(d){return "grid horizontal id"+d.id})
-                .attr("y1", 0).attr("y2", height  - square.h)
-                .attr("x1", width).attr("x2", width)
+            nodeEnterH.append("line")
+                .attr("class", "grid")
+                .attr("y1", function(d){return square.h - d.y}).attr("y2", function(d){return height - d.y})
+                .attr("x1", 0).attr("x2", 0)
                 .attr("stroke-dasharray", "2,1");
 
 
@@ -348,11 +349,11 @@
                 .duration(duration)
                 .attr("transform", function (d) {  return "translate(" + d.x + "," + d.y + ")"; });
 
-            nodeUpdateV.select("line")
+            nodeUpdateV.select("line.tab")
                 .attr("y1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("y2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
                 .style("stroke", function (d) {return d._children ? "red" : "grey";});
-            nodeUpdateH.select("line")
+            nodeUpdateH.select("line.tab")
                 .attr("x1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("x2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
                 .style("stroke", function (d) {return d._children ? "red" : "grey";});
@@ -370,12 +371,17 @@
                 .attr("text-anchor", function (d) { return d.children?"middle":"end";})
                 .style("fill-opacity", 1);
 
-            gridV.transition().duration(duration)
-                .attr("y1", function(d){return d.x})
-                .attr("y2", function(d){return d.x});
-            gridH.transition().duration(duration)
-                .attr("x1", function(d){return d.x})
-                .attr("x2", function(d){return d.x});
+            nodeUpdateV.select("line.grid")
+                .style("opacity", function (d) {return d.children==null?1:0});
+            nodeUpdateH.select("line.grid")
+                .style("opacity", function (d) {return d.children==null?1:0});
+
+//            gridV.transition().duration(duration)
+//                .attr("y1", function(d){return d.x})
+//                .attr("y2", function(d){return d.x});
+//            gridH.transition().duration(duration)
+//                .attr("x1", function(d){return d.x})
+//                .attr("x2", function(d){return d.x});
 
             // Transition the removed nodes to the parent's new position.
             var nodeExitV = nodeV.exit().transition()
@@ -391,10 +397,10 @@
             nodeExitH.select("line").style("fill-opacity", 1e-6);
             nodeExitV.select("text").style("fill-opacity", 1e-6);
             nodeExitH.select("text").style("fill-opacity", 1e-6);
-            gridV.exit().transition().duration(duration)
-                .attr("y1", height).attr("y2", height).remove();
-            gridH.exit().transition().duration(duration)
-                .attr("x1", width).attr("x2", width).remove();
+//            gridV.exit().transition().duration(duration)
+//                .attr("y1", height).attr("y2", height).remove();
+//            gridH.exit().transition().duration(duration)
+//                .attr("x1", width).attr("x2", width).remove();
 
 
             // Stash the old positions for transition.
