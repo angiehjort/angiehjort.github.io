@@ -4,12 +4,11 @@
 
     text, div {font: 10px Verdana, sans-serif; fill: grey; }
 
-    .grid{stroke: #ebebeb; stroke-width: 1px;}
-    .grid.hover{stroke: #b9b9b9; stroke-width: 1px;}
-
     .node {cursor: pointer;}
-    .node line {stroke-width: 3px; }
-    .node.hover line {stroke-width: 7px;}
+    .node .tab {stroke-width: 3px; }
+    .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
+    .node.hover .tab {stroke-width: 7px;}
+    .node.hover .grid, .node .grid.hover  {stroke: #b9b9b9; stroke-width: 1px;}
     .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
     .node.leaf text {fill: lightgrey;}
 
@@ -70,13 +69,15 @@
         d3.json("readme.json", function (error, flare) {
             globalRoot = flare;
             leaves = getLeaves(globalRoot);
+            nodesOriginal = tree.nodes(globalRoot).reverse();
+
             globalRoot.x0 = height / 2;
             globalRoot.y0 = 0;
 
             heightOne = (height-square.h)/leaves.length;
 
             //collapse everything starting from d and down the hierarchy
-            function collapse(d) {
+            function collapseAll(d) {
                 if (d.children) {
                     d._children = d.children;
                     d._children.forEach(collapse);
@@ -87,7 +88,18 @@
             //call collapsing of the entire tree
             //globalRoot.children.forEach(collapse);
             d3.json("rules.json", function (error, parsed){
-                nodesOriginal = tree.nodes(globalRoot).reverse();
+
+                var possibleNodes = ["AspectRatioBanker", "Easing", "FunctionSequence", "ISchedulable", "Parallel", "Pause", "Scheduler", "Sequence", "Transition", "Transitioner", "TransitionEvent", "Tween", "Converter", "DelimitedTextConverter", "GraphMLConverter", "IDataConverter", "JSONConverter", "DataField", "DataSchema", "DataSet", "DataSource", "DataTable", "DataUtil", "DirtySprite", "LineSprite", "RectSprite", "TextSprite", "FlareVis", "SunVis", "DragForce", "GravityForce", "IForce", "NBodyForce", "Particle", "Simulation", "Spring", "SpringForce", "AggregateExpression", "And", "Arithmetic", "Average", "BinaryExpression", "Comparison", "CompositeExpression", "Count", "DateUtil", "Distinct", "Expression", "ExpressionIterator", "Fn", "If", "IsA", "Literal", "Match", "Maximum", "Minimum", "Not", "Or", "Query", "Range", "StringUtil", "Sum", "Variable", "Variance", "Xor", "IScaleMap", "LinearScale", "LogScale", "OrdinalScale", "QuantileScale", "QuantitativeScale", "RootScale", "Scale", "ScaleType", "TimeScale", "Arrays", "Colors", "Dates", "Displays", "Filter", "Geometry", "IEvaluable", "IPredicate", "IValueProxy", "Maths", "Orientation", "Property", "Shapes", "Sort", "Stats", "Strings", "Visualization"];
+
+
+                parsed.links = [];
+                for(var i=0; i<1000; i++){
+                    parsed.links.push({if: possibleNodes[Math.floor(Math.random()*possibleNodes.length)],
+                                       then: possibleNodes[Math.floor(Math.random()*possibleNodes.length)],
+                                       hits: Math.floor(Math.exp(Math.random()*7)),
+                                       confidence: Math.random()})
+                }
+
                 linksOriginal = parsed.links;
                 linksVisible = linksOriginal;
                 linksAffected = getLinksByNode(linksVisible, globalRoot);
@@ -100,10 +112,10 @@
         d3.select(self.frameElement).style("height", "800px");
 
 
-        function getLeaves(d) {
+        function getLeaves(node) {
             var result = [];
-            if (d.children==null)return[d];
-            for (var i in d.children) result = result.concat(getLeaves(d.children[i]))
+            if (node.children==null)return[node];
+            for (var i in node.children) result = result.concat(getLeaves(node.children[i]))
             return result;
         }
 
@@ -122,48 +134,67 @@
 
 
         function getFirstLeaveY(d) {
-            return d.children ? getFirstLeaveY(d.children[0]) : d.x;
+            return getLeaves(d)[0].x;
         }
 
         function getLastLeaveY(d) {
-            return d.children ? getLastLeaveY(d.children[d.children.length-1]) : d.x;
+            return getLeaves(d)[getLeaves(d).length-1].x;
         }
 
-        function tooltipON(d) {
+        function hoverLinkON(d) {
             d3.select("div.tooltip").style("opacity",0.9)
                 .html(d.if + " → " + d.then + " <br> " + "confidence: " + d.confidence + " <br> " + "hits: " + d.hits)
                 .style("top",d3.event.y+10+"px")
                 .style("left",d3.event.x+10+"px");
-                d3.selectAll(".vertical.id" + d.if).classed("hover",true);
-                d3.selectAll(".horizontal.id" + d.then).classed("hover",true);
+                var visibleIf = getFirstVisibleNode(getNodeByNodeID(d.if)).id;
+                var visibleThen = getFirstVisibleNode(getNodeByNodeID(d.then)).id;
+                d3.select(".vertical.id" + visibleIf).classed("hover",true);
+                d3.select(".horizontal.id" + visibleThen).classed("hover",true);
                 d3.select(".link.id" + d.if + d.then).classed("hover",true);
         }
-        function tooltipOFF(d) {
+        function hoverLinkOFF(d) {
             d3.select("div.tooltip").style("opacity",0)
                 .style("top",0)
                 .style("left",0);
-                d3.selectAll(".vertical.id" + d.if).classed("hover",false);
-                d3.selectAll(".horizontal.id" + d.then).classed("hover",false);
+                var visibleIf = getFirstVisibleNode(getNodeByNodeID(d.if)).id;
+                var visibleThen = getFirstVisibleNode(getNodeByNodeID(d.then)).id;
+                d3.select(".vertical.id" + visibleIf).classed("hover",false);
+                d3.select(".horizontal.id" + visibleThen).classed("hover",false);
                 d3.select(".link.id" + d.if + d.then).classed("hover",false);
         }
         function hoverNodeON(node){
-            d3.selectAll(".vertical.id" + node.id).classed("hover",true);
-            d3.selectAll(".horizontal.id" + node.id).classed("hover",true);
+            d3.selectAll(".id" + node.id).classed("hover",true);
+            getLeaves(node).forEach(function(n){
+                d3.selectAll(".id" + n.id + " .grid").classed("hover",true);
+            });
             getLinksByNode(linksVisible, node).forEach(function(l){
                 d3.selectAll(".link.id" + l.if + l.then).classed("hover",true);
             })
         }
         function hoverNodeOFF(node){
-            d3.selectAll(".vertical.id" + node.id).classed("hover",false);
-            d3.selectAll(".horizontal.id" + node.id).classed("hover",false);
+            d3.selectAll(".id" + node.id).classed("hover",false);
+            getLeaves(node).forEach(function(n){
+                d3.selectAll(".id" + n.id + " .grid").classed("hover",false);
+            });
             getLinksByNode(linksVisible, node).forEach(function(l){
                 d3.selectAll(".link.id" + l.if + l.then).classed("hover",false);
-            })
+            });
         }
         function getFirstVisibleNode(node){
-            if(node.parent == null) return node;
-            if(node.parent.children) return node;
-            return getFirstVisibleNode(node.parent);
+            var trail = [];
+
+            while (node!=null){
+                if (node.parent!=null){
+                    trail[node.depth] = node.parent.children!=null?node:null;
+                }else{
+                    trail[node.depth] = node;
+                }
+
+                node = node.parent;
+            }
+
+            if (trail.indexOf(null) == -1) return trail[trail.length-1]
+            return trail[trail.indexOf(null)-1];
         }
 
         function getNodeByNodeID(id){
@@ -192,46 +223,6 @@
 
         function updatematrix (root){
 
-            // remode all the affected links
-//            linksVisible = linksVisible.filter(function(d){
-//                // filter OK when linksAffected does not contain the current d in linksVisible
-//                return linksAffected.map(function(dd){return JSON.stringify(dd)}).indexOf(JSON.stringify(d))==-1
-//            });
-//
-//            // for every affected leaf node in IF
-//            getLeaves(globalRoot).forEach(function(leaf_If){
-//                // for every affected leaf node in THEN
-//                getLeaves(globalRoot).forEach(function(leaf_Then){
-//
-//                    var leafHidden_If = getLeavesEvenHidden(leaf_If).map(function(d){return d.id});
-//                    var leafHidden_Then = getLeavesEvenHidden(leaf_Then).map(function(d){return d.id});
-//
-//
-//
-//                    var linksToAggregate = linksAffected.filter(function(l){
-//                        return leafHidden_If.indexOf(l.if)!=-1 && leafHidden_Then.indexOf(l.then)!=-1;
-//                    })
-//
-//                    var newLink = {if: leaf_If.id, then: leaf_Then.id, hits:0, confidence:0};
-//
-//                    linksToAggregate.forEach(function(l){
-//                        newLink.hits += l.hits;
-//                        newLink.confidence += l.confidence*l.hits;
-//                    });
-//                    newLink.confidence /= newLink.hits;
-//
-//                    if(linksToAggregate.length)linksVisible.push(newLink);
-//
-//                });
-//
-//            });
-
-//
-//            console.log("affected", linksAffected.map(function(d){return d.hits}))
-//            console.log("visible", linksVisible.map(function(d){return d.hits}))
-//
-
-
             var linksRect = linksSvg.selectAll("circle.link").data(linksVisible);
             linksRect.exit().transition().duration(duration)
                 .attr("cy", root.x)
@@ -247,8 +238,8 @@
                 .attr("cx", root.x)
                 .attr("r", 0)
                 .style("opacity", 0)
-                .on("mouseover",tooltipON)
-                .on("mouseout",tooltipOFF);
+                .on("mouseover",hoverLinkON)
+                .on("mouseout",hoverLinkOFF);
 
 
             linksRect.transition().duration(duration)
@@ -262,6 +253,23 @@
                 .style("opacity", function(d){return d.confidence});
 
 
+        }
+
+        function reduceTreeToDepth(root, depth){
+            if (root.depth == depth){
+                root.children = getLeavesEvenHidden(root);
+
+                root.children.forEach(function(c){c.parent = root; c.depth = depth+1});
+                root._children = null;
+                return;
+            }
+            if (root.depth < depth){
+                root.children.forEach(function(c){reduceTreeToDepth(c, depth)});
+                return root;
+            }
+            if (root.depth > depth){
+                return root;
+            }
         }
 
 
@@ -283,9 +291,6 @@
                 .data(nodes, function (d) { return d.id || (d.id = ++i);  });
 
 
-            var gridV = gridSvg.selectAll("line.grid.vertical").data(leavesObj);
-            var gridH = gridSvg.selectAll("line.grid.horizontal").data(leavesObj);
-
             // Enter any new nodes at the parent's position and build the views
             var nodeEnterV = nodeV.enter().append("g")
                 .attr("class", function(d){return "node vertical id"+d.id})
@@ -301,10 +306,23 @@
                 .on("mouseout", hoverNodeOFF);
 
             nodeEnterV.append("line")
+                .attr("class", "grid")
+                .attr("x1", function(d){return square.w - d.y}).attr("x2", function(d){return width - d.y})
+                .attr("y1", 0).attr("y2", 0)
+                .attr("stroke-dasharray", "2,1");
+            nodeEnterH.append("line")
+                .attr("class", "grid")
+                .attr("y1", function(d){return square.h - d.y}).attr("y2", function(d){return height - d.y})
+                .attr("x1", 0).attr("x2", 0)
+                .attr("stroke-dasharray", "2,1");
+
+            nodeEnterV.append("line")
+                .attr("class", "tab")
                 .attr("x1", 0)
                 .attr("x2", 0)
                 .style("stroke", function (d) { return d._children ? "red" : "grey"; });
             nodeEnterH.append("line")
+                .attr("class", "tab")
                 .attr("y1", 0)
                 .attr("y2", 0)
                 .style("stroke", function (d) { return d._children ? "red" : "grey"; });
@@ -316,17 +334,6 @@
                 .text(function (d) { return d.id;})
                 .style("fill-opacity", 1e-6);
 
-            gridV.enter().append("line")
-                .attr("class", function(d){return "grid vertical id"+d.id})
-                .attr("x1", 0).attr("x2", width - square.w)
-                .attr("y1", height).attr("y2", height)
-                .attr("stroke-dasharray", "2,1");
-
-            gridH.enter().append("line")
-                .attr("class", function(d){return "grid horizontal id"+d.id})
-                .attr("y1", 0).attr("y2", height  - square.h)
-                .attr("x1", width).attr("x2", width)
-                .attr("stroke-dasharray", "2,1");
 
 
             // Transition nodes to their new position.
@@ -337,11 +344,16 @@
                 .duration(duration)
                 .attr("transform", function (d) {  return "translate(" + d.x + "," + d.y + ")"; });
 
-            nodeUpdateV.select("line")
+            nodeUpdateV.select("line.grid")
+                .style("opacity", function (d) {return d.children==null?1:0});
+            nodeUpdateH.select("line.grid")
+                .style("opacity", function (d) {return d.children==null?1:0});
+
+            nodeUpdateV.select("line.tab")
                 .attr("y1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("y2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
                 .style("stroke", function (d) {return d._children ? "red" : "grey";});
-            nodeUpdateH.select("line")
+            nodeUpdateH.select("line.tab")
                 .attr("x1", function (d) {return getFirstLeaveY(d) - d.x - heightOne/3})
                 .attr("x2", function (d) {return getLastLeaveY(d) - d.x + heightOne/3})
                 .style("stroke", function (d) {return d._children ? "red" : "grey";});
@@ -359,12 +371,7 @@
                 .attr("text-anchor", function (d) { return d.children?"middle":"end";})
                 .style("fill-opacity", 1);
 
-            gridV.transition().duration(duration)
-                .attr("y1", function(d){return d.x})
-                .attr("y2", function(d){return d.x});
-            gridH.transition().duration(duration)
-                .attr("x1", function(d){return d.x})
-                .attr("x2", function(d){return d.x});
+
 
             // Transition the removed nodes to the parent's new position.
             var nodeExitV = nodeV.exit().transition()
@@ -380,10 +387,6 @@
             nodeExitH.select("line").style("fill-opacity", 1e-6);
             nodeExitV.select("text").style("fill-opacity", 1e-6);
             nodeExitH.select("text").style("fill-opacity", 1e-6);
-            gridV.exit().transition().duration(duration)
-                .attr("y1", height).attr("y2", height).remove();
-            gridH.exit().transition().duration(duration)
-                .attr("x1", width).attr("x2", width).remove();
 
 
             // Stash the old positions for transition.
