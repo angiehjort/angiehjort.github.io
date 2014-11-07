@@ -1,5 +1,5 @@
 {
-    "links": [{
+    [{
         "if": "Transitioner",
         "then": "And",
         "hits": 51,
@@ -94,7 +94,5 @@
         "then": "IPredicate",
         "hits": 542,
         "confidence": 0.3
-    }],
-"nodes":
-["AspectRatioBanker", "Easing", "FunctionSequence", "ISchedulable", "Parallel", "Pause", "Scheduler", "Sequence", "Transition", "Transitioner", "TransitionEvent", "Tween", "Converter", "DelimitedTextConverter", "GraphMLConverter", "IDataConverter", "JSONConverter", "DataField", "DataSchema", "DataSet", "DataSource", "DataTable", "DataUtil", "DirtySprite", "LineSprite", "RectSprite", "TextSprite", "FlareVis", "SunVis", "DragForce", "GravityForce", "IForce", "NBodyForce", "Particle", "Simulation", "Spring", "SpringForce", "AggregateExpression", "And", "Arithmetic", "Average", "BinaryExpression", "Comparison", "CompositeExpression", "Count", "DateUtil", "Distinct", "Expression", "ExpressionIterator", "Fn", "If", "IsA", "Literal", "Match", "Maximum", "Minimum", "Not", "Or", "Query", "Range", "StringUtil", "Sum", "Variable", "Variance", "Xor", "IScaleMap", "LinearScale", "LogScale", "OrdinalScale", "QuantileScale", "QuantitativeScale", "RootScale", "Scale", "ScaleType", "TimeScale", "Arrays", "Colors", "Dates", "Displays", "Filter", "Geometry", "IEvaluable", "IPredicate", "IValueProxy", "Maths", "Orientation", "Property", "Shapes", "Sort", "Stats", "Strings", "Visualization"]
+    }]
 }

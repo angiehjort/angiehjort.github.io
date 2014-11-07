@@ -1,0 +1,49 @@
+ text, div {font: 10px Verdana, sans-serif; fill: grey; }
+
+    .controlls{width: 160px; height: 150px;}
+    .controlls div{font-size: 18px; color: #9ea373;}
+    .controlls, .arrow {position: absolute; top: 20px; left: 20px;}
+    .arrow {
+        pointer-events: none;
+        font: 100px Verdana;
+        color: #e8e8e8;
+        text-align: right;
+        line-height: 70px;
+        height: 70px; width: 200px;
+        top: 150px; left: 20px;
+    }
+
+    .button {
+        cursor: pointer;
+        width: 50px; height: 20px;
+        float: left;
+        background-color: #d1d89a;
+        border: 1px solid #9ea373;
+        text-align: center;
+        line-height: 20px;
+        margin-right: 3px;
+    }
+    .button:hover {
+        background-color: #9ea373; color: #d1d89a;
+    }
+    .controlls .hieUp, .controlls .hieDown{width: 60px; height: 20px; }
+    .controlls .sortingControll{width: 40px; height: 20px; }
+
+    .node {cursor: pointer;}
+    .node .tab {stroke-width: 3px; }
+    .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
+    .node.hover .tab {stroke-width: 7px;}
+    .node.hover .grid, .node .grid.hover  {stroke: #b9b9b9; stroke-width: 1px;}
+    .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
+    .node.leaf text {fill: lightgrey;}
+
+    .link {
+        cursor: pointer;
+        pointer-events: visible;
+        fill: none;
+        stroke: #008600;
+        stroke-width: 1.5px;
+    }
+    .link.hover {fill: #008600;}
+
+    div.tooltip{opacity: 0; background-color: #d1d89a;  position: absolute; font-size: 14px}
