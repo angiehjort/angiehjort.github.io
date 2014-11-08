@@ -29,6 +29,7 @@ Model = function(dataTree, dataRules){
 
         _this.hieLevel = d3.max(_this.leaves.map(function(d){return d.depth})) - 1;
         _this.hieLevelMax = _this.hieLevel;
+        _this.hieSteps = _this.hieLevel + 2; 
 
         //_this.links = _this.generateLinks(_this.leafNames, Math.random()*1000);
         _this.links = convertGroupsToLinks(_this.dataRules);

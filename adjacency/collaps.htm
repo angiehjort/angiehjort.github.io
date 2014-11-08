@@ -11,20 +11,28 @@
 <body>
     <script>
         var screenSize = Math.min(window.innerWidth, window.innerHeight);
-        if (screenSize<500) screenSize = 500;
+        if (screenSize<300) screenSize = 300;
         var margin = {
                 top: 20,
                 right: 20,
                 bottom: 20,
                 left: 20
-            },
-            square = {w: 200, h: 200},
-            width = screenSize - margin.right - margin.left,
-            height = screenSize - margin.top - margin.bottom;
+            };
+            
+        var SQUARE_SIZE = screenSize*0.2;
+        if(SQUARE_SIZE<50)SQUARE_SIZE = 50;
+        if(SQUARE_SIZE>200)SQUARE_SIZE = 200;
+        
+        var square = {w: SQUARE_SIZE, h: SQUARE_SIZE};
+        var width = screenSize - margin.right - margin.left;
+        var height = screenSize - margin.top - margin.bottom;
 
         var i = 0,
             duration = 1000,
             heightOne;
+        
+        var SHOW_LEAVES_LIMIT = 10; //px
+        var SPACE_FOR_LEAVES = 100;
 
         var tree = d3.layout.cluster().separation(function(a, b){return 1})
             .size([height - square.h, width - square.w]);
@@ -37,17 +45,20 @@
         var svgH = svg.append("g").attr("transform", "translate(" + (margin.left+square.w) + "," + margin.top + ")");
         var linksSvg = svg.append("g").attr("transform", "translate(" + (margin.left+square.w) + "," + (margin.top+square.h) + ")");
         var tooltip = d3.select("body").append("div").attr("class","tooltip");
-        var arrow = d3.select("body").append("div").attr("class","arrow").html("↗");
-        var controlls = d3.select("body").append("div").attr("class","controlls");
+        //var arrow = d3.select("body").append("div").attr("class","arrow").html("↗");
+        var controlls = d3.select("body").append("div").attr("class","controlls")
+            .style("width", SQUARE_SIZE+"px").style("height", SQUARE_SIZE+"px");
 
             controlls.append("div").text("Modify hierarchy:");
-            controlls.append("div").attr("class","hieUp button").text("▲")
+            var hieButtons = controlls.append("div");
+            hieButtons.append("div").attr("class","hieUp button").text("▲")
                 .on("click",function(){iWannaHieUpDown(-1)});
-            controlls.append("div").attr("class","hieDown button").text("▼")
+            hieButtons.append("div").attr("class","hieDown button").text("▼")
                 .on("click",function(){iWannaHieUpDown(+1)});
 
-            controlls.append("div").text("Sort leaves by:");
-            controlls.selectAll(".sortingControll")
+            controlls.append("div").text("Sort leaves:");
+            var sortButtons = controlls.append("div");
+            sortButtons.selectAll(".sortingControll")
                 .data(["Name", "Frequency", "Length of the name"])
                 .enter().append("div").attr("class","sortingControll button")
                 .text(function(d){return d.substr(0,2)})
@@ -65,6 +76,7 @@
             model.root.y0 = 0;
 
             heightOne = (height-square.h)/model.leaves.length;
+            
             updateTree(model.root);
         });
         });
@@ -155,11 +167,12 @@
 
         function updatematrix (root){
             var maxHits = d3.max(model.links.map(function(l){return l.hits}));
+            var midHits = d3.median(model.links.map(function(l){return l.hits}));
             var maxConfidence = d3.max(model.links.map(function(l){return l.confidence}));
            
             var rScale = d3.scale.sqrt()
-                .domain([0, maxHits])
-                .range([2, Math.max(heightOne/2, 3)]);
+                .domain([0, midHits])
+                .range([2, Math.max(heightOne/2-1, 2)]);
             
             var oScale = d3.scale.linear()
                 .domain([0, maxConfidence])
@@ -202,7 +215,9 @@
             model.nodes = tree.nodes(model.root).reverse();
 
             // Normalize for fixed-depth.
-            model.nodes.forEach(function (d) { d.y = d.depth * 25; });
+            model.nodes.forEach(function (d) { 
+                d.y = d.depth * (square.w - (heightOne>SHOW_LEAVES_LIMIT?SPACE_FOR_LEAVES:0)) / model.hieSteps; 
+            });
 
             // Bind the data
             var nodeV = svgV.selectAll("g.node.vertical")
@@ -240,28 +255,35 @@
                 .attr("class", "tab")
                 .attr("x1", 0)
                 .attr("x2", 0)
-                .style("stroke", function (d) { return d._children ? "red" : "grey"; });
+                //.style("stroke", function (d) { return d._children ? "red" : "grey"; });
             nodeEnterH.append("line")
                 .attr("class", "tab")
                 .attr("y1", 0)
                 .attr("y2", 0)
-                .style("stroke", function (d) { return d._children ? "red" : "grey"; });
+                //.style("stroke", function (d) { return d._children ? "red" : "grey"; });
 
+
+            
             nodeEnterV.append("text")
-                .text(function (d) { return d.id;})
+                .text(function (d) {return (heightOne > SHOW_LEAVES_LIMIT || d.children || d._children)?d.id:"";})
                 .style("fill-opacity", 1e-6);
             nodeEnterH.append("text")
-                .text(function (d) { return d.id;})
+                .text(function (d) {return (heightOne > SHOW_LEAVES_LIMIT || d.children || d._children)?d.id:"";})
                 .style("fill-opacity", 1e-6);
+            
 
 
 
             // Transition nodes to their new position.
-            var nodeUpdateV = nodeV.transition()
-                .duration(duration)
+            var nodeUpdateV = nodeV
+                .classed("leaf", function (d) {return !d.children && !d._children})
+                .classed("collapsed", function (d) {return d._children})
+                .transition().duration(duration)
                 .attr("transform", function (d) {  return "translate(" + d.y + "," + d.x + ")"; });
-            var nodeUpdateH = nodeH.transition()
-                .duration(duration)
+            var nodeUpdateH = nodeH
+                .classed("leaf", function (d) {return !d.children && !d._children})
+                .classed("collapsed", function (d) {return d._children})
+                .transition().duration(duration)
                 .attr("transform", function (d) {  return "translate(" + d.x + "," + d.y + ")"; });
 
             nodeUpdateV.select("line.grid")
@@ -271,23 +293,21 @@
 
             nodeUpdateV.select("line.tab")
                 .attr("y1", function (d) {return model.getFirstLeaveY(d) - d.x - heightOne/3})
-                .attr("y2", function (d) {return model.getLastLeaveY(d) - d.x + heightOne/3})
-                .style("stroke", function (d) {return d._children ? "red" : "grey";});
+                .attr("y2", function (d) {return model.getLastLeaveY(d) - d.x + heightOne/3});
             nodeUpdateH.select("line.tab")
                 .attr("x1", function (d) {return model.getFirstLeaveY(d) - d.x - heightOne/3})
-                .attr("x2", function (d) {return model.getLastLeaveY(d) - d.x + heightOne/3})
-                .style("stroke", function (d) {return d._children ? "red" : "grey";});
+                .attr("x2", function (d) {return model.getLastLeaveY(d) - d.x + heightOne/3});
 
             nodeUpdateV.select("text")
                 .attr("transform", function (d) { return "rotate("+ (d.children?-90:0) +")";})
                 .attr("x", function (d) {return d.children?0:10;})
-                .attr("dy", function (d) { return d.children?-10:".35em";})
+                .attr("dy", function (d) { return d.children?"-0.7em":".35em";})
                 .attr("text-anchor", function (d) { return d.children?"middle":"start";})
                 .style("fill-opacity", 1);
             nodeUpdateH.select("text")
                 .attr("transform", function (d) { return "rotate("+ (d.children?0:-90) +")";})
                 .attr("x", function (d) {return d.children?0:-10;})
-                .attr("dy", function (d) { return d.children?-10:".35em";})
+                .attr("dy", function (d) { return d.children?"-0.7em":".35em";})
                 .attr("text-anchor", function (d) { return d.children?"middle":"end";})
                 .style("fill-opacity", 1);
 

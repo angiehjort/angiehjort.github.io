@@ -5,7 +5,7 @@ var convertGroupsToLinks = function(arrayOfGroups){
     var result = [];
     
     //sort all the groups so that we will preocess shorter groups first
-    var input = arrayOfGroups.sort(function(a,b){ return b.alarms.length - a.alarms.length; })
+    var input = arrayOfGroups.sort(function(a,b){ return a.alarms.length - a.alarms.length; })
     
     //for each rule get all pairwise combinations in alarms array
     input.forEach(function(rule){

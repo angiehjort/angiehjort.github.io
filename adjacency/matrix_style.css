@@ -1,7 +1,13 @@
- text, div {font: 10px Verdana, sans-serif; fill: grey; }
+*{
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
 
-    .controlls{width: 160px; height: 150px;}
-    .controlls div{font-size: 18px; color: #9ea373;}
+text, div {font: 10px Verdana, sans-serif; fill: grey; }
+
+    .controlls div{font-size: 16px; color: #9ea373; white-space: nowrap; overflow: hidden;}
+    .controlls div{height: 25%; max-height: 25px}
     .controlls, .arrow {position: absolute; top: 20px; left: 20px;}
     .arrow {
         pointer-events: none;
@@ -15,7 +21,6 @@
 
     .button {
         cursor: pointer;
-        width: 50px; height: 20px;
         float: left;
         background-color: #d1d89a;
         border: 1px solid #9ea373;
@@ -26,16 +31,18 @@
     .button:hover {
         background-color: #9ea373; color: #d1d89a;
     }
-    .controlls .hieUp, .controlls .hieDown{width: 60px; height: 20px; }
-    .controlls .sortingControll{width: 40px; height: 20px; }
+    .controlls .hieUp, .controlls .hieDown{width: 40%; height: 100%}
+    .controlls .sortingControll{width: 25%; height: 100%}
 
     .node {cursor: pointer;}
-    .node .tab {stroke-width: 3px; }
+    .node .tab {stroke: #9f9f9f; stroke-width: 5px; }
+    .node.collapsed .tab {stroke: #2d9a42; stroke-width: 10px; }
     .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
+    .node text {fill: #585858; text-transform: uppercase;}
+    .node.leaf text {fill: #9b9b9b; text-transform: lowercase;}
     .node.hover .tab {stroke-width: 7px;}
     .node.hover .grid, .node .grid.hover  {stroke: #b9b9b9; stroke-width: 1px;}
     .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
-    .node.leaf text {fill: lightgrey;}
 
     .link {
         cursor: pointer;
