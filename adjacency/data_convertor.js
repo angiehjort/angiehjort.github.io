@@ -1,7 +1,24 @@
-var convert = function(input){
+var convertGroupsToLinks = function(arrayOfGroups){
     //converts groups to pairwise connections
 
+    var input = arrayOfGroups;
     var result = [];
+    
+    var doublePush = function(rule, array){
+        array.push({
+            "if": rule.alarms[0],
+            "then": rule.alarms[1],
+            "hits": rule.supp,
+            "confidence": rule.conf
+        });
+        array.push({
+            "if": rule.alarms[1],
+            "then": rule.alarms[0],
+            "hits": rule.supp,
+            "confidence": rule.conf
+        });    
+        return array;
+    };
 
     input.filter(function(rule){return rule.alarms.length == 2})
         .forEach(function(rule){
@@ -13,19 +30,7 @@ var convert = function(input){
             }).length) log("duplicate found!")
 
             // push the new pair
-            result.push({
-                "if": rule.alarms[0],
-                "then": rule.alarms[1],
-                "hits": rule.supp,
-                "confidence": rule.conf
-            });
-            result.push({
-                "if": rule.alarms[1],
-                "then": rule.alarms[0],
-                "hits": rule.supp,
-                "confidence": rule.conf
-            });
-
+            result = doublePush(rule, result);
             rule.processed = true;
         });
 
@@ -43,18 +48,7 @@ var convert = function(input){
                 }).length)return;
 
                 // push the new pair
-                result.push({
-                    "if": a0,
-                    "then": a1,
-                    "hits": rule.supp,
-                    "confidence": rule.conf
-                });
-                result.push({
-                    "if": a1,
-                    "then": a0,
-                    "hits": rule.supp,
-                    "confidence": rule.conf
-                });            
+                result = doublePush({alarms: [a0,a1], supp: rule.supp, conf: rule.conf}, result);      
 
             })
         })
@@ -62,10 +56,8 @@ var convert = function(input){
 
 
     //simple validation
-    if (result.length!=
-        result.filter(function(rule){return rule.if && rule.then && rule.support && rule.confidence}).length
-       ) log("not all elements in the result have properties");
-
+    var badRules = result.filter(function(rule){return rule.if && rule.then && rule.support && rule.confidence});
+    if (badRules.length) console.log("not all elements in the result have properties", badRules);
 
     return result;
 }
