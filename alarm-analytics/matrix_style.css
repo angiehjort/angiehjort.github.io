@@ -1,0 +1,89 @@
+*{
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+text, div {font: 10px Verdana, sans-serif; fill: grey; }
+
+    body>div{width:50%; float:left;}
+    div.tooltip{
+        max-width: 250px; 
+        opacity: 0; 
+        background-color: #d1d89a;  position: absolute; 
+        font-size: 14px
+    }
+
+    .controlls div{font-size: 16px; color: #9ea373; white-space: nowrap; overflow: hidden;}
+    .controlls div{height: 25%; max-height: 25px}
+    .controlls, .arrow {position: absolute; top: 20px; left: 20px;}
+    .arrow {
+        pointer-events: none;
+        font: 100px Verdana;
+        color: #e8e8e8;
+        text-align: right;
+        line-height: 70px;
+        height: 70px; width: 200px;
+        top: 150px; left: 20px;
+    }
+
+    .button {
+        cursor: pointer;
+        float: left;
+        background-color: #d1d89a;
+        border: 1px solid #9ea373;
+        text-align: center;
+        line-height: 20px;
+        margin-right: 3px;
+    }
+    .button:hover {
+        background-color: #9ea373; color: #d1d89a;
+    }
+    .controlls .hieUp, .controlls .hieDown{width: 40%; height: 100%}
+    .controlls .sortingControll{width: 25%; height: 100%}
+
+    .node {cursor: pointer;}
+    .node .tab {stroke: #9f9f9f; stroke-width: 5px; }
+    .node.collapsed .tab {stroke: #2d9a42; stroke-width: 10px; }
+    .node .grid {stroke: #ebebeb; stroke-width: 1px; pointer-events: none;}
+    .node text, .node.root {fill: #585858; text-transform: uppercase;}
+    .node.leaf text {fill: #9b9b9b; text-transform: lowercase;}
+    .node.hover .tab {stroke-width: 7px;}
+    .node.hover .grid, .node .grid.hover  {stroke: #b9b9b9; stroke-width: 1px;}
+    .node.hover text {font-size: 12px; font-weight: bold; fill: black;}
+
+    .link {
+        cursor: pointer;
+        pointer-events: visible;
+        fill: none;
+        stroke-width: 1px;
+    }
+
+
+    circle.link.noactions {
+        stroke: white;
+        /*fill: rgb(157,187,97);*/
+        fill: rgb(146,208,80);
+    }
+    circle.link.noactions.hover {fill: rgb(12, 121, 7); opacity: 1;}
+
+    circle.link.occurtogether {
+        stroke: white;
+        fill: rgb(127,101,159);
+        /*fill: rgb(171,154,192);*/
+    }
+    circle.link.occurtogether.hover {fill: rgb(206, 0, 255); opacity: 1;}
+
+
+    path.link.occurtogether {
+        pointer-events: stroke;
+        stroke: rgb(127,101,159);
+        /*stroke: rgb(171,154,192);*/
+    }
+    path.link.occurtogether.hover {stroke: rgb(206, 0, 255); 
+        stroke-width: 4px; 
+        opacity: 1; 
+
+        fill-opacity: 0.1;
+        stroke-opacity: 0.3;
+    }

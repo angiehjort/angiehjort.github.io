@@ -1,0 +1,157 @@
+{
+ "id": "Flare",
+ "children": [
+  {
+   "id": "Analytics",
+   "children": [
+    {
+     "id": "Optimization",
+     "children": [
+      {"id": "AspectRatioBanker", "size": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Animate",
+   "children": [
+    {"id": "Easing", "size": 17010},
+    {"id": "FunctionSequence", "size": 5842},
+    {"id": "ISchedulable", "size": 1041},
+    {"id": "Parallel", "size": 5176},
+    {"id": "Pause", "size": 449},
+    {"id": "Scheduler", "size": 5593},
+    {"id": "Sequence", "size": 5534},
+    {"id": "Transition", "size": 9201},
+    {"id": "Transitioner", "size": 19975},
+    {"id": "TransitionEvent", "size": 1116},
+    {"id": "Tween", "size": 6006}
+   ]
+  },
+  {
+   "id": "Data",
+   "children": [
+    {
+     "id": "Converters",
+     "children": [
+      {"id": "Converter", "size": 721},
+      {"id": "DelimitedTextConverter", "size": 4294},
+      {"id": "GraphMLConverter", "size": 9800},
+      {"id": "IDataConverter", "size": 1314},
+      {"id": "JSONConverter", "size": 2220}
+     ]
+    },
+    {"id": "DataField", "size": 1759},
+    {"id": "DataSchema", "size": 2165},
+    {"id": "DataSet", "size": 586},
+    {"id": "DataSource", "size": 3331},
+    {"id": "DataTable", "size": 772},
+    {"id": "DataUtil", "size": 3322}
+   ]
+  },
+  {
+   "id": "Display",
+   "children": [
+    {"id": "DirtySprite", "size": 8833},
+    {"id": "LineSprite", "size": 1732},
+    {"id": "RectSprite", "size": 3623},
+    {"id": "TextSprite", "size": 10066}
+   ]
+  },
+  {
+   "id": "Flex",
+   "children": [
+    {"id": "FlareVis", "size": 4116},
+    {"id": "SunVis", "size": 4516}
+   ]
+  },
+  {
+   "id": "Physics",
+   "children": [
+    {"id": "DragForce", "size": 1082},
+    {"id": "GravityForce", "size": 1336},
+    {"id": "IForce", "size": 319},
+    {"id": "NBodyForce", "size": 10498},
+    {"id": "Particle", "size": 2822},
+    {"id": "Simulation", "size": 9983},
+    {"id": "Spring", "size": 2213},
+    {"id": "SpringForce", "size": 1681}
+   ]
+  },
+  {
+   "id": "Queries",
+   "children": [
+    {"id": "AggregateExpression", "size": 1616},
+    {"id": "And", "size": 1027},
+    {"id": "Arithmetic", "size": 3891},
+    {"id": "Average", "size": 891},
+    {"id": "BinaryExpression", "size": 2893},
+    {"id": "Comparison", "size": 5103},
+    {"id": "CompositeExpression", "size": 3677},
+    {"id": "Count", "size": 781},
+    {"id": "DateUtil", "size": 4141},
+    {"id": "Distinct", "size": 933},
+    {"id": "Expression", "size": 5130},
+    {"id": "ExpressionIterator", "size": 3617},
+    {"id": "Fn", "size": 3240},
+    {"id": "If", "size": 2732},
+    {"id": "IsA", "size": 2039},
+    {"id": "Literal", "size": 1214},
+    {"id": "Match", "size": 3748},
+    {"id": "Maximum", "size": 843},
+    {"id": "Minimum", "size": 843},
+    {"id": "Not", "size": 1554},
+    {"id": "Or", "size": 970},
+    {"id": "Query", "size": 13896},
+    {"id": "Range", "size": 1594},
+    {"id": "StringUtil", "size": 4130},
+    {"id": "Sum", "size": 791},
+    {"id": "Variable", "size": 1124},
+    {"id": "Variance", "size": 1876},
+    {"id": "Xor", "size": 1101}
+   ]
+  },
+  {
+   "id": "Scales",
+   "children": [
+    {"id": "IScaleMap", "size": 2105},
+    {"id": "LinearScale", "size": 1316},
+    {"id": "LogScale", "size": 3151},
+    {"id": "OrdinalScale", "size": 3770},
+    {"id": "QuantileScale", "size": 2435},
+    {"id": "QuantitativeScale", "size": 4839},
+    {"id": "RootScale", "size": 1756},
+    {"id": "Scale", "size": 4268},
+    {"id": "ScaleType", "size": 1821},
+    {"id": "TimeScale", "size": 5833}
+   ]
+  },
+  {
+   "id": "Utils",
+   "children": [
+    {"id": "Arrays", "size": 8258},
+    {"id": "Colors", "size": 10001},
+    {"id": "Dates", "size": 8217},
+    {"id": "Displays", "size": 12555},
+    {"id": "Filter", "size": 2324},
+    {"id": "Geometry", "size": 10993},
+    {"id": "IEvaluable", "size": 335},
+    {"id": "IPredicate", "size": 383},
+    {"id": "IValueProxy", "size": 874},
+    {"id": "Maths", "size": 17705},
+    {"id": "Orientation", "size": 1486},
+    {"id": "Property", "size": 5559},
+    {"id": "Shapes", "size": 19118},
+    {"id": "Sort", "size": 6887},
+    {"id": "Stats", "size": 6557},
+    {"id": "Strings", "size": 22026}
+   ]
+  },
+  {
+   "id": "Vis",
+   "children": [
+    {"id": "Visualization", "size": 16540}
+   ]
+  }
+ ]
+}
