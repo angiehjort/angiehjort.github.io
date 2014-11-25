@@ -111,6 +111,7 @@ HierarchicalEdgeBundling = function(container) {
 
         // Update for the existing nodes
         var nodeUpdate = nodeVis
+            .attr("class", function(d){return "node heb id"+d.id})
             .classed("leaf", function (d) {return !d.children && !d._children;})
             .classed("collapsed", function (d) {return d._children})
             //.transition().duration(duration)
