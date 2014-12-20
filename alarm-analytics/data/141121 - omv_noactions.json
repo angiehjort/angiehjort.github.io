@@ -1,0 +1,22 @@
+{
+    "Results": {
+        "alarmsWithNoAction": [
+            { "source": "FC1111-ALLY01", "target":"FC1111-ALLY01", "confidence": 75.2, "hits": 97            },
+            { "source": "FC1111-ALY01",  "target":"FC1111-ALY01",  "confidence": 71.2, "hits": 94            },
+            { "source": "FC6121-ALLY01", "target":"FC6121-ALLY01", "confidence": 82.9, "hits": 92            },
+            { "source": "FC6845-ALY01",  "target":"FC6845-ALY01",  "confidence": 70.2, "hits": 66            },
+            { "source": "PC6127-AHHY01", "target":"PC6127-AHHY01", "confidence": 87.7, "hits": 193            },
+            { "source": "PC6227-AHHY01", "target":"PC6227-AHHY01", "confidence": 95.8, "hits": 181            },
+            { "source": "PC7016-ALY01",  "target":"PC7016-ALY01",  "confidence": 88.9, "hits": 104            },
+            { "source": "QI6101-AHY01",  "target":"QI6101-AHY01",  "confidence": 77.2, "hits": 152            },
+            { "source": "QI6103-AHY01",  "target":"QI6103-AHY01",  "confidence": 85.4, "hits": 164            },
+            { "source": "QI6105-AHHY01", "target":"QI6105-AHHY01", "confidence": 70.9, "hits": 112            },
+            { "source": "QI6107-AHHY01", "target":"QI6107-AHHY01", "confidence": 80.0, "hits": 88            },
+            { "source": "QI6107-AHY01",  "target":"QI6107-AHY01",  "confidence": 85.3, "hits": 453            },
+            { "source": "QI6109-AHHY01", "target":"QI6109-AHHY01", "confidence": 97.2, "hits": 380            },
+            { "source": "QI6109-AHY01",  "target":"QI6109-AHY01",  "confidence": 96.2, "hits": 480            },
+            { "source": "QI7007-ALY01",  "target":"QI7007-ALY01",  "confidence": 71.2, "hits": 259            },
+            { "source": "QI7011-ALY01",  "target":"QI7011-ALY01",  "confidence": 71.8, "hits": 262            }
+]
+    }
+}

@@ -1,0 +1,7 @@
+---
+# comment
+applications:
+- name: alarm-analytics
+memory: 256M
+buildpack: https://github.com/cloudfoundry-community/nginx-buildpack.git
+instances: 1
