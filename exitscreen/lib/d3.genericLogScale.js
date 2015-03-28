@@ -16,13 +16,19 @@
             var linScale = d3.scale.linear().domain([0, eps]).range([0, delta]);
 
 
+            var sign = function(x){
+                if( +x === x ) { // check if a number was given
+                    return (x === 0) ? x : (x > 0) ? 1 : -1;
+                }
+                return NaN;
+            }
             var abs = function(arg){
                 if(arg instanceof Array) return arg.map(function(d){return Math.abs(d)});
                 return Math.abs(arg);
             }
             var oneside = function(arg){
-                var sign = Math.sign(arg[0]);
-                for(var i=0; i<arg.length; i++){ if(Math.sign(arg[i])!=sign)return false; }
+                var sign = sign(arg[0]);
+                for(var i=0; i<arg.length; i++){ if(sign(arg[i])!=sign)return false; }
                 return true;
             }
 
