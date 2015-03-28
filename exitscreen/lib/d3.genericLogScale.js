@@ -27,8 +27,8 @@
                 return Math.abs(arg);
             }
             var oneside = function(arg){
-                var sign = sign(arg[0]);
-                for(var i=0; i<arg.length; i++){ if(sign(arg[i])!=sign)return false; }
+                var sign0 = sign(arg[0]);
+                for(var i=0; i<arg.length; i++){ if(sign(arg[i])!=sign0)return false; }
                 return true;
             }
 
