@@ -21,8 +21,8 @@
                 return Math.abs(arg);
             }
             var oneside = function(arg){
-                var sign = arg[0]>=0?1:-1;
-                for(var i=0; i<arg.length; i++){var iSign = arg[i]>=0?1:-1; if(iSign!=sign)return false; }
+                var sign = Math.sign(arg[0]);
+                for(var i=0; i<arg.length; i++){ if(Math.sign(arg[i])!=sign)return false; }
                 return true;
             }
 
