@@ -37,7 +37,7 @@
           -webkit-transition: opacity .25s ease-in-out;
         }
         
-        .axis text{font-size: 12px}
+        
         .axis path, .axis line{
             fill: none;
             stroke: grey;
@@ -98,6 +98,8 @@
     var DEPARTURES_SCALE_HEIGHT = null;
     
     var TEXTHEIGHT_LAGOM = null;
+    var TEXTHEIGHT_SMALL = null;
+    var TEXTHEIGHT_LARGE = null;
 
     var tScale = d3.scale.genericLog()
         .eps(1)
