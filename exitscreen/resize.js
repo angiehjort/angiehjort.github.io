@@ -8,13 +8,16 @@
         DEPARTURES_ROW_HEIGHT = parseInt(d3.select("#departures").style("height")) / config.departures.length;
         WEATHER_WIDTH_ONE = WIDTH/config.weather.steps;
         
+        TEXTHEIGHT_LAGOM = Math.min(24, Math.max(6, DEPARTURES_ROW_HEIGHT - 8));
+        
         tScale.range([WIDTH * (1-DEPARTURES_WIDTH_GRAPH), WIDTH]);
         sunScale.range([0,WEATHER_WIDTH_ONE/2]);
         windScale.range([0, WEATHER_HEIGHT/2]);
         rainScale.range([0, WEATHER_HEIGHT/2]);
         tempScale.range([WEATHER_HEIGHT, 0]);
         
-        
+        d3.selectAll("#departures text").style("font-size", TEXTHEIGHT_LAGOM);
+        d3.selectAll("#weather text").style("font-size", TEXTHEIGHT_LAGOM);
         
         d3.select("#departures").select("svg").select(".axis").call(tAxis).attr("transform","translate(0,0)");
         
@@ -26,11 +29,13 @@
 
                 departureOne.select(".id")
                     .attr("x",0)
-                    .attr("dy",DEPARTURES_ROW_HEIGHT/2)
+                    .attr("y",DEPARTURES_ROW_HEIGHT/2)
+                    .attr("dy","0.32em")
 
                 departureOne.select(".stoppoint")
                     .attr("x",WIDTH * 0.1)
-                    .attr("dy",DEPARTURES_ROW_HEIGHT/2)
+                    .attr("y",DEPARTURES_ROW_HEIGHT/2)
+                    .attr("dy","0.32em")
 
                 departureOne.select(".time")
                     .attr("x",WIDTH * (1-DEPARTURES_WIDTH_GRAPH) / 2)

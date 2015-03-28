@@ -80,11 +80,11 @@
                 weatherOne.select("text.rain")
                     .transition().duration(DURATION_LAGOM).ease("linear")
                     .attr("y", rainScale(dataWeather.rain) + 20 )
-                    .text(dataWeather.rain + "mm/h")
+                    .text(dataWeather.rain + (index==0?"mm/h":""))
                 weatherOne.select("text.wind")
                     .transition().duration(DURATION_LAGOM).ease("linear")
                     .attr("y", WEATHER_HEIGHT - windScale(dataWeather.windspeed))
-                    .text(Math.round(dataWeather.windspeed) + "m/s")
+                    .text(Math.round(dataWeather.windspeed) + (index==0?"m/s":""))
     
             })
     
@@ -114,11 +114,11 @@ function updateTitle(data){
     
 
     weatherText.sort(function(a,b){return b.suffer - a.suffer})
-    weatherText.sort(function(a,b){return b.suffer - a.suffer})
+    traficText.sort(function(a,b){return b.suffer - a.suffer})
     
     //if(data.departures[0].time/1000 - now.getTime) weatherText = "Wear a hat"
     
-    if(weatherText!="" && traficText!="")andText = " and ";
-    return weatherText[0].tip + andText + traficText;
+    if(weatherText[0].tip!="" && traficText[0].tip!="")andText = " and ";
+    return weatherText[0].tip + andText + traficText[0].tip;
     
 }
