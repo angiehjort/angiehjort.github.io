@@ -10,8 +10,8 @@
         body, head{height: 100%; width: 100%;}
         #container{height: 100%; width: 100%; margin: 0px}
         #title{width: 100%; top: 60%; text-align: center}
-        #departures{height: 50%; width: 100%; top: 0%}
-        #weather{height: 50%; width: 100%; top: 50%}
+        #departures{height: 55%; width: 100%; top: 0%}
+        #weather{height: 45%; width: 100%; top: 55%}
         
         #title{font-size: 24px; line-height: 100%; text-transform: uppercase; color: #a3a3a3}
         
@@ -93,8 +93,9 @@
     var WIDTH = null;
     var WEATHER_HEIGHT =null;
     var DEPARTURES_ROW_HEIGHT = null;
-    var DURATION_LAGOM = 500;
+    var DURATION_LAGOM = 1000;
     var WEATHER_WIDTH_ONE = null;
+    var DEPARTURES_SCALE_HEIGHT = null;
     
     var TEXTHEIGHT_LAGOM = null;
 
@@ -114,13 +115,13 @@
     
     var tAxis = d3.svg.axisSmart()
         .scale(tScale)
-        .orient("bottom")
+        .orient("top")
         .tickSize(6, 0)
         .tickSizeMinor(3, 0)
         .labelerOptions({
             showOuter: true,
             scaleType: "genericLog",
-            toolMargin: {left:0, right:0, top:0, bottom:1000},
+            toolMargin: {left:0, right:0, top:1000, bottom:1000},
             formatter: function(d){
                 var result = null;
                 var suffix = null
@@ -130,7 +131,7 @@
                 if(d<60){result = d3.format(".0f")(d); prefix ="" ;  suffix = ""}
                 if(d>=60){result = d3.format(".0f")(Math.floor(d/60)) + ":" + d3.format("02.0f")((d%60)); prefix ="" ; suffix = ""}
                 
-                if(prefix + result + suffix == "1" || prefix + result + suffix == "10") suffix="min"
+                if(prefix + result + suffix == "1") suffix="min"
                 return prefix + result + suffix;
                 
             }
