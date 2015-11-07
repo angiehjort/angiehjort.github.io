@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Closed loop coast</title>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="linechart.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
+        var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
+        var MONGOLAB_DATABASES = "/databases";
+        
+        
+        var httpGetAsync = function(theUrl, callback)
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() { 
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        callback(xmlHttp.responseText);
+                }
+                xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                xmlHttp.send(null);
+            }
+        
+
+        var format = d3.time.format("%Y-%m-%d %X");
+        
+        setInterval(function(){
+            
+            var now = new Date();
+            now = now.valueOf() - 15000;
+            
+            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+            httpGetAsync(url, function(response){
+                var data = JSON.parse(response);
+                var data_string = data.map(function(d){
+                    var time = new Date(d["_id"]);
+                    return format(time) + ": " + d["1"]/10 + " " + d["2"]/10 + " " + d["3"]/10 + " " + d["4"]/10
+                })
+                var lines = d3.select("#container").selectAll("div").data(data_string);
+                lines.enter().append("div");
+                lines.html(function(d){return JSON.stringify(d)});
+            });
+        },1000)
+        
+    </script>
+</body>
+
+</html>
