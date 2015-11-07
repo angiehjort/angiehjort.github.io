@@ -4,6 +4,7 @@
 <title>Closed loop coast</title>
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="linechart.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
@@ -13,6 +14,7 @@
         var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
         var MONGOLAB_DATABASES = "/databases";
         
+        var ERROR_NO_DATA = "No fresh data to display, the measurement is either not running or can't reach the internet. Talk to Angie konzeptmeister@gmail.com";
         
         var httpGetAsync = function(theUrl, callback)
             {
@@ -35,7 +37,7 @@
             
             var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
             httpGetAsync(url, function(response){
-                var data = JSON.parse(response);
+                var data = JSON.parse(response).sort(function(b,a){return b["_id"]-a["_id"];});
                 var data_string = data.map(function(d){
                     var time = new Date(d["_id"]);
                     return format(time) + ": " + d["1"]/10 + " " + d["2"]/10 + " " + d["3"]/10 + " " + d["4"]/10
@@ -43,6 +45,9 @@
                 var lines = d3.select("#container").selectAll("div").data(data_string);
                 lines.enter().append("div");
                 lines.html(function(d){return JSON.stringify(d)});
+                
+                if(data_string.length == 0) d3.select("#container").html(ERROR_NO_DATA);
+                
             });
         },1000)
         
