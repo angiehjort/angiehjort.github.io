@@ -115,14 +115,14 @@ var dome = {
         if(!data) return;
         this.cache = data;
                 
-        var lastMeasure = data[data.length-1];
+        var firstMeasure = data[0];
         
         this.svg.select("g").selectAll("g.dome-measurepoint")
             .each(function(d){
                 var view = d3.select(this);
             
                 view.select("text")
-                    .text(processData(lastMeasure[d.id]) + "°C");
+                    .text(processData(firstMeasure[d.id]) + "°C");
                 
                 var channelData = data.map(function(m){return {t: m["_id"], "v": m[d.id]};});
             
@@ -141,7 +141,7 @@ var dome = {
                     .attr("d", _this.sparkline);
             
                 view.select(".sparklinetip")
-                    .attr("cy", _this.yScale(lastMeasure[d.id]))
+                    .attr("cy", _this.yScale(firstMeasure[d.id]))
                 
                 
             });
