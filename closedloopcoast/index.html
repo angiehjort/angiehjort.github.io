@@ -3,18 +3,23 @@
 <head>
 <title>Closed loop coast</title>
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="linechart.js" charset="utf-8"></script>
+    <script src="view-linechart.js" charset="utf-8"></script>
+    <script src="view-dome.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
+    <div id="error"></div>
+    <div id="dome"></div>
     <div id="container"></div>
+    <div id="title">Closed <br/> loop <br/> coast</div>
+    <div id="subtitle">dome status monitor</div>
     <script>
         var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
         var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
         var MONGOLAB_DATABASES = "/databases";
         
-        var ERROR_NO_DATA = "No fresh data to display, the measurement is either not running or can't reach the internet. Talk to Angie konzeptmeister@gmail.com";
+        var ERROR_NO_DATA = "No data to display, sorry. Talk to <a href='mailto:konzeptmeister@gmail.com'>Angie</a>";
         
         var httpGetAsync = function(theUrl, callback)
             {
@@ -26,7 +31,10 @@
                 xmlHttp.open("GET", theUrl, true); // true for asynchronous 
                 xmlHttp.send(null);
             }
-        
+
+        dome.init("#dome");
+        dome.resize(window.innerWidth, window.innerHeight);
+        dome.update([{"_id": 0, "1":0, "2":0, "3":0, "4":0}])
 
         var format = d3.time.format("%Y-%m-%d %X");
         
@@ -35,7 +43,8 @@
             var now = new Date();
             now = now.valueOf() - 15000;
             
-            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+            //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?s={'_id':-1}&l=60" + "&apiKey=" + MONGOLAB_API_KEY;
             httpGetAsync(url, function(response){
                 var data = JSON.parse(response).sort(function(b,a){return b["_id"]-a["_id"];});
                 var data_string = data.map(function(d){
@@ -43,13 +52,23 @@
                     return format(time) + ": " + d["1"]/10 + " " + d["2"]/10 + " " + d["3"]/10 + " " + d["4"]/10
                 })
                 var lines = d3.select("#container").selectAll("div").data(data_string);
+                
+                lines.exit().remove();
                 lines.enter().append("div");
                 lines.html(function(d){return JSON.stringify(d)});
                 
-                if(data_string.length == 0) d3.select("#container").html(ERROR_NO_DATA);
+                d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
                 
+                
+                dome.update(data);
             });
         },1000)
+        
+        
+        window.onresize = function(event) {
+            linechart.resize(window.innerWidth, window.innerHeight);
+            dome.resize(window.innerWidth, window.innerHeight);
+        };
         
     </script>
 </body>

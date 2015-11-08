@@ -1,3 +1,94 @@
 * {
-    font-family: sans-serif;
+    font-family: "Consolas", sans-serif;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#error {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    color: pink;
+    width: 100%;
+}
+#container{
+    position: absolute;
+    top: 0px;
+    color: white;
+    opacity: 0.1;
+    width: 100%;
+    text-align: center;
+}
+
+#title{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+
+#subtitle{
+    position: absolute;
+    bottom: 5%;
+    text-align: center;
+    color: white;    
+    width: 100%;
+}
+
+#error a {
+    color: pink;
+}
+
+#dome{
+    background-color: #6f8e1a;
+    width: 100%;
+    height: 100%;
+}
+
+#dome .dome-shell{
+    fill: none;
+    stroke: white;
+}
+
+#dome .dome-reactor{
+    fill: black;
+    fill-opacity: 0.1;
+    stroke: white;
+}
+
+#dome .dome-measurepoint circle{
+    fill:white;
+}
+
+#dome .dome-measurepoint text{
+    fill: white;
+    dominant-baseline: ideographic;
+    opacity: 1;
+    text-anchor: middle;
+}
+
+.dome-legend{
+    text-anchor: middle;
+    dominant-baseline: ideographic;
+    text-transform: uppercase;
+    fill: white;
+}
+
+.sparkline{
+    fill: none;
+    stroke: white;
+    opacity: 1;
+}
+
+.sparkline-shade{
+    fill: none;
+    stroke: #6f8e1a;
+    opacity: 1;
+}
+
+
+.sparklinetip{
+    fill: white;
+    stroke: #6f8e1a;
+    opacity: 1;
 }
