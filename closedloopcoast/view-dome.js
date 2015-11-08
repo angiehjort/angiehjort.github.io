@@ -34,7 +34,7 @@ var dome = {
         
         this.sayReactor = domeGroup.append("text")
             .attr("class", "dome-legend")
-            .text("reactor");
+            .text("biogas reactor");
         
         this.xScale = d3.scale.linear();
         this.yScale = d3.scale.linear();

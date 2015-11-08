@@ -15,9 +15,12 @@
     position: absolute;
     top: 0px;
     color: white;
-    opacity: 0.1;
     width: 100%;
     text-align: center;
+}
+
+#container div {
+    opacity: 0.1;
 }
 
 #title{
@@ -29,7 +32,7 @@
 
 #subtitle{
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     text-align: center;
     color: white;    
     width: 100%;

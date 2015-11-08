@@ -14,6 +14,7 @@
     <div id="container"></div>
     <div id="title">Closed <br/> loop <br/> coast</div>
     <div id="subtitle">dome status monitor</div>
+    
     <script>
         var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
         var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
@@ -44,19 +45,25 @@
             now = now.valueOf() - 15000;
             
             //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
-            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?s={'_id':-1}&l=60" + "&apiKey=" + MONGOLAB_API_KEY;
+            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
             httpGetAsync(url, function(response){
-                var data = JSON.parse(response).sort(function(b,a){return b["_id"]-a["_id"];});
+                
+                var data = JSON.parse(response);
                 var data_string = data.map(function(d){
                     var time = new Date(d["_id"]);
-                    return format(time) + ": " + d["1"]/10 + " " + d["2"]/10 + " " + d["3"]/10 + " " + d["4"]/10
+                    return format(time) + " - " + processData(d["1"]) + " " + processData(d["2"]) + " " + processData(d["3"]) + " " + processData(d["4"]);
                 })
                 var lines = d3.select("#container").selectAll("div").data(data_string);
                 
                 lines.exit().remove();
                 lines.enter().append("div");
-                lines.html(function(d){return JSON.stringify(d)});
+                lines.text(function(d){return JSON.stringify(d).replace('"','').replace('"','')});
                 
+                d3.select("#container").select("div")
+                    .style("opacity", 0.2)
+                    .transition().duration(900)
+                    .style("opacity", 0.1);
+                                                                                
                 d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
                 
                 
