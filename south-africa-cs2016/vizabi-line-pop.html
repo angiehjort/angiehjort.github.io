@@ -9,6 +9,18 @@
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
   <script>
+    
+
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("preview")).join("/") + "preview/";
+      
+  Vizabi._globals.ext_resources = {
+      host: localUrl,
+      preloadPath: 'data/',
+      dataPath: 'data/waffles/',
+      conceptpropsPath: localUrl + 'data/metadata.json'
+    };        
+    
   Vizabi('LineChart', document.getElementById('placeholder'), {
 
     state: {
