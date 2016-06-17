@@ -1,0 +1,24 @@
+{
+  "name": "south-africa-cs2016",
+  "version": "0.1.0",
+  "description": "Presentation of South African 2016 community survey results",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gapminder/south-africa-cs2016.git"
+  },
+  "author": "Gapminder Foundation, Angie and Jasper",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Gapminder/south-africa-cs2016/issues"
+  },
+  "homepage": "https://github.com/Gapminder/south-africa-cs2016#readme",
+  "dependencies": {
+    "d3": "3.5.6",
+    "vizabi": "0.15.0-11",
+    "reveal.js": "3.3.0"
+  }
+}

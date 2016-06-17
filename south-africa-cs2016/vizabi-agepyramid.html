@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <script>
+    
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("preview")).join("/") + "/preview/";
+      
+  Vizabi._globals.ext_resources = {
+      host: localUrl,
+      preloadPath: 'data/zaf/',
+      dataPath: 'data/zaf/waffles/',
+      conceptpropsPath: localUrl + 'data/zaf/metadata.json',
+    };
+    
+    
+  Vizabi('AgePyramid', document.getElementById('placeholder'), {
+    state: {
+       entities_stack: null,
+       marker: {
+         space: ["entities", "entities_side", "entities_age", "time"],
+         label: {
+           use: "indicator",
+           which: "age"
+         },
+         label_name: {
+           use: "property",
+           which: "population_group"
+         },
+         axis_y: {
+           use: "indicator",
+           which: "age",
+           // domain Max should be set manually as age max from entites_age plus one grouping value (95 + 5 = 100)
+           // that way the last age group fits in on the scale
+           domainMax: 100,
+           domainMin: 0
+         },
+         color: {
+           use: "constant",
+           which: "#FF0000"
+         }
+       },
+       marker_minimap:{
+         space: ["entities_stack"],
+           type: "geometry",
+           shape: "svg",
+           label: {
+             use: "property",
+             which: "stack"
+           },
+           geoshape: {
+             use: "property",
+             which: "shape_lores_svg"
+           }
+       }
+    },
+    data: {
+      reader: "csv",
+      path: "preview/data/ddf--datapoints--population--by--year--age.csv",
+      splash: false
+    },
+    ui: {
+      chart: {
+        //lockNonSelected: 1996
+      },
+      presentation: false,
+      buttons: [],
+      dialogs: {
+        'popup': [], 
+        'sidebar': [], 
+        'moreoptions': []
+      }
+    }
+  });
+  </script>
+</body>
+
+</html>

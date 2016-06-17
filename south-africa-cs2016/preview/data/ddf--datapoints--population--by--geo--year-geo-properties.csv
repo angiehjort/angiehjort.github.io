@@ -1,0 +1,6 @@
+"geo","geo.name","geo.cat","geo.world_4region","geo.latitude","geo.longitude","shape_lores_svg"
+"africa","Africa","world_4region",,-14.33333,28.5,
+"americas","The Americas","world_4region",,8.9936,-79.51973,
+"asia","Asia","world_4region",,16.16667,107.83333,
+"europe","Europe","world_4region",,50.75,4.5,
+"zaf","South Africa","country","africa",-29,24,
