@@ -2,7 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
-  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="lib/d3.v3.min.js"></script>
   <script src="lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
@@ -23,7 +23,13 @@
     
   Vizabi('AgePyramid', document.getElementById('placeholder'), {
     state: {
-       entities_stack: null,
+      time: {
+        dim: "time"
+      },
+      entities_stack: null,
+      entities_side: {
+        dim: "gender"
+      },
        marker: {
          space: ["entities", "entities_side", "entities_age", "time"],
          label: {
@@ -32,7 +38,7 @@
          },
          label_name: {
            use: "property",
-           which: "population_group"
+           which: "gender"
          },
          axis_y: {
            use: "indicator",
@@ -45,7 +51,17 @@
          color: {
            use: "constant",
            which: "#FF0000"
-         }
+         },
+         side: {
+           use: "property",
+           which: "gender"
+         },
+          axis_x: {
+            use: "indicator",
+            which: "population",
+            domainMin: 0,
+            domainMax: 1400000000
+          }
        },
        marker_minimap:{
          space: ["entities_stack"],
@@ -63,7 +79,7 @@
     },
     data: {
       reader: "csv",
-      path: "preview/data/ddf--datapoints--population--by--year--age.csv",
+      path: "preview/data/ddf--datapoints--population--by--year--gender--age_by_1_year.csv",
       splash: false
     },
     ui: {
@@ -79,6 +95,8 @@
       }
     }
   });
+
+  d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
   </script>
 </body>
 

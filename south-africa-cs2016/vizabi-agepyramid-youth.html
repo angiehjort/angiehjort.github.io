@@ -2,7 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
-  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="lib/d3.v3.min.js"></script>
   <script src="lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
@@ -25,23 +25,44 @@
       marker: {
         color: {
           use: "constant"
-        }
+        },
+         side: {
+           use: "property",
+           which: "gender"
+         },
+         label_name: {
+           use: "property",
+           which: "gender"
+         },
+         axis_x: {
+            which: "population"
+         }
+      },
+      entities_side: {
+        dim: "gender"
       },
       entities_stack: {
         select: [
-        {"education": "null","age": "0","sex": "null"}, 
-        {"education": "null","age": "5","sex": "null"}, 
-        {"education": "null","age": "10","sex": "null"}, 
-        {"education": "null","age": "15","sex": "null"}, 
-        {"education": "null","age": "20","sex": "null"}, 
-        {"education": "null","age": "25","sex": "null"}, 
-        {"education": "null","age": "30","sex": "null"}
+        {"education": "null","age": "0","gender": "null"}, 
+        {"education": "null","age": "5","gender": "null"}, 
+        {"education": "null","age": "10","gender": "null"}, 
+        {"education": "null","age": "15","gender": "null"}, 
+        {"education": "null","age": "20","gender": "null"}, 
+        {"education": "null","age": "25","gender": "null"}, 
+        {"education": "null","age": "30","gender": "null"},
+        {"education": "null","age": "0","gender": "Male"}, 
+        {"education": "null","age": "5","gender": "Male"}, 
+        {"education": "null","age": "10","gender": "Male"}, 
+        {"education": "null","age": "15","gender": "Male"}, 
+        {"education": "null","age": "20","gender": "Male"}, 
+        {"education": "null","age": "25","gender": "Male"}, 
+        {"education": "null","age": "30","gender": "Male"}
         ]
       }
     },
     data: {
       reader: "csv",
-      path: "preview/data/ddf--datapoints--population--by--year--age.csv",
+      path: "preview/data/ddf--datapoints--population--by--year--gender--age_by_1_year.csv",
       splash: false
     },
     ui: {

@@ -2,7 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
-  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="lib/d3.v3.min.js"></script>
   <script src="lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
@@ -22,11 +22,15 @@
     
   Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
+      time: {
+        start: "1953",
+        value: "1953"
+      },
       entities: {
         select: [{
           "geo": "zaf",
-          "trailStartTime": "1800",
-          "firstAvailableSegment": "1800-01-01T00:00:00.000Z"
+          "trailStartTime": "1953",
+          "firstAvailableSegment": "1953-01-01T00:00:00.000Z"
         }],
         show: {
           _defs_: {
@@ -66,7 +70,7 @@
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
-        'sidebar': ['colors', 'find', 'size', 'zoom'], 
+        'sidebar': ['colors', 'size'], 
         'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
       }
     }

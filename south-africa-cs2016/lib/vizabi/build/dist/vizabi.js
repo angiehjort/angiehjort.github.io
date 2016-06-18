@@ -1,7 +1,7 @@
 /**
  * vizabi - Vizabi Framework, Interactive charts and visualization tools animated through time
- * @version v0.15.0-11
- * @build timestampFri Jun 17 2016 12:50:39 GMT+0200 (CEST)
+ * @version v0.15.0-13
+ * @build timestampFri Jun 17 2016 18:04:22 GMT+0200 (CEST)
  * @link http://vizabi.org
  * @license BSD-3-Clause
  */
@@ -7673,10 +7673,12 @@
                 
               g.selectAll(".tick").each(function(d, t) {
                 d3.select(this).select("text")
+                  .interrupt()
                   .style("opacity", getOpacity(d,t))
               })
                 
               g.select('.vzb-axis-value')
+                .interrupt()
                 .attr("transform", getTransform);
                 
             }
@@ -17673,30 +17675,46 @@
                 var areas = objects.map(path.area);
                 var totalArea = d3.sum(areas),
                   sizeErrorsTot =0,
-                  sizeErrorsNum=0,
-                  meta = objects.map(function(o, j) {
-                    var area = Math.abs(areas[j]), // XXX: why do we have negative areas?
-                      v = +values[j],
-                      desired = totalArea * v / totalValue,
-                      radius = Math.sqrt(area / Math.PI),
-                      mass = Math.sqrt(desired / Math.PI) - radius,
-                      sizeError = Math.max(area, desired) / Math.min(area, desired);
-                    sizeErrorsTot+=sizeError;
-                    sizeErrorsNum++;
-                    // console.log(o.id, "@", j, "area:", area, "value:", v, "->", desired, radius, mass, sizeError);
-                    return {
-                      id:         o.id,
-                      area:       area,
-                      centroid:   path.centroid(o),
-                      value:      v,
-                      desired:    desired,
-                      radius:     radius,
-                      mass:       mass,
-                      sizeError:  sizeError
-                    };
-                  });
+                  sizeErrorsNum=0;
                 
-                resolve({meta: meta, sizeError: (sizeErrorsTot/sizeErrorsNum)});
+                var calculateMeta = function(index, cb) {
+                  var area = Math.abs(areas[index]), // XXX: why do we have negative areas?
+                    v = + values[index],
+                    desired = totalArea * v / totalValue,
+                    radius = Math.sqrt(area / Math.PI),
+                    mass = Math.sqrt(desired / Math.PI) - radius,
+                    sizeError = Math.max(area, desired) / Math.min(area, desired);
+                  // console.log(o.id, "@", j, "area:", area, "value:", v, "->", desired, radius, mass, sizeError);
+                  cb( {
+                    id:         objects[index].id,
+                    area:       area,
+                    centroid:   path.centroid(objects[index]),
+                    value:      v,
+                    desired:    desired,
+                    radius:     radius,
+                    mass:       mass,
+                    sizeError:  sizeError
+                  });
+                };
+                var calculateMetaSequence = function(index) {
+                  if (index >= objects.length) {
+                    return resolve({meta: meta, sizeError: (sizeErrorsTot/sizeErrorsNum)})
+                  }
+                  calculateMeta(index, function(response) {
+                    meta.push(response);
+                    sizeErrorsTot+=response.sizeError;
+                    sizeErrorsNum++;
+                    if (index % 400 == 0) {
+                      defer(function() {
+                        calculateMetaSequence(++index);
+                      });
+                    } else {
+                      calculateMetaSequence(++index);
+                    }
+                  });
+                };
+                var meta = [];
+                calculateMetaSequence(0);
               });
             };
             // copy it first
@@ -17734,7 +17752,7 @@
 
                 generateTopologySegment(index, len1).then(function(segment) {
                   projectedArcs[index++]=segment;
-                  if (index % 100 == 0) {
+                  if (index % 400 == 0) {
                     defer(function() {
                       generateTopologyArcs(index, totalLength);
                     })
@@ -17776,11 +17794,13 @@
                   }
                   calculateObjectsMeta(objects, values, path).then(function(response) {
                     var forceReductionFactor = 1 / (1 + response.sizeError);
+
                     // console.log("meta:", meta);
                     // console.log("  total area:", totalArea);
                     // console.log("  force reduction factor:", forceReductionFactor, "mean error:", sizeError);
-                    defer(function() {
-                      var len1,i1,delta,len2=projectedArcs.length,i2=0,delta,len3,i3,centroid,mass,radius,rSquared,dx,dy,distSquared,dist,Fij;
+                    var delta,centroid,mass,radius,rSquared,dx,dy,distSquared,dist,Fij;
+                    var updatePoint = function(i2, len2) {
+                      var len1,i1,delta,len3,i3,centroid,mass,radius,rSquared,dx,dy,distSquared,dist,Fij;
                       while(i2<len2){
                         len1=projectedArcs[i2].length;
                         i1=0;
@@ -17812,15 +17832,27 @@
                           i1++;
                         }
                         i2++;
-                      }
-                      // break if we hit the target size error
-                      if (response.sizeError <= 1) {
-                        resizeSegments(iterations, iterations);
-                      }
+                      }              
+                    };
+                    var updatePointSequence = function(start) {
+                      if (start >= projectedArcs.length) {
+                        if (response.sizeError <= 1) {
+                          resizeSegments(iterations, iterations);
+                          return;
+                        }
+                        defer(function() {
+                          resizeSegments(++index, iterations);
+                        })
+                        return;
+                      } 
+                      var end = Math.min(start + 400, projectedArcs.length);
+                      updatePoint(start, end);
                       defer(function() {
-                        resizeSegments(++index, iterations);
-                      })
-                    });
+                        updatePointSequence(end);
+                      });
+                    };
+                    updatePointSequence(0);
+                    // break if we hit the target size error
                   });
                 };
                 var iterationsDefer = new Promise();
@@ -23344,7 +23376,7 @@
           filter[timeDim] = this.time;
 
           this.data = this.model.marker.getKeys();
-          this.prev_steps = this.all_steps.filter(function(f){return f <= _this.time;});
+          this.prev_steps = this.all_steps.filter(function(f){return f < _this.time;});
 
           this.entityLines = this.linesContainer.selectAll('.vzb-lc-entity').data(this.data);
           this.entityLabels = this.labelsContainer.selectAll('.vzb-lc-entity').data(this.data);
@@ -23620,218 +23652,224 @@
         redrawDataPoints: function() {
           var _this = this;
           var KEY = this.KEY;
-          var values = this.values;
+      //    var values = this.values;
 
-          if(!this.timeUpdatedOnce) {
-            this.updateTime();
-          }
+          this.model.marker.getFrame(this.time, function(values, time) {
 
-          if(!this.sizeUpdatedOnce) {
-            this.updateSize();
-          }
+            if(!_this.timeUpdatedOnce) {
+              _this.updateTime();
+            }
 
-          this.entityLabels.exit().remove();
-          this.entityLines.exit().remove();
+            if(!_this.sizeUpdatedOnce) {
+              _this.updateSize();
+            }    
+            
+            _this.entityLabels.exit().remove();
+            _this.entityLines.exit().remove();
 
-          this.entityLines.enter().append("g")
-            .attr("class", "vzb-lc-entity")
-            .each(function(d, index) {
-              var entity = d3.select(this);
+            _this.entityLines.enter().append("g")
+              .attr("class", "vzb-lc-entity")
+              .each(function(d, index) {
+                var entity = d3.select(this);
 
-              entity.append("path")
-                .attr("class", "vzb-lc-line-shadow")
-                .attr("transform", "translate(0,2)");
+                entity.append("path")
+                  .attr("class", "vzb-lc-line-shadow")
+                  .attr("transform", "translate(0,2)");
 
-              entity.append("path")
-                .attr("class", "vzb-lc-line");
+                entity.append("path")
+                  .attr("class", "vzb-lc-line");
 
-            });
+              });
 
-          this.entityLabels.enter().append("g")
-            .attr("class", "vzb-lc-entity")
-            .each(function(d, index) {
-              var entity = d3.select(this);
-              var label = values.label[d[KEY]];
+            _this.entityLabels.enter().append("g")
+              .attr("class", "vzb-lc-entity")
+              .each(function(d, index) {
+                var entity = d3.select(this);
+                var label = values.label[d[KEY]];
 
-              entity.append("circle")
-                .attr("class", "vzb-lc-circle")
-                .attr("cx", 0);
+                entity.append("circle")
+                  .attr("class", "vzb-lc-circle")
+                  .attr("cx", 0);
 
-              var labelGroup = entity.append("g").attr("class", "vzb-lc-label");
+                var labelGroup = entity.append("g").attr("class", "vzb-lc-label");
 
-              labelGroup.append("text")
-                .attr("class", "vzb-lc-labelname")
-                .attr("dy", ".35em");
+                labelGroup.append("text")
+                  .attr("class", "vzb-lc-labelname")
+                  .attr("dy", ".35em");
 
-              labelGroup.append("text")
-                .attr("class", "vzb-lc-label-value")
-                .attr("dy", "1.6em");
-            });
+                labelGroup.append("text")
+                  .attr("class", "vzb-lc-label-value")
+                  .attr("dy", "1.6em");
+              });
+                  
+            _this.entityLines
+              .each(function(d, index) {
+                var entity = d3.select(this);
+                var label = values.label[d[KEY]];
 
-          this.entityLines
-            .each(function(d, index) {
-              var entity = d3.select(this);
-              var label = values.label[d[KEY]];
+                var color = _this.cScale(values.color[d[KEY]]);
+                var colorShadow = _this.model.marker.color.which == "geo.world_4region"?
+                    _this.model.marker.color.getColorShade({
+                      colorID: values.color[d[KEY]],
+                      shadeID: "shade"
+                    })
+                    :
+                    d3.rgb(color).darker(0.5).toString();
 
-              var color = _this.cScale(values.color[d[KEY]]);
-              var colorShadow = _this.model.marker.color.which == "geo.world_4region"?
-                  _this.model.marker.color.getColorShade({
-                    colorID: values.color[d[KEY]],
-                    shadeID: "shade"
-                  })
-                  :
-                  d3.rgb(color).darker(0.5).toString();
-
-              //TODO: optimization is possible if getValues would return both x and time
-              //TODO: optimization is possible if getValues would return a limited number of points, say 1 point per screen pixel
-              var xy = _this.prev_steps.map(function(frame, i) {
-                      return [+frame,  _this.all_values[frame] ? +_this.all_values[frame].axis_y[d[KEY]] : null] ;
-                  })
-                  .filter(function(d) { return d[1] || d[1] === 0; });
-              _this.cached[d[KEY]] = {
-                valueY: xy[xy.length - 1][1]
-              };
+                //TODO: optimization is possible if getValues would return both x and time
+                //TODO: optimization is possible if getValues would return a limited number of points, say 1 point per screen pixel
+                var xy = _this.prev_steps.map(function(frame, i) {
+                        return [+frame,  _this.all_values[frame] ? +_this.all_values[frame].axis_y[d[KEY]] : null] ;
+                    })
+                    .filter(function(d) { return d[1] || d[1] === 0; });
+                xy.push([+time, +values.axis_y[d[KEY]]]);
+                _this.cached[d[KEY]] = {
+                  valueY: xy[xy.length - 1][1]
+                };
 
 
-              // the following fixes the ugly line butts sticking out of the axis line
-              //if(x[0]!=null && x[1]!=null) xy.splice(1, 0, [(+x[0]*0.99+x[1]*0.01), y[0]]);
-              var path2 = entity.select(".vzb-lc-line");
-              var totalLength = path2.node().getTotalLength();
+                // the following fixes the ugly line butts sticking out of the axis line
+                //if(x[0]!=null && x[1]!=null) xy.splice(1, 0, [(+x[0]*0.99+x[1]*0.01), y[0]]);
+                var path2 = entity.select(".vzb-lc-line");
 
-              var path1 = entity.select(".vzb-lc-line-shadow")
-                .attr("stroke-dasharray", totalLength)
-                .style("stroke", colorShadow)
-                .attr("d", _this.line(xy));
-              path2
-                //.style("filter", "none")
-                .attr("stroke-dasharray", totalLength)
-                .style("stroke", color)
-                .attr("d", _this.line(xy));
+                if(_this.model.time.playing && _this.totalLength_1[d[KEY]] === null) {
+                  _this.totalLength_1[d[KEY]] = path2.node().getTotalLength();
+                }
 
-              // this section ensures the smooth transition while playing and not needed otherwise
-              if(_this.model.time.playing) {
+                var path1 = entity.select(".vzb-lc-line-shadow")
+                  .style("stroke", colorShadow)
+                  .attr("d", _this.line(xy));
+                path2
+                  //.style("filter", "none")
+                  .style("stroke", color)
+                  .attr("d", _this.line(xy));
 
-                if(_this.totalLength_1[d[KEY]] === null) {
+                var totalLength = path2.node().getTotalLength();
+
+                // this section ensures the smooth transition while playing and not needed otherwise
+                if(_this.model.time.playing) {
+
+                  path1
+                    .interrupt()
+                    .attr("stroke-dasharray", totalLength)
+                    .attr("stroke-dashoffset", totalLength - _this.totalLength_1[d[KEY]])
+                    .transition()
+                    .delay(0)
+                    .duration(_this.duration)
+                    .ease("linear")
+                    .attr("stroke-dashoffset", 0);
+                  path2
+                    .interrupt()
+                    .attr("stroke-dasharray", totalLength)
+                    .attr("stroke-dashoffset", totalLength - _this.totalLength_1[d[KEY]])
+                    .transition()
+                    .delay(0)
+                    .duration(_this.duration)
+                    .ease("linear")
+                    .attr("stroke-dashoffset", 0);
+
                   _this.totalLength_1[d[KEY]] = totalLength;
+                } else {
+                  //reset saved line lengths
+                  _this.totalLength_1[d[KEY]] = null;
+
+                  path1
+                    .attr("stroke-dasharray", "none")
+                    .attr("stroke-dashoffset", "none");
+
+                  path2
+                    .attr("stroke-dasharray", "none")
+                    .attr("stroke-dashoffset", "none");
                 }
 
-                path1
-                  .interrupt()
-                  .attr("stroke-dashoffset", totalLength - _this.totalLength_1[d[KEY]])
+              });
+
+            _this.entityLabels
+              .each(function(d, index) {
+                var entity = d3.select(this);
+                var label = values.label[d[KEY]];
+
+                var color = _this.cScale(values.color[d[KEY]]);
+                var colorShadow = _this.model.marker.color.which == "geo.world_4region"?
+                    _this.model.marker.color.getColorShade({
+                      colorID: values.color[d[KEY]],
+                      shadeID: "shade"
+                    })
+                    :
+                    d3.rgb(color).darker(0.5).toString();
+
+
+                entity.select(".vzb-lc-circle")
+                  .style("fill", color)
                   .transition()
-                  .delay(0)
                   .duration(_this.duration)
                   .ease("linear")
-                  .attr("stroke-dashoffset", 0);
-                path2
-                  .interrupt()
-                  .attr("stroke-dashoffset", totalLength - _this.totalLength_1[d[KEY]])
+                  .attr("r", _this.activeProfile.lollipopRadius)
+                  .attr("cy", _this.yScale(_this.cached[d[KEY]].valueY) + 1);
+
+
+                entity.select(".vzb-lc-label")
                   .transition()
-                  .delay(0)
                   .duration(_this.duration)
                   .ease("linear")
-                  .attr("stroke-dashoffset", 0);
-
-                _this.totalLength_1[d[KEY]] = totalLength;
-              } else {
-                //reset saved line lengths
-                _this.totalLength_1[d[KEY]] = null;
-
-                path1
-                  .attr("stroke-dasharray", "none")
-                  .attr("stroke-dashoffset", "none");
-
-                path2
-                  .attr("stroke-dasharray", "none")
-                  .attr("stroke-dashoffset", "none");
-              }
-
-            });
-
-          this.entityLabels
-            .each(function(d, index) {
-              var entity = d3.select(this);
-              var label = values.label[d[KEY]];
-
-              var color = _this.cScale(values.color[d[KEY]]);
-              var colorShadow = _this.model.marker.color.which == "geo.world_4region"?
-                  _this.model.marker.color.getColorShade({
-                    colorID: values.color[d[KEY]],
-                    shadeID: "shade"
-                  })
-                  :
-                  d3.rgb(color).darker(0.5).toString();
+                  .attr("transform", "translate(0," + _this.yScale(_this.cached[d[KEY]].valueY) + ")");
 
 
-              entity.select(".vzb-lc-circle")
-                .style("fill", color)
-                .transition()
-                .duration(_this.duration)
-                .ease("linear")
-                .attr("r", _this.activeProfile.lollipopRadius)
-                .attr("cy", _this.yScale(_this.cached[d[KEY]].valueY) + 1);
+                var value = _this.yAxis.tickFormat()(_this.cached[d[KEY]].valueY);
+                var name = label.length < 13 ? label : label.substring(0, 10) + '...';
+                var valueHideLimit = _this.ui.chart.labels.min_number_of_entities_when_values_hide;
 
+                var t = entity.select(".vzb-lc-labelname")
+                  .style("fill", colorShadow)
+                  .attr("dx", _this.activeProfile.text_padding)
+                  .text(name + " " + (_this.data.length < valueHideLimit ? value : ""));
 
-              entity.select(".vzb-lc-label")
-                .transition()
-                .duration(_this.duration)
-                .ease("linear")
-                .attr("transform", "translate(0," + _this.yScale(_this.cached[d[KEY]].valueY) + ")");
+                entity.select(".vzb-lc-label-value")
+                  .style("fill", colorShadow)
+                  .attr("dx", _this.activeProfile.text_padding)
+                  .text("");
 
+                if(_this.data.length < valueHideLimit) {
 
-              var value = _this.yAxis.tickFormat()(_this.cached[d[KEY]].valueY);
-              var name = label.length < 13 ? label : label.substring(0, 10) + '...';
-              var valueHideLimit = _this.ui.chart.labels.min_number_of_entities_when_values_hide;
+                  var size = _this.xScale(_this.time) + t[0][0].getComputedTextLength() + _this.activeProfile.text_padding;
+                  var width = _this.width + _this.margin.right;
 
-              var t = entity.select(".vzb-lc-labelname")
-                .style("fill", colorShadow)
-                .attr("dx", _this.activeProfile.text_padding)
-                .text(name + " " + (_this.data.length < valueHideLimit ? value : ""));
-
-              entity.select(".vzb-lc-label-value")
-                .style("fill", colorShadow)
-                .attr("dx", _this.activeProfile.text_padding)
-                .text("");
-
-              if(_this.data.length < valueHideLimit) {
-
-                var size = _this.xScale(_this.time) + t[0][0].getComputedTextLength() + _this.activeProfile.text_padding;
-                var width = _this.width + _this.margin.right;
-
-                if(size > width) {
-                  entity.select(".vzb-lc-labelname").text(name);
-                  entity.select(".vzb-lc-label-value").text(value);
+                  if(size > width) {
+                    entity.select(".vzb-lc-labelname").text(name);
+                    entity.select(".vzb-lc-label-value").text(value);
+                  }
                 }
-              }
-            });
-          this.labelsContainer
-            .transition()
-            .duration(_this.duration)
-            .ease("linear")
-            .attr("transform", "translate(" + _this.xScale(d3.min([_this.model.marker.axis_x.zoomedMax, _this.time])) + ",0)");
+              });
+            _this.labelsContainer
+              .transition()
+              .duration(_this.duration)
+              .ease("linear")
+              .attr("transform", "translate(" + _this.xScale(d3.min([_this.model.marker.axis_x.zoomedMax, _this.time])) + ",0)");
 
-          this.verticalNow
-            .style("opacity", this.time - this.model.time.start === 0 || _this.hoveringNow ? 0 : 1);
+            _this.verticalNow
+              .style("opacity", _this.time - _this.model.time.start === 0 || _this.hoveringNow ? 0 : 1);
 
 
-          if(!this.hoveringNow) {
-            this.xAxisEl.call(
-              this.xAxis.highlightValue(_this.time).highlightTransDuration(_this.duration)
-            );
-          }
+            if(!_this.hoveringNow) {
+              _this.xAxisEl.call(
+                _this.xAxis.highlightValue(time).highlightTransDuration(_this.duration)
+              );
+            }
 
-          // Call flush() after any zero-duration transitions to synchronously flush the timer queue
-          // and thus make transition instantaneous. See https://github.com/mbostock/d3/issues/1951
-          if(_this.duration == 0) {
-            d3.timer.flush();
-          }
+            // Call flush() after any zero-duration transitions to synchronously flush the timer queue
+            // and thus make transition instantaneous. See https://github.com/mbostock/d3/issues/1951
+            if(_this.duration == 0) {
+              d3.timer.flush();
+            }
 
-          // cancel previously queued simulation if we just ordered a new one
-          // then order a new collision resolving
-          clearTimeout(_this.collisionTimeout);
-          _this.collisionTimeout = setTimeout(function() {
-            _this.entityLabels.call(_this.collisionResolver.data(_this.cached));
-          }, _this.model.time.delayAnimations * 1.5);
+            // cancel previously queued simulation if we just ordered a new one
+            // then order a new collision resolving
+            clearTimeout(_this.collisionTimeout);
+            _this.collisionTimeout = setTimeout(function() {
+              _this.entityLabels.call(_this.collisionResolver.data(_this.cached));
+            }, _this.model.time.delayAnimations * 1.5);
+          
+          });  
         },
 
         entityMousemove: function(me, index, context, closestToMouse) {
@@ -28479,6 +28517,7 @@
           this.borderArcs = null;
           this.defaultWidth = 700;
           this.defaultHeight = 550;
+          this.updateEntitiesQueue = [];
           this.boundBox = [[0.05, 0.0], [0.95, 1.0]]; // two points to set box bound on 960 * 500 image;
           d3_geo_projection();
           this.cached = [];
@@ -28564,7 +28603,11 @@
             .range(this.parent.datawarning_content.doubtRange);
 
           this.cartogram.iterations(0);
+          this.redrawInProgress = true;
+
           this.cartogram(this.world, this.geometries).then(function(response) {
+            _this.redrawInProgress = false;
+
             _this.features = _this.topo_features = response.features;
             _this.lands = _this.mapGraph.selectAll(".land")
               .data(_this.topo_features)
@@ -28654,9 +28697,19 @@
           return this.cached[year];
         },
          
-        updateEntities: function(duration) {
+        _redrawEntities: function() {
           var _this = this;
-          var time = this.model.time.value;
+          if (this.updateEntitiesQueue.length == 0) return;
+          if (this.redrawInProgress) {
+            setTimeout(function() {
+              _this._redrawEntities();
+            }, 100);
+            return;
+          }
+          this.redrawInProgress = true;
+          var time = this.updateEntitiesQueue[this.updateEntitiesQueue.length - 1].time;
+          var duration = this.updateEntitiesQueue[this.updateEntitiesQueue.length - 1].duration;
+          this.updateEntitiesQueue = [];
           if(this.model.ui.chart.lockNonSelected) {
             time = this.model.time.timeFormat.parse("" + this.model.ui.chart.lockNonSelected);
           }
@@ -28671,18 +28724,24 @@
                 if (_this.model.ui.chart.lockNonSelected) {
                   var size1 = _this.sScale(lockedFrame.size[_this._getKey(d)])/* * _this._calculateTotalSize(_this.model.time.value, _this.values.size)*/,
                     size2 = _this.sScale(_this.values.size[_this._getKey(d)])/* * _this._calculateTotalSize(time, lockedFrame.size)*/;
-                  return d3.geo.path().projection(null).area(d) * Math.pow((size2 / size1), 3);  
+                  return d3.geo.path().projection(null).area(d) * Math.pow((size2 / size1), 2);  
                 } else {
                   return _this.sScale(_this.values.size[_this._getKey(d)]);
                 }
               });
-      /*
-              if (_this.model.ui.chart.lockNonSelected) {
-                totValue = d3.sum(areas);
-              }
-      */
+              /*
+               if (_this.model.ui.chart.lockNonSelected) {
+               totValue = d3.sum(areas);
+               }
+               */
             }
+            var calcDuration = 0;
+            var start = new Date().getTime();
             _this.cartogram(_this.world, _this.geometries, totValue).then(function(response) {
+              var end = new Date().getTime();
+              if (duration) { // increale duration for prevent gaps between frames
+                duration = Math.max(duration, end - start);
+              }
               _this.features = response.features;
               if (_this.borderArcs) {
                 var data = _this.cartogram.stitchArcs(response, _this.borderArcs);
@@ -28722,11 +28781,20 @@
                     return _this.values.color[_this._getKey(d)]!=null?_this.cScale(_this.values.color[_this._getKey(d)]):_this.COLOR_LAND_DEFAULT;
                   })
                   .attr("d", _this.cartogram.path);
-                
+
               }
               _this.updateLandOpacity();
+              _this.redrawInProgress = false;
+              _this._redrawEntities();
             });
           });
+        },
+          
+        updateEntities: function(duration) {
+          var time = this.model.time.value;
+          
+          this.updateEntitiesQueue.push({time:time, duration: duration});
+          this._redrawEntities();
         },
 
         updateEntitityColor: function() {
@@ -33164,7 +33232,7 @@
         return promise;
 
       });
-      globals.version = "0.15.0-11"; globals.build = "1466160639021"; globals.templates = (function(templates) {templates['bubblesize.html'] = '<div class="vzb-bs-holder"> <svg class="vzb-bs-svg"> <g class="vzb-bs-slider-wrap"> <g class="vzb-bs-slider"> </g> </g> </svg> </div> ';templates['about.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/about") %> </div> <div class="vzb-dialog-content"> <p class="vzb-about-text0"></p> <p class="vzb-about-text1"></p> <br/> <p class="vzb-about-version"></p> <p class="vzb-about-updated"></p> <br/> <p class="vzb-about-text2"></p> <br/> <p class="vzb-about-report"></p> <br/> <p class="vzb-about-credits"></p> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['axes.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axes" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axes" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_x") %> <span class="vzb-xaxis-selector"></span> </p> <div class="vzb-xaxis-minmax vzb-dialog-paragraph"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_y") %> <span class="vzb-yaxis-selector"></span> </p> <div class="vzb-yaxis-minmax vzb-dialog-paragraph"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['axesmc.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axesmc" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axesmc" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <div class="vzb-yaxis-container"> <p class="vzb-dialog-sublabel"><%=t ( "hints/mount/maxYvalue") %></p> <form class="vzb-dialog-paragraph"> <label><input type="radio" name="ymax" value="immediate"><%=t ( "mount/maxYmode/immediate") %></label> <label><input type="radio" name="ymax" value="latest"><%=t ( "mount/maxYmode/latest") %></label> </form> </div> <div class="vzb-xaxis-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/logXstops") %> </p> <form class="vzb-dialog-paragraph"> <input type="checkbox" name="logstops" value="1">1 <input type="checkbox" name="logstops" value="2">2 <input type="checkbox" name="logstops" value="5">5 </form> </div> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/xlimits") %> </p> <div class="vzb-xlimits-container vzb-dialog-paragraph"></div> <div class="vzb-probe-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/probe") %> </p> <input type="text" class="vzb-probe-field" name="probe"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['colors.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="colors" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="colors" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/colors") %> <span class="vzb-caxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-clegend-container"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['find.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="find" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="find" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "dialogs/find") %> <span class="vzb-dialog-content vzb-find-filter"> <input id="vzb-find-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <div class="vzb-find-list">  </div> </div> <div class="vzb-dialog-buttons"> <div class="vzb-dialog-bubbleopacity vzb-dialog-control"></div> <div id="vzb-find-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['label.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/label") %> </div> <div class="vzb-dialog-content"> <span class="vzb-saxis-selector"></span> <div class="vzb-dialog-sizeslider"></div> <div class="vzb-removelabelbox-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['moreoptions.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="moreoptions" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="moreoptions" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ("buttons/more_options") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable"> <div class="vzb-dialog-options-buttonlist"> </div> <div class="vzb-accordion"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['opacity.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/opacity") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityRegular") %> </p> <div class="vzb-dialog-bubbleopacity-regular"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityNonselect") %> </p> <div class="vzb-dialog-bubbleopacity-selectdim"></div> </div> </div> </div> ';templates['presentation.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "dialogs/presentation") %> </div> <div class="vzb-dialog-content"> <div class="vzb-presentationmode-switch"></div> </div> </div> ';templates['show.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="show" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="show" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/show") %> <span class="vzb-dialog-content vzb-show-filter"> <input id="vzb-show-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/onlyshowthefollowing") %> </p> <div class="vzb-show-list">  </div> </div> <div class="vzb-dialog-buttons"> <div id="vzb-show-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['size.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="size" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="size" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/size") %> <span class="vzb-saxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-bubblesize"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['speed.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/speed") %> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-placeholder"></div> </div> </div> ';templates['stack.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="stack" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="stack" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/stack") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable">  <form class="vzb-howtostack vzb-dialog-paragraph"> <label> <input type="radio" name="stack" value="none"> <%=t ( "mount/stacking/none") %> </label> <label> <input type="radio" name="stack" value="geo.world_4region"> <%=t ( "mount/stacking/region") %> </label> <label> <input type="radio" name="stack" value="all"> <%=t ( "mount/stacking/world") %> </label> </form> <form class="vzb-howtomerge vzb-dialog-paragraph"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/howtomerge") %> </p> <label> <input type="radio" name="merge" value="none"> <%=t ( "mount/merging/none") %> </label> <label> <input type="radio" name="merge" value="grouped"> <%=t ( "mount/merging/region") %> </label> <label> <input type="radio" name="merge" value="stacked"> <%=t ( "mount/merging/world") %> </label> </form> <form class="vzb-manual-sorting"> <p class="vzb-dialog-sublabel"> <%=t ( "mount/manualSorting") %> </p> <div class="vzb-dialog-draggablelist vzb-dialog-control"></div> </form> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary">OK</div> </div> </div>';templates['zoom.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/zoom") %> <div class="vzb-dialog-zoom-buttonlist"></div> </div> <div class="vzb-dialog-content"> <div class="vzb-zoomonscrolling-switch"></div> <div class="vzb-adaptminmaxzoom-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['minmaxinputs.html'] = '<div class="vzb-mmi-holder"> <span class="vzb-mmi-domainmin-label"></span> <input type="text" class="vzb-mmi-domainmin" name="min"> <span class="vzb-mmi-domainmax-label"></span> <input type="text" class="vzb-mmi-domainmax" name="max"> <br class="vzb-mmi-break"/> <span class="vzb-mmi-zoomedmin-label"></span> <input type="text" class="vzb-mmi-zoomedmin" name="min"> <span class="vzb-mmi-zoomedmax-label"></span> <input type="text" class="vzb-mmi-zoomedmax" name="max"> </div>';templates['sizeslider.html'] = '<div class="vzb-szs-holder"> <svg class="vzb-szs-svg"> <g class="vzb-szs-slider-wrap"> <g class="vzb-szs-slider"> </g> </g> </svg> </div> ';templates['timeslider.html'] = '<div class="vzb-timeslider vzb-ts-loading"> <div class="vzb-ts-slider-wrapper"> <svg class="vzb-ts-slider"> <g> <g class="vzb-ts-slider-axis"></g> <g class="vzb-ts-slider-select"></g> <g class="vzb-ts-slider-slide"> <circle class="vzb-ts-slider-handle"></circle> <text class="vzb-ts-slider-value"></text> </g> </g> </svg> </div>  <div class="vzb-ts-btns"> <button class="vzb-ts-btn-loading vzb-ts-btn"> <div class="vzb-loader"></div> </button> <button class="vzb-ts-btn-play vzb-ts-btn"> <svg class="vzb-icon vzb-icon-play" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/> </svg> </button> <button class="vzb-ts-btn-pause vzb-ts-btn"> <svg class="vzb-icon vzb-icon-pause" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/> </svg> </button> </div> </div> ';templates['agepyramid.html'] = ' <svg class="vzb-agepyramid"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-title vzb-bc-title-right"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-x vzb-bc-axis-x-left"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['axislabeler.html'] = ' <svg class="vzb-axislabeler"> <g class="vzb-al-graph"> <g class="vzb-al-axis-x"></g> <g class="vzb-al-axis-y"></g> </g> </svg> ';templates['barchart.html'] = ' <svg class="vzb-barchart"> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-bar-labels"></g> <g class="vzb-bc-axis-y-title"></g> <text class="vzb-bc-year"></text> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['barrank.html'] = ' <div class="vzb-barrankchart"> <svg class="vzb-br-header"> <text class="vzb-br-title"></text> <text class="vzb-br-total"></text> </svg> <div class="barsviewport"> <svg class="vzb-br-bars-svg"> <g class="vzb-br-bars"></g> </svg> </div> </div> ';templates['bubblechart.html'] = ' <div class="vzb-bubblechart"> <svg class="vzb-bubblechart-svg vzb-export"> <g class="vzb-bc-graph"> <g class="vzb-bc-year"></g> <svg class="vzb-bc-axis-x"><g></g></svg> <svg class="vzb-bc-axis-y"><g></g></svg> <line class="vzb-bc-projection-x"></line> <line class="vzb-bc-projection-y"></line> <svg class="vzb-bc-bubbles-crop"> <rect class="vzb-bc-eventarea"></rect> <g class="vzb-bc-trails"></g> <g class="vzb-bc-bubbles"></g> <g class="vzb-bc-lines"></g> <g class="vzb-bc-bubble-crown vzb-hidden"> <circle class="vzb-crown-glow"></circle> <circle class="vzb-crown"></circle> </g> </svg> <g class="vzb-bc-axis-y-title"></g> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-s-title"></g> <g class="vzb-bc-axis-c-title"></g> <g class="vzb-bc-axis-y-info vzb-noexport"></g> <g class="vzb-bc-axis-x-info vzb-noexport"></g> <svg class="vzb-bc-labels-crop"> <g class="vzb-bc-labels"></g> </svg> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <rect class="vzb-bc-zoom-rect"></rect> <g class="vzb-bc-tooltip vzb-hidden"> <rect class="vzb-tooltip-glow"></rect> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> <svg> <defs> <filter id="vzb-glow-filter" x="-50%" y="-50%" width="200%" height="200%"> <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur> </filter> </defs> </svg>  <div class="vzb-tooltip vzb-hidden vzb-tooltip-mobile"></div> </div> ';templates['bubblemap.html'] = ' <div class="vzb-bubblemap"> <svg class="vzb-bmc-map-background vzb-export"> <g class="vzb-bmc-map-graph"></g> </svg> <svg class="vzb-bubblemap-svg vzb-export"> <g class="vzb-bmc-graph"> <g class="vzb-bmc-year"></g> <g class="vzb-bmc-lines"></g> <g class="vzb-bmc-bubbles"></g> <g class="vzb-bmc-bubble-labels"></g> <g class="vzb-bmc-axis-y-title"> <text></text> </g> <g class="vzb-bmc-axis-c-title"> <text></text> </g> <g class="vzb-bmc-axis-y-info vzb-noexport"> </g> <g class="vzb-bmc-axis-c-info vzb-noexport"> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <g class="vzb-bmc-labels"></g> <g class="vzb-bmc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['cartogram.html'] = ' <div class="vzb-cartogram"> <svg class="vzb-cartogram-svg"> <g class="vzb-ct-graph"> <g class="vzb-ct-year"></g> <svg class="vzb-ct-map-background vzb-export"> <g class="vzb-ct-map-graph"></g> </svg> <svg class="vzb-ct-labels-crop"> <g class="vzb-ct-labels"> <line class="vzb-ct-vertical-now"></line> </g> </svg> <g class="vzb-ct-axis-y-title"><text></text></g> <g class="vzb-ct-axis-c-title"><text></text></g> <g class="vzb-ct-axis-y-info"></g> <g class="vzb-ct-axis-c-info"></g> <g class="vzb-ct-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> </g> </svg> </div> ';templates['donutchart.html'] = ' <div class="vzb-donutchart"> <svg class="vzb-dc-graph">  </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['linechart.html'] = ' <div class="vzb-linechart"> <svg class="vzb-linechart-svg"> <g class="vzb-lc-graph"> <svg class="vzb-lc-axis-x"><g></g></svg> <svg class="vzb-lc-axis-y"><g></g></svg> <text class="vzb-lc-axis-x-value"></text> <text class="vzb-lc-axis-y-value"></text> <svg class="vzb-lc-lines-crop"> <svg class="vzb-lc-lines"></svg> <line class="vzb-lc-projection-x"></line> <line class="vzb-lc-projection-y"></line> </svg> <svg class="vzb-lc-labels-crop"> <g class="vzb-lc-labels"> <line class="vzb-lc-vertical-now"></line> </g> </svg> <g class="vzb-lc-axis-y-title"></g> <g class="vzb-lc-axis-x-title"></g> <g class="vzb-lc-axis-y-info"></g>  </g> </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['mountainchart.html'] = ' <div class="vzb-mountainchart"> <svg class="vzb-mountainchart-svg"> <g class="vzb-mc-graph"> <rect class="vzb-mc-eventarea"></rect> <g class="vzb-mc-year"></g> <g class="vzb-mc-mountains-mergestacked"></g> <g class="vzb-mc-mountains-mergegrouped"></g> <g class="vzb-mc-mountains"></g> <g class="vzb-mc-mountains-labels"></g> <g class="vzb-mc-axis-y-title"> <text></text> </g> <g class="vzb-mc-axis-x-title"> <text></text> </g> <g class="vzb-mc-axis-info"> </g> <g class="vzb-data-warning"> <svg></svg> <text></text> </g> <g class="vzb-mc-axis-x"></g> <g class="vzb-mc-axis-labels"></g> <g class="vzb-mc-probe"> <text class="vzb-shadow vzb-mc-probe-value-ul"></text> <text class="vzb-shadow vzb-mc-probe-value-ur"></text> <text class="vzb-shadow vzb-mc-probe-value-dl"></text> <text class="vzb-shadow vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-value-ul"></text> <text class="vzb-mc-probe-value-ur"></text> <text class="vzb-mc-probe-value-dl"></text> <text class="vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-extremepoverty"></text> <line></line> </g> <g class="vzb-mc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['popbyage.html'] = ' <svg class="vzb-popbyage"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> '; return templates})({});
+      globals.version = "0.15.0-13"; globals.build = "1466179462351"; globals.templates = (function(templates) {templates['bubblesize.html'] = '<div class="vzb-bs-holder"> <svg class="vzb-bs-svg"> <g class="vzb-bs-slider-wrap"> <g class="vzb-bs-slider"> </g> </g> </svg> </div> ';templates['about.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/about") %> </div> <div class="vzb-dialog-content"> <p class="vzb-about-text0"></p> <p class="vzb-about-text1"></p> <br/> <p class="vzb-about-version"></p> <p class="vzb-about-updated"></p> <br/> <p class="vzb-about-text2"></p> <br/> <p class="vzb-about-report"></p> <br/> <p class="vzb-about-credits"></p> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['axes.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axes" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axes" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_x") %> <span class="vzb-xaxis-selector"></span> </p> <div class="vzb-xaxis-minmax vzb-dialog-paragraph"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_y") %> <span class="vzb-yaxis-selector"></span> </p> <div class="vzb-yaxis-minmax vzb-dialog-paragraph"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['axesmc.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axesmc" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axesmc" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <div class="vzb-yaxis-container"> <p class="vzb-dialog-sublabel"><%=t ( "hints/mount/maxYvalue") %></p> <form class="vzb-dialog-paragraph"> <label><input type="radio" name="ymax" value="immediate"><%=t ( "mount/maxYmode/immediate") %></label> <label><input type="radio" name="ymax" value="latest"><%=t ( "mount/maxYmode/latest") %></label> </form> </div> <div class="vzb-xaxis-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/logXstops") %> </p> <form class="vzb-dialog-paragraph"> <input type="checkbox" name="logstops" value="1">1 <input type="checkbox" name="logstops" value="2">2 <input type="checkbox" name="logstops" value="5">5 </form> </div> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/xlimits") %> </p> <div class="vzb-xlimits-container vzb-dialog-paragraph"></div> <div class="vzb-probe-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/probe") %> </p> <input type="text" class="vzb-probe-field" name="probe"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['colors.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="colors" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="colors" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/colors") %> <span class="vzb-caxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-clegend-container"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['find.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="find" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="find" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "dialogs/find") %> <span class="vzb-dialog-content vzb-find-filter"> <input id="vzb-find-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <div class="vzb-find-list">  </div> </div> <div class="vzb-dialog-buttons"> <div class="vzb-dialog-bubbleopacity vzb-dialog-control"></div> <div id="vzb-find-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['label.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/label") %> </div> <div class="vzb-dialog-content"> <span class="vzb-saxis-selector"></span> <div class="vzb-dialog-sizeslider"></div> <div class="vzb-removelabelbox-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['moreoptions.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="moreoptions" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="moreoptions" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ("buttons/more_options") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable"> <div class="vzb-dialog-options-buttonlist"> </div> <div class="vzb-accordion"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['opacity.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/opacity") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityRegular") %> </p> <div class="vzb-dialog-bubbleopacity-regular"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityNonselect") %> </p> <div class="vzb-dialog-bubbleopacity-selectdim"></div> </div> </div> </div> ';templates['presentation.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "dialogs/presentation") %> </div> <div class="vzb-dialog-content"> <div class="vzb-presentationmode-switch"></div> </div> </div> ';templates['show.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="show" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="show" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/show") %> <span class="vzb-dialog-content vzb-show-filter"> <input id="vzb-show-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/onlyshowthefollowing") %> </p> <div class="vzb-show-list">  </div> </div> <div class="vzb-dialog-buttons"> <div id="vzb-show-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['size.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="size" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="size" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/size") %> <span class="vzb-saxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-bubblesize"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['speed.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/speed") %> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-placeholder"></div> </div> </div> ';templates['stack.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="stack" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="stack" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/stack") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable">  <form class="vzb-howtostack vzb-dialog-paragraph"> <label> <input type="radio" name="stack" value="none"> <%=t ( "mount/stacking/none") %> </label> <label> <input type="radio" name="stack" value="geo.world_4region"> <%=t ( "mount/stacking/region") %> </label> <label> <input type="radio" name="stack" value="all"> <%=t ( "mount/stacking/world") %> </label> </form> <form class="vzb-howtomerge vzb-dialog-paragraph"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/howtomerge") %> </p> <label> <input type="radio" name="merge" value="none"> <%=t ( "mount/merging/none") %> </label> <label> <input type="radio" name="merge" value="grouped"> <%=t ( "mount/merging/region") %> </label> <label> <input type="radio" name="merge" value="stacked"> <%=t ( "mount/merging/world") %> </label> </form> <form class="vzb-manual-sorting"> <p class="vzb-dialog-sublabel"> <%=t ( "mount/manualSorting") %> </p> <div class="vzb-dialog-draggablelist vzb-dialog-control"></div> </form> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary">OK</div> </div> </div>';templates['zoom.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/zoom") %> <div class="vzb-dialog-zoom-buttonlist"></div> </div> <div class="vzb-dialog-content"> <div class="vzb-zoomonscrolling-switch"></div> <div class="vzb-adaptminmaxzoom-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['minmaxinputs.html'] = '<div class="vzb-mmi-holder"> <span class="vzb-mmi-domainmin-label"></span> <input type="text" class="vzb-mmi-domainmin" name="min"> <span class="vzb-mmi-domainmax-label"></span> <input type="text" class="vzb-mmi-domainmax" name="max"> <br class="vzb-mmi-break"/> <span class="vzb-mmi-zoomedmin-label"></span> <input type="text" class="vzb-mmi-zoomedmin" name="min"> <span class="vzb-mmi-zoomedmax-label"></span> <input type="text" class="vzb-mmi-zoomedmax" name="max"> </div>';templates['sizeslider.html'] = '<div class="vzb-szs-holder"> <svg class="vzb-szs-svg"> <g class="vzb-szs-slider-wrap"> <g class="vzb-szs-slider"> </g> </g> </svg> </div> ';templates['timeslider.html'] = '<div class="vzb-timeslider vzb-ts-loading"> <div class="vzb-ts-slider-wrapper"> <svg class="vzb-ts-slider"> <g> <g class="vzb-ts-slider-axis"></g> <g class="vzb-ts-slider-select"></g> <g class="vzb-ts-slider-slide"> <circle class="vzb-ts-slider-handle"></circle> <text class="vzb-ts-slider-value"></text> </g> </g> </svg> </div>  <div class="vzb-ts-btns"> <button class="vzb-ts-btn-loading vzb-ts-btn"> <div class="vzb-loader"></div> </button> <button class="vzb-ts-btn-play vzb-ts-btn"> <svg class="vzb-icon vzb-icon-play" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/> </svg> </button> <button class="vzb-ts-btn-pause vzb-ts-btn"> <svg class="vzb-icon vzb-icon-pause" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/> </svg> </button> </div> </div> ';templates['agepyramid.html'] = ' <svg class="vzb-agepyramid"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-title vzb-bc-title-right"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-x vzb-bc-axis-x-left"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['axislabeler.html'] = ' <svg class="vzb-axislabeler"> <g class="vzb-al-graph"> <g class="vzb-al-axis-x"></g> <g class="vzb-al-axis-y"></g> </g> </svg> ';templates['barchart.html'] = ' <svg class="vzb-barchart"> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-bar-labels"></g> <g class="vzb-bc-axis-y-title"></g> <text class="vzb-bc-year"></text> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['barrank.html'] = ' <div class="vzb-barrankchart"> <svg class="vzb-br-header"> <text class="vzb-br-title"></text> <text class="vzb-br-total"></text> </svg> <div class="barsviewport"> <svg class="vzb-br-bars-svg"> <g class="vzb-br-bars"></g> </svg> </div> </div> ';templates['bubblechart.html'] = ' <div class="vzb-bubblechart"> <svg class="vzb-bubblechart-svg vzb-export"> <g class="vzb-bc-graph"> <g class="vzb-bc-year"></g> <svg class="vzb-bc-axis-x"><g></g></svg> <svg class="vzb-bc-axis-y"><g></g></svg> <line class="vzb-bc-projection-x"></line> <line class="vzb-bc-projection-y"></line> <svg class="vzb-bc-bubbles-crop"> <rect class="vzb-bc-eventarea"></rect> <g class="vzb-bc-trails"></g> <g class="vzb-bc-bubbles"></g> <g class="vzb-bc-lines"></g> <g class="vzb-bc-bubble-crown vzb-hidden"> <circle class="vzb-crown-glow"></circle> <circle class="vzb-crown"></circle> </g> </svg> <g class="vzb-bc-axis-y-title"></g> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-s-title"></g> <g class="vzb-bc-axis-c-title"></g> <g class="vzb-bc-axis-y-info vzb-noexport"></g> <g class="vzb-bc-axis-x-info vzb-noexport"></g> <svg class="vzb-bc-labels-crop"> <g class="vzb-bc-labels"></g> </svg> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <rect class="vzb-bc-zoom-rect"></rect> <g class="vzb-bc-tooltip vzb-hidden"> <rect class="vzb-tooltip-glow"></rect> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> <svg> <defs> <filter id="vzb-glow-filter" x="-50%" y="-50%" width="200%" height="200%"> <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur> </filter> </defs> </svg>  <div class="vzb-tooltip vzb-hidden vzb-tooltip-mobile"></div> </div> ';templates['bubblemap.html'] = ' <div class="vzb-bubblemap"> <svg class="vzb-bmc-map-background vzb-export"> <g class="vzb-bmc-map-graph"></g> </svg> <svg class="vzb-bubblemap-svg vzb-export"> <g class="vzb-bmc-graph"> <g class="vzb-bmc-year"></g> <g class="vzb-bmc-lines"></g> <g class="vzb-bmc-bubbles"></g> <g class="vzb-bmc-bubble-labels"></g> <g class="vzb-bmc-axis-y-title"> <text></text> </g> <g class="vzb-bmc-axis-c-title"> <text></text> </g> <g class="vzb-bmc-axis-y-info vzb-noexport"> </g> <g class="vzb-bmc-axis-c-info vzb-noexport"> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <g class="vzb-bmc-labels"></g> <g class="vzb-bmc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['cartogram.html'] = ' <div class="vzb-cartogram"> <svg class="vzb-cartogram-svg"> <g class="vzb-ct-graph"> <g class="vzb-ct-year"></g> <svg class="vzb-ct-map-background vzb-export"> <g class="vzb-ct-map-graph"></g> </svg> <svg class="vzb-ct-labels-crop"> <g class="vzb-ct-labels"> <line class="vzb-ct-vertical-now"></line> </g> </svg> <g class="vzb-ct-axis-y-title"><text></text></g> <g class="vzb-ct-axis-c-title"><text></text></g> <g class="vzb-ct-axis-y-info"></g> <g class="vzb-ct-axis-c-info"></g> <g class="vzb-ct-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> </g> </svg> </div> ';templates['donutchart.html'] = ' <div class="vzb-donutchart"> <svg class="vzb-dc-graph">  </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['linechart.html'] = ' <div class="vzb-linechart"> <svg class="vzb-linechart-svg"> <g class="vzb-lc-graph"> <svg class="vzb-lc-axis-x"><g></g></svg> <svg class="vzb-lc-axis-y"><g></g></svg> <text class="vzb-lc-axis-x-value"></text> <text class="vzb-lc-axis-y-value"></text> <svg class="vzb-lc-lines-crop"> <svg class="vzb-lc-lines"></svg> <line class="vzb-lc-projection-x"></line> <line class="vzb-lc-projection-y"></line> </svg> <svg class="vzb-lc-labels-crop"> <g class="vzb-lc-labels"> <line class="vzb-lc-vertical-now"></line> </g> </svg> <g class="vzb-lc-axis-y-title"></g> <g class="vzb-lc-axis-x-title"></g> <g class="vzb-lc-axis-y-info"></g>  </g> </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['mountainchart.html'] = ' <div class="vzb-mountainchart"> <svg class="vzb-mountainchart-svg"> <g class="vzb-mc-graph"> <rect class="vzb-mc-eventarea"></rect> <g class="vzb-mc-year"></g> <g class="vzb-mc-mountains-mergestacked"></g> <g class="vzb-mc-mountains-mergegrouped"></g> <g class="vzb-mc-mountains"></g> <g class="vzb-mc-mountains-labels"></g> <g class="vzb-mc-axis-y-title"> <text></text> </g> <g class="vzb-mc-axis-x-title"> <text></text> </g> <g class="vzb-mc-axis-info"> </g> <g class="vzb-data-warning"> <svg></svg> <text></text> </g> <g class="vzb-mc-axis-x"></g> <g class="vzb-mc-axis-labels"></g> <g class="vzb-mc-probe"> <text class="vzb-shadow vzb-mc-probe-value-ul"></text> <text class="vzb-shadow vzb-mc-probe-value-ur"></text> <text class="vzb-shadow vzb-mc-probe-value-dl"></text> <text class="vzb-shadow vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-value-ul"></text> <text class="vzb-mc-probe-value-ur"></text> <text class="vzb-mc-probe-value-dl"></text> <text class="vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-extremepoverty"></text> <line></line> </g> <g class="vzb-mc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['popbyage.html'] = ' <svg class="vzb-popbyage"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> '; return templates})({});
 
       return Vzb;
 

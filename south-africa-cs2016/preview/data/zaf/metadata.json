@@ -188,8 +188,8 @@
          "palette": {
             "99": "#ffe000",
             "80": "#ffe000",
-            "79": "#ff7070",
-            "60": "#ff7070",
+            "79": "#ffa62d",
+            "60": "#ffa62d",
             "59": "#db62b9",
             "40": "#db62b9",
             "39": "#9279e5",
@@ -242,6 +242,71 @@
         2011
       ]
     },
+
+    "population": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "availability": [
+        1996,
+        2011
+      ]
+    },
+
+    "black": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "availability": [
+        1996,
+        2011
+      ]
+    },
+
+    "coloured": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "availability": [
+        1996,
+        2011
+      ]
+    },
+
+    "indian": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "availability": [
+        1996,
+        2011
+      ]
+    },
+
+    "white": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "availability": [
+        1996,
+        2011
+      ]
+    },
     "age": {
       "use": "indicator",
       "scales": [
@@ -257,6 +322,27 @@
         1996,
         2011
       ]
+    },
+    "age_by_1_year": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "domain": [
+        20,
+        100
+      ],
+      "availability": [
+        1996,
+        2011
+      ]
+    },
+    "gender": {
+      "use": "property",
+      "scales": ["ordinal"],
+      "sourceLink": "https://github.com/open-numbers/ddf--gapminder--dim_geo_countries_and_groups/blob/master/ddf--list--geo--country.csv"
     },
     "sex": {
       "use": "property",

@@ -1,19 +1,19 @@
 {
   "_args": [
     [
-      "vizabi@0.15.0-11",
+      "vizabi@0.15.0-13",
       "/Users/angieskazka/south-africa-cs2016"
     ]
   ],
-  "_from": "vizabi@0.15.0-11",
-  "_id": "vizabi@0.15.0-11",
+  "_from": "vizabi@0.15.0-13",
+  "_id": "vizabi@0.15.0-13",
   "_inCache": true,
   "_installable": true,
   "_location": "/vizabi",
   "_nodeVersion": "5.9.1",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/vizabi-0.15.0-11.tgz_1466160668363_0.25805076444521546"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/vizabi-0.15.0-13.tgz_1466179492382_0.3845669375732541"
   },
   "_npmUser": {
     "email": "konzeptmeister@gmail.com",
@@ -23,18 +23,18 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "vizabi",
-    "raw": "vizabi@0.15.0-11",
-    "rawSpec": "0.15.0-11",
+    "raw": "vizabi@0.15.0-13",
+    "rawSpec": "0.15.0-13",
     "scope": null,
-    "spec": "0.15.0-11",
+    "spec": "0.15.0-13",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_shasum": "fb78d3f1078b2a6b8fae6180fd7083d57db55f07",
+  "_shasum": "e14a7ab2891af82757515e6c6a9d74eeb1a7cbbb",
   "_shrinkwrap": null,
-  "_spec": "vizabi@0.15.0-11",
+  "_spec": "vizabi@0.15.0-13",
   "_where": "/Users/angieskazka/south-africa-cs2016",
   "author": "",
   "bugs": {
@@ -58,16 +58,16 @@
     "connect-livereload": "0.5.4",
     "d3": "^3.5.6",
     "del": "2.2.0",
-    "es5-shim": "4.5.8",
+    "es5-shim": "4.5.9",
     "es6-shim": "0.35.1",
     "eslint": "2.12.0",
     "eslint-config-airbnb": "9.0.1",
     "eslint-plugin-import": "1.8.1",
-    "eslint-plugin-jsx-a11y": "1.4.2",
-    "eslint-plugin-react": "5.1.1",
+    "eslint-plugin-jsx-a11y": "1.5.3",
+    "eslint-plugin-react": "5.2.1",
     "event-stream": "3.3.2",
     "font-awesome": "^4.4.0",
-    "glob": "7.0.3",
+    "glob": "7.0.4",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.0",
     "gulp-bump": "2.1.0",
@@ -118,13 +118,13 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "fb78d3f1078b2a6b8fae6180fd7083d57db55f07",
-    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-11.tgz"
+    "shasum": "e14a7ab2891af82757515e6c6a9d74eeb1a7cbbb",
+    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-13.tgz"
   },
   "files": [
     "build/dist"
   ],
-  "gitHead": "1e22a850177cbe78af2435ee9ed6beec3342405f",
+  "gitHead": "c7cc127a876a159cf1c77f9e284da2a2d3bea4ca",
   "homepage": "http://vizabi.org",
   "license": "BSD-3-Clause",
   "main": "build/dist/vizabi.js",
@@ -158,5 +158,5 @@
     "e2e:local": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/.bin/protractor .cicd/protractor.conf.js",
     "test": "karma start karma.conf.js"
   },
-  "version": "0.15.0-11"
+  "version": "0.15.0-13"
 }
