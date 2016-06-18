@@ -1,9 +1,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="../../lib/vizabi/build/dist/vizabi.css">
-  <script src="../lib/d3.v3.min.js"></script>
-  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
+  <script src="lib/d3.v3.min.js"></script>
+  <script src="lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -11,12 +11,13 @@
   <script>
 
   var locationArray = window.location.href.split("/");
-  var localUrl = locationArray.splice(0, locationArray.indexOf("preview")).join("/")+"/";
+  var localUrl = locationArray.splice(0, locationArray.indexOf("preview")).join("/") + "preview/";
       
   Vizabi._globals.ext_resources = {
       host: localUrl,
-      translationPath: localUrl + 'dictionaries/en.json',
-      conceptpropsPath: localUrl + 'dictionaries/metadata.json'
+      preloadPath: 'data/',
+      dataPath: 'data/waffles/',
+      conceptpropsPath: localUrl + 'data/metadata.json'
     };    
     
   Vizabi('BubbleChart', document.getElementById('placeholder'), {
@@ -61,7 +62,7 @@
     },
     data: {
       reader: "csv",
-      path: "../datapoints/african-countries.csv",
+      path: "preview/data/african-countries.csv",
       splash: false
     },
     ui: {
@@ -69,7 +70,7 @@
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
-        'sidebar': ['colors', 'find', 'size'], 
+        'sidebar': ['colors', 'size'], 
         'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
       }
     }
