@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'geoslab703_md_bt_medium';
+  src: url('assets/fonts/geoslab703_md_bt_medium.woff2') format('woff2'),
+       url('assets/fonts/geoslab703_md_bt_medium.woff') format('woff'),
+       url('assets/fonts/geoslab703_md_bt_medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'geo703mi';
+  src: url('assets/fonts/geo703mi.woff2') format('woff2'),
+       url('assets/fonts/geo703mi.woff') format('woff'),
+       url('assets/fonts/geo703mi.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'cargts';
+  src: url('assets/fonts/cargts.woff2') format('woff2'),
+       url('assets/fonts/cargts.woff') format('woff'),
+       url('assets/fonts/cargts.ttf') format('truetype');
+}
+
+html, body {
+	overflow-y: hidden
+}
+
+.reveal .slides > section, .reveal .slides > section > section {
+  padding: 0;
+}
+
+.reveal .caption {
+}
+
+.reveal iframe {
+  width: 100%;
+  height: 80%;
+  max-width: 100%;
+}
+
+.reveal section img{
+  width: 80%;
+}
+
+header {
+	height: 10vh;
+	width: 100%;
+	background: url('assets/background.png');
+
+	text-align: left;
+}
+	header span {
+		display: inline-block;
+		margin-top: 1vh !important;
+		line-height: 10vh !important;
+		font-family: "cargts" !important;
+		font-size: 3vh !important;
+		padding-left: 30px !important;
+	}
+
+	header time {
+		color: white;
+		font-family: "geoslab703_md_bt_medium" !important;
+		font-size: 6vh !important;
+	}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+	footer #bar {
+		background: url('assets/background.png');
+		height: 1vh;
+		width: 100%;
+	}
+
+	footer img {
+		height: 5vh;
+		margin-top: 2vh !important;
+		margin-left: 30px !important;
+		float: left;
+	}
+
+	footer p {
+		height: 9vh !important;
+		font-size: 1.5vh !important;
+		color: #aaa;
+		display: inline-block;
+		line-height: 9vh !important;
+		margin-top: 0px !important;
+		vertical-align: middle !important;
+		float: right;
+		padding-right: 200px !important;
+	}

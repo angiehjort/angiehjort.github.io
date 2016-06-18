@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;'></div>
+  <script>
+
+//  d3.csv("../data/ddf--datapoints--challenge_rank--by--municipality--challenge.csv", function(r){
+//    var result = {};
+//    r.forEach(function(d){
+//      if(!result[d.geo]) {
+//        result[d.geo] = {time: 2016, geo: d.geo};
+//      }
+//      result[d.geo]["ch"+d.challenge] = d.challenge_rank;
+//      if(d.challenge_rank=="1")result[d.geo]["top_ch"] = "ch"+d.challenge;
+//      
+//    })
+//    
+//    var pushed = [];
+//    Object.keys(result).forEach(function(d){
+//      pushed.push(result[d]);
+//    })
+//    
+//    console.table(pushed);
+//  })
+    
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/zaf/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json',
+    shapePath: localUrl + 'maps/municipalities.json'
+  };
+
+  Vizabi('Cartogram', document.getElementById('placeholder'), {
+    state: {      
+      marker: {
+        color: {
+          which: "ch1"
+        }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/ddf--datapoints--challenge_rank--by--municipality--challenge.csv",
+      splash: false
+    },
+    ui: {
+      presentation: false,
+      buttons: ['colors', 'find', 'moreoptions'],
+      dialogs: {
+        'popup': ['colors', 'find', 'moreoptions'],
+        'sidebar': ['colors', 'find'],
+        'moreoptions': ['colors', 'about']
+      }
+    }
+  });
+    
+  d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
+  d3.select(".vzb-ct-year").classed("vzb-hidden",true);
+  d3.select(".vzb-data-warning").classed("vzb-hidden",true);
+  </script>
+</body>
+
+</html>
