@@ -1,9 +1,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
-  <script src="lib/d3.v3.min.js"></script>
-  <script src="lib/vizabi/build/dist/vizabi.js"></script>
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -24,20 +24,14 @@
     
   Vizabi('Cartogram', document.getElementById('placeholder'), {
     state: {
-      time: {
-        value: "1996",
-        start: "1996",
-        end: "2011",
-        startSelected: "1996",
-        endSelected: "2011"
-      },      
       marker: {
-        color: {
-          scaleType: "log"
-        },
         size: {
           use: "indicator",
           which: "zaf_population"
+        },
+        color: {
+          use: "indicator",
+          which: "black_population_percentage"
         }
       }
     },
@@ -48,8 +42,7 @@
     },
     ui: {
       chart: {
-        lockNonSelected: 1996,
-        lockActive: 1        
+        //lockNonSelected: 1996
       },
       presentation: false,
       buttons: [],

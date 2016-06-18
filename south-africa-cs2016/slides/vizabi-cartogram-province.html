@@ -1,9 +1,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="lib/vizabi/build/dist/vizabi.css">
-  <script src="lib/d3.v3.min.js"></script>
-  <script src="lib/vizabi/build/dist/vizabi.js"></script>
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -18,7 +18,7 @@
       preloadPath: 'data/zaf/',
       dataPath: 'data/zaf/waffles/',
       conceptpropsPath: localUrl + 'data/zaf/metadata.json',
-      shapePath: localUrl + 'data/zaf/municipalities.json'
+      shapePath: localUrl + 'data/zaf/provinces.json'
     };
     
     
@@ -29,28 +29,57 @@
         start: "1996",
         end: "2011",
         startSelected: "1996",
-        endSelected: "2011",
-        delay: 400,
-        delayThresholdX2: 200,
-        delayThresholdX4: 200       
-      },      
+        endSelected: "2011"
+      },
+      entities: {
+        dim: "province",
+        show: {
+         _defs_: {
+           "province.cat": ["province", "municipality"]
+         }
+        }
+      },
+      entities_minimap: {
+        dim: "province",
+        show: {
+         _defs_: {
+           "province.cat": ["province", "municipality"]
+         }
+        }
+      },
       marker: {
         color: {
-          which: "piped_water_percentage"
+          scaleType: "log"
+        },
+        size: {
+          use: "indicator",
+          which: "zaf_population"
+        },
+        label: {
+          which: "province.name"
+        }
+      },
+      marker_minimap: {
+        label: {
+          which: "province.name"
         }
       }
     },
     data: {
       reader: "csv",
-      path: "preview/data/ddf--datapoints--piped_water_percentage--electricity_lighting_percentage--by--year--municipality.csv",
+      path: "preview/data/ddf--datapoints--population--black_population--black_population_percentage--by--year--province.csv",
       splash: false
     },
     ui: {
+      chart: {
+        lockNonSelected: 1996,
+        lockActive: 1
+      },
       presentation: false,
-      buttons: ['colors', 'find', 'size', 'lock'],
+      buttons: ['lock'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'moreoptions'], 
-        'sidebar': ['colors', 'size'], 
+        'sidebar': ['colors', 'find', 'size'], 
         'moreoptions': ['size', 'colors', 'about']
       }
     }
