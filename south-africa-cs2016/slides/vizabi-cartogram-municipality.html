@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;'></div>
+  <script>
+    
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/zaf/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json',
+    shapePath: localUrl + 'maps/municipalities.json'
+  };
+    
+  var viz = Vizabi('Cartogram', document.getElementById('placeholder'), {
+    state: {
+      time: {
+        value: "1996",
+        start: "1996",
+        end: "2016",
+        startSelected: "1996",
+        endSelected: "2016"
+      },      
+      marker: {
+        color: {
+          scaleType: "log"
+        },
+        size: {
+          use: "indicator",
+          which: "population"
+        },
+        color: {
+          use: "indicator",
+          which: "population"
+        },
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/2016/ddf--datapoints--population--by--year--municipality.csv",
+      splash: false
+    },
+    ui: {
+      chart: {
+        lockNonSelected: 1996,
+        lockActive: 1        
+      },
+      presentation: false,
+      buttons: ['lock'],
+      dialogs: {
+        'popup': ['colors', 'find', 'size', 'moreoptions'], 
+        'sidebar': ['colors', 'find', 'size'], 
+        'moreoptions': ['size', 'colors', 'about']
+      }
+    }
+  });
+  viz.model.state.time._defaults.end = "2016";
+    
+  d3.select(".vzb-data-warning").classed("vzb-hidden",true);
+  </script>
+</body>
+
+</html>

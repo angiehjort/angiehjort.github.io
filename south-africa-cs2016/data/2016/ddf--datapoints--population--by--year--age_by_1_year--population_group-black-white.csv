@@ -1,0 +1,937 @@
+year,age_by_1_year,population_group,population
+1996,0,Black African,698472
+1996,0,White,54071
+1996,1,Black African,691100
+1996,1,White,51172
+1996,2,Black African,735442
+1996,2,White,52224
+1996,3,Black African,758814
+1996,3,White,54134
+1996,4,Black African,769175
+1996,4,White,57616
+1996,5,Black African,788628
+1996,5,White,60225
+1996,6,Black African,810542
+1996,6,White,62738
+1996,7,Black African,758889
+1996,7,White,61728
+1996,8,Black African,735702
+1996,8,White,61784
+1996,9,Black African,724346
+1996,9,White,62699
+1996,10,Black African,764046
+1996,10,White,67231
+1996,11,Black African,744420
+1996,11,White,69576
+1996,12,Black African,757482
+1996,12,White,71437
+1996,13,Black African,737425
+1996,13,White,72684
+1996,14,Black African,743307
+1996,14,White,74352
+1996,15,Black African,685854
+1996,15,White,72528
+1996,16,Black African,713589
+1996,16,White,72430
+1996,17,Black African,654216
+1996,17,White,67824
+1996,18,Black African,647433
+1996,18,White,66840
+1996,19,Black African,649226
+1996,19,White,65157
+1996,20,Black African,666494
+1996,20,White,70303
+1996,21,Black African,655759
+1996,21,White,69690
+1996,22,Black African,622239
+1996,22,White,68657
+1996,23,Black African,594035
+1996,23,White,68533
+1996,24,Black African,614556
+1996,24,White,71918
+1996,25,Black African,521598
+1996,25,White,72290
+1996,26,Black African,609245
+1996,26,White,73169
+1996,27,Black African,533675
+1996,27,White,70407
+1996,28,Black African,548672
+1996,28,White,70022
+1996,29,Black African,440406
+1996,29,White,67088
+1996,30,Black African,505308
+1996,30,White,69319
+1996,31,Black African,458300
+1996,31,White,64349
+1996,32,Black African,479686
+1996,32,White,68617
+1996,33,Black African,440234
+1996,33,White,67218
+1996,34,Black African,433974
+1996,34,White,68207
+1996,35,Black African,398637
+1996,35,White,69598
+1996,36,Black African,456480
+1996,36,White,72019
+1996,37,Black African,356505
+1996,37,White,66983
+1996,38,Black African,407602
+1996,38,White,69998
+1996,39,Black African,330115
+1996,39,White,65754
+1996,40,Black African,368295
+1996,40,White,70489
+1996,41,Black African,280889
+1996,41,White,61961
+1996,42,Black African,313122
+1996,42,White,64062
+1996,43,Black African,274180
+1996,43,White,61321
+1996,44,Black African,288899
+1996,44,White,59063
+1996,45,Black African,235556
+1996,45,White,59285
+1996,46,Black African,273240
+1996,46,White,58621
+1996,47,Black African,214960
+1996,47,White,57083
+1996,48,Black African,228915
+1996,48,White,59388
+1996,49,Black African,194439
+1996,49,White,58493
+1996,50,Black African,200607
+1996,50,White,57749
+1996,51,Black African,159342
+1996,51,White,50211
+1996,52,Black African,155183
+1996,52,White,51939
+1996,53,Black African,142140
+1996,53,White,47407
+1996,54,Black African,177828
+1996,54,White,46448
+1996,55,Black African,139831
+1996,55,White,44871
+1996,56,Black African,204111
+1996,56,White,45295
+1996,57,Black African,127498
+1996,57,White,42014
+1996,58,Black African,131332
+1996,58,White,41664
+1996,59,Black African,113324
+1996,59,White,38979
+1996,60,Black African,162363
+1996,60,White,40507
+1996,61,Black African,106175
+1996,61,White,34998
+1996,62,Black African,108805
+1996,62,White,33876
+1996,63,Black African,113523
+1996,63,White,33052
+1996,64,Black African,110818
+1996,64,White,32899
+1996,65,Black African,113018
+1996,65,White,34498
+1996,66,Black African,140514
+1996,66,White,33026
+1996,67,Black African,101580
+1996,67,White,30344
+1996,68,Black African,93693
+1996,68,White,29596
+1996,69,Black African,76249
+1996,69,White,27772
+1996,70,Black African,89735
+1996,70,White,28223
+1996,71,Black African,68659
+1996,71,White,24707
+1996,72,Black African,63800
+1996,72,White,24243
+1996,73,Black African,42519
+1996,73,White,22281
+1996,74,Black African,47492
+1996,74,White,21904
+1996,75,Black African,56550
+1996,75,White,21102
+1996,76,Black African,71202
+1996,76,White,20174
+1996,77,Black African,43458
+1996,77,White,15642
+1996,78,Black African,69560
+1996,78,White,15996
+1996,79,Black African,20556
+1996,79,White,13711
+1996,80,Black African,26767
+1996,80,White,13338
+1996,81,Black African,18322
+1996,81,White,11537
+1996,82,Black African,32830
+1996,82,White,11404
+1996,83,Black African,12834
+1996,83,White,10078
+1996,84,Black African,17658
+1996,84,White,8889
+1996,85,Black African,13881
+1996,85,White,7470
+1996,86,Black African,21833
+1996,86,White,6328
+1996,87,Black African,8329
+1996,87,White,5130
+1996,88,Black African,6332
+1996,88,White,4388
+1996,89,Black African,6037
+1996,89,White,3589
+1996,90,Black African,6882
+1996,90,White,2849
+1996,91,Black African,3744
+1996,91,White,2120
+1996,92,Black African,4170
+1996,92,White,1610
+1996,93,Black African,2986
+1996,93,White,1100
+1996,94,Black African,4301
+1996,94,White,745
+1996,95,Black African,4320
+1996,95,White,484
+1996,96,Black African,2392
+1996,96,White,286
+1996,97,Black African,603
+1996,97,White,98
+1996,98,Black African,571
+1996,98,White,76
+1996,99,Black African,1253
+1996,99,White,190
+1996,100,Black African,605
+1996,100,White,14
+1996,101,Black African,184
+1996,101,White,20
+1996,102,Black African,201
+1996,102,White,6
+1996,103,Black African,84
+1996,103,White,5
+1996,104,Black African,101
+1996,104,White,5
+1996,105,Black African,121
+1996,105,White,3
+1996,106,Black African,147
+1996,106,White,3
+1996,107,Black African,83
+1996,107,White,1
+1996,108,Black African,71
+1996,108,White,1
+1996,109,Black African,48
+1996,109,White,1
+1996,110,Black African,86
+1996,110,White,0
+1996,111,Black African,19
+1996,111,White,2
+1996,112,Black African,23
+1996,112,White,0
+1996,113,Black African,3
+1996,113,White,0
+1996,114,Black African,16
+1996,114,White,0
+1996,115,Black African,13
+1996,115,White,0
+1996,116,Black African,35
+1996,116,White,3
+2001,0,Black African,766978
+2001,0,White,45800
+2001,1,Black African,732234
+2001,1,White,45125
+2001,2,Black African,739108
+2001,2,White,45832
+2001,3,Black African,739369
+2001,3,White,45490
+2001,4,Black African,774505
+2001,4,White,47877
+2001,5,Black African,815555
+2001,5,White,53018
+2001,6,Black African,799549
+2001,6,White,52925
+2001,7,Black African,823421
+2001,7,White,51658
+2001,8,Black African,795776
+2001,8,White,53487
+2001,9,Black African,850862
+2001,9,White,58417
+2001,10,Black African,887389
+2001,10,White,62305
+2001,11,Black African,871842
+2001,11,White,63447
+2001,12,Black African,823136
+2001,12,White,62571
+2001,13,Black African,826111
+2001,13,White,63299
+2001,14,Black African,810115
+2001,14,White,65123
+2001,15,Black African,834477
+2001,15,White,68132
+2001,16,Black African,844767
+2001,16,White,73670
+2001,17,Black African,802810
+2001,17,White,72485
+2001,18,Black African,811096
+2001,18,White,72724
+2001,19,Black African,803110
+2001,19,White,66791
+2001,20,Black African,749073
+2001,20,White,64807
+2001,21,Black African,766378
+2001,21,White,62566
+2001,22,Black African,703302
+2001,22,White,55945
+2001,23,Black African,653108
+2001,23,White,54450
+2001,24,Black African,672736
+2001,24,White,56262
+2001,25,Black African,669169
+2001,25,White,60182
+2001,26,Black African,666253
+2001,26,White,59747
+2001,27,Black African,630453
+2001,27,White,61332
+2001,28,Black African,600519
+2001,28,White,62966
+2001,29,Black African,617775
+2001,29,White,67444
+2001,30,Black African,507650
+2001,30,White,71678
+2001,31,Black African,581716
+2001,31,White,70629
+2001,32,Black African,525815
+2001,32,White,68715
+2001,33,Black African,519893
+2001,33,White,67253
+2001,34,Black African,435843
+2001,34,White,66367
+2001,35,Black African,465730
+2001,35,White,65702
+2001,36,Black African,483102
+2001,36,White,65742
+2001,37,Black African,461818
+2001,37,White,66465
+2001,38,Black African,472360
+2001,38,White,68555
+2001,39,Black African,448305
+2001,39,White,68777
+2001,40,Black African,395155
+2001,40,White,70481
+2001,41,Black African,429118
+2001,41,White,69950
+2001,42,Black African,382165
+2001,42,White,67785
+2001,43,Black African,389975
+2001,43,White,67809
+2001,44,Black African,332716
+2001,44,White,64472
+2001,45,Black African,324079
+2001,45,White,62682
+2001,46,Black African,294549
+2001,46,White,60189
+2001,47,Black African,292292
+2001,47,White,58356
+2001,48,Black African,293569
+2001,48,White,57887
+2001,49,Black African,305862
+2001,49,White,57040
+2001,50,Black African,238851
+2001,50,White,57944
+2001,51,Black African,262844
+2001,51,White,54764
+2001,52,Black African,228581
+2001,52,White,54726
+2001,53,Black African,213587
+2001,53,White,54370
+2001,54,Black African,190978
+2001,54,White,55944
+2001,55,Black African,170419
+2001,55,White,52672
+2001,56,Black African,162982
+2001,56,White,49529
+2001,57,Black African,144200
+2001,57,White,48913
+2001,58,Black African,149102
+2001,58,White,46129
+2001,59,Black African,174551
+2001,59,White,44230
+2001,60,Black African,150553
+2001,60,White,44359
+2001,61,Black African,200371
+2001,61,White,42832
+2001,62,Black African,137878
+2001,62,White,40904
+2001,63,Black African,128508
+2001,63,White,39321
+2001,64,Black African,113525
+2001,64,White,37129
+2001,65,Black African,130170
+2001,65,White,35386
+2001,66,Black African,104987
+2001,66,White,32495
+2001,67,Black African,102451
+2001,67,White,30295
+2001,68,Black African,103215
+2001,68,White,29148
+2001,69,Black African,99269
+2001,69,White,28889
+2001,70,Black African,88255
+2001,70,White,29293
+2001,71,Black African,128411
+2001,71,White,28158
+2001,72,Black African,87668
+2001,72,White,25757
+2001,73,Black African,75550
+2001,73,White,24303
+2001,74,Black African,62668
+2001,74,White,22835
+2001,75,Black African,60877
+2001,75,White,21710
+2001,76,Black African,58071
+2001,76,White,19800
+2001,77,Black African,48953
+2001,77,White,18422
+2001,78,Black African,35589
+2001,78,White,16954
+2001,79,Black African,37798
+2001,79,White,16427
+2001,80,Black African,44729
+2001,80,White,15689
+2001,81,Black African,54229
+2001,81,White,13907
+2001,82,Black African,33957
+2001,82,White,10580
+2001,83,Black African,47017
+2001,83,White,10083
+2001,84,Black African,14423
+2001,84,White,8978
+2001,85,Black African,12858
+2001,85,White,6902
+2001,86,Black African,11907
+2001,86,White,6077
+2001,87,Black African,18813
+2001,87,White,5423
+2001,88,Black African,7520
+2001,88,White,4574
+2001,89,Black African,9548
+2001,89,White,3701
+2001,90,Black African,7965
+2001,90,White,2979
+2001,91,Black African,11277
+2001,91,White,2298
+2001,92,Black African,4721
+2001,92,White,1750
+2001,93,Black African,3147
+2001,93,White,1330
+2001,94,Black African,2607
+2001,94,White,1004
+2001,95,Black African,2909
+2001,95,White,698
+2001,96,Black African,2224
+2001,96,White,509
+2001,97,Black African,2199
+2001,97,White,357
+2001,98,Black African,1883
+2001,98,White,230
+2001,99,Black African,3317
+2001,99,White,208
+2001,100,Black African,2148
+2001,100,White,120
+2001,101,Black African,1338
+2001,101,White,86
+2001,102,Black African,442
+2001,102,White,23
+2001,103,Black African,208
+2001,103,White,7
+2001,104,Black African,182
+2001,104,White,12
+2001,105,Black African,218
+2001,105,White,3
+2001,106,Black African,116
+2001,106,White,2
+2001,107,Black African,64
+2001,107,White,2
+2001,108,Black African,52
+2001,108,White,1
+2001,109,Black African,74
+2001,109,White,1
+2001,110,Black African,88
+2001,110,White,4
+2001,111,Black African,126
+2001,111,White,5
+2001,112,Black African,51
+2001,112,White,1
+2001,113,Black African,37
+2001,113,White,8
+2001,114,Black African,28
+2001,114,White,6
+2001,115,Black African,31
+2001,115,White,4
+2001,116,Black African,169
+2001,116,White,20
+2011,0,Black African,988470
+2011,0,White,53198
+2011,1,Black African,963872
+2011,1,White,53150
+2011,2,Black African,973913
+2011,2,White,55726
+2011,3,Black African,965041
+2011,3,White,53728
+2011,4,Black African,939146
+2011,4,White,52466
+2011,5,Black African,892493
+2011,5,White,51411
+2011,6,Black African,878835
+2011,6,White,49792
+2011,7,Black African,803768
+2011,7,White,48439
+2011,8,Black African,749831
+2011,8,White,48016
+2011,9,Black African,729093
+2011,9,White,47910
+2011,10,Black African,758882
+2011,10,White,50529
+2011,11,Black African,780652
+2011,11,White,51920
+2011,12,Black African,745603
+2011,12,White,50690
+2011,13,Black African,752278
+2011,13,White,51575
+2011,14,Black African,780447
+2011,14,White,52639
+2011,15,Black African,818384
+2011,15,White,56049
+2011,16,Black African,816646
+2011,16,White,56796
+2011,17,Black African,841146
+2011,17,White,55338
+2011,18,Black African,832154
+2011,18,White,58115
+2011,19,Black African,863120
+2011,19,White,58596
+2011,20,Black African,917349
+2011,20,White,62841
+2011,21,Black African,944122
+2011,21,White,64727
+2011,22,Black African,881124
+2011,22,White,62463
+2011,23,Black African,882278
+2011,23,White,61938
+2011,24,Black African,854974
+2011,24,White,61648
+2011,25,Black African,870353
+2011,25,White,64495
+2011,26,Black African,869605
+2011,26,White,68294
+2011,27,Black African,819190
+2011,27,White,66848
+2011,28,Black African,810354
+2011,28,White,68481
+2011,29,Black African,787257
+2011,29,White,68238
+2011,30,Black African,697460
+2011,30,White,67230
+2011,31,Black African,710042
+2011,31,White,65298
+2011,32,Black African,654520
+2011,32,White,61775
+2011,33,Black African,581942
+2011,33,White,60893
+2011,34,Black African,593713
+2011,34,White,63133
+2011,35,Black African,577631
+2011,35,White,65373
+2011,36,Black African,566036
+2011,36,White,67413
+2011,37,Black African,518580
+2011,37,White,68004
+2011,38,Black African,506334
+2011,38,White,69333
+2011,39,Black African,505574
+2011,39,White,72193
+2011,40,Black African,430823
+2011,40,White,75314
+2011,41,Black African,483017
+2011,41,White,71414
+2011,42,Black African,449380
+2011,42,White,71653
+2011,43,Black African,441026
+2011,43,White,68394
+2011,44,Black African,360492
+2011,44,White,64699
+2011,45,Black African,378607
+2011,45,White,64298
+2011,46,Black African,385887
+2011,46,White,64507
+2011,47,Black African,387107
+2011,47,White,65683
+2011,48,Black African,387825
+2011,48,White,64870
+2011,49,Black African,362707
+2011,49,White,65826
+2011,50,Black African,310157
+2011,50,White,67092
+2011,51,Black African,349167
+2011,51,White,65724
+2011,52,Black African,308454
+2011,52,White,65343
+2011,53,Black African,316702
+2011,53,White,64379
+2011,54,Black African,275446
+2011,54,White,62000
+2011,55,Black African,265825
+2011,55,White,61655
+2011,56,Black African,251482
+2011,56,White,61296
+2011,57,Black African,241437
+2011,57,White,58530
+2011,58,Black African,240245
+2011,58,White,57529
+2011,59,Black African,243211
+2011,59,White,56587
+2011,60,Black African,189792
+2011,60,White,56456
+2011,61,Black African,216146
+2011,61,White,53733
+2011,62,Black African,181466
+2011,62,White,54356
+2011,63,Black African,173266
+2011,63,White,54841
+2011,64,Black African,152770
+2011,64,White,54271
+2011,65,Black African,135150
+2011,65,White,51224
+2011,66,Black African,120423
+2011,66,White,46831
+2011,67,Black African,112321
+2011,67,White,46845
+2011,68,Black African,112096
+2011,68,White,42355
+2011,69,Black African,121069
+2011,69,White,40054
+2011,70,Black African,98309
+2011,70,White,38808
+2011,71,Black African,136160
+2011,71,White,36838
+2011,72,Black African,93447
+2011,72,White,35361
+2011,73,Black African,84970
+2011,73,White,32473
+2011,74,Black African,72965
+2011,74,White,29954
+2011,75,Black African,77972
+2011,75,White,28520
+2011,76,Black African,62447
+2011,76,White,25383
+2011,77,Black African,58887
+2011,77,White,22416
+2011,78,Black African,57717
+2011,78,White,20957
+2011,79,Black African,53685
+2011,79,White,19646
+2011,80,Black African,43930
+2011,80,White,19346
+2011,81,Black African,66883
+2011,81,White,17269
+2011,82,Black African,42901
+2011,82,White,15318
+2011,83,Black African,35735
+2011,83,White,13283
+2011,84,Black African,28696
+2011,84,White,11857
+2011,85,Black African,26067
+2011,85,White,10344
+2011,86,Black African,23837
+2011,86,White,8608
+2011,87,Black African,19962
+2011,87,White,7575
+2011,88,Black African,13579
+2011,88,White,6132
+2011,89,Black African,13471
+2011,89,White,5063
+2011,90,Black African,13988
+2011,90,White,4301
+2011,91,Black African,17426
+2011,91,White,3346
+2011,92,Black African,9504
+2011,92,White,2258
+2011,93,Black African,12219
+2011,93,White,1699
+2011,94,Black African,3572
+2011,94,White,1166
+2011,95,Black African,3330
+2011,95,White,983
+2011,96,Black African,3027
+2011,96,White,769
+2011,97,Black African,4286
+2011,97,White,586
+2011,98,Black African,2173
+2011,98,White,435
+2011,99,Black African,2168
+2011,99,White,321
+2011,100,Black African,1546
+2011,100,White,183
+2011,101,Black African,2093
+2011,101,White,130
+2011,102,Black African,1180
+2011,102,White,114
+2011,103,Black African,777
+2011,103,White,117
+2011,104,Black African,697
+2011,104,White,109
+2011,105,Black African,727
+2011,105,White,84
+2011,106,Black African,668
+2011,106,White,89
+2011,107,Black African,692
+2011,107,White,80
+2011,108,Black African,636
+2011,108,White,100
+2011,109,Black African,739
+2011,109,White,119
+2011,110,Black African,800
+2011,110,White,104
+2011,111,Black African,871
+2011,111,White,95
+2011,112,Black African,82
+2011,112,White,6
+2011,113,Black African,52
+2011,113,White,6
+2011,114,Black African,49
+2011,114,White,4
+2011,115,Black African,77
+2011,115,White,7
+2011,116,Black African,226
+2011,116,White,17
+2016,0,Black African,22505480
+2016,0,White,2213981
+2016,1,Black African,1016513
+2016,1,White,49375
+2016,2,Black African,1060168
+2016,2,White,50465
+2016,3,Black African,1047017
+2016,3,White,55031
+2016,4,Black African,1048384
+2016,4,White,51158
+2016,5,Black African,976617
+2016,5,White,53497
+2016,6,Black African,952627
+2016,6,White,56603
+2016,7,Black African,979820
+2016,7,White,53783
+2016,8,Black African,961994
+2016,8,White,50343
+2016,9,Black African,959066
+2016,9,White,48109
+2016,10,Black African,971559
+2016,10,White,57813
+2016,11,Black African,932264
+2016,11,White,55704
+2016,12,Black African,848043
+2016,12,White,53989
+2016,13,Black African,829839
+2016,13,White,50998
+2016,14,Black African,813136
+2016,14,White,50022
+2016,15,Black African,861429
+2016,15,White,61314
+2016,16,Black African,868871
+2016,16,White,63046
+2016,17,Black African,838736
+2016,17,White,62970
+2016,18,Black African,853096
+2016,18,White,50998
+2016,19,Black African,858374
+2016,19,White,52428
+2016,20,Black African,886737
+2016,20,White,62791
+2016,21,Black African,919481
+2016,21,White,61399
+2016,22,Black African,881001
+2016,22,White,59121
+2016,23,Black African,895363
+2016,23,White,60570
+2016,24,Black African,879157
+2016,24,White,59376
+2016,25,Black African,957862
+2016,25,White,57153
+2016,26,Black African,918068
+2016,26,White,57521
+2016,27,Black African,878274
+2016,27,White,55579
+2016,28,Black African,861086
+2016,28,White,56519
+2016,29,Black African,864760
+2016,29,White,61020
+2016,30,Black African,814881
+2016,30,White,55213
+2016,31,Black African,758427
+2016,31,White,57539
+2016,32,Black African,733639
+2016,32,White,55039
+2016,33,Black African,742113
+2016,33,White,58498
+2016,34,Black African,635251
+2016,34,White,53187
+2016,35,Black African,687094
+2016,35,White,61202
+2016,36,Black African,673023
+2016,36,White,55052
+2016,37,Black African,575747
+2016,37,White,53742
+2016,38,Black African,568614
+2016,38,White,51580
+2016,39,Black African,571720
+2016,39,White,57214
+2016,40,Black African,569763
+2016,40,White,57477
+2016,41,Black African,529003
+2016,41,White,54936
+2016,42,Black African,479536
+2016,42,White,52757
+2016,43,Black African,505558
+2016,43,White,62524
+2016,44,Black African,417343
+2016,44,White,55274
+2016,45,Black African,456851
+2016,45,White,73815
+2016,46,Black African,439333
+2016,46,White,69211
+2016,47,Black African,429536
+2016,47,White,64362
+2016,48,Black African,363521
+2016,48,White,61453
+2016,49,Black African,357807
+2016,49,White,59501
+2016,50,Black African,354687
+2016,50,White,68562
+2016,51,Black African,347474
+2016,51,White,67291
+2016,52,Black African,343576
+2016,52,White,64534
+2016,53,Black African,334207
+2016,53,White,65541
+2016,54,Black African,271854
+2016,54,White,65601
+2016,55,Black African,303412
+2016,55,White,71668
+2016,56,Black African,282852
+2016,56,White,65766
+2016,57,Black African,276139
+2016,57,White,64392
+2016,58,Black African,254758
+2016,58,White,61787
+2016,59,Black African,241899
+2016,59,White,65000
+2016,60,Black African,238530
+2016,60,White,60513
+2016,61,Black African,222181
+2016,61,White,58918
+2016,62,Black African,211631
+2016,62,White,57242
+2016,63,Black African,224318
+2016,63,White,59307
+2016,64,Black African,168003
+2016,64,White,55208
+2016,65,Black African,186643
+2016,65,White,56281
+2016,66,Black African,171167
+2016,66,White,56360
+2016,67,Black African,150154
+2016,67,White,53168
+2016,68,Black African,131350
+2016,68,White,52307
+2016,69,Black African,118825
+2016,69,White,48074
+2016,70,Black African,119484
+2016,70,White,46574
+2016,71,Black African,105477
+2016,71,White,45709
+2016,72,Black African,99495
+2016,72,White,40607
+2016,73,Black African,112150
+2016,73,White,39277
+2016,74,Black African,86371
+2016,74,White,31594
+2016,75,Black African,78442
+2016,75,White,38412
+2016,76,Black African,65031
+2016,76,White,32698
+2016,77,Black African,51166
+2016,77,White,27835
+2016,78,Black African,41938
+2016,78,White,25441
+2016,79,Black African,40953
+2016,79,White,23003
+2016,80,Black African,37667
+2016,80,White,19073
+2016,81,Black African,33299
+2016,81,White,14594
+2016,82,Black African,29709
+2016,82,White,12934
+2016,83,Black African,30477
+2016,83,White,12973
+2016,84,Black African,21054
+2016,84,White,11225
+2016,85,Black African,30124
+2016,85,White,9917
+2016,86,Black African,25282
+2016,86,White,7416
+2016,87,Black African,16557
+2016,87,White,6364
+2016,88,Black African,13149
+2016,88,White,4744
+2016,89,Black African,10419
+2016,89,White,3295
+2016,90,Black African,9869
+2016,90,White,2664
+2016,91,Black African,8131
+2016,91,White,1793
+2016,92,Black African,5704
+2016,92,White,1901
+2016,93,Black African,5111
+2016,93,White,952
+2016,94,Black African,4877
+2016,94,White,1151
+2016,95,Black African,5927
+2016,95,White,795
+2016,96,Black African,3534
+2016,96,White,320
+2016,97,Black African,4005
+2016,97,White,179
+2016,98,Black African,1876
+2016,98,White,77
+2016,99,Black African,862
+2016,99,White,60
+2016,100,Black African,792
+2016,100,White,108
+2016,101,Black African,1057
+2016,101,White,44
+2016,102,Black African,586
+2016,102,White,19
+2016,103,Black African,543
+2016,103,White,56
+2016,104,Black African,306
+2016,104,White,22
+2016,105,Black African,498
+2016,105,White,31
+2016,106,Black African,315
+2016,106,White,0
+2016,107,Black African,177
+2016,107,White,0
+2016,108,Black African,80
+2016,108,White,0
+2016,109,Black African,86
+2016,109,White,0
+2016,110,Black African,91
+2016,110,White,0
+2016,111,Black African,75
+2016,111,White,0
+2016,112,Black African,45
+2016,112,White,0
+2016,113,Black African,68
+2016,113,White,0
+2016,114,Black African,88
+2016,114,White,0
+2016,115,Black African,160
+2016,115,White,41
+2016,116,Black African,101
+2016,116,White,0

@@ -1,0 +1,113 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;'></div>
+  <script>
+    
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/zaf/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json',
+  };
+    
+  var viz = Vizabi('AgePyramid', document.getElementById('placeholder'), {
+    state: {
+      time: {
+        dim: "time"
+      },
+    entities_stack: {
+      space: ["entities_age", "entities_side"],
+      dim: "educational_attainment_4_groups",
+      _multiple: true
+    },
+      entities_age: {
+        grouping: 1
+      },
+      entities_side: null,
+       marker: {
+         space: ["entities", "entities_side", "entities_stack", "entities_age", "time"],
+         label: {
+           use: "indicator",
+           which: "age"
+         },
+         label_name: {
+           use: "property",
+           which: "educational_attainment_4_groups"
+         },
+         axis_y: {
+           use: "indicator",
+           which: "age",
+           // domain Max should be set manually as age max from entites_age plus one grouping value (95 + 5 = 100)
+           // that way the last age group fits in on the scale
+           domainMax: 100,
+           domainMin: 0
+         },
+         color: {
+           use: "property",
+           which: "educational_attainment_4_groups"
+         },
+         side: null,
+          axis_x: {
+            use: "indicator",
+            which: "population"
+          }
+       },
+
+    marker_side: {
+      space: ["entities", "entities_side", "time"],
+      hook_total: {
+        use: "indicator",
+        which: "population"
+      }      
+    },
+       marker_minimap:{
+         space: ["entities_stack"],
+           type: "geometry",
+           shape: "svg",
+           label: {
+             use: "property",
+             which: "educational_attainment_4_groups"
+           },
+           geoshape: {
+             use: "property",
+             which: "shape_lores_svg"
+           }
+       }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/ddf--datapoints--population--by--year--age--education.csv",
+      splash: false
+    },
+    ui: {
+      chart: {
+        stacked: true,
+        inpercent: false
+      },
+      presentation: false,
+      buttons: ['colors', 'inpercent','moreoptions'],
+      buttons_expand: [],
+      dialogs: {'popup': ['colors', 'moreoptions'], 'sidebar': ['colors'], 'moreoptions': ['opacity', 'speed', 'colors','presentation', 'about']}
+    }
+  });
+    
+  //this would make vizabi always show sidebar with legend
+  viz.layout.screen_profiles.large.min_height = 0;
+  viz.layout.screen_profiles.large.min_width = 0;
+  viz.layout.setSize("force resize even if window stays the same");
+        
+  </script>
+</body>
+
+</html>
+

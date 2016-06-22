@@ -1,0 +1,34 @@
+poverty_driver,year,contribution
+Mortality,2016,1
+School attendance,2016,1
+Energy for lighting,2016,3
+Assets,2016,3
+Formal dwelling,2016,5
+Energy for cooking,2016,5
+Sanitation,2016,6
+Energy for heating,2016,6
+Water,2016,6
+Years of schooling,2016,11
+Unemployment,2016,52
+Mortality,2011,1
+School attendance,2011,2
+Energy for lighting,2011,5
+Assets,2011,5
+Formal dwelling,2011,5
+Energy for cooking,2011,6
+Sanitation,2011,7
+Energy for heating,2011,7
+Water,2011,7
+Years of schooling,2011,14
+Unemployment,2011,40
+Mortality,2001,1
+School attendance,2001,4
+Energy for lighting,2001,6
+Assets,2001,7
+Formal dwelling,2001,5
+Energy for cooking,2001,7
+Sanitation,2001,7
+Energy for heating,2001,7
+Water,2001,6
+Years of schooling,2001,16
+Unemployment,2001,33
