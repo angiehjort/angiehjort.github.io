@@ -23,66 +23,28 @@
   var viz = Vizabi('AgePyramid', document.getElementById('placeholder'), {
     state: {
       time: {
-        dim: "time"
-      },
-    entities_stack: {
-      space: ["entities_age", "entities_side"],
-      dim: "educational_attainment_4_groups",
-      _multiple: true
-    },
-      entities_age: {
-        grouping: 1
+        value: "1996",
       },
       entities_side: null,
-       marker: {
-         space: ["entities", "entities_side", "entities_stack", "entities_age", "time"],
-         label: {
-           use: "indicator",
-           which: "age"
-         },
-         label_name: {
-           use: "property",
-           which: "educational_attainment_4_groups"
-         },
-         axis_y: {
-           use: "indicator",
-           which: "age",
-           // domain Max should be set manually as age max from entites_age plus one grouping value (95 + 5 = 100)
-           // that way the last age group fits in on the scale
-           domainMax: 100,
-           domainMin: 0
-         },
-         color: {
-           use: "property",
-           which: "educational_attainment_4_groups"
-         },
-         side: null,
-          axis_x: {
-            use: "indicator",
-            which: "population"
-          }
-       },
-
-    marker_side: {
-      space: ["entities", "entities_side", "time"],
-      hook_total: {
-        use: "indicator",
-        which: "population"
-      }      
-    },
-       marker_minimap:{
-         space: ["entities_stack"],
-           type: "geometry",
-           shape: "svg",
-           label: {
-             use: "property",
-             which: "educational_attainment_4_groups"
-           },
-           geoshape: {
-             use: "property",
-             which: "shape_lores_svg"
-           }
-       }
+      entities_age: {
+        grouping: 5     },
+      entities_stack: {
+        dim: "educational_attainment_4_groups",
+      },
+      marker: {
+        color: {
+          which: "educational_attainment_4_groups"
+        },
+        label_name: {
+          which: "educational_attainment_4_groups"
+        },
+        side: null
+      },
+      marker_minimap: {
+        label: {
+          which: "educational_attainment_4_groups"
+        }
+      }
     },
     data: {
       reader: "csv",
@@ -94,7 +56,7 @@
         stacked: true,
         inpercent: false
       },
-      presentation: false,
+      presentation: true,
       buttons: ['colors', 'inpercent','moreoptions'],
       buttons_expand: [],
       dialogs: {'popup': ['colors', 'moreoptions'], 'sidebar': ['colors'], 'moreoptions': ['opacity', 'speed', 'colors','presentation', 'about']}

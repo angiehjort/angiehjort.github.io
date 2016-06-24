@@ -44,11 +44,30 @@
 	.municipality {
 		fill: #ffd044 ;
 	}
-
+	#wrapper {
+		height: 100%;
+		width: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		white-space: nowrap;
+	}
 	#tooltipwrapper {
-	    position: absolute;	
-	    top: 0%;
+		position: absolute;
+
+	    display: inline-block;
+	    vertical-align: top;
+	    top: 5%;
 	    left: 10%;
+	}
+	.chart {
+		width: 100vw;
+		height: 100%;
+	    display: inline-block;
+	}
+	.chart svg {
+		max-height: 100%;
 	}
 	#tooltipwrapper>span {
 		font-family: 'geoslab703_md_bt_medium';
@@ -57,27 +76,51 @@
 		display: block;
 		margin-bottom: 10px;
 	}
-	.tooltip {							
-	    font: 12px sans-serif;		
+	.tooltip {						
 	    background: #ffdb7a;	
 	    border: 0px;		
 	    border-radius: 5px;			
-	    pointer-events: none;
+	    /*pointer-events: none;*/
 	    padding: 20px;
 	    padding-top: 25px;
 	    min-width: 260px;
-	    line-height: 1.2em;		
+	    line-height: 1.2em;
+	    display: none;		
 	}
 
 	.tooltip span {
-		font-size: 20px;
+		font-size: 3vh;
 		display: block;
-		padding-bottom: 5px;
+		padding-bottom: 0.2vh;
 		font-family: 'cargts';
 	}
-	.tooltip {
+	.tooltip ul {
+		list-style-type: none;
+	}
+	.tooltip li {
+		margin-bottom: 0.1vh;
+	}
+	.tooltip ul span,
+	.tooltip ul svg {
+		vertical-align: middle;
+		padding: 0;
+	}
+	.tooltip ul .name {
+		display: inline-block;
+		width: 250px;
+	}
+	.tooltip ul .pop {
+		display: inline-block;
+		width: 80px;
+		padding-right: 80px;
+		text-align: right;
 		font-family: 'geoslab703_md_bt_medium';
-		font-size: 5vh;
+		font-size: 3vh;
+	}
+	.tooltip,
+	.tooltip span#population {
+		font-family: 'geoslab703_md_bt_medium';
+		font-size: 3vh;
 	}
 
 	* {
@@ -85,10 +128,19 @@
 		margin: 0;
 	}
 
+	text.nationalPop {
+		font-family: 'geoslab703_md_bt_medium';
+		font-size: 5vh;
+		margin-top: 10px;
+	}
+	text.nationalPop .pop {
+		font-family: 'geoslab703_md_bt_medium';
+		font-size: 7vh;
+		margin-top: 10px;
+	}
+
 	html,
-	body,
-	.chart, 
-	.chart svg {
+	body {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -96,47 +148,51 @@
 
 	#buttons {
 		font-family: "Trebuchet MS";
+		margin-bottom: 10px;
 	}
 	#buttons a {
         margin-right: 2vh;
 		color: #e9b434 ;
 		text-decoration: none;
 		cursor: pointer;
-		font-size: 6vh;
+		font-size: 4vh;
 		line-height: 6vh;
 		display: inline-block;
 	}
 	#buttons a:hover {
 		color: #888;
 	}
+	#buttons a.active {
+		color: black;
+	}
 
-	.province1 { fill: red; }
-	.province2 { fill: green; }
-	.province3 { fill: #6c77ff; }
-	.province4 { fill: #444; }
-	.province5 { fill: #009189; }
-	.province6 { fill: white; }
-	.province7 { fill: #910000; }
-	.province8 { fill: purple; }
-	.province9 { fill: #000b88; }
+	.province1 { fill: #e41a1c; }
+	.province2 { fill: #377eb8; }
+	.province3 { fill: #4daf4a; }
+	.province4 { fill: #984ea3; }
+	.province5 { fill: #ff7f00; }
+	.province6 { fill: #ffff33; }
+	.province7 { fill: #a65628; }
+	.province8 { fill: #f781bf; }
+	.province9 { fill: #999999; }
 
-	.centerCircle { fill: #ffdb7a  ;}
+	.centerCircle { fill: rgb(0, 213, 233);}
 
 </style>
 </head>
 <body onkeyup="parent.keyCode(event)">
-
-<div id="tooltipwrapper">
-	<div id="buttons">
-		<a href="#" id="link">National</a>
-		<a href="#" id="prov">Provincial</a>
-		<a href="#" id="mun">Municipal</a>
+	<div id="wrapper">
+		<div id="tooltipwrapper">
+			<div id="buttons">
+				<a href="#" id="national">National</a>
+				<a href="#" id="prov">Provincial</a>
+				<a href="#" id="mun">Municipal</a>
+			</div>
+			<span>Population <time></time></span>
+			<div class="tooltip"><span>South Africa</span><span id="population"><span></div>
+		</div>
+		<div class="chart"></div>
 	</div>
-	<span>Population</span>
-	<div class="tooltip"><span>South Africa</span></div>
-</div>
-	<div class="chart"></div>
-	
 	<script>
 
 
@@ -165,8 +221,8 @@
 
 	//Create SVG
 	var svg = d3.select(".chart").append("svg");
-	var municipalities = svg.append("g").attr("class", "municipalities");
 	var provinces = svg.append("g").attr("class", "provinces")
+	var municipalities = svg.append("g").attr("class", "municipalities");
 	var bubbles = svg.append("g").attr("class", "bubbles");
 		//.style("filter", "url(#gooey)"); //Set the filter on the container svg
 	var centerCircle;
@@ -197,8 +253,8 @@
 	    .attr("id", "dropshadow")
 	    .attr("height", "150%")
 	    .attr("width", "150%")
-	    .attr("x", "-40%")
-	    .attr("y", "-40%");
+	    .attr("x", "-25%")
+	    .attr("y", "-25%");
 
 	// SourceAlpha refers to opacity of graphic that this filter will be applied to
 	// convolve that with a Gaussian with standard deviation 3 and store result
@@ -227,7 +283,7 @@
 
 
 	var projection = d3.geo.mercator()
-	    .center([24, -29])
+	    .center([24.7, -28.5])
 	    .scale(width*3)	
 	    .rotate([0,0,0])
 	    .translate([width / 2, height / 2]);
@@ -245,6 +301,7 @@
 	var popDict;
 	var sizeScale;
 	var mundata, provdata;
+	var nationalTimeSeries;
     var prIdLookup, mnIdLookup;
 
 	// load map
@@ -255,7 +312,7 @@
 	d3.queue()
 	    .defer(d3.json, "../maps/provinces.json")
 	    .defer(d3.json, "../maps/municipalities.json")
-	    .defer(d3.csv, "../data/2016/ddf--datapoints--population--by--country.csv")
+	    .defer(d3.csv, "../data/2016/ddf--datapoints--population--by--year.csv")
 	    .defer(d3.csv, "../data/2016/ddf--datapoints--population--by--province.csv")
 	    .defer(d3.csv, "../data/2016/ddf--datapoints--population--by--municipality.csv")
 	    .await(function(error, sa_prov, sa_mun, sa_pop, prov_pop, mun_pop) {
@@ -295,11 +352,9 @@
 				      .attr("d", path);
 
 				popDict = process_popdata(sa_pop, prov_pop, mun_pop);
+				nationalTimeSeries = sa_pop;
 
-					// pop -> bubble size scale
-				sizeScale = d3.scale.linear()
-				    .domain([0, popDict[0]])
-				    .range([1, 20]);
+
     
 
 			  	console.log(sa_prov, sa_mun, popDict);
@@ -309,46 +364,141 @@
 
     function process_popdata(sa_pop, prov_pop, mun_pop) {
     	var popDict = {};
-    	sa_pop.forEach(function(d) { popDict[d.country] = d.population });
+    	popDict[0] = sa_pop[3].population;
     	prov_pop.forEach(function(d) { popDict[d.province] = d.population });
     	mun_pop.forEach(function(d) { popDict[d.municipality] = d.population });
     	return popDict;
     }
 
-    $('#link').on('click', function() {
+    $('#national').on('click', function() {
 
+    	d3.selectAll('.bubbles circle').remove();
+    	d3.select('.tooltip').style('display', 'none');
+    	d3.select('.chart svg').transition().duration(1500)
+    		.style('margin-left', '0');
+
+    	var data = [{ pop: nationalTimeSeries, name: 'South Africa'}];
+
+    	d3.select('#tooltipwrapper time').data(data);
+    	d3.select('#tooltipwrapper #population').data(data);
 		// Create national pop circle
-		bubbles.selectAll(".centerCircle").data([{ pop: popDict[0], name: 'South Africa'}]).enter().append("circle")
+		var circleContainer = bubbles.selectAll(".centerCircle").data(data).enter().append("g").attr("class", "circleContainer");
+		centerCircle = circleContainer.insert('circle',':first-child')
 				.attr("class", "centerCircle")
 				.attr("cx", centerCirclePos[0])
 				.attr("cy", centerCirclePos[1])
-				.attr("r", '0%')
-				.transition("national")
-					.duration(1500)
-					.attr("r", sizeScale(popDict[0]) + '%');
-		centerCircle = d3.select(".centerCircle");
+				.attr("r", '0%');
+		var txt = circleContainer.append('text')
+				.attr("class","nationalPop")
+				.attr("x", centerCirclePos[0])
+				.attr("y", centerCirclePos[1])
+				.attr("text-anchor", "middle")
+				.attr("dominant-baseline", "central");	
+		txt.append('tspan')
+			.attr('class', 'year')
+			.attr('x', centerCirclePos[0])
+			.text('1996')
+			.style("opacity", '0');
+		txt.append('tspan')
+			.attr('class', 'pop')
+			.attr('x', centerCirclePos[0])
+			.text(function(d) { return formatter(d.pop[0].population); })
+			.style("opacity", '0');
+		var trans1 = d3.select('body').transition().duration(1500);
+			trans2 = trans1.transition().duration(1500).transition().duration(1500),
+			trans3 = trans2.transition().duration(1000).transition().duration(1500),
+			trans4 = trans3.transition().duration(1000).transition().duration(1500);
+
+			// pop -> bubble size scale
+		var nationalScale = d3.scale.sqrt()
+		    .domain([0, popDict[0]])
+		    .range([0.2, 20]);
+
+		trans1.select('.centerCircle').attr("r", function(d) { return nationalScale(d.pop[0].population) + '%'})
+		trans1.transition().duration(500).select('.nationalPop .pop')
+			.attr('dy', '1em')
+			.style("opacity", '1')
+		trans1.transition().duration(500).select('.nationalPop .year')
+			.attr('dy', '-0.9em')
+			.style("opacity", '1')
+
+		trans2.select('.centerCircle').attr("r", function(d) { return nationalScale(d.pop[1].population) + '%'});
+		//trans2.select('#tooltipwrapper time').text(function(d) { return d.pop[1].year; });
+		trans2.select('#tooltipwrapper #population').text(function(d) { return formatter(d.pop[1].population); });
+		trans2.select('.circleContainer text').tween("text", function(d) {
+	        var i = d3.interpolate(d.pop[0].population, d.pop[1].population);
+	        var j = d3.interpolate(d.pop[0].year, d.pop[1].year);
+	        return function(t) {
+	            $(this).find('.year').text(Math.round(j(t)));
+	            $(this).find('.pop').text(formatter(i(t)));
+	        };
+	    });
+		trans3.select('.centerCircle').attr("r", function(d) { return nationalScale(d.pop[2].population) + '%'});
+		//trans3.select('#tooltipwrapper time').text(function(d) { return d.pop[2].year; });
+		trans3.select('#tooltipwrapper #population').text(function(d) { return formatter(d.pop[2].population); });
+		trans3.select('.circleContainer text').tween("text", function(d) {
+	        var i = d3.interpolate(d.pop[1].population, d.pop[2].population);
+	        var j = d3.interpolate(d.pop[1].year, d.pop[2].year);
+	        return function(t) {
+	            $(this).find('.year').text(Math.round(j(t)));
+	            $(this).find('.pop').text(formatter(i(t)));
+	        };
+	    });
+		trans4.select('.centerCircle').attr("r", function(d) { return nationalScale(d.pop[3].population) + '%'});
+		//trans4.select('#tooltipwrapper time').text(function(d) { return d.pop[3].year; });
+		trans4.select('#tooltipwrapper #population').text(function(d) { return formatter(d.pop[3].population); });
+		trans4.select('.circleContainer text').tween("text", function(d) {
+	        var i = d3.interpolate(d.pop[2].population, d.pop[3].population);
+	        var j = d3.interpolate(d.pop[2].year, d.pop[3].year);
+	        return function(t) {
+	            $(this).find('.year').text(Math.round(j(t)));
+	            $(this).find('.pop').text(formatter(i(t)));
+	        };
+	    });
 
 		centerCircle.style("filter", "url(#dropshadow)");
 
-		tooltip.html('<span>South Africa</span>'+formatter(popDict[0]));
 		return false;
     });
 
+	$('#buttons a').on('click', function() { 
+    	$('#buttons a').removeClass('active');
+    	$(this).addClass('active').off('click').on('click', function() { return false; });
+    	$(this).prevAll().hide();
+	});
+
+
     $('#prov').on('click', function() {
 
+    	d3.selectAll('.bubbles circle.province, .bubbles circle.munCircle').remove();
+    	d3.select('.chart svg').transition().duration(1500)
+    		.style('margin-left', '30vw');
+
+    	$('.tooltip').fadeIn(1500);
 		//Create the circles that will move out and in the center circle
 		var steps = 9;	
+		var provPopulation = [];
+		for (var i = 0; i<9; i++) {
+			var provinceID = i+1;
+			var provNode = provinces.select("#province"+provinceID).data()[0];
+			provPopulation.push({
+				id: provinceID,
+				latlng: path.centroid(provNode),
+				pop: popDict[provinceID],
+				name: provNode.properties.PR_NAME
+			})
+		}
+
+		var provPopulationSorted = provPopulation.sort(function(a,b) {
+			return b.pop - a.pop;
+		});
+
+		var provScale = d3.scale.sqrt()
+		    .domain([0, provPopulationSorted[0].pop])
+		    .range([0, 4]);
+
 		bubbles.selectAll(".flyCircle")
-			.data(d3.range(steps).map(function(num) {
-				var provinceID = num+1;
-				var provNode = provinces.select("#province"+provinceID).data()[0];
-				return {
-					id: provinceID,
-					latlng: path.centroid(provNode),
-					pop: popDict[provinceID],
-					name: provNode.properties.PR_NAME
-				}
-			}))
+			.data(provPopulation)
 			.enter().insert("circle", ":first-child")
 				.attr("class", function(d) { return "flyCircle province"+ d.id; })
 				.attr("id", function(d) { return "provinceCircle" + d.id })
@@ -356,14 +506,46 @@
 				.attr("cy", centerCirclePos[1])
 				.style("filter", "url(#dropshadow)")
 				.attr("r", function(d) { 
-					return sizeScale(d.pop) + '%'; })
+					return provScale(d.pop) + '%'; })
 				.call(function() {
 					update('.flyCircle', '.centerCircle', 4000);
 				});	
+
+
+		var sideScale = d3.scale.sqrt()
+		    .domain([0, provPopulationSorted[0].pop])
+		    .range([1, 50]);
+
+		var sideSize = "7.5";
+
+		d3.select('.tooltip').text('').append('ul').selectAll('li')
+			.data(provPopulationSorted)
+			.enter()
+				.insert("li").style('display','none')
+				.html(function(d) { return '<span class="name">' + d.name + '</span> <span class="pop">' + formatter(d.pop) + '</span>'})
+				.append('svg').attr('width', sideSize + "vh").attr('height', sideSize + "vh").append('circle')
+					.attr("class", function(d) { return "province"+ d.id; })
+					.attr("r", function(d) { return sideScale(d.pop) + '%'; })
+					.attr("cx", "50%")
+					.attr("cy", "50%")
+
+		$('.tooltip li').fadeIn(1000);
 		return false;
     });
 
     $('#mun').on('click', function() {
+
+    	d3.select('.chart svg').transition().duration(1500)
+    		.style('margin-left', 0);
+		d3.selectAll('.centerCircle')
+			.transition().duration(1500)
+				.attr("r", '0%');
+
+		$('.tooltip').html('<span>Municipalities</span>').show();
+
+
+		//Create the circles that will move out and in the center circle
+		var steps = 9;	
 
     	var munPerProv = {};
     	mundata.forEach(function(mun) {
@@ -372,34 +554,48 @@
     	})
 
 			// pop -> bubble size scale
-		munScale = d3.scale.log()
+		munScale = d3.scale.sqrt()
 		    .domain([7000, 3442361])
 		    .range([0.2, 2.5]);
+
+		municipalities.selectAll(".municipality")
+			.on('mouseover', function(d) {
+				tooltip.html('<span>' + d.properties.MN_NAME + "</span>"+formatter(popDict[d.properties.MN_CODE], 'r', 4))
+			})
 
 		//Create the circles that will move out and in the center circle
 
 		Object.keys(munPerProv).forEach(function(provID) {
 			var prov = munPerProv[provID];
 			var numGeo = prov.length;
+
+			var munPopulation = [];
+			for (var i = 0; i<numGeo; i++) {
+				var geoID = prov[i].properties.MN_CODE;
+				var munNode = municipalities.select("#municipality"+geoID).data()[0];
+				munPopulation.push({
+					id: geoID,
+					latlng: path.centroid(munNode),
+					pop: popDict[geoID],
+					name: munNode.properties.MN_NAME
+				})
+			}
+
+			munPopulation = munPopulation.sort(function(a,b) {
+				return a.pop - b.pop;
+			});
+
 			var centerlatlng = path.centroid(provinces.select("#province"+provID).data()[0]);
-			var centerX = (width/2 + margin.left);
-			var centerY = (height/2 + margin.top);
 
 			bubbles.selectAll(".munCircleProv"+provID)
-				.data(d3.range(numGeo).map(function(num) {
-					var geoID = prov[num].properties.MN_CODE;
-					var munNode = municipalities.select("#municipality"+geoID).data()[0];
-					return {
-						latlng: path.centroid(munNode),
-						pop: popDict[geoID],
-						name: munNode.properties.MN_NAME
-					}
-				}))
-				.enter().append("circle")
+				.data(munPopulation)
+				.enter().insert("circle",":first-child")
 					.attr("class", "munCircle munCircleProv"+provID+" province"+provID)
 					.style("opacity", 0.8)
 					.attr("cx", centerlatlng[0])
 					.attr("cy", centerlatlng[1])
+					.attr("stroke-width", "1")
+					.attr("stroke", "black")
 					.attr("r", function(d) { return munScale(d.pop) + '%'; })
 					.call(function() {
 						update(".munCircleProv"+provID, "#provinceCircle"+provID);
@@ -419,14 +615,21 @@
 			var offsetx = width/2;
 			var offsety = height/2;
 				
-
-			addToolTip(circle);
+			// only on municipality
+			if (sourceCircleClass != ".centerCircle")
+				addToolTip(circle);
 
 			circle
 				.transition("outward").duration(dur).delay(function(d,i) { return i*del; })
 					.attr("cx", function(d) { return d.latlng[0]; })
-					.attr("cy", function(d) { return d.latlng[1]; });	
-			
+					.attr("cy", function(d) { return d.latlng[1]; })
+					.each("start", function() {
+						setTimeout(function() {
+							var audio = new Audio('../assets/sounds/pop.mp3');
+							audio.play();
+						}, 100);
+					});
+
 			var decreaseDuration = circle.size()*del + dur;
 
 				//.transition("inward").duration(dur).delay(function(d,i) { return steps*del + i*del; })
@@ -436,26 +639,29 @@
 
 			d3.selectAll(sourceCircleClass)
 				.transition().duration(decreaseDuration)
-					.attr("r", '0%')
+					.attr("r", '0%');
+			d3.selectAll('.nationalPop .pop, .nationalPop .year')
+				.transition().duration(500)
+					.style("opacity", '0');
 	}//update	
 
 
 	function addToolTip(circle) {
 		circle
 			.on("mouseover", function(d) {		
-	            tooltip.html('<span>' + d.name + "</span>"+formatter(d.pop))		
+	            tooltip.html('<span>' + d.name + "</span>"+formatter(d.pop, 'r', 4))		
 	         });			
 	}
 	
-    function formatter(x){
+    function formatter(x, format, prec){
 
         // Strings, null, NaN and undefined are bypassing any formatter
         if(x instanceof String || !x && x!==0) return x;
 
         if(Math.abs(x)<0.00000000000001) return "0";
 
-        var format = "r"; //rounded format. use "f" for fixed
-        var prec = 3; //round to so many significant digits
+        format = format || "f"; //rounded format. use "f" for fixed
+        prec = prec || 1; //round to so many significant digits
 
         var prefix = "";
 
@@ -495,7 +701,7 @@
 
         var formatted = d3.format("." + prec + format)(x);
         //remove trailing zeros if dot exists to avoid numbers like 1.0M, 3.0B, 1.500, 0.9700, 0.0
-        if (formatted.indexOf(".")>-1) formatted = formatted.replace(/0+$/,"").replace(/\.$/,"");
+        //if (formatted.indexOf(".")>-1) formatted = formatted.replace(/0+$/,"").replace(/\.$/,"");
 
         // use manual formatting for the cases above
         return(formatted + prefix);

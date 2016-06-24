@@ -2241,7 +2241,7 @@
     2007
    ]
   },
-  "educational_attainment_4_groups_aid_given_percent_of_aid": {
+  "education_aid_given_percent_of_aid": {
    "sourceLink": "http://spreadsheets.google.com/pub?key=tQQaILpdu-vGtSkJLr2VQCw",
    "scales": [
     "linear",
@@ -7105,7 +7105,7 @@
     2006
    ]
   },
-  "ratio_of_girls_to_boys_in_primary_and_secondary_educational_attainment_4_groups_perc": {
+  "ratio_of_girls_to_boys_in_primary_and_secondary_education_perc": {
    "sourceLink": "http://spreadsheets.google.com/pub?key=pyj6tScZqmEcWM3hb0x-BZA",
    "scales": [
     "linear",
@@ -8727,7 +8727,7 @@
         "id": "economical_infrastructure_aid_given_percent_of_aid"
        },
        {
-        "id": "educational_attainment_4_groups_aid_given_percent_of_aid"
+        "id": "education_aid_given_percent_of_aid"
        },
        {
         "id": "government_and_society_aid_given_percent_of_aid"
@@ -8953,7 +8953,7 @@
     ]
    },
    {
-    "id": "educational_attainment_4_groups",
+    "id": "education",
     "children": [
      {
       "id": "achievement",
@@ -8970,7 +8970,7 @@
       "id": "gender_equality",
       "children": [
        {
-        "id": "ratio_of_girls_to_boys_in_primary_and_secondary_educational_attainment_4_groups_perc"
+        "id": "ratio_of_girls_to_boys_in_primary_and_secondary_education_perc"
        },
        {
         "id": "ratio_of_young_literate_females_to_males_percent_ages_15_24"

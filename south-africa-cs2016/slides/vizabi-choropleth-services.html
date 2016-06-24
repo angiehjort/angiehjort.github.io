@@ -1,0 +1,129 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  
+  <style>
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs {
+      background-color: transparent
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-dialogs-dialog.vzb-sidebar[data-dlg=colors] {
+      background-color: transparent;
+      margin-top: 50px;
+      border-bottom: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-dialogs-dialog.vzb-sidebar[data-dlg=colors] .vzb-dialog-title {
+      visibility: hidden;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-dialogs-dialog.vzb-sidebar[data-dlg=colors] .vzb-cl-unit {
+      visibility: hidden;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-dialogs-dialog.vzb-sidebar[data-dlg=colors] .vzb-cl-rainbow {
+      right: 15px;
+    }
+  </style>
+  
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;'></div>
+  <script>
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/") + "/";
+
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/zaf/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json',
+    shapePath: localUrl + 'maps/municipalities.json'
+  };
+
+
+  var viz = Vizabi('JOINTCartogramLine', document.getElementById('placeholder'), {
+    state: {
+      time: {
+        dim: "time",
+        value: "1996",
+        start: parent.getParamValue("start_time", window) || "1996",
+        end: "2016",
+        delay: 400,
+        delayThresholdX2: 200,
+        delayThresholdX4: 200
+      },
+      entities: {
+        dim: "municipality",
+        opacitySelectDim: .3,
+        opacityRegular: 1,
+        show: {
+          "municipality.cat": ["municipality"]
+        },
+      },
+      entities_line: {
+        dim: "municipality",
+        opacitySelectDim: .3,
+        opacityRegular: 1,
+        show: {
+          "municipality.cat": ["country"]
+        },
+      },
+      marker: {
+        color: {
+          which: parent.getParamValue("which", window) || "water_access_percentage"
+        },
+        label: {
+          which: "municipality.name"
+        }
+      },
+      marker_line: {
+        label: {
+          which: "municipality.name"
+        },
+        axis_y: {
+          which: parent.getParamValue("which", window) || "water_access_percentage"
+        },
+        color: {
+          use: "constant",
+          which: "#FF00000"
+        }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/2016/ddf--datapoints--water_access_percent--electricity_access_percent--refuse_removal_percent--sanitation_access_percentage--by--year--municipality.csv",
+      splash: false
+    },
+    ui: {
+      chart: {
+        labels: {
+          min_number_of_entities_when_values_hide: 0 //values hide when showing 2 entities or more
+        },
+        whenHovering: {
+          hideVerticalNow: false,
+          showProjectionLineX: true,
+          showProjectionLineY: true,
+          higlightValueX: true,
+          higlightValueY: true,
+          showTooltip: false
+        }
+      },
+      presentation: true,
+      buttons: [],
+      dialogs: {
+        'popup': ['colors', 'find', 'size', 'moreoptions'],
+        'sidebar': ['colors'],
+        'moreoptions': ['size', 'colors', 'about']
+      }
+    }
+  });
+
+  viz.model.state.time._defaults.end = "2016";
+
+  d3.select(".vzb-data-warning").classed("vzb-hidden", true);
+
+  </script>
+</body>
+
+</html>

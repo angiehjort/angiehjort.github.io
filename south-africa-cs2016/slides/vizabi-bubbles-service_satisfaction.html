@@ -1,0 +1,104 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <script>
+
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/zaf/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json'
+  };
+    
+  var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
+    state: {
+      time: {
+        start: "2015",
+        value: "2015",
+        end: "2017",
+        dim: "year"
+      },
+      entities: {
+        select: [],
+        show: {
+          _defs_: {
+            "municipality.cat": ["municipality"]
+          }
+        },
+        dim: "municipality"
+      },
+      entities_minimap: {
+        select: [],
+        show: {
+          "municipality.cat": ["province"]
+        },
+        dim: "municipality"
+      },
+      marker: {
+        label: {
+          which: "municipality.name"
+        },
+        color: {
+          which: "municipality.pr"
+        },
+        axis_y: {
+          which: parent.getParamValue("which", window) + "_access",
+          scaleType: "linear"
+        },
+        axis_x: {
+          which: parent.getParamValue("which", window) + "_satisfaction",
+          scaleType: "linear"
+        },
+        size: {
+          which: "population",
+          scaleType: "linear",      
+          "domainMin": 50,
+          "domainMax": 4949347,
+        }
+      }, 
+      marker_minimap:{
+        space: ["entities_minimap"],
+          type: "geometry",
+          shape: "svg",
+          label: {
+            use: "property",
+            which: "municipality.name"
+          },
+          geoshape: {
+            use: "property",
+            which: "municipality.shape_lores_svg"
+          }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/2016/ddf--datapoints--satisfaction--access--by--municipality.csv",
+      splash: false
+    },
+    ui: {
+      presentation: false,
+      buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
+      dialogs: {
+        'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
+        'sidebar': ['colors', 'find', 'size'], 
+        'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
+      }
+    }
+  });
+d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
+d3.select(".vzb-bc-year").classed("vzb-hidden",true);
+
+  </script>
+</body>
+
+</html>

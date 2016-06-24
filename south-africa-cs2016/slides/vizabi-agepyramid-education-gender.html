@@ -20,102 +20,34 @@
   };
 
   var viz = Vizabi('AgePyramid', document.getElementById('placeholder'), {
+
     state: {
       time: {
-        value: '2011',
-        start: '1950',
-        end: '2011'
-      },
-      entities: {
-        dim: "geo",
-        show: {
-          _defs_: {
-            "geo": ["*"]
-          }
-        }
-      },
-      entities_minimap: {
-        dim: "geo",
-        show: {
-          _defs_: {
-            "geo.cat": ["country"]
-          }
-        }
-      },
-      entities_age: {
-//        dim: "age",
-//        show: {
-//          _defs_: {
-//            "age": [
-//                [0, 95]
-//              ] //show 0 through 100
-//          }
-//        },
-        grouping: 1,
-//        _multiple: true
-      },
-      entities_stack: {
-        space: ["entities_age", "entities_side"],
-        dim: "educational_attainment_4_groups",
-        _multiple: true
+        value: "1996"
       },
       entities_side: {
         dim: "gender"
       },
+      entities_age: {
+        grouping: 2
+      },
+      entities_stack: {
+        dim: "educational_attainment_4_groups",
+      },
       marker: {
-        space: ["entities", "entities_side", "entities_stack", "entities_age", "time"],
-        label: {
-          use: "indicator",
-          which: "age"
+        color: {
+          which: "educational_attainment_4_groups"
         },
         label_name: {
-          use: "property",
           which: "gender"
-        },
-        axis_y: {
-          use: "indicator",
-          which: "age",
-          // domain Max should be set manually as age max from entites_age plus one grouping value (95 + 5 = 100)
-          // that way the last age group fits in on the scale
-          domainMax: 100,
-          domainMin: 0
-        },
-        axis_x: {
-          use: "indicator",
-          which: "population",
-          //domainMin: 0,
-          //domainMax: 1400000000
-        },
-        color: {
-          use: "property",
-          which: "educational_attainment_4_groups"
-            // allow: {
-            //   names: ["!stack.name"]
-            // }
         },
         side: {
-          use: "property",
           which: "gender"
-        }
-      },
-      marker_side: {
-        space: ["entities", "entities_side", "time"],
-        hook_total: {
-          use: "indicator",
-          which: "population"
         }
       },
       marker_minimap: {
-        space: ["entities_stack"],
-        type: "geometry",
-        shape: "svg",
         label: {
-          use: "property",
           which: "educational_attainment_4_groups"
-        },
-        geoshape: {
-          use: "property",
-          which: "shape_lores_svg"
         }
       }
     },
@@ -125,11 +57,11 @@
       splash: false
     },
     ui: {
-      presentation: false,
-      buttons: ['colors', 'inpercent', 'moreoptions'],
+      presentation: true,
+      buttons: ['colors', 'inpercent'],
       buttons_expand: [],
       dialogs: {
-        'popup': ['colors', 'moreoptions'],
+        'popup': ['colors'],
         'sidebar': ['colors'],
         'moreoptions': ['opacity', 'speed', 'colors', 'presentation', 'about']
       }

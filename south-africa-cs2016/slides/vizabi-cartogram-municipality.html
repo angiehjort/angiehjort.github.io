@@ -14,6 +14,14 @@
   var locationArray = window.location.href.split("/");
   var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
       
+  var selectParam = parent.getParamValue("select", window);
+  var entities = {};
+  if (selectParam) {
+    entities.select = selectParam.split(",").map(function(mun) {
+      return { municipality: mun };
+    }); 
+  }
+
   Vizabi._globals.ext_resources = {
     host: localUrl,
     translationPath: localUrl + 'dictionaries/zaf/en.json',
@@ -23,6 +31,7 @@
     
   var viz = Vizabi('Cartogram', document.getElementById('placeholder'), {
     state: {
+      entities: entities,
       time: {
         value: "1996",
         start: "1996",
@@ -54,7 +63,7 @@
         lockNonSelected: 1996,
         lockActive: 1        
       },
-      presentation: false,
+      presentation: true,
       buttons: ['lock'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'moreoptions'], 

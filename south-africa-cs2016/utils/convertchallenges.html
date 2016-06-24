@@ -1,0 +1,50 @@
+
+<button id="click">click</button>
+
+<script src="http://d3js.org/d3.v3.js"></script>
+<script type="text/javascript">
+
+var pushed = [];
+d3.csv("../data/2016/ddf--datapoints--difficulty_rank--by--municipality--difficulty.csv", function(r){
+  var result = {};
+  r.forEach(function(d){
+    if(!result[d.municipality]) {
+      result[d.municipality] = {year: 2015, municipality: d.municipality};
+      for (var i = 1; i <= 20; i++) {
+        result[d.municipality]["ch"+i] = null;
+      }
+    }
+    result[d.municipality]["ch"+d.difficulty] = d.difficulty_rank;
+    if(d.difficulty_rank=="1")result[d.municipality]["top_ch"] = "ch"+d.difficulty;
+    
+  })
+  
+  var header = Object.keys(result[160]);
+  pushed.push(header);
+
+  Object.keys(result).forEach(function(d){
+    var row = [];
+    header.forEach(function(col) {
+      row.push(result[d][col]);
+    });
+    pushed.push(row);
+  })
+  
+  console.table(pushed);
+});
+
+function getCsv(data) {
+  var lineArray = [];
+  data.forEach(function (infoArray, index) {
+      var line = infoArray.join(",");
+    lineArray.push(index == 0 ? "data:text/csv;charset=utf-8," + line : line);
+  });
+  return lineArray.join("\n");
+}
+
+document.getElementById('click').addEventListener('click', function() {
+  var encodedUri = encodeURI(getCsv(pushed));
+  window.open(encodedUri);
+});
+
+</script>

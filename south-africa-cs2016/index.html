@@ -15,19 +15,17 @@
     </header>
     <div class="slides">
       <section id="first">
-        A better life conversation: the RDP promise - instead of Results of CS 2016
-        <img src="assets/slider.png">
+        <img src="assets/slider_rdp.png">
       </section>
-      
       
       <section>
         <video width="100%" height="100%" src="assets/videos/stats sa progress.mov" data-autoplay></video>
       </section>
       
-      
       <section>
-        <h1>Where we come from</h1></section>
-      
+        <h1>Where we come from</h1>
+      </section>
+
       <section>
         <video width="100%" height="100%" src="assets/videos/04 verwoerd animation.mov" data-autoplay></video>
       </section>
@@ -47,19 +45,24 @@
       
       
       <section>
-        <iframe height="100%" data-src="slides/population_2016.html"></iframe>
+        <iframe style="height: 100%;" data-src="slides/population_2016.html"></iframe>
       </section>
       
       <section>
         <div class="caption">
           <h3>Municipal growth</h3></div>
-        <iframe data-src="slides/vizabi-cartogram-municipality.html"></iframe>
+        <iframe height="80%" data-src="slides/vizabi-cartogram-municipality.html"></iframe>
       </section>
       
       <section>
         <div class="caption">
-          <h3>Migration between provinces</h3>
-          (92% of migration actually happens within provinces, excluded from this map)</div>
+          <h3>High growth municipalities</h3></div>
+        <iframe height="80%" data-src="slides/vizabi-cartogram-municipality.html?select=179,967,172,362,979,596,570,761,869,164,662"></iframe>
+      </section>
+      
+      <section>
+        <div class="caption">
+          <h3>Migration between provinces</h3></div>
         <iframe data-src="slides/migration-map-provinces.html"></iframe>
       </section>
       
@@ -70,69 +73,75 @@
       </section>
       
       <section>
-        <div class="caption">
           <h3>Progress of South Africa</h3>
-          Wealth VS child mort, play 1994 to 2015</div>
         <iframe data-src="slides/vizabi-bubbles-wealthhealth.html"></iframe>
       </section>
       
       <section>
-        <div class="caption">
           <h3>Progress of South Africa</h3>
-          then explode SA to municip</div>
         <iframe data-src="slides/vizabi-bubbles-wealthhealth.html"></iframe>
       </section>
       
       
       <section>
-        <h1>Progress in municipal services</h1></section>
+        <h1>Municipal services and challenges</h1></section>
+
+      <section>
+        <iframe style="height:100%;" data-src="slides/vizabi-choropleth-services.html?which=water_access_percentage"></iframe>
+      </section>
 
       <section>
         <div class="caption">
-          <h3>Water Access</h3></div>
-        <iframe data-src="slides/vizabi-choropleth-water.html"></iframe>
+          <h3>Water access satisfaction</h3> </div>
+          <iframe style="height:100%;" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=water"></iframe>
+      </section>
+      
+      <section>
+        <iframe style="height:100%;" data-src="slides/vizabi-choropleth-services.html?which=electricity_access_percentage"></iframe>
+      </section>
+
+      <section>
+        <div class="caption">
+          <h3>Electricity access satisfaction</h3> </div>
+          <iframe style="height:100%;" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=electricity"></iframe>
+      </section>
+      
+      <section>
+        <iframe style="height:100%;" data-src="slides/vizabi-choropleth-services.html?which=refuse_removal_percentage"></iframe>
+      </section>
+
+      <section>
+        <div class="caption">
+          <h3>Toilet facility satisfaction</h3> </div>
+          <iframe style="height:80%;" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=sanitation"></iframe>
+      </section>
+      
+      <section>
+        <iframe style="height:100%;" data-src="slides/vizabi-choropleth-services.html?which=sanitation_access_percentage&start_time=2001"></iframe>
+      </section>
+
+      <section>
+        <div class="caption">
+          <h3>Refuse removal satisfaction</h3> </div>
+          <iframe style="height:90%;" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=refuse_removal"></iframe>
       </section>
       
       <section>
         <div class="caption">
-          <h3>Electricity Access</h3></div>
-        <iframe data-src="slides/vizabi-choropleth-electricity.html"></iframe>
+          <h3>Municipal challenges: Water supply</h3> </div>
+        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch1"></iframe>
       </section>
       
       <section>
         <div class="caption">
-          <h3>Sanitation Access</h3></div>
-        <iframe data-src="slides/vizabi-choropleth-sanitation.html"></iframe>
+          <h3>Municipal challenges: Unemployment</h3> </div>
+        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch10"></iframe>
       </section>
       
       <section>
         <div class="caption">
-          <h3>Refuse Removal Access</h3></div>
-        <iframe data-src="slides/vizabi-choropleth-refuse_removal.html"></iframe>
-      </section>
-      
-      <section>
-        <div class="caption">
-          <h3>Service satisfaction</h3> 
-          by municipal type [ dotplot ] --drop unless we get data</div>
-      </section>
-      
-      <section>
-        <div class="caption">
-          <h3>Municipal challenges: challenge 1</h3> </div>
-        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html"></iframe>
-      </section>
-      
-      <section>
-        <div class="caption">
-          <h3>Municipal challenges: challenge 2</h3> </div>
-        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html"></iframe>
-      </section>
-      
-      <section>
-        <div class="caption">
-          <h3>Municipal challenges: challenge 3</h3> </div>
-        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html"></iframe>
+          <h3>Municipal challenges: Electricity cost</h3> </div>
+        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch4"></iframe>
       </section>
       
       
@@ -143,62 +152,45 @@
       </section>
       
       <section>
-        <div class="caption">
-          <h3>Bar chart</h3>
-          Poverty drivers</div>
+        <iframe style="height:100%;" data-src="slides/barchart-povertydrivers.html"></iframe>
       </section>
      
       <section>
-        <div class="caption">
-          <h3>Municipal challenges: education</h3> </div>
-        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html"></iframe>
-      </section>
-      
-      
-      <section>
-        <h1>Education: <br/> i'm worried</h1></section>
+        Does the nation see education as a challenge?</section>
 
       <section>
         <div class="caption">
-          <h3>Bubble chart</h3>
-          ??? with 2015 IHME data. Maybe not</div>
+          <h3>Municipal challenges: education</h3> </div>
+        <iframe data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch11"></iframe>
+      </section>
+      
+      
+      <section>
+        <h1>Youth and the RDP promise</h1></section>
+      
+      <section>
+          <h3>Age distribution</h3>
+        <iframe style="width: 70%; height: 80%;" data-src="slides/vizabi-agepyramid-youth.html"></iframe>
       </section>
       
       <section>
-        <div class="caption">
-          <h3>Pop by age overview</h3>
-          try to do selection of cohort selection: 
-          talk about waves. Stop at 1996, select newborns, 
-          see how this group is now in the age. </div>
-        <iframe data-src="slides/vizabi-agepyramid-youth.html"></iframe>
+        <h3>Educational attainment</h3>
+        <iframe style="width: 90%; height: 80%;" data-src="slides/vizabi-agepyramid-education.html"></iframe>
       </section>
       
       <section>
-        <div class="caption">
-          <h3>Split by education</h3>
-          They should be contributing. Are they educated to contribute? There is a problem</div>
-        <iframe data-src="slides/vizabi-agepyramid-education.html"></iframe>
-      </section>
-      
-      <section>
-        <div class="caption">
           <h3>Gender differences</h3>
-          For those who want to see gender split show it here</div>
-          <iframe data-src="slides/vizabi-agepyramid-education-gender.html"></iframe>
+          <iframe style="width: 90%; height: 88%;" data-src="slides/vizabi-agepyramid-education-gender.html"></iframe>
       </section>
       
       <section>
-        <div class="caption">
-          <h3>Differences by population groups</h3>
-          Be able to switch white/colored/indian. Look how blacks are not increasing higher education.</div>
-          <iframe data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
+          <h3>Population group differences</h3>
+          <iframe style="width: 90%; height: 88%;" data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
       </section>
       
       <section>
-        <div class="caption">
-          <h3>Switch to absolute</h3>
-          Show how big is the problem. Positive story: black african overtaken whites in terms of absolute numbers in higher education. </div>
-          <iframe data-src="slides/vizabi-agepyramid-education-population-group.html?"></iframe>
+          <h3>Absolute numbers</h3>
+          <iframe style="width: 90%; height: 88%;" data-src="slides/vizabi-agepyramid-education-population-group.html?"></iframe>
       </section>
       
       <section>

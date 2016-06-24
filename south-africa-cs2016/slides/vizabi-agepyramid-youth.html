@@ -24,11 +24,13 @@
       time: {
         start: "1996",
         value: "1996",
-        end: "2016"
+        end: "2016",
+        delay: 600,
+        step: 5
       },
-            entities_side: null,
+      entities_side: null,
       entities_age: {
-         grouping: 1
+         grouping: 5
       },
       marker: {
         color: {
@@ -51,17 +53,6 @@
         {"educational_attainment_4_groups": "null","age": "0","gender": "null"}, 
         {"educational_attainment_4_groups": "null","age": "5","gender": "null"}, 
         {"educational_attainment_4_groups": "null","age": "10","gender": "null"}, 
-        {"educational_attainment_4_groups": "null","age": "15","gender": "null"}, 
-        {"educational_attainment_4_groups": "null","age": "20","gender": "null"}, 
-        {"educational_attainment_4_groups": "null","age": "25","gender": "null"}, 
-        {"educational_attainment_4_groups": "null","age": "30","gender": "null"},
-        {"educational_attainment_4_groups": "null","age": "0","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "5","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "10","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "15","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "20","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "25","gender": "Male"}, 
-        {"educational_attainment_4_groups": "null","age": "30","gender": "Male"}
         ]
       }
     },
@@ -74,7 +65,7 @@
       chart: {
         //lockNonSelected: 1996
       },
-      presentation: false,
+      presentation: true,
       buttons: [],
       dialogs: {
         'popup': [],
@@ -84,6 +75,62 @@
     }
   });
   viz.model.state.time._defaults.end = "2016";
+
+  viz.on('ready', redrawAxis);
+  viz.on('resize', redrawAxis);
+  function redrawAxis() {
+    var yAxis = d3.select('.vzb-bc-axis-y');
+    var svgTicks = yAxis.selectAll('.tick');
+    var zero = svgTicks.first();
+    var hundred = svgTicks.last();
+    
+    var ticks = { child: { name: 'Child' }, youth: { name: 'Youth' }, adult: { name: 'Adult' }, elder: { name: 'Elder' } };
+
+    if (zero.node()) {
+      var transform = zero.attr('transform');
+      var zeroY = zero.attr('transform').substr(12,transform.indexOf(')')-12);
+      ticks.child.y = zeroY/20 * 20;
+      ticks.youth.y = zeroY/20 * 17;
+      ticks.adult.y = zeroY/20 * 13;
+      ticks.elder.y = zeroY/20 * 7;
+      ticks.child.t = (zeroY - ticks.youth.y) / 2;
+      ticks.youth.t = (ticks.youth.y - ticks.adult.y) / 2;
+      ticks.adult.t = (ticks.adult.y - ticks.elder.y) / 2;
+      ticks.elder.t = (ticks.elder.y - (zeroY/20)) / 2;
+    }
+    var offset = -20;
+    var rotate = -90;
+    yAxis.selectAll('.tick').remove();  
+
+    Object.keys(ticks).forEach(function(tickIndex) {
+
+      var tick = ticks[tickIndex];
+
+      var g = yAxis.append('g')
+        .attr('class', 'tick')
+        .attr('transform', 'translate(0,'+ tick.y+ ')')
+      g.append('line')
+        .attr('x2',-6)
+        .attr('y2',0);
+      g.append('text')
+        .attr('transform','rotate('+rotate+') translate('+Math.round(tick.t)+',0)')
+        .attr('text-anchor','middle')
+        .attr('y',offset)
+        .attr('dy',0)
+        .attr('x',0)
+        .style('font-size', '1.8em')
+        .text(tick.name)
+    })
+
+  }
+
+d3.selection.prototype.first = function() {
+  return d3.select(this[0][0]);
+};
+d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};
   </script>
 </body>
 

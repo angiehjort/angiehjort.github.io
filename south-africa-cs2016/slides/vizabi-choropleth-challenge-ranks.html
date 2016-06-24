@@ -44,7 +44,7 @@
     state: {      
       marker: {
         color: {
-          which: "ch1"
+          which: parent.getParamValue("which", window) || "ch1"
         }
       }
     },
@@ -54,11 +54,11 @@
       splash: false
     },
     ui: {
-      presentation: false,
-      buttons: ['colors', 'find', 'moreoptions'],
+      presentation: true,
+      buttons: ['colors'],
       dialogs: {
-        'popup': ['colors', 'find', 'moreoptions'],
-        'sidebar': ['colors', 'find'],
+        'popup': ['colors'],
+        'sidebar': ['colors'],
         'moreoptions': ['colors', 'about']
       }
     }

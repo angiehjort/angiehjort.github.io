@@ -20,18 +20,26 @@
     conceptpropsPath: localUrl + 'dictionaries/metadata.json'
   };
     
+
   Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
       time: {
-        start: "1953",
-        value: "1953"
+        start: "1996",
+        value: "1996"
       },
       entities: {
-        select: [{
-          "geo": "zaf",
-          "trailStartTime": "1953",
-          "firstAvailableSegment": "1953-01-01T00:00:00.000Z"
-        }],
+        select: [
+          {"geo": "zaf", "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "1",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "2",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "3",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "4",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "5",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "6",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "7",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "8",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "9",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"}
+        ],
         show: {
           _defs_: {
             "geo": ["*"]
@@ -41,35 +49,55 @@
       marker: {
         axis_y: {
           which: "child_mortality_0_5_year_olds_dying_per_1000_born",
-          scaleType: "log"
+          scaleType: "linear",
+          domainMin: 0,
+          domainMax: 120,
+          zoomedMin: 0,
+          zoomedMax: 120
+        },
+        size: {
+          extent: [0, 1]
         },
         axis_x: {
           which: "income_per_person_gdppercapita_ppp_inflation_adjusted",
-          scaleType: "linear",
-          zoomedMin: 1,
-          zoomedMax: 13000
+          scaleType: "log"
         },
         size: {
           which: "population_total",
           scaleType: "linear",
         }
+      },
+      marker_minimap:{
+        space: ["entities_minimap"],
+          label: {
+            use: "property",
+            which: "geo.name"
+          },
+          geoshape: {
+            use: "property",
+            which: "geo.shape_lores_svg"
+          }
       }
     },
     data: {
       reader: "csv",
-      path: "../data/african-countries.csv",
+      path: "../data/ddf--datapoints--u5mr--gdp--population--by--geo--time.csv",
       splash: false
     },
     ui: {
-      presentation: false,
+      chart:{
+        trails: false
+      },
+      presentation: true,
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
-        'sidebar': ['colors', 'find', 'size'], 
+        'sidebar': ['colors', 'find', 'size', 'zoom'], 
         'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
       }
     }
   });
+d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
   </script>
 </body>
 
