@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+    <style>
+    .vzb-bc-axis-y .tick {
+      display: none;
+    }
+  </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -23,13 +28,14 @@
 
     state: {
       time: {
-        value: "1996"
+        value: "1996",
+        step: 5
       },
       entities_side: {
         dim: "gender"
       },
       entities_age: {
-        grouping: 2
+        grouping: 5
       },
       entities_stack: {
         dim: "educational_attainment_4_groups",
@@ -68,6 +74,74 @@
     }
   });
 
+  viz.components[0].presentationProfileChanges.large.margin.left = 170;
+  viz.components[0].presentationProfileChanges.medium.margin.left = 150;
+
+  viz.on('ready', redrawAxis);
+  viz.on('resize', redrawAxis);
+  function redrawAxis() {
+    var yAxis = d3.select('.vzb-bc-axis-y');
+    var svgTicks = yAxis.selectAll('.tick');
+    var zero = svgTicks.first();
+    var hundred = svgTicks.last();
+    
+    var ticks = { child: { name: 'Children' }, youth: { name: 'Youth' }, adult: { name: 'Adults' }, elder: { name: 'Elderly' } };
+
+    if (zero.node()) {
+      var transform = zero.attr('transform');
+      var zeroY = zero.attr('transform').substr(12,transform.indexOf(')')-12);
+      ticks.child.y = zeroY/20 * 20;
+      ticks.youth.y = zeroY/20 * 17;
+      ticks.adult.y = zeroY/20 * 13;
+      ticks.elder.y = zeroY/20 * 7;
+      ticks.child.t = (zeroY - ticks.youth.y) / 2;
+      ticks.youth.t = (ticks.youth.y - ticks.adult.y) / 2;
+      ticks.adult.t = (ticks.adult.y - ticks.elder.y) / 2;
+      ticks.elder.t = (ticks.elder.y - (zeroY/20)) / 2;
+
+      var offset = -20;
+      var rotate = 0;
+      yAxis.selectAll('.tick').remove();  
+      yAxis.selectAll('.tickminor').remove(); 
+      yAxis.selectAll('.agegrouptick').remove();  
+
+      Object.keys(ticks).forEach(function(tickIndex) {
+
+        var tick = ticks[tickIndex];
+
+        var g = yAxis.append('g')
+          .attr('class', 'agegrouptick')
+          .attr('transform', 'translate(0,'+ tick.y+ ')')
+        g.append('line')
+          .attr('x2',-6)
+          .attr('y2',0)
+          .attr('stroke-width', 2);
+        g.append('text')
+          .attr('transform','rotate('+rotate+') translate(-10, -'+Math.round(tick.t)+')')
+          .attr('text-anchor','end')
+          .attr('alignment-baseline', 'central')
+          .attr('y',offset)
+          .attr('dy',0)
+          .attr('dx',0)
+          .attr('x',0)
+          .attr('y',0)
+          .style('font-size', '1.8em')
+          .text(tick.name)
+      })
+
+      //d3.select('.vzb-bc-graph').attr('transform', 'translate(160,100)');
+    }
+
+
+  }
+
+d3.selection.prototype.first = function() {
+  return d3.select(this[0][0]);
+};
+d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};
   //this would make vizabi always show sidebar with legend
   viz.layout.screen_profiles.large.min_height = 0;
   viz.layout.screen_profiles.large.min_width = 0;

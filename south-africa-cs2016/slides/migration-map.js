@@ -79,52 +79,19 @@
 
     var migrationMap = {
       init: function() {
-        
-        this.translator = function(id){
-          var strings = {
-            filters: "Filters",
-            population_group: "Popilation group",
-            age: "Age",
-            direction: "Direction"
-          };
-          return strings[id];
-        },
+        var _this = this;
 
-        this.filters = {
-          population_group: {
-            total: "All",
-            "Black African": "Black African",
-            "Coloured": "Coloured",
-            "Indian or Asian": "Indian or Asian",
-            "White": "White",
-            "Other": "Other",
-          },
-//          age: {
-//            total: "All",
-//            youth: "Youth",
-//            adult: "Adult",
-//            elderly: "Elderly"
-//          },
-//          direction: {
-//            total: "All",
-//            in: "In",
-//            out: "Out"
-//          }
-        };
+        this.allFilters = FILTERS;
         
-        this.model = {
-          ui: {
-            filters: {
-              population_group: "total",
-//              age: "total",
-//              direction: "total"
-//              direction: "total"
-            }
-          }
-        };
+        this.model = {data: [], ui: {filters: {}}};
+      
+        Object.keys(this.allFilters).forEach(function(filter_id){
+          _this.model.ui.filters[filter_id] = UI_FILTERS[filter_id] || "total";
+        });
+         
       },
 
-      readyOnce: function(data) {
+      readyOnce: function() {
         var _this = this;
         
         this.mapEl = this.element.select("#map-layer");
@@ -138,17 +105,17 @@
           .interpolate("bundle");        
         
         this.filtersEl.selectAll(".filter")
-          .data(Object.keys(this.filters))
+          .data(Object.keys(_this.allFilters))
           .enter().append("div")
           .attr("class","filter")
           .each(function(filter_id){
             var view = d3.select(this);
-            view.append("div").text(_this.translator(filter_id));
+            view.append("div").text(filter_id);
             view.selectAll(".option")
-              .data(Object.keys(_this.filters[filter_id]))
+              .data(Object.keys(_this.allFilters[filter_id]))
               .enter().append("span")
               .attr("class","option")
-              .text(function(option_id){return _this.filters[filter_id][option_id]})
+              .text(function(option_id){return _this.allFilters[filter_id][option_id]})
               .on("click", function(option_id){_this.interact().clickFilter(filter_id, option_id)})
           })
         
@@ -159,24 +126,38 @@
           .on("mouseout", this.interact().mouseout);
         
       },
+      
+      
       ready: function(data) {
         var _this = this;
         if(data) this.model.data = data;
-          
-        this.frame = _this.model.data.map(function(m){
-          var flow = m.total;
-          
-          Object.keys(_this.model.ui.filters).forEach(function(filter){
-            var option_id = _this.model.ui.filters[filter];
-            if(option_id!="total") flow = flow * m[option_id]/m.total;
+
+        var collection = {};
+              
+        this.frame = this.model.data.forEach(function(d) {
+          var pointer = "from-" + d[FROM] + " to-" + d[TO];
+
+          //new entry in collection
+          if(!collection[pointer]) {
+            collection[pointer] = {};
+            collection[pointer][FROM] = d[FROM];
+            collection[pointer][TO] = d[TO];
+            collection[pointer]["flow"] = 0
+          }
+
+          var filter = true;
+
+          //find out if we need to include the row or not in the calculation of total
+          Object.keys(_this.model.ui.filters).forEach(function(filter_id){
+            var option_id = _this.model.ui.filters[filter_id];
+            if(option_id!="total") filter = filter && (d[filter_id] == option_id);
           });
-            
-          var result = [];
-          result[FROM] = m[FROM];
-          result[TO] = m[TO];
-          result["flow"] = flow;
-          return result;
-        })
+          
+          //aggegate data if it passes filtering
+          if(filter) collection[pointer]["flow"] += d[FLOW];
+        });
+
+        this.frame = d3.values(collection);
         
         this.updateFilters();
         this.redraw();
@@ -386,24 +367,15 @@
       
       
         d3.csv(DATA_FILE, function(error, response) {
-          if (error) return console.log(error);
-
-          if(DATA_FORMAT == DIMENSIONS) response = convertDimensionsToMeasures(response);
+          if (error) return console.error(error);
 
           response = response
             //remove internal entity migration and configurable exceptions 
             .filter(function(f) {return f[FROM] != f[TO] && EXCLUDE.indexOf(f[FROM])==-1 && EXCLUDE.indexOf(f[TO])==-1;})
             .filter(function(f) {return !isWithinSameProvince(f[FROM],f[TO])})
-            .map(function(m) {
-              (Object.keys(m)).forEach(function(column){
-                var float = parseFloat(m[column]);
-                if(float || float===0) m[column] = float;
-              });
-              return m;
-            })
-            .sort(function(b, a) {return a.total - b.total;})
-
-          migrationMap.readyOnce(response);
+            .map(function(m) {m[FLOW] = +m[FLOW]; return m;});
+          
+          migrationMap.readyOnce();
           migrationMap.ready(response);
         });
       });
@@ -413,38 +385,6 @@
     window.onresize = function(){
       migrationMap.redraw();
     }
-
-    var convertDimensionsToMeasures = function convertDimensionsToMeasures(data) {
-      var dictionary = {};
-      var result = [];
-      
-      data.forEach(function(d){
-        var pointer = "from-" + d[FROM] + " to-" + d[TO];
-        
-        //new entry
-        if(!dictionary[pointer]) {
-          dictionary[pointer] = {};
-          dictionary[pointer][FROM] = d[FROM];
-          dictionary[pointer][TO] = d[TO];
-          dictionary[pointer]["total"] = 0
-        }
-        
-        Object.keys(d).forEach(function(column){
-          if(column==FROM || column==TO || column=="flow") return;
-          dictionary[pointer][d[column]] = +d["flow"];
-          dictionary[pointer]["total"] += +d["flow"];
-        })
-      
-      })
-      
-      Object.keys(dictionary).forEach(function(d){
-        result.push(dictionary[d]);
-      })
-
-      
-      return result;
-    };
-
     
     var isWithinSameProvince = function isWithinSameProvince(fromId, toId){
       return d3.select("#shape" + fromId).attr("parent") == d3.select("#shape" + toId).attr("parent");

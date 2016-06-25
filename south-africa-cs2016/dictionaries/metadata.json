@@ -131,7 +131,9 @@
              "europe": ["#ffe700", "#fbdd00", "#fff400", "#fbaf09", "#ffe700", "#b17f4a"], 
              "americas": ["#7feb00", "#5de200", "#81f201", "#00b900", "#b5ea32", "#008d36"], 
              "africa": ["#00d5e9", "#00c8ec", "#00e1ec", "#0098df", "#77dff7", "#0586c6"], 
-             "_default": ["#ffb600", "#ffaa14", "#ffc500", "#fb6d19", "#ffb600", "#9b4838"] 
+             "_default": ["#ffb600", "#ffaa14", "#ffc500", "#fb6d19", "#ffb600", "#9b4838"],
+             "southafrica": ["#00d5e9", "#00c8ec", "#00e1ec", "#0098df", "#77dff7", "#0586c6"], 
+             "southafricaprovince": ["#0087a7", "#0087a7", "#0087a7", "#0087a7", "#0087a7", "#0087a7"] 
          },
          "selectable": false
          

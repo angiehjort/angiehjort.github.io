@@ -27,7 +27,7 @@
     
     *{margin:0; box-sizing: border-box; overflow: hidden}
     .barchart{width:100%; height:100%;}
-    svg{width:95%; height:94%; margin: 3% 5% 3% 0;}
+    svg{width:95%; height:94%; margin: 2% 5% 3% 0;}
     .grid{
       stroke: white;
     }
@@ -96,7 +96,7 @@
         var spaceForYearLabels = 70;
         var spaceForGroupLabels = 350;
         var spaceForValueLabels = 25;
-        var spaceForTitle = 0;
+        var spaceForTitle = 5;
         
         var width = parseInt(this.svg.style("width"),10) - spaceForYearLabels - spaceForGroupLabels;
         var height = parseInt(this.svg.style("height"),10) - spaceForTitle;
@@ -128,8 +128,9 @@
             
             group.append("text")
               .attr("class", "grouplabel")
+              .attr("alignment-baseline", "hanging")
               .attr("x", -spaceForYearLabels)
-              .attr("dy", "0.1em")
+              .attr("dy", "0.3em")
               .style("font-size", spaceForGroupLabels*0.07)
               .text(d.key);
             group.selectAll("g")

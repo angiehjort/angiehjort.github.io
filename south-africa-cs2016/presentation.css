@@ -38,6 +38,14 @@ html, body {
   width: 80%;
 }
 
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal section {
+	font-family: "geoslab703_md_bt_medium";
+	text-transform: none;
+}
+
 header {
 	height: 10vh;
 	width: 100%;

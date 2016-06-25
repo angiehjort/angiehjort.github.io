@@ -5,10 +5,35 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  
+  <style>
+    #controls {
+      position: absolute;
+      top: 40px;
+      right: 30%;
+      font-family: sans-serif;
+    }
+    #controls span {
+      background: #f5e8bf;
+      border: 1px solid black;
+      padding: 5px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #controls span:hover {
+      background: #f9c242;
+    }
+  </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <div id='controls'>
+    <span id="btn-2014">2014</span>
+    <span id="btn-explode">Explode</span>
+    <span id="btn-labels">Labels</span>
+  </div>
+  
   <script>
 
   var locationArray = window.location.href.split("/");
@@ -21,24 +46,16 @@
   };
     
 
-  Vizabi('BubbleChart', document.getElementById('placeholder'), {
+  var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
       time: {
-        start: "1996",
+        start: "2000",
+        end: "2014",
         value: "1996"
       },
       entities: {
         select: [
-          {"geo": "zaf", "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "1",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "2",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "3",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "4",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "5",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "6",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "7",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "8",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
-          {"geo": "9",   "trailStartTime": "1996", "labelOffset": [Math.random()/10, Math.random()/10], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"}
+          {"geo": "zaf", "trailStartTime": "1996", "labelOffset": [0.1, -0.1], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
         ],
         show: {
           _defs_: {
@@ -86,7 +103,7 @@
     },
     ui: {
       chart:{
-        trails: false
+        trails: true
       },
       presentation: true,
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
@@ -97,7 +114,136 @@
       }
     }
   });
-d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
+//d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
+    
+    
+    
+//viz.model.on("change:state.time", function(){
+//  console.log("change")
+//  provincesHideShow();
+//})
+viz.model.on("ready", function(){
+  console.log("ready")
+  labelsHideShow(true);
+  setTimeout(function(){
+    provincesHideShow(true);
+  }, 100)
+})
+
+//viz.setModel({state: {entities: {select: []}}})
+
+d3.select("#btn-2014").on("click",function(){
+  viz.setModel({state: {time: {value: "2014"}}})
+})
+d3.select("#btn-explode").on("click",function(){
+    viz.setModel({state: {entities: {select: [
+      {"geo":"1","labelOffset":[0.024,0.119]},
+      {"geo":"2","labelOffset":[-0.133,0.029]},
+      {"geo":"3","labelOffset":[0.228,-0.016]},
+      {"geo":"4","labelOffset":[0.203,-0.055]},
+      {"geo":"5","labelOffset":[-0.012,-0.047]},
+      {"geo":"6","labelOffset":[0.14,-0.088]},
+      {"geo":"7","labelOffset":[0.167,0.048]},
+      {"geo":"8","labelOffset":[0.275,0.043]},
+      {"geo":"9","labelOffset":[-0.069,0.11]}
+  ]}}})
+    
+    
+
+  
+  var x = d3.select("circle.bubble-zaf").attr("cx");
+  var y = d3.select("circle.bubble-zaf").attr("cy");
+  var x1 = d3.select("circle.bubble-1").attr("cx");
+  var x2 = d3.select("circle.bubble-2").attr("cx");
+  var x3 = d3.select("circle.bubble-3").attr("cx");
+  var x4 = d3.select("circle.bubble-4").attr("cx");
+  var x5 = d3.select("circle.bubble-5").attr("cx");
+  var x6 = d3.select("circle.bubble-6").attr("cx");
+  var x7 = d3.select("circle.bubble-7").attr("cx");
+  var x8 = d3.select("circle.bubble-8").attr("cx");
+  var x9 = d3.select("circle.bubble-9").attr("cx");
+  var y1 = d3.select("circle.bubble-1").attr("cy");
+  var y2 = d3.select("circle.bubble-2").attr("cy");
+  var y3 = d3.select("circle.bubble-3").attr("cy");
+  var y4 = d3.select("circle.bubble-4").attr("cy");
+  var y5 = d3.select("circle.bubble-5").attr("cy");
+  var y6 = d3.select("circle.bubble-6").attr("cy");
+  var y7 = d3.select("circle.bubble-7").attr("cy");
+  var y8 = d3.select("circle.bubble-8").attr("cy");
+  var y9 = d3.select("circle.bubble-9").attr("cy");
+  
+  
+  var rndFactor = 20;
+  d3.select("circle.bubble-1").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-2").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-3").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-4").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-5").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-6").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-7").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-8").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  d3.select("circle.bubble-9").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  
+  labelsHideShow(true);
+
+  
+  provincesHideShow(false);
+  labelsHideShow(true);
+  
+  d3.select("circle.bubble-zaf").transition().duration(1000).ease("back").attr("r",0);
+  
+  setTimeout(function(){
+  d3.select("circle.bubble-1").transition().duration(3000).ease("elastic").attr("cy", y1).attr("cx", x1);
+  d3.select("circle.bubble-2").transition().duration(3000).ease("elastic").attr("cy", y2).attr("cx", x2);
+  d3.select("circle.bubble-3").transition().duration(3000).ease("elastic").attr("cy", y3).attr("cx", x3);
+  d3.select("circle.bubble-4").transition().duration(3000).ease("elastic").attr("cy", y4).attr("cx", x4);
+  d3.select("circle.bubble-5").transition().duration(3000).ease("elastic").attr("cy", y5).attr("cx", x5);
+  d3.select("circle.bubble-6").transition().duration(3000).ease("elastic").attr("cy", y6).attr("cx", x6);
+  d3.select("circle.bubble-7").transition().duration(3000).ease("elastic").attr("cy", y7).attr("cx", x7);
+  d3.select("circle.bubble-8").transition().duration(3000).ease("elastic").attr("cy", y8).attr("cx", x8);
+  d3.select("circle.bubble-9").transition().duration(3000).ease("elastic").attr("cy", y9).attr("cx", x9);
+  },300)
+  
+
+})
+d3.select("#btn-labels").on("click",function(){
+  labelsHideShow();
+})
+
+function provincesHideShow(hide){
+  var t = hide?"scale(0.0001)":null;
+  d3.select("circle.bubble-1").attr("transform",t);
+  d3.select("circle.bubble-2").attr("transform",t);
+  d3.select("circle.bubble-3").attr("transform",t);
+  d3.select("circle.bubble-4").attr("transform",t);
+  d3.select("circle.bubble-5").attr("transform",t);
+  d3.select("circle.bubble-6").attr("transform",t);
+  d3.select("circle.bubble-7").attr("transform",t);
+  d3.select("circle.bubble-8").attr("transform",t);
+  d3.select("circle.bubble-9").attr("transform",t);
+}
+function labelsHideShow(hide){
+  var o = hide?"0":null;
+  d3.select("g.trail-1").attr("opacity",o);  d3.select("g.line-1").attr("opacity",o);
+  d3.select("g.trail-2").attr("opacity",o);  d3.select("g.line-2").attr("opacity",o);
+  d3.select("g.trail-3").attr("opacity",o);  d3.select("g.line-3").attr("opacity",o);
+  d3.select("g.trail-4").attr("opacity",o);  d3.select("g.line-4").attr("opacity",o);
+  d3.select("g.trail-5").attr("opacity",o);  d3.select("g.line-5").attr("opacity",o);
+  d3.select("g.trail-6").attr("opacity",o);  d3.select("g.line-6").attr("opacity",o);
+  d3.select("g.trail-7").attr("opacity",o);  d3.select("g.line-7").attr("opacity",o);
+  d3.select("g.trail-8").attr("opacity",o);  d3.select("g.line-8").attr("opacity",o);
+  d3.select("g.trail-9").attr("opacity",o);  d3.select("g.line-9").attr("opacity",o);
+  d3.select("g.label-1").attr("opacity",o);  d3.select("g.line-1").attr("opacity",o);
+  d3.select("g.label-2").attr("opacity",o);  d3.select("g.line-2").attr("opacity",o);
+  d3.select("g.label-3").attr("opacity",o);  d3.select("g.line-3").attr("opacity",o);
+  d3.select("g.label-4").attr("opacity",o);  d3.select("g.line-4").attr("opacity",o);
+  d3.select("g.label-5").attr("opacity",o);  d3.select("g.line-5").attr("opacity",o);
+  d3.select("g.label-6").attr("opacity",o);  d3.select("g.line-6").attr("opacity",o);
+  d3.select("g.label-7").attr("opacity",o);  d3.select("g.line-7").attr("opacity",o);
+  d3.select("g.label-8").attr("opacity",o);  d3.select("g.line-8").attr("opacity",o);
+  d3.select("g.label-9").attr("opacity",o);  d3.select("g.line-9").attr("opacity",o);
+}
+
   </script>
 </body>
 

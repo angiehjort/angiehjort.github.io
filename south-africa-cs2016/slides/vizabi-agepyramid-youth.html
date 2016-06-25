@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <style>
+    .vzb-bc-axis-y .tick {
+      display: none;
+    }
+  </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -75,6 +80,8 @@
     }
   });
   viz.model.state.time._defaults.end = "2016";
+  viz.components[0].presentationProfileChanges.large.margin.left = 170;
+  viz.components[0].presentationProfileChanges.medium.margin.left = 150;
 
   viz.on('ready', redrawAxis);
   viz.on('resize', redrawAxis);
@@ -84,7 +91,7 @@
     var zero = svgTicks.first();
     var hundred = svgTicks.last();
     
-    var ticks = { child: { name: 'Child' }, youth: { name: 'Youth' }, adult: { name: 'Adult' }, elder: { name: 'Elder' } };
+    var ticks = { child: { name: 'Children' }, youth: { name: 'Youth' }, adult: { name: 'Adults' }, elder: { name: 'Elderly' } };
 
     if (zero.node()) {
       var transform = zero.attr('transform');
@@ -97,30 +104,40 @@
       ticks.youth.t = (ticks.youth.y - ticks.adult.y) / 2;
       ticks.adult.t = (ticks.adult.y - ticks.elder.y) / 2;
       ticks.elder.t = (ticks.elder.y - (zeroY/20)) / 2;
+
+      var offset = -20;
+      var rotate = 0;
+      yAxis.selectAll('.tick').remove();  
+      yAxis.selectAll('.tickminor').remove(); 
+
+      yAxis.selectAll('.agegrouptick').remove(); 
+
+      Object.keys(ticks).forEach(function(tickIndex) {
+
+        var tick = ticks[tickIndex];
+
+        var g = yAxis.append('g')
+          .attr('class', 'agegrouptick')
+          .attr('transform', 'translate(0,'+ tick.y+ ')')
+        g.append('line')
+          .attr('x2',-6)
+          .attr('y2',0);
+        g.append('text')
+          .attr('transform','rotate('+rotate+') translate(-10, -'+Math.round(tick.t)+')')
+          .attr('text-anchor','end')
+          .attr('alignment-baseline', 'central')
+          .attr('y',offset)
+          .attr('dy',0)
+          .attr('dx',0)
+          .attr('x',0)
+          .attr('y',0)
+          .style('font-size', '1.8em')
+          .text(tick.name)
+      })
+
+      //d3.select('.vzb-bc-graph').attr('transform', 'translate(160,100)');
     }
-    var offset = -20;
-    var rotate = -90;
-    yAxis.selectAll('.tick').remove();  
 
-    Object.keys(ticks).forEach(function(tickIndex) {
-
-      var tick = ticks[tickIndex];
-
-      var g = yAxis.append('g')
-        .attr('class', 'tick')
-        .attr('transform', 'translate(0,'+ tick.y+ ')')
-      g.append('line')
-        .attr('x2',-6)
-        .attr('y2',0);
-      g.append('text')
-        .attr('transform','rotate('+rotate+') translate('+Math.round(tick.t)+',0)')
-        .attr('text-anchor','middle')
-        .attr('y',offset)
-        .attr('dy',0)
-        .attr('x',0)
-        .style('font-size', '1.8em')
-        .text(tick.name)
-    })
 
   }
 
