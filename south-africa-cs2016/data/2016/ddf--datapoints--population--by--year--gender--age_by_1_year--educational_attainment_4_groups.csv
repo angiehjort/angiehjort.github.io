@@ -1,0 +1,5364 @@
+year,age,gender,educational_attainment_4_groups,population
+1996,0,Male,No schooling/less than primary,0
+1996,0,Male,Primary,0
+1996,0,Male,Secondary,0
+1996,0,Male,Higher,0
+1996,0,Male,Unspecified,0
+1996,0,Male,Not applicable,426858
+1996,0,Female,No schooling/less than primary,0
+1996,0,Female,Primary,0
+1996,0,Female,Secondary,0
+1996,0,Female,Higher,0
+1996,0,Female,Unspecified,0
+1996,0,Female,Not applicable,429380
+1996,1,Male,No schooling/less than primary,0
+1996,1,Male,Primary,0
+1996,1,Male,Secondary,0
+1996,1,Male,Higher,0
+1996,1,Male,Unspecified,0
+1996,1,Male,Not applicable,420510
+1996,1,Female,No schooling/less than primary,0
+1996,1,Female,Primary,0
+1996,1,Female,Secondary,0
+1996,1,Female,Higher,0
+1996,1,Female,Unspecified,0
+1996,1,Female,Not applicable,420659
+1996,2,Male,No schooling/less than primary,0
+1996,2,Male,Primary,0
+1996,2,Male,Secondary,0
+1996,2,Male,Higher,0
+1996,2,Male,Unspecified,0
+1996,2,Male,Not applicable,445069
+1996,2,Female,No schooling/less than primary,0
+1996,2,Female,Primary,0
+1996,2,Female,Secondary,0
+1996,2,Female,Higher,0
+1996,2,Female,Unspecified,0
+1996,2,Female,Not applicable,447110
+1996,3,Male,No schooling/less than primary,0
+1996,3,Male,Primary,0
+1996,3,Male,Secondary,0
+1996,3,Male,Higher,0
+1996,3,Male,Unspecified,0
+1996,3,Male,Not applicable,458432
+1996,3,Female,No schooling/less than primary,0
+1996,3,Female,Primary,0
+1996,3,Female,Secondary,0
+1996,3,Female,Higher,0
+1996,3,Female,Unspecified,0
+1996,3,Female,Not applicable,460519
+1996,4,Male,No schooling/less than primary,0
+1996,4,Male,Primary,0
+1996,4,Male,Secondary,0
+1996,4,Male,Higher,0
+1996,4,Male,Unspecified,0
+1996,4,Male,Not applicable,465893
+1996,4,Female,No schooling/less than primary,0
+1996,4,Female,Primary,0
+1996,4,Female,Secondary,0
+1996,4,Female,Higher,0
+1996,4,Female,Unspecified,0
+1996,4,Female,Not applicable,469190
+1996,5,Male,No schooling/less than primary,442263
+1996,5,Male,Primary,0
+1996,5,Male,Secondary,0
+1996,5,Male,Higher,15
+1996,5,Male,Unspecified,39804
+1996,5,Male,Not applicable,0
+1996,5,Female,No schooling/less than primary,438765
+1996,5,Female,Primary,0
+1996,5,Female,Secondary,0
+1996,5,Female,Higher,7
+1996,5,Female,Unspecified,39307
+1996,5,Female,Not applicable,0
+1996,6,Male,No schooling/less than primary,464922
+1996,6,Male,Primary,0
+1996,6,Male,Secondary,0
+1996,6,Male,Higher,9
+1996,6,Male,Unspecified,29376
+1996,6,Male,Not applicable,0
+1996,6,Female,No schooling/less than primary,463280
+1996,6,Female,Primary,0
+1996,6,Female,Secondary,0
+1996,6,Female,Higher,3
+1996,6,Female,Unspecified,28943
+1996,6,Female,Not applicable,0
+1996,7,Male,No schooling/less than primary,443247
+1996,7,Male,Primary,0
+1996,7,Male,Secondary,0
+1996,7,Male,Higher,10
+1996,7,Male,Unspecified,22259
+1996,7,Male,Not applicable,0
+1996,7,Female,No schooling/less than primary,441574
+1996,7,Female,Primary,0
+1996,7,Female,Secondary,0
+1996,7,Female,Higher,10
+1996,7,Female,Unspecified,22304
+1996,7,Female,Not applicable,0
+1996,8,Male,No schooling/less than primary,428849
+1996,8,Male,Primary,1350
+1996,8,Male,Secondary,0
+1996,8,Male,Higher,8
+1996,8,Male,Unspecified,18310
+1996,8,Male,Not applicable,0
+1996,8,Female,No schooling/less than primary,434534
+1996,8,Female,Primary,1435
+1996,8,Female,Secondary,0
+1996,8,Female,Higher,9
+1996,8,Female,Unspecified,18154
+1996,8,Female,Not applicable,0
+1996,9,Male,No schooling/less than primary,423526
+1996,9,Male,Primary,3304
+1996,9,Male,Secondary,0
+1996,9,Male,Higher,10
+1996,9,Male,Unspecified,16303
+1996,9,Male,Not applicable,0
+1996,9,Female,No schooling/less than primary,427329
+1996,9,Female,Primary,3589
+1996,9,Female,Secondary,0
+1996,9,Female,Higher,3
+1996,9,Female,Unspecified,15914
+1996,9,Female,Not applicable,0
+1996,10,Male,No schooling/less than primary,447085
+1996,10,Male,Primary,6557
+1996,10,Male,Secondary,0
+1996,10,Male,Higher,14
+1996,10,Male,Unspecified,14817
+1996,10,Male,Not applicable,0
+1996,10,Female,No schooling/less than primary,451273
+1996,10,Female,Primary,7636
+1996,10,Female,Secondary,0
+1996,10,Female,Higher,10
+1996,10,Female,Unspecified,14567
+1996,10,Female,Not applicable,0
+1996,11,Male,No schooling/less than primary,434659
+1996,11,Male,Primary,13129
+1996,11,Male,Secondary,0
+1996,11,Male,Higher,8
+1996,11,Male,Unspecified,13105
+1996,11,Male,Not applicable,0
+1996,11,Female,No schooling/less than primary,433362
+1996,11,Female,Primary,16890
+1996,11,Female,Secondary,0
+1996,11,Female,Higher,3
+1996,11,Female,Unspecified,12745
+1996,11,Female,Not applicable,0
+1996,12,Male,No schooling/less than primary,411572
+1996,12,Male,Primary,43470
+1996,12,Male,Secondary,0
+1996,12,Male,Higher,8
+1996,12,Male,Unspecified,12668
+1996,12,Male,Not applicable,0
+1996,12,Female,No schooling/less than primary,397786
+1996,12,Female,Primary,63285
+1996,12,Female,Secondary,0
+1996,12,Female,Higher,4
+1996,12,Female,Unspecified,12389
+1996,12,Female,Not applicable,0
+1996,13,Male,No schooling/less than primary,329164
+1996,13,Male,Primary,116008
+1996,13,Male,Secondary,0
+1996,13,Male,Higher,6
+1996,13,Male,Unspecified,10492
+1996,13,Male,Not applicable,0
+1996,13,Female,No schooling/less than primary,291468
+1996,13,Female,Primary,163902
+1996,13,Female,Secondary,0
+1996,13,Female,Higher,6
+1996,13,Female,Unspecified,10382
+1996,13,Female,Not applicable,0
+1996,14,Male,No schooling/less than primary,243242
+1996,14,Male,Primary,201807
+1996,14,Male,Secondary,619
+1996,14,Male,Higher,7
+1996,14,Male,Unspecified,10324
+1996,14,Male,Not applicable,0
+1996,14,Female,No schooling/less than primary,194255
+1996,14,Female,Primary,264929
+1996,14,Female,Secondary,692
+1996,14,Female,Higher,6
+1996,14,Female,Unspecified,9750
+1996,14,Female,Not applicable,0
+1996,15,Male,No schooling/less than primary,167671
+1996,15,Male,Primary,245803
+1996,15,Male,Secondary,960
+1996,15,Male,Higher,24
+1996,15,Male,Unspecified,9507
+1996,15,Male,Not applicable,0
+1996,15,Female,No schooling/less than primary,122635
+1996,15,Female,Primary,303087
+1996,15,Female,Secondary,1247
+1996,15,Female,Higher,15
+1996,15,Female,Unspecified,9230
+1996,15,Female,Not applicable,0
+1996,16,Male,No schooling/less than primary,134448
+1996,16,Male,Primary,289898
+1996,16,Male,Secondary,2798
+1996,16,Male,Higher,57
+1996,16,Male,Unspecified,9841
+1996,16,Male,Not applicable,0
+1996,16,Female,No schooling/less than primary,96632
+1996,16,Female,Primary,342410
+1996,16,Female,Secondary,3955
+1996,16,Female,Higher,41
+1996,16,Female,Unspecified,9377
+1996,16,Female,Not applicable,0
+1996,17,Male,No schooling/less than primary,90722
+1996,17,Male,Primary,289091
+1996,17,Male,Secondary,12467
+1996,17,Male,Higher,678
+1996,17,Male,Unspecified,8704
+1996,17,Male,Not applicable,0
+1996,17,Female,No schooling/less than primary,64238
+1996,17,Female,Primary,323666
+1996,17,Female,Secondary,18770
+1996,17,Female,Higher,672
+1996,17,Female,Unspecified,8263
+1996,17,Female,Not applicable,0
+1996,18,Male,No schooling/less than primary,76476
+1996,18,Male,Primary,268379
+1996,18,Male,Secondary,38772
+1996,18,Male,Higher,1947
+1996,18,Male,Unspecified,8935
+1996,18,Male,Not applicable,0
+1996,18,Female,No schooling/less than primary,58304
+1996,18,Female,Primary,292193
+1996,18,Female,Secondary,53112
+1996,18,Female,Higher,2290
+1996,18,Female,Unspecified,8565
+1996,18,Female,Not applicable,0
+1996,19,Male,No schooling/less than primary,70548
+1996,19,Male,Primary,240429
+1996,19,Male,Secondary,68298
+1996,19,Male,Higher,4361
+1996,19,Male,Unspecified,9402
+1996,19,Male,Not applicable,0
+1996,19,Female,No schooling/less than primary,55614
+1996,19,Female,Primary,256739
+1996,19,Female,Secondary,85058
+1996,19,Female,Higher,5616
+1996,19,Female,Unspecified,8773
+1996,19,Female,Not applicable,0
+1996,20,Male,No schooling/less than primary,70804
+1996,20,Male,Primary,222573
+1996,20,Male,Secondary,90862
+1996,20,Male,Higher,7726
+1996,20,Male,Unspecified,11038
+1996,20,Male,Not applicable,0
+1996,20,Female,No schooling/less than primary,61184
+1996,20,Female,Primary,240611
+1996,20,Female,Secondary,106814
+1996,20,Female,Higher,9613
+1996,20,Female,Unspecified,10417
+1996,20,Female,Not applicable,0
+1996,21,Male,No schooling/less than primary,69755
+1996,21,Male,Primary,203237
+1996,21,Male,Secondary,102094
+1996,21,Male,Higher,11771
+1996,21,Male,Unspecified,11722
+1996,21,Male,Not applicable,0
+1996,21,Female,No schooling/less than primary,62499
+1996,21,Female,Primary,221125
+1996,21,Female,Secondary,113932
+1996,21,Female,Higher,14400
+1996,21,Female,Unspecified,10683
+1996,21,Female,Not applicable,0
+1996,22,Male,No schooling/less than primary,68896
+1996,22,Male,Primary,176969
+1996,22,Male,Secondary,103464
+1996,22,Male,Higher,16458
+1996,22,Male,Unspecified,12034
+1996,22,Male,Not applicable,0
+1996,22,Female,No schooling/less than primary,64242
+1996,22,Female,Primary,198460
+1996,22,Female,Secondary,114211
+1996,22,Female,Higher,20235
+1996,22,Female,Unspecified,11132
+1996,22,Female,Not applicable,0
+1996,23,Male,No schooling/less than primary,68039
+1996,23,Male,Primary,159735
+1996,23,Male,Secondary,101217
+1996,23,Male,Higher,20590
+1996,23,Male,Unspecified,12579
+1996,23,Male,Not applicable,0
+1996,23,Female,No schooling/less than primary,66298
+1996,23,Female,Primary,183889
+1996,23,Female,Secondary,110114
+1996,23,Female,Higher,24633
+1996,23,Female,Unspecified,11346
+1996,23,Female,Not applicable,0
+1996,24,Male,No schooling/less than primary,75295
+1996,24,Male,Primary,159472
+1996,24,Male,Secondary,102446
+1996,24,Male,Higher,25051
+1996,24,Male,Unspecified,14092
+1996,24,Male,Not applicable,0
+1996,24,Female,No schooling/less than primary,74096
+1996,24,Female,Primary,182983
+1996,24,Female,Secondary,111302
+1996,24,Female,Higher,28425
+1996,24,Female,Unspecified,11791
+1996,24,Female,Not applicable,0
+1996,25,Male,No schooling/less than primary,68087
+1996,25,Male,Primary,133386
+1996,25,Male,Secondary,90082
+1996,25,Male,Higher,26674
+1996,25,Male,Unspecified,13376
+1996,25,Male,Not applicable,0
+1996,25,Female,No schooling/less than primary,66591
+1996,25,Female,Primary,151613
+1996,25,Female,Secondary,97701
+1996,25,Female,Higher,28722
+1996,25,Female,Unspecified,11013
+1996,25,Female,Not applicable,0
+1996,26,Male,No schooling/less than primary,82924
+1996,26,Male,Primary,155209
+1996,26,Male,Secondary,94190
+1996,26,Male,Higher,29127
+1996,26,Male,Unspecified,15442
+1996,26,Male,Not applicable,0
+1996,26,Female,No schooling/less than primary,81237
+1996,26,Female,Primary,175223
+1996,26,Female,Secondary,100490
+1996,26,Female,Higher,30803
+1996,26,Female,Unspecified,12392
+1996,26,Female,Not applicable,0
+1996,27,Male,No schooling/less than primary,74197
+1996,27,Male,Primary,135857
+1996,27,Male,Secondary,79469
+1996,27,Male,Higher,28896
+1996,27,Male,Unspecified,14024
+1996,27,Male,Not applicable,0
+1996,27,Female,No schooling/less than primary,76163
+1996,27,Female,Primary,157738
+1996,27,Female,Secondary,85918
+1996,27,Female,Higher,29987
+1996,27,Female,Unspecified,11291
+1996,27,Female,Not applicable,0
+1996,28,Male,No schooling/less than primary,80693
+1996,28,Male,Primary,139312
+1996,28,Male,Secondary,74534
+1996,28,Male,Higher,29649
+1996,28,Male,Unspecified,14797
+1996,28,Male,Not applicable,0
+1996,28,Female,No schooling/less than primary,85359
+1996,28,Female,Primary,161700
+1996,28,Female,Secondary,79845
+1996,28,Female,Higher,30500
+1996,28,Female,Unspecified,11590
+1996,28,Female,Not applicable,0
+1996,29,Male,No schooling/less than primary,65592
+1996,29,Male,Primary,115917
+1996,29,Male,Secondary,61097
+1996,29,Male,Higher,28117
+1996,29,Male,Unspecified,12418
+1996,29,Male,Not applicable,0
+1996,29,Female,No schooling/less than primary,69938
+1996,29,Female,Primary,133836
+1996,29,Female,Secondary,64807
+1996,29,Female,Higher,28442
+1996,29,Female,Unspecified,9766
+1996,29,Female,Not applicable,0
+1996,30,Male,No schooling/less than primary,83357
+1996,30,Male,Primary,128159
+1996,30,Male,Secondary,59866
+1996,30,Male,Higher,29229
+1996,30,Male,Unspecified,14368
+1996,30,Male,Not applicable,0
+1996,30,Female,No schooling/less than primary,96508
+1996,30,Female,Primary,150881
+1996,30,Female,Secondary,64236
+1996,30,Female,Higher,29614
+1996,30,Female,Unspecified,11801
+1996,30,Female,Not applicable,0
+1996,31,Male,No schooling/less than primary,76695
+1996,31,Male,Primary,121907
+1996,31,Male,Secondary,50553
+1996,31,Male,Higher,26922
+1996,31,Male,Unspecified,12842
+1996,31,Male,Not applicable,0
+1996,31,Female,No schooling/less than primary,84911
+1996,31,Female,Primary,139097
+1996,31,Female,Secondary,54052
+1996,31,Female,Higher,26363
+1996,31,Female,Unspecified,9984
+1996,31,Female,Not applicable,0
+1996,32,Male,No schooling/less than primary,83561
+1996,32,Male,Primary,126782
+1996,32,Male,Secondary,48443
+1996,32,Male,Higher,27959
+1996,32,Male,Unspecified,14033
+1996,32,Male,Not applicable,0
+1996,32,Female,No schooling/less than primary,98235
+1996,32,Female,Primary,146821
+1996,32,Female,Secondary,52138
+1996,32,Female,Higher,26525
+1996,32,Female,Unspecified,10633
+1996,32,Female,Not applicable,0
+1996,33,Male,No schooling/less than primary,80165
+1996,33,Male,Primary,118528
+1996,33,Male,Secondary,42287
+1996,33,Male,Higher,26502
+1996,33,Male,Unspecified,13203
+1996,33,Male,Not applicable,0
+1996,33,Female,No schooling/less than primary,93111
+1996,33,Female,Primary,133528
+1996,33,Female,Secondary,46031
+1996,33,Female,Higher,24486
+1996,33,Female,Unspecified,9704
+1996,33,Female,Not applicable,0
+1996,34,Male,No schooling/less than primary,82471
+1996,34,Male,Primary,116369
+1996,34,Male,Secondary,39891
+1996,34,Male,Higher,26115
+1996,34,Male,Unspecified,13294
+1996,34,Male,Not applicable,0
+1996,34,Female,No schooling/less than primary,96685
+1996,34,Female,Primary,128640
+1996,34,Female,Secondary,42933
+1996,34,Female,Higher,24136
+1996,34,Female,Unspecified,9648
+1996,34,Female,Not applicable,0
+1996,35,Male,No schooling/less than primary,80949
+1996,35,Male,Primary,107204
+1996,35,Male,Secondary,37572
+1996,35,Male,Higher,25481
+1996,35,Male,Unspecified,13091
+1996,35,Male,Not applicable,0
+1996,35,Female,No schooling/less than primary,92192
+1996,35,Female,Primary,116931
+1996,35,Female,Secondary,39152
+1996,35,Female,Higher,23278
+1996,35,Female,Unspecified,9581
+1996,35,Female,Not applicable,0
+1996,36,Male,No schooling/less than primary,92898
+1996,36,Male,Primary,122700
+1996,36,Male,Secondary,39607
+1996,36,Male,Higher,26357
+1996,36,Male,Unspecified,14392
+1996,36,Male,Not applicable,0
+1996,36,Female,No schooling/less than primary,106829
+1996,36,Female,Primary,132272
+1996,36,Female,Secondary,39225
+1996,36,Female,Higher,24050
+1996,36,Female,Unspecified,10383
+1996,36,Female,Not applicable,0
+1996,37,Male,No schooling/less than primary,74228
+1996,37,Male,Primary,95486
+1996,37,Male,Secondary,29785
+1996,37,Male,Higher,22788
+1996,37,Male,Unspecified,11718
+1996,37,Male,Not applicable,0
+1996,37,Female,No schooling/less than primary,89146
+1996,37,Female,Primary,107623
+1996,37,Female,Secondary,30048
+1996,37,Female,Higher,21237
+1996,37,Female,Unspecified,8438
+1996,37,Female,Not applicable,0
+1996,38,Male,No schooling/less than primary,89758
+1996,38,Male,Primary,108410
+1996,38,Male,Secondary,30185
+1996,38,Male,Higher,22676
+1996,38,Male,Unspecified,13360
+1996,38,Male,Not applicable,0
+1996,38,Female,No schooling/less than primary,106731
+1996,38,Female,Primary,116490
+1996,38,Female,Secondary,30090
+1996,38,Female,Higher,21495
+1996,38,Female,Unspecified,9659
+1996,38,Female,Not applicable,0
+1996,39,Male,No schooling/less than primary,76374
+1996,39,Male,Primary,92954
+1996,39,Male,Secondary,25311
+1996,39,Male,Higher,20324
+1996,39,Male,Unspecified,11349
+1996,39,Male,Not applicable,0
+1996,39,Female,No schooling/less than primary,85880
+1996,39,Female,Primary,96415
+1996,39,Female,Secondary,24967
+1996,39,Female,Higher,18676
+1996,39,Female,Unspecified,8014
+1996,39,Female,Not applicable,0
+1996,40,Male,No schooling/less than primary,89185
+1996,40,Male,Primary,96069
+1996,40,Male,Secondary,26291
+1996,40,Male,Higher,20958
+1996,40,Male,Unspecified,13144
+1996,40,Male,Not applicable,0
+1996,40,Female,No schooling/less than primary,105953
+1996,40,Female,Primary,102356
+1996,40,Female,Secondary,25729
+1996,40,Female,Higher,19553
+1996,40,Female,Unspecified,9767
+1996,40,Female,Not applicable,0
+1996,41,Male,No schooling/less than primary,69607
+1996,41,Male,Primary,75037
+1996,41,Male,Secondary,20006
+1996,41,Male,Higher,17986
+1996,41,Male,Unspecified,10164
+1996,41,Male,Not applicable,0
+1996,41,Female,No schooling/less than primary,82066
+1996,41,Female,Primary,80972
+1996,41,Female,Secondary,19968
+1996,41,Female,Higher,15767
+1996,41,Female,Unspecified,7381
+1996,41,Female,Not applicable,0
+1996,42,Male,No schooling/less than primary,78949
+1996,42,Male,Primary,83155
+1996,42,Male,Secondary,21174
+1996,42,Male,Higher,17949
+1996,42,Male,Unspecified,10847
+1996,42,Male,Not applicable,0
+1996,42,Female,No schooling/less than primary,93153
+1996,42,Female,Primary,88928
+1996,42,Female,Secondary,21095
+1996,42,Female,Higher,15872
+1996,42,Female,Unspecified,7966
+1996,42,Female,Not applicable,0
+1996,43,Male,No schooling/less than primary,70382
+1996,43,Male,Primary,71521
+1996,43,Male,Secondary,17615
+1996,43,Male,Higher,16137
+1996,43,Male,Unspecified,9639
+1996,43,Male,Not applicable,0
+1996,43,Female,No schooling/less than primary,85726
+1996,43,Female,Primary,80116
+1996,43,Female,Secondary,18822
+1996,43,Female,Higher,13901
+1996,43,Female,Unspecified,7305
+1996,43,Female,Not applicable,0
+1996,44,Male,No schooling/less than primary,79410
+1996,44,Male,Primary,72935
+1996,44,Male,Secondary,17148
+1996,44,Male,Higher,15354
+1996,44,Male,Unspecified,9934
+1996,44,Male,Not applicable,0
+1996,44,Female,No schooling/less than primary,90877
+1996,44,Female,Primary,77253
+1996,44,Female,Secondary,17572
+1996,44,Female,Higher,12784
+1996,44,Female,Unspecified,7148
+1996,44,Female,Not applicable,0
+1996,45,Male,No schooling/less than primary,69762
+1996,45,Male,Primary,60909
+1996,45,Male,Secondary,16486
+1996,45,Male,Higher,14232
+1996,45,Male,Unspecified,8884
+1996,45,Male,Not applicable,0
+1996,45,Female,No schooling/less than primary,77960
+1996,45,Female,Primary,64064
+1996,45,Female,Secondary,16840
+1996,45,Female,Higher,11616
+1996,45,Female,Unspecified,6791
+1996,45,Female,Not applicable,0
+1996,46,Male,No schooling/less than primary,78056
+1996,46,Male,Primary,67216
+1996,46,Male,Secondary,16388
+1996,46,Male,Higher,14069
+1996,46,Male,Unspecified,9780
+1996,46,Male,Not applicable,0
+1996,46,Female,No schooling/less than primary,91119
+1996,46,Female,Primary,71638
+1996,46,Female,Secondary,16579
+1996,46,Female,Higher,11156
+1996,46,Female,Unspecified,6982
+1996,46,Female,Not applicable,0
+1996,47,Male,No schooling/less than primary,63276
+1996,47,Male,Primary,55138
+1996,47,Male,Secondary,14201
+1996,47,Male,Higher,12579
+1996,47,Male,Unspecified,8104
+1996,47,Male,Not applicable,0
+1996,47,Female,No schooling/less than primary,72254
+1996,47,Female,Primary,60410
+1996,47,Female,Secondary,15033
+1996,47,Female,Higher,10104
+1996,47,Female,Unspecified,6033
+1996,47,Female,Not applicable,0
+1996,48,Male,No schooling/less than primary,67436
+1996,48,Male,Primary,57635
+1996,48,Male,Secondary,14675
+1996,48,Male,Higher,12501
+1996,48,Male,Unspecified,8423
+1996,48,Male,Not applicable,0
+1996,48,Female,No schooling/less than primary,78930
+1996,48,Female,Primary,62727
+1996,48,Female,Secondary,15572
+1996,48,Female,Higher,10148
+1996,48,Female,Unspecified,6596
+1996,48,Female,Not applicable,0
+1996,49,Male,No schooling/less than primary,59300
+1996,49,Male,Primary,51393
+1996,49,Male,Secondary,13648
+1996,49,Male,Higher,11976
+1996,49,Male,Unspecified,7747
+1996,49,Male,Not applicable,0
+1996,49,Female,No schooling/less than primary,67221
+1996,49,Female,Primary,54539
+1996,49,Female,Secondary,14482
+1996,49,Female,Higher,9124
+1996,49,Female,Unspecified,5789
+1996,49,Female,Not applicable,0
+1996,50,Male,No schooling/less than primary,61955
+1996,50,Male,Primary,48801
+1996,50,Male,Secondary,13409
+1996,50,Male,Higher,11263
+1996,50,Male,Unspecified,8045
+1996,50,Male,Not applicable,0
+1996,50,Female,No schooling/less than primary,74460
+1996,50,Female,Primary,54637
+1996,50,Female,Secondary,14103
+1996,50,Female,Higher,9001
+1996,50,Female,Unspecified,6499
+1996,50,Female,Not applicable,0
+1996,51,Male,No schooling/less than primary,47808
+1996,51,Male,Primary,41033
+1996,51,Male,Secondary,11368
+1996,51,Male,Higher,9639
+1996,51,Male,Unspecified,6354
+1996,51,Male,Not applicable,0
+1996,51,Female,No schooling/less than primary,58401
+1996,51,Female,Primary,45693
+1996,51,Female,Secondary,11733
+1996,51,Female,Higher,7653
+1996,51,Female,Unspecified,5051
+1996,51,Female,Not applicable,0
+1996,52,Male,No schooling/less than primary,49169
+1996,52,Male,Primary,38734
+1996,52,Male,Secondary,11219
+1996,52,Male,Higher,9654
+1996,52,Male,Unspecified,6436
+1996,52,Male,Not applicable,0
+1996,52,Female,No schooling/less than primary,59822
+1996,52,Female,Primary,43255
+1996,52,Female,Secondary,11412
+1996,52,Female,Higher,7659
+1996,52,Female,Unspecified,5090
+1996,52,Female,Not applicable,0
+1996,53,Male,No schooling/less than primary,44239
+1996,53,Male,Primary,35114
+1996,53,Male,Secondary,9866
+1996,53,Male,Higher,8387
+1996,53,Male,Unspecified,5665
+1996,53,Male,Not applicable,0
+1996,53,Female,No schooling/less than primary,55357
+1996,53,Female,Primary,41679
+1996,53,Female,Secondary,10158
+1996,53,Female,Higher,6792
+1996,53,Female,Unspecified,4701
+1996,53,Female,Not applicable,0
+1996,54,Male,No schooling/less than primary,58128
+1996,54,Male,Primary,39753
+1996,54,Male,Secondary,9809
+1996,54,Male,Higher,8302
+1996,54,Male,Unspecified,6327
+1996,54,Male,Not applicable,0
+1996,54,Female,No schooling/less than primary,69082
+1996,54,Female,Primary,44747
+1996,54,Female,Secondary,9799
+1996,54,Female,Higher,6410
+1996,54,Female,Unspecified,5225
+1996,54,Female,Not applicable,0
+1996,55,Male,No schooling/less than primary,47969
+1996,55,Male,Primary,31217
+1996,55,Male,Secondary,8920
+1996,55,Male,Higher,7650
+1996,55,Male,Unspecified,5553
+1996,55,Male,Not applicable,0
+1996,55,Female,No schooling/less than primary,57967
+1996,55,Female,Primary,35682
+1996,55,Female,Secondary,8850
+1996,55,Female,Higher,5810
+1996,55,Female,Unspecified,4731
+1996,55,Female,Not applicable,0
+1996,56,Male,No schooling/less than primary,65824
+1996,56,Male,Primary,37911
+1996,56,Male,Secondary,9232
+1996,56,Male,Higher,7818
+1996,56,Male,Unspecified,6462
+1996,56,Male,Not applicable,0
+1996,56,Female,No schooling/less than primary,90027
+1996,56,Female,Primary,43753
+1996,56,Female,Secondary,9127
+1996,56,Female,Higher,5917
+1996,56,Female,Unspecified,5871
+1996,56,Female,Not applicable,0
+1996,57,Male,No schooling/less than primary,40305
+1996,57,Male,Primary,28432
+1996,57,Male,Secondary,7574
+1996,57,Male,Higher,6716
+1996,57,Male,Unspecified,4828
+1996,57,Male,Not applicable,0
+1996,57,Female,No schooling/less than primary,56921
+1996,57,Female,Primary,33821
+1996,57,Female,Secondary,8091
+1996,57,Female,Higher,5105
+1996,57,Female,Unspecified,4330
+1996,57,Female,Not applicable,0
+1996,58,Male,No schooling/less than primary,41710
+1996,58,Male,Primary,28624
+1996,58,Male,Secondary,7508
+1996,58,Male,Higher,6504
+1996,58,Male,Unspecified,4737
+1996,58,Male,Not applicable,0
+1996,58,Female,No schooling/less than primary,58405
+1996,58,Female,Primary,34806
+1996,58,Female,Secondary,7955
+1996,58,Female,Higher,4995
+1996,58,Female,Unspecified,4501
+1996,58,Female,Not applicable,0
+1996,59,Male,No schooling/less than primary,36464
+1996,59,Male,Primary,24965
+1996,59,Male,Secondary,6725
+1996,59,Male,Higher,5839
+1996,59,Male,Unspecified,4193
+1996,59,Male,Not applicable,0
+1996,59,Female,No schooling/less than primary,52923
+1996,59,Female,Primary,31290
+1996,59,Female,Secondary,7124
+1996,59,Female,Higher,4250
+1996,59,Female,Unspecified,4009
+1996,59,Female,Not applicable,0
+1996,60,Male,No schooling/less than primary,48073
+1996,60,Male,Primary,26752
+1996,60,Male,Secondary,6919
+1996,60,Male,Higher,5974
+1996,60,Male,Unspecified,5060
+1996,60,Male,Not applicable,0
+1996,60,Female,No schooling/less than primary,85572
+1996,60,Female,Primary,35542
+1996,60,Female,Secondary,7793
+1996,60,Female,Higher,4578
+1996,60,Female,Unspecified,5229
+1996,60,Female,Not applicable,0
+1996,61,Male,No schooling/less than primary,30340
+1996,61,Male,Primary,20481
+1996,61,Male,Secondary,5723
+1996,61,Male,Higher,4959
+1996,61,Male,Unspecified,3372
+1996,61,Male,Not applicable,0
+1996,61,Female,No schooling/less than primary,55286
+1996,61,Female,Primary,28075
+1996,61,Female,Secondary,6468
+1996,61,Female,Higher,3672
+1996,61,Female,Unspecified,3785
+1996,61,Female,Not applicable,0
+1996,62,Male,No schooling/less than primary,29915
+1996,62,Male,Primary,19120
+1996,62,Male,Secondary,5352
+1996,62,Male,Higher,4620
+1996,62,Male,Unspecified,3288
+1996,62,Male,Not applicable,0
+1996,62,Female,No schooling/less than primary,60972
+1996,62,Female,Primary,27499
+1996,62,Female,Secondary,6215
+1996,62,Female,Higher,3366
+1996,62,Female,Unspecified,3907
+1996,62,Female,Not applicable,0
+1996,63,Male,No schooling/less than primary,34127
+1996,63,Male,Primary,18720
+1996,63,Male,Secondary,5201
+1996,63,Male,Higher,4305
+1996,63,Male,Unspecified,3375
+1996,63,Male,Not applicable,0
+1996,63,Female,No schooling/less than primary,63465
+1996,63,Female,Primary,26596
+1996,63,Female,Secondary,5899
+1996,63,Female,Higher,3148
+1996,63,Female,Unspecified,3906
+1996,63,Female,Not applicable,0
+1996,64,Male,No schooling/less than primary,34098
+1996,64,Male,Primary,19497
+1996,64,Male,Secondary,5151
+1996,64,Male,Higher,4329
+1996,64,Male,Unspecified,3301
+1996,64,Male,Not applicable,0
+1996,64,Female,No schooling/less than primary,58334
+1996,64,Female,Primary,26588
+1996,64,Female,Secondary,5851
+1996,64,Female,Higher,2926
+1996,64,Female,Unspecified,3809
+1996,64,Female,Not applicable,0
+1996,65,Male,No schooling/less than primary,37716
+1996,65,Male,Primary,18604
+1996,65,Male,Secondary,5306
+1996,65,Male,Higher,4102
+1996,65,Male,Unspecified,3598
+1996,65,Male,Not applicable,0
+1996,65,Female,No schooling/less than primary,61534
+1996,65,Female,Primary,23828
+1996,65,Female,Secondary,6220
+1996,65,Female,Higher,2953
+1996,65,Female,Unspecified,3976
+1996,65,Female,Not applicable,0
+1996,66,Male,No schooling/less than primary,43067
+1996,66,Male,Primary,17930
+1996,66,Male,Secondary,4996
+1996,66,Male,Higher,3824
+1996,66,Male,Unspecified,3515
+1996,66,Male,Not applicable,0
+1996,66,Female,No schooling/less than primary,80344
+1996,66,Female,Primary,24234
+1996,66,Female,Secondary,5834
+1996,66,Female,Higher,2943
+1996,66,Female,Unspecified,4470
+1996,66,Female,Not applicable,0
+1996,67,Male,No schooling/less than primary,33356
+1996,67,Male,Primary,14774
+1996,67,Male,Secondary,4586
+1996,67,Male,Higher,3572
+1996,67,Male,Unspecified,2824
+1996,67,Male,Not applicable,0
+1996,67,Female,No schooling/less than primary,56306
+1996,67,Female,Primary,20217
+1996,67,Female,Secondary,5312
+1996,67,Female,Higher,2507
+1996,67,Female,Unspecified,3692
+1996,67,Female,Not applicable,0
+1996,68,Male,No schooling/less than primary,30748
+1996,68,Male,Primary,14070
+1996,68,Male,Secondary,4135
+1996,68,Male,Higher,3259
+1996,68,Male,Unspecified,2807
+1996,68,Male,Not applicable,0
+1996,68,Female,No schooling/less than primary,50996
+1996,68,Female,Primary,19516
+1996,68,Female,Secondary,5420
+1996,68,Female,Higher,2387
+1996,68,Female,Unspecified,3497
+1996,68,Female,Not applicable,0
+1996,69,Male,No schooling/less than primary,25905
+1996,69,Male,Primary,12069
+1996,69,Male,Secondary,3907
+1996,69,Male,Higher,2904
+1996,69,Male,Unspecified,2439
+1996,69,Male,Not applicable,0
+1996,69,Female,No schooling/less than primary,41223
+1996,69,Female,Primary,17224
+1996,69,Female,Secondary,4955
+1996,69,Female,Higher,2266
+1996,69,Female,Unspecified,3019
+1996,69,Female,Not applicable,0
+1996,70,Male,No schooling/less than primary,31586
+1996,70,Male,Primary,11906
+1996,70,Male,Secondary,3713
+1996,70,Male,Higher,2906
+1996,70,Male,Unspecified,2865
+1996,70,Male,Not applicable,0
+1996,70,Female,No schooling/less than primary,49936
+1996,70,Female,Primary,17043
+1996,70,Female,Secondary,4876
+1996,70,Female,Higher,2251
+1996,70,Female,Unspecified,3612
+1996,70,Female,Not applicable,0
+1996,71,Male,No schooling/less than primary,23803
+1996,71,Male,Primary,9897
+1996,71,Male,Secondary,3278
+1996,71,Male,Higher,2603
+1996,71,Male,Unspecified,2144
+1996,71,Male,Not applicable,0
+1996,71,Female,No schooling/less than primary,37698
+1996,71,Female,Primary,14666
+1996,71,Female,Secondary,4384
+1996,71,Female,Higher,1969
+1996,71,Female,Unspecified,2854
+1996,71,Female,Not applicable,0
+1996,72,Male,No schooling/less than primary,21952
+1996,72,Male,Primary,9442
+1996,72,Male,Secondary,3210
+1996,72,Male,Higher,2433
+1996,72,Male,Unspecified,2125
+1996,72,Male,Not applicable,0
+1996,72,Female,No schooling/less than primary,35521
+1996,72,Female,Primary,14102
+1996,72,Female,Secondary,4295
+1996,72,Female,Higher,1794
+1996,72,Female,Unspecified,2834
+1996,72,Female,Not applicable,0
+1996,73,Male,No schooling/less than primary,15079
+1996,73,Male,Primary,7567
+1996,73,Male,Secondary,2818
+1996,73,Male,Higher,2101
+1996,73,Male,Unspecified,1726
+1996,73,Male,Not applicable,0
+1996,73,Female,No schooling/less than primary,23829
+1996,73,Female,Primary,11872
+1996,73,Female,Secondary,4030
+1996,73,Female,Higher,1667
+1996,73,Female,Unspecified,2316
+1996,73,Female,Not applicable,0
+1996,74,Male,No schooling/less than primary,17783
+1996,74,Male,Primary,7580
+1996,74,Male,Secondary,2752
+1996,74,Male,Higher,1974
+1996,74,Male,Unspecified,1877
+1996,74,Male,Not applicable,0
+1996,74,Female,No schooling/less than primary,25806
+1996,74,Female,Primary,11719
+1996,74,Female,Secondary,3897
+1996,74,Female,Higher,1624
+1996,74,Female,Unspecified,2452
+1996,74,Female,Not applicable,0
+1996,75,Male,No schooling/less than primary,20069
+1996,75,Male,Primary,7213
+1996,75,Male,Secondary,2590
+1996,75,Male,Higher,1864
+1996,75,Male,Unspecified,1872
+1996,75,Male,Not applicable,0
+1996,75,Female,No schooling/less than primary,32456
+1996,75,Female,Primary,11244
+1996,75,Female,Secondary,3568
+1996,75,Female,Higher,1626
+1996,75,Female,Unspecified,2629
+1996,75,Female,Not applicable,0
+1996,76,Male,No schooling/less than primary,24604
+1996,76,Male,Primary,7013
+1996,76,Male,Secondary,2457
+1996,76,Male,Higher,1739
+1996,76,Male,Unspecified,1984
+1996,76,Male,Not applicable,0
+1996,76,Female,No schooling/less than primary,42072
+1996,76,Female,Primary,11118
+1996,76,Female,Secondary,3373
+1996,76,Female,Higher,1421
+1996,76,Female,Unspecified,3098
+1996,76,Female,Not applicable,0
+1996,77,Male,No schooling/less than primary,14787
+1996,77,Male,Primary,4843
+1996,77,Male,Secondary,1726
+1996,77,Male,Higher,1279
+1996,77,Male,Unspecified,1373
+1996,77,Male,Not applicable,0
+1996,77,Female,No schooling/less than primary,25851
+1996,77,Female,Primary,8501
+1996,77,Female,Secondary,2537
+1996,77,Female,Higher,1097
+1996,77,Female,Unspecified,2204
+1996,77,Female,Not applicable,0
+1996,78,Male,No schooling/less than primary,22484
+1996,78,Male,Primary,5473
+1996,78,Male,Secondary,1777
+1996,78,Male,Higher,1182
+1996,78,Male,Unspecified,1668
+1996,78,Male,Not applicable,0
+1996,78,Female,No schooling/less than primary,42162
+1996,78,Female,Primary,9966
+1996,78,Female,Secondary,2547
+1996,78,Female,Higher,1149
+1996,78,Female,Unspecified,2772
+1996,78,Female,Not applicable,0
+1996,79,Male,No schooling/less than primary,7037
+1996,79,Male,Primary,3604
+1996,79,Male,Secondary,1378
+1996,79,Male,Higher,926
+1996,79,Male,Unspecified,903
+1996,79,Male,Not applicable,0
+1996,79,Female,No schooling/less than primary,12764
+1996,79,Female,Primary,6679
+1996,79,Female,Secondary,2068
+1996,79,Female,Higher,955
+1996,79,Female,Unspecified,1726
+1996,79,Female,Not applicable,0
+1996,80,Male,No schooling/less than primary,8762
+1996,80,Male,Primary,3364
+1996,80,Male,Secondary,1295
+1996,80,Male,Higher,884
+1996,80,Male,Unspecified,1044
+1996,80,Male,Not applicable,0
+1996,80,Female,No schooling/less than primary,17005
+1996,80,Female,Primary,6578
+1996,80,Female,Secondary,2191
+1996,80,Female,Higher,918
+1996,80,Female,Unspecified,2045
+1996,80,Female,Not applicable,0
+1996,81,Male,No schooling/less than primary,6080
+1996,81,Male,Primary,2683
+1996,81,Male,Secondary,1139
+1996,81,Male,Higher,699
+1996,81,Male,Unspecified,826
+1996,81,Male,Not applicable,0
+1996,81,Female,No schooling/less than primary,11619
+1996,81,Female,Primary,5385
+1996,81,Female,Secondary,1797
+1996,81,Female,Higher,814
+1996,81,Female,Unspecified,1731
+1996,81,Female,Not applicable,0
+1996,82,Male,No schooling/less than primary,11492
+1996,82,Male,Primary,2971
+1996,82,Male,Secondary,1019
+1996,82,Male,Higher,731
+1996,82,Male,Unspecified,1086
+1996,82,Male,Not applicable,0
+1996,82,Female,No schooling/less than primary,19470
+1996,82,Female,Primary,6120
+1996,82,Female,Secondary,1787
+1996,82,Female,Higher,789
+1996,82,Female,Unspecified,2136
+1996,82,Female,Not applicable,0
+1996,83,Male,No schooling/less than primary,4283
+1996,83,Male,Primary,2117
+1996,83,Male,Secondary,846
+1996,83,Male,Higher,592
+1996,83,Male,Unspecified,652
+1996,83,Male,Not applicable,0
+1996,83,Female,No schooling/less than primary,8312
+1996,83,Female,Primary,4670
+1996,83,Female,Secondary,1581
+1996,83,Female,Higher,660
+1996,83,Female,Unspecified,1689
+1996,83,Female,Not applicable,0
+1996,84,Male,No schooling/less than primary,5499
+1996,84,Male,Primary,2031
+1996,84,Male,Secondary,773
+1996,84,Male,Higher,503
+1996,84,Male,Unspecified,701
+1996,84,Male,Not applicable,0
+1996,84,Female,No schooling/less than primary,11385
+1996,84,Female,Primary,4514
+1996,84,Female,Secondary,1282
+1996,84,Female,Higher,626
+1996,84,Female,Unspecified,1726
+1996,84,Female,Not applicable,0
+1996,85,Male,No schooling/less than primary,4598
+1996,85,Male,Primary,1563
+1996,85,Male,Secondary,575
+1996,85,Male,Higher,415
+1996,85,Male,Unspecified,638
+1996,85,Male,Not applicable,0
+1996,85,Female,No schooling/less than primary,9167
+1996,85,Female,Primary,3522
+1996,85,Female,Secondary,1086
+1996,85,Female,Higher,484
+1996,85,Female,Unspecified,1495
+1996,85,Female,Not applicable,0
+1996,86,Male,No schooling/less than primary,6512
+1996,86,Male,Primary,1595
+1996,86,Male,Secondary,530
+1996,86,Male,Higher,378
+1996,86,Male,Unspecified,668
+1996,86,Male,Not applicable,0
+1996,86,Female,No schooling/less than primary,14303
+1996,86,Female,Primary,3381
+1996,86,Female,Secondary,883
+1996,86,Female,Higher,479
+1996,86,Female,Unspecified,1655
+1996,86,Female,Not applicable,0
+1996,87,Male,No schooling/less than primary,2463
+1996,87,Male,Primary,984
+1996,87,Male,Secondary,390
+1996,87,Male,Higher,262
+1996,87,Male,Unspecified,413
+1996,87,Male,Not applicable,0
+1996,87,Female,No schooling/less than primary,5723
+1996,87,Female,Primary,2192
+1996,87,Female,Secondary,675
+1996,87,Female,Higher,368
+1996,87,Female,Unspecified,1165
+1996,87,Female,Not applicable,0
+1996,88,Male,No schooling/less than primary,1887
+1996,88,Male,Primary,798
+1996,88,Male,Secondary,305
+1996,88,Male,Higher,226
+1996,88,Male,Unspecified,341
+1996,88,Male,Not applicable,0
+1996,88,Female,No schooling/less than primary,4164
+1996,88,Female,Primary,1971
+1996,88,Female,Secondary,622
+1996,88,Female,Higher,356
+1996,88,Female,Unspecified,1034
+1996,88,Female,Not applicable,0
+1996,89,Male,No schooling/less than primary,1903
+1996,89,Male,Primary,694
+1996,89,Male,Secondary,265
+1996,89,Male,Higher,171
+1996,89,Male,Unspecified,289
+1996,89,Male,Not applicable,0
+1996,89,Female,No schooling/less than primary,3990
+1996,89,Female,Primary,1581
+1996,89,Female,Secondary,512
+1996,89,Female,Higher,299
+1996,89,Female,Unspecified,891
+1996,89,Female,Not applicable,0
+1996,90,Male,No schooling/less than primary,2096
+1996,90,Male,Primary,486
+1996,90,Male,Secondary,196
+1996,90,Male,Higher,148
+1996,90,Male,Unspecified,276
+1996,90,Male,Not applicable,0
+1996,90,Female,No schooling/less than primary,4624
+1996,90,Female,Primary,1274
+1996,90,Female,Secondary,396
+1996,90,Female,Higher,272
+1996,90,Female,Unspecified,797
+1996,90,Female,Not applicable,0
+1996,91,Male,No schooling/less than primary,1156
+1996,91,Male,Primary,344
+1996,91,Male,Secondary,141
+1996,91,Male,Higher,109
+1996,91,Male,Unspecified,183
+1996,91,Male,Not applicable,0
+1996,91,Female,No schooling/less than primary,2397
+1996,91,Female,Primary,881
+1996,91,Female,Secondary,331
+1996,91,Female,Higher,200
+1996,91,Female,Unspecified,662
+1996,91,Female,Not applicable,0
+1996,92,Male,No schooling/less than primary,1187
+1996,92,Male,Primary,277
+1996,92,Male,Secondary,86
+1996,92,Male,Higher,89
+1996,92,Male,Unspecified,190
+1996,92,Male,Not applicable,0
+1996,92,Female,No schooling/less than primary,2796
+1996,92,Female,Primary,725
+1996,92,Female,Secondary,220
+1996,92,Female,Higher,166
+1996,92,Female,Unspecified,534
+1996,92,Female,Not applicable,0
+1996,93,Male,No schooling/less than primary,851
+1996,93,Male,Primary,194
+1996,93,Male,Secondary,91
+1996,93,Male,Higher,49
+1996,93,Male,Unspecified,124
+1996,93,Male,Not applicable,0
+1996,93,Female,No schooling/less than primary,1978
+1996,93,Female,Primary,518
+1996,93,Female,Secondary,172
+1996,93,Female,Higher,108
+1996,93,Female,Unspecified,385
+1996,93,Female,Not applicable,0
+1996,94,Male,No schooling/less than primary,1236
+1996,94,Male,Primary,202
+1996,94,Male,Secondary,67
+1996,94,Male,Higher,42
+1996,94,Male,Unspecified,114
+1996,94,Male,Not applicable,0
+1996,94,Female,No schooling/less than primary,2801
+1996,94,Female,Primary,411
+1996,94,Female,Secondary,107
+1996,94,Female,Higher,96
+1996,94,Female,Unspecified,324
+1996,94,Female,Not applicable,0
+1996,95,Male,No schooling/less than primary,1422
+1996,95,Male,Primary,172
+1996,95,Male,Secondary,45
+1996,95,Male,Higher,28
+1996,95,Male,Unspecified,175
+1996,95,Male,Not applicable,0
+1996,95,Female,No schooling/less than primary,2641
+1996,95,Female,Primary,278
+1996,95,Female,Secondary,85
+1996,95,Female,Higher,53
+1996,95,Female,Unspecified,322
+1996,95,Female,Not applicable,0
+1996,96,Male,No schooling/less than primary,674
+1996,96,Male,Primary,65
+1996,96,Male,Secondary,14
+1996,96,Male,Higher,14
+1996,96,Male,Unspecified,69
+1996,96,Male,Not applicable,0
+1996,96,Female,No schooling/less than primary,1664
+1996,96,Female,Primary,133
+1996,96,Female,Secondary,46
+1996,96,Female,Higher,38
+1996,96,Female,Unspecified,180
+1996,96,Female,Not applicable,0
+1996,97,Male,No schooling/less than primary,151
+1996,97,Male,Primary,30
+1996,97,Male,Secondary,2
+1996,97,Male,Higher,10
+1996,97,Male,Unspecified,16
+1996,97,Male,Not applicable,0
+1996,97,Female,No schooling/less than primary,412
+1996,97,Female,Primary,53
+1996,97,Female,Secondary,14
+1996,97,Female,Higher,12
+1996,97,Female,Unspecified,47
+1996,97,Female,Not applicable,0
+1996,98,Male,No schooling/less than primary,144
+1996,98,Male,Primary,21
+1996,98,Male,Secondary,0
+1996,98,Male,Higher,3
+1996,98,Male,Unspecified,12
+1996,98,Male,Not applicable,0
+1996,98,Female,No schooling/less than primary,413
+1996,98,Female,Primary,55
+1996,98,Female,Secondary,6
+1996,98,Female,Higher,14
+1996,98,Female,Unspecified,27
+1996,98,Female,Not applicable,0
+1996,99,Male,No schooling/less than primary,297
+1996,99,Male,Primary,93
+1996,99,Male,Secondary,25
+1996,99,Male,Higher,32
+1996,99,Male,Unspecified,429
+1996,99,Male,Not applicable,0
+1996,99,Female,No schooling/less than primary,449
+1996,99,Female,Primary,99
+1996,99,Female,Secondary,42
+1996,99,Female,Higher,21
+1996,99,Female,Unspecified,211
+1996,99,Female,Not applicable,0
+1996,100,Male,No schooling/less than primary,137
+1996,100,Male,Primary,9
+1996,100,Male,Secondary,1
+1996,100,Male,Higher,1
+1996,100,Male,Unspecified,7
+1996,100,Male,Not applicable,0
+1996,100,Female,No schooling/less than primary,458
+1996,100,Female,Primary,22
+1996,100,Female,Secondary,3
+1996,100,Female,Higher,2
+1996,100,Female,Unspecified,22
+1996,100,Female,Not applicable,0
+1996,101,Male,No schooling/less than primary,58
+1996,101,Male,Primary,3
+1996,101,Male,Secondary,0
+1996,101,Male,Higher,1
+1996,101,Male,Unspecified,10
+1996,101,Male,Not applicable,0
+1996,101,Female,No schooling/less than primary,131
+1996,101,Female,Primary,10
+1996,101,Female,Secondary,1
+1996,101,Female,Higher,4
+1996,101,Female,Unspecified,10
+1996,101,Female,Not applicable,0
+1996,102,Male,No schooling/less than primary,36
+1996,102,Male,Primary,6
+1996,102,Male,Secondary,0
+1996,102,Male,Higher,0
+1996,102,Male,Unspecified,0
+1996,102,Male,Not applicable,0
+1996,102,Female,No schooling/less than primary,150
+1996,102,Female,Primary,4
+1996,102,Female,Secondary,1
+1996,102,Female,Higher,2
+1996,102,Female,Unspecified,15
+1996,102,Female,Not applicable,0
+1996,103,Male,No schooling/less than primary,18
+1996,103,Male,Primary,2
+1996,103,Male,Secondary,0
+1996,103,Male,Higher,1
+1996,103,Male,Unspecified,2
+1996,103,Male,Not applicable,0
+1996,103,Female,No schooling/less than primary,73
+1996,103,Female,Primary,6
+1996,103,Female,Secondary,0
+1996,103,Female,Higher,1
+1996,103,Female,Unspecified,3
+1996,103,Female,Not applicable,0
+1996,104,Male,No schooling/less than primary,33
+1996,104,Male,Primary,2
+1996,104,Male,Secondary,0
+1996,104,Male,Higher,0
+1996,104,Male,Unspecified,4
+1996,104,Male,Not applicable,0
+1996,104,Female,No schooling/less than primary,73
+1996,104,Female,Primary,0
+1996,104,Female,Secondary,0
+1996,104,Female,Higher,2
+1996,104,Female,Unspecified,6
+1996,104,Female,Not applicable,0
+1996,105,Male,No schooling/less than primary,26
+1996,105,Male,Primary,2
+1996,105,Male,Secondary,1
+1996,105,Male,Higher,2
+1996,105,Male,Unspecified,1
+1996,105,Male,Not applicable,0
+1996,105,Female,No schooling/less than primary,93
+1996,105,Female,Primary,6
+1996,105,Female,Secondary,0
+1996,105,Female,Higher,0
+1996,105,Female,Unspecified,6
+1996,105,Female,Not applicable,0
+1996,106,Male,No schooling/less than primary,24
+1996,106,Male,Primary,1
+1996,106,Male,Secondary,0
+1996,106,Male,Higher,0
+1996,106,Male,Unspecified,1
+1996,106,Male,Not applicable,0
+1996,106,Female,No schooling/less than primary,120
+1996,106,Female,Primary,2
+1996,106,Female,Secondary,1
+1996,106,Female,Higher,2
+1996,106,Female,Unspecified,4
+1996,106,Female,Not applicable,0
+1996,107,Male,No schooling/less than primary,14
+1996,107,Male,Primary,1
+1996,107,Male,Secondary,0
+1996,107,Male,Higher,0
+1996,107,Male,Unspecified,0
+1996,107,Male,Not applicable,0
+1996,107,Female,No schooling/less than primary,74
+1996,107,Female,Primary,2
+1996,107,Female,Secondary,0
+1996,107,Female,Higher,1
+1996,107,Female,Unspecified,0
+1996,107,Female,Not applicable,0
+1996,108,Male,No schooling/less than primary,16
+1996,108,Male,Primary,1
+1996,108,Male,Secondary,0
+1996,108,Male,Higher,0
+1996,108,Male,Unspecified,1
+1996,108,Male,Not applicable,0
+1996,108,Female,No schooling/less than primary,58
+1996,108,Female,Primary,2
+1996,108,Female,Secondary,0
+1996,108,Female,Higher,0
+1996,108,Female,Unspecified,3
+1996,108,Female,Not applicable,0
+1996,109,Male,No schooling/less than primary,9
+1996,109,Male,Primary,2
+1996,109,Male,Secondary,0
+1996,109,Male,Higher,0
+1996,109,Male,Unspecified,0
+1996,109,Male,Not applicable,0
+1996,109,Female,No schooling/less than primary,35
+1996,109,Female,Primary,0
+1996,109,Female,Secondary,0
+1996,109,Female,Higher,1
+1996,109,Female,Unspecified,4
+1996,109,Female,Not applicable,0
+1996,110,Male,No schooling/less than primary,17
+1996,110,Male,Primary,0
+1996,110,Male,Secondary,1
+1996,110,Male,Higher,0
+1996,110,Male,Unspecified,0
+1996,110,Male,Not applicable,0
+1996,110,Female,No schooling/less than primary,62
+1996,110,Female,Primary,3
+1996,110,Female,Secondary,1
+1996,110,Female,Higher,0
+1996,110,Female,Unspecified,4
+1996,110,Female,Not applicable,0
+1996,111,Male,No schooling/less than primary,5
+1996,111,Male,Primary,0
+1996,111,Male,Secondary,0
+1996,111,Male,Higher,0
+1996,111,Male,Unspecified,1
+1996,111,Male,Not applicable,0
+1996,111,Female,No schooling/less than primary,14
+1996,111,Female,Primary,0
+1996,111,Female,Secondary,0
+1996,111,Female,Higher,1
+1996,111,Female,Unspecified,1
+1996,111,Female,Not applicable,0
+1996,112,Male,No schooling/less than primary,4
+1996,112,Male,Primary,0
+1996,112,Male,Secondary,0
+1996,112,Male,Higher,0
+1996,112,Male,Unspecified,2
+1996,112,Male,Not applicable,0
+1996,112,Female,No schooling/less than primary,18
+1996,112,Female,Primary,0
+1996,112,Female,Secondary,0
+1996,112,Female,Higher,0
+1996,112,Female,Unspecified,1
+1996,112,Female,Not applicable,0
+1996,113,Male,No schooling/less than primary,1
+1996,113,Male,Primary,0
+1996,113,Male,Secondary,0
+1996,113,Male,Higher,0
+1996,113,Male,Unspecified,0
+1996,113,Male,Not applicable,0
+1996,113,Female,No schooling/less than primary,2
+1996,113,Female,Primary,0
+1996,113,Female,Secondary,0
+1996,113,Female,Higher,0
+1996,113,Female,Unspecified,0
+1996,113,Female,Not applicable,0
+1996,114,Male,No schooling/less than primary,4
+1996,114,Male,Primary,0
+1996,114,Male,Secondary,0
+1996,114,Male,Higher,1
+1996,114,Male,Unspecified,1
+1996,114,Male,Not applicable,0
+1996,114,Female,No schooling/less than primary,8
+1996,114,Female,Primary,0
+1996,114,Female,Secondary,0
+1996,114,Female,Higher,0
+1996,114,Female,Unspecified,1
+1996,114,Female,Not applicable,0
+1996,115,Male,No schooling/less than primary,6
+1996,115,Male,Primary,0
+1996,115,Male,Secondary,0
+1996,115,Male,Higher,0
+1996,115,Male,Unspecified,0
+1996,115,Male,Not applicable,0
+1996,115,Female,No schooling/less than primary,6
+1996,115,Female,Primary,0
+1996,115,Female,Secondary,0
+1996,115,Female,Higher,0
+1996,115,Female,Unspecified,1
+1996,115,Female,Not applicable,0
+1996,116,Male,No schooling/less than primary,8
+1996,116,Male,Primary,1
+1996,116,Male,Secondary,1
+1996,116,Male,Higher,2
+1996,116,Male,Unspecified,0
+1996,116,Male,Not applicable,0
+1996,116,Female,No schooling/less than primary,23
+1996,116,Female,Primary,3
+1996,116,Female,Secondary,1
+1996,116,Female,Higher,0
+1996,116,Female,Unspecified,0
+1996,116,Female,Not applicable,0
+1996,Unspecified,Male,No schooling/less than primary,89563
+1996,Unspecified,Male,Primary,43670
+1996,Unspecified,Male,Secondary,15948
+1996,Unspecified,Male,Higher,7001
+1996,Unspecified,Male,Unspecified,99070
+1996,Unspecified,Male,Not applicable,0
+1996,Unspecified,Female,No schooling/less than primary,91777
+1996,Unspecified,Female,Primary,41729
+1996,Unspecified,Female,Secondary,14956
+1996,Unspecified,Female,Higher,5664
+1996,Unspecified,Female,Unspecified,80815
+1996,Unspecified,Female,Not applicable,0
+2001,0,Male,No schooling/less than primary,0
+2001,0,Male,Primary,0
+2001,0,Male,Secondary,0
+2001,0,Male,Higher,0
+2001,0,Male,Unspecified,0
+2001,0,Male,Not applicable,453924
+2001,0,Female,No schooling/less than primary,0
+2001,0,Female,Primary,0
+2001,0,Female,Secondary,0
+2001,0,Female,Higher,0
+2001,0,Female,Unspecified,0
+2001,0,Female,Not applicable,454482
+2001,1,Male,No schooling/less than primary,0
+2001,1,Male,Primary,0
+2001,1,Male,Secondary,0
+2001,1,Male,Higher,0
+2001,1,Male,Unspecified,0
+2001,1,Male,Not applicable,436258
+2001,1,Female,No schooling/less than primary,0
+2001,1,Female,Primary,0
+2001,1,Female,Secondary,0
+2001,1,Female,Higher,0
+2001,1,Female,Unspecified,0
+2001,1,Female,Not applicable,434381
+2001,2,Male,No schooling/less than primary,0
+2001,2,Male,Primary,0
+2001,2,Male,Secondary,0
+2001,2,Male,Higher,0
+2001,2,Male,Unspecified,0
+2001,2,Male,Not applicable,437985
+2001,2,Female,No schooling/less than primary,0
+2001,2,Female,Primary,0
+2001,2,Female,Secondary,0
+2001,2,Female,Higher,0
+2001,2,Female,Unspecified,0
+2001,2,Female,Not applicable,439424
+2001,3,Male,No schooling/less than primary,0
+2001,3,Male,Primary,0
+2001,3,Male,Secondary,0
+2001,3,Male,Higher,0
+2001,3,Male,Unspecified,0
+2001,3,Male,Not applicable,437170
+2001,3,Female,No schooling/less than primary,0
+2001,3,Female,Primary,0
+2001,3,Female,Secondary,0
+2001,3,Female,Higher,0
+2001,3,Female,Unspecified,0
+2001,3,Female,Not applicable,438240
+2001,4,Male,No schooling/less than primary,0
+2001,4,Male,Primary,0
+2001,4,Male,Secondary,0
+2001,4,Male,Higher,0
+2001,4,Male,Unspecified,0
+2001,4,Male,Not applicable,458394
+2001,4,Female,No schooling/less than primary,0
+2001,4,Female,Primary,0
+2001,4,Female,Secondary,0
+2001,4,Female,Higher,0
+2001,4,Female,Unspecified,0
+2001,4,Female,Not applicable,459558
+2001,5,Male,No schooling/less than primary,484966
+2001,5,Male,Primary,0
+2001,5,Male,Secondary,0
+2001,5,Male,Higher,0
+2001,5,Male,Unspecified,0
+2001,5,Male,Not applicable,0
+2001,5,Female,No schooling/less than primary,483430
+2001,5,Female,Primary,0
+2001,5,Female,Secondary,0
+2001,5,Female,Higher,0
+2001,5,Female,Unspecified,0
+2001,5,Female,Not applicable,0
+2001,6,Male,No schooling/less than primary,476110
+2001,6,Male,Primary,0
+2001,6,Male,Secondary,0
+2001,6,Male,Higher,0
+2001,6,Male,Unspecified,0
+2001,6,Male,Not applicable,0
+2001,6,Female,No schooling/less than primary,474485
+2001,6,Female,Primary,0
+2001,6,Female,Secondary,0
+2001,6,Female,Higher,0
+2001,6,Female,Unspecified,0
+2001,6,Female,Not applicable,0
+2001,7,Male,No schooling/less than primary,488614
+2001,7,Male,Primary,0
+2001,7,Male,Secondary,0
+2001,7,Male,Higher,0
+2001,7,Male,Unspecified,0
+2001,7,Male,Not applicable,0
+2001,7,Female,No schooling/less than primary,485577
+2001,7,Female,Primary,0
+2001,7,Female,Secondary,0
+2001,7,Female,Higher,0
+2001,7,Female,Unspecified,0
+2001,7,Female,Not applicable,0
+2001,8,Male,No schooling/less than primary,472380
+2001,8,Male,Primary,0
+2001,8,Male,Secondary,0
+2001,8,Male,Higher,0
+2001,8,Male,Unspecified,0
+2001,8,Male,Not applicable,0
+2001,8,Female,No schooling/less than primary,475088
+2001,8,Female,Primary,0
+2001,8,Female,Secondary,0
+2001,8,Female,Higher,0
+2001,8,Female,Unspecified,0
+2001,8,Female,Not applicable,0
+2001,9,Male,No schooling/less than primary,503734
+2001,9,Male,Primary,0
+2001,9,Male,Secondary,0
+2001,9,Male,Higher,0
+2001,9,Male,Unspecified,0
+2001,9,Male,Not applicable,0
+2001,9,Female,No schooling/less than primary,509170
+2001,9,Female,Primary,0
+2001,9,Female,Secondary,0
+2001,9,Female,Higher,0
+2001,9,Female,Unspecified,0
+2001,9,Female,Not applicable,0
+2001,10,Male,No schooling/less than primary,530167
+2001,10,Male,Primary,0
+2001,10,Male,Secondary,0
+2001,10,Male,Higher,0
+2001,10,Male,Unspecified,0
+2001,10,Male,Not applicable,0
+2001,10,Female,No schooling/less than primary,529002
+2001,10,Female,Primary,0
+2001,10,Female,Secondary,0
+2001,10,Female,Higher,0
+2001,10,Female,Unspecified,0
+2001,10,Female,Not applicable,0
+2001,11,Male,No schooling/less than primary,515826
+2001,11,Male,Primary,9624
+2001,11,Male,Secondary,0
+2001,11,Male,Higher,0
+2001,11,Male,Unspecified,0
+2001,11,Male,Not applicable,0
+2001,11,Female,No schooling/less than primary,506306
+2001,11,Female,Primary,12743
+2001,11,Female,Secondary,0
+2001,11,Female,Higher,0
+2001,11,Female,Unspecified,0
+2001,11,Female,Not applicable,0
+2001,12,Male,No schooling/less than primary,437783
+2001,12,Male,Primary,51089
+2001,12,Male,Secondary,0
+2001,12,Male,Higher,0
+2001,12,Male,Unspecified,0
+2001,12,Male,Not applicable,0
+2001,12,Female,No schooling/less than primary,424780
+2001,12,Female,Primary,76339
+2001,12,Female,Secondary,0
+2001,12,Female,Higher,0
+2001,12,Female,Unspecified,0
+2001,12,Female,Not applicable,0
+2001,13,Male,No schooling/less than primary,349005
+2001,13,Male,Primary,142187
+2001,13,Male,Secondary,0
+2001,13,Male,Higher,0
+2001,13,Male,Unspecified,0
+2001,13,Male,Not applicable,0
+2001,13,Female,No schooling/less than primary,300028
+2001,13,Female,Primary,200193
+2001,13,Female,Secondary,0
+2001,13,Female,Higher,0
+2001,13,Female,Unspecified,0
+2001,13,Female,Not applicable,0
+2001,14,Male,No schooling/less than primary,243918
+2001,14,Male,Primary,239357
+2001,14,Male,Secondary,0
+2001,14,Male,Higher,0
+2001,14,Male,Unspecified,0
+2001,14,Male,Not applicable,0
+2001,14,Female,No schooling/less than primary,182803
+2001,14,Female,Primary,310767
+2001,14,Female,Secondary,0
+2001,14,Female,Higher,0
+2001,14,Female,Unspecified,0
+2001,14,Female,Not applicable,0
+2001,15,Male,No schooling/less than primary,178086
+2001,15,Male,Primary,319119
+2001,15,Male,Secondary,0
+2001,15,Male,Higher,0
+2001,15,Male,Unspecified,0
+2001,15,Male,Not applicable,0
+2001,15,Female,No schooling/less than primary,122543
+2001,15,Female,Primary,388055
+2001,15,Female,Secondary,0
+2001,15,Female,Higher,0
+2001,15,Female,Unspecified,0
+2001,15,Female,Not applicable,0
+2001,16,Male,No schooling/less than primary,129616
+2001,16,Male,Primary,374433
+2001,16,Male,Secondary,4695
+2001,16,Male,Higher,531
+2001,16,Male,Unspecified,0
+2001,16,Male,Not applicable,0
+2001,16,Female,No schooling/less than primary,85994
+2001,16,Female,Primary,424917
+2001,16,Female,Secondary,6985
+2001,16,Female,Higher,586
+2001,16,Female,Unspecified,0
+2001,16,Female,Not applicable,0
+2001,17,Male,No schooling/less than primary,92056
+2001,17,Male,Primary,370877
+2001,17,Male,Secondary,19286
+2001,17,Male,Higher,987
+2001,17,Male,Unspecified,0
+2001,17,Male,Not applicable,0
+2001,17,Female,No schooling/less than primary,65603
+2001,17,Female,Primary,401735
+2001,17,Female,Secondary,30175
+2001,17,Female,Higher,1315
+2001,17,Female,Unspecified,0
+2001,17,Female,Not applicable,0
+2001,18,Male,No schooling/less than primary,79572
+2001,18,Male,Primary,345545
+2001,18,Male,Secondary,57389
+2001,18,Male,Higher,4206
+2001,18,Male,Unspecified,0
+2001,18,Male,Not applicable,0
+2001,18,Female,No schooling/less than primary,61874
+2001,18,Female,Primary,353704
+2001,18,Female,Secondary,82612
+2001,18,Female,Higher,6155
+2001,18,Female,Unspecified,0
+2001,18,Female,Not applicable,0
+2001,19,Male,No schooling/less than primary,72513
+2001,19,Male,Primary,298329
+2001,19,Male,Secondary,95799
+2001,19,Male,Higher,10042
+2001,19,Male,Unspecified,0
+2001,19,Male,Not applicable,0
+2001,19,Female,No schooling/less than primary,61726
+2001,19,Female,Primary,297315
+2001,19,Female,Secondary,124050
+2001,19,Female,Higher,13299
+2001,19,Female,Unspecified,0
+2001,19,Female,Not applicable,0
+2001,20,Male,No schooling/less than primary,69685
+2001,20,Male,Primary,246697
+2001,20,Male,Secondary,118538
+2001,20,Male,Higher,15923
+2001,20,Male,Unspecified,0
+2001,20,Male,Not applicable,0
+2001,20,Female,No schooling/less than primary,60390
+2001,20,Female,Primary,242063
+2001,20,Female,Secondary,140846
+2001,20,Female,Higher,19567
+2001,20,Female,Unspecified,0
+2001,20,Female,Not applicable,0
+2001,21,Male,No schooling/less than primary,74797
+2001,21,Male,Primary,226880
+2001,21,Male,Secondary,133254
+2001,21,Male,Higher,20608
+2001,21,Male,Unspecified,0
+2001,21,Male,Not applicable,0
+2001,21,Female,No schooling/less than primary,66651
+2001,21,Female,Primary,227550
+2001,21,Female,Secondary,150342
+2001,21,Female,Higher,26339
+2001,21,Female,Unspecified,0
+2001,21,Female,Not applicable,0
+2001,22,Male,No schooling/less than primary,66154
+2001,22,Male,Primary,190121
+2001,22,Male,Secondary,133849
+2001,22,Male,Higher,24188
+2001,22,Male,Unspecified,0
+2001,22,Male,Not applicable,0
+2001,22,Female,No schooling/less than primary,60525
+2001,22,Female,Primary,195294
+2001,22,Female,Secondary,146561
+2001,22,Female,Higher,31427
+2001,22,Female,Unspecified,0
+2001,22,Female,Not applicable,0
+2001,23,Male,No schooling/less than primary,63360
+2001,23,Male,Primary,162939
+2001,23,Male,Secondary,130441
+2001,23,Male,Higher,27251
+2001,23,Male,Unspecified,0
+2001,23,Male,Not applicable,0
+2001,23,Female,No schooling/less than primary,59775
+2001,23,Female,Primary,173309
+2001,23,Female,Secondary,141166
+2001,23,Female,Higher,34970
+2001,23,Female,Unspecified,0
+2001,23,Female,Not applicable,0
+2001,24,Male,No schooling/less than primary,70594
+2001,24,Male,Primary,160627
+2001,24,Male,Secondary,133090
+2001,24,Male,Higher,30297
+2001,24,Male,Unspecified,0
+2001,24,Male,Not applicable,0
+2001,24,Female,No schooling/less than primary,65985
+2001,24,Female,Primary,172328
+2001,24,Female,Secondary,141512
+2001,24,Female,Higher,38630
+2001,24,Female,Unspecified,0
+2001,24,Female,Not applicable,0
+2001,25,Male,No schooling/less than primary,72299
+2001,25,Male,Primary,154519
+2001,25,Male,Secondary,132907
+2001,25,Male,Higher,34491
+2001,25,Male,Unspecified,0
+2001,25,Male,Not applicable,0
+2001,25,Female,No schooling/less than primary,69782
+2001,25,Female,Primary,168120
+2001,25,Female,Secondary,141281
+2001,25,Female,Higher,42174
+2001,25,Female,Unspecified,0
+2001,25,Female,Not applicable,0
+2001,26,Male,No schooling/less than primary,76667
+2001,26,Male,Primary,154026
+2001,26,Male,Secondary,129091
+2001,26,Male,Higher,34954
+2001,26,Male,Unspecified,0
+2001,26,Male,Not applicable,0
+2001,26,Female,No schooling/less than primary,74330
+2001,26,Female,Primary,166015
+2001,26,Female,Secondary,135439
+2001,26,Female,Higher,42167
+2001,26,Female,Unspecified,0
+2001,26,Female,Not applicable,0
+2001,27,Male,No schooling/less than primary,74347
+2001,27,Male,Primary,144842
+2001,27,Male,Secondary,120915
+2001,27,Male,Higher,35497
+2001,27,Male,Unspecified,0
+2001,27,Male,Not applicable,0
+2001,27,Female,No schooling/less than primary,74954
+2001,27,Female,Primary,158246
+2001,27,Female,Secondary,127103
+2001,27,Female,Higher,43074
+2001,27,Female,Unspecified,0
+2001,27,Female,Not applicable,0
+2001,28,Male,No schooling/less than primary,74872
+2001,28,Male,Primary,138162
+2001,28,Male,Secondary,111694
+2001,28,Male,Higher,35548
+2001,28,Male,Unspecified,0
+2001,28,Male,Not applicable,0
+2001,28,Female,No schooling/less than primary,77645
+2001,28,Female,Primary,153181
+2001,28,Female,Secondary,117320
+2001,28,Female,Higher,42646
+2001,28,Female,Unspecified,0
+2001,28,Female,Not applicable,0
+2001,29,Male,No schooling/less than primary,82104
+2001,29,Male,Primary,143476
+2001,29,Male,Secondary,111498
+2001,29,Male,Higher,37215
+2001,29,Male,Unspecified,0
+2001,29,Male,Not applicable,0
+2001,29,Female,No schooling/less than primary,85947
+2001,29,Female,Primary,156879
+2001,29,Female,Secondary,115039
+2001,29,Female,Higher,44470
+2001,29,Female,Unspecified,0
+2001,29,Female,Not applicable,0
+2001,30,Male,No schooling/less than primary,72034
+2001,30,Male,Primary,120048
+2001,30,Male,Secondary,94732
+2001,30,Male,Higher,35751
+2001,30,Male,Unspecified,0
+2001,30,Male,Not applicable,0
+2001,30,Female,No schooling/less than primary,77186
+2001,30,Female,Primary,131435
+2001,30,Female,Secondary,96350
+2001,30,Female,Higher,41721
+2001,30,Female,Unspecified,0
+2001,30,Female,Not applicable,0
+2001,31,Male,No schooling/less than primary,87320
+2001,31,Male,Primary,137589
+2001,31,Male,Secondary,95641
+2001,31,Male,Higher,36734
+2001,31,Male,Unspecified,0
+2001,31,Male,Not applicable,0
+2001,31,Female,No schooling/less than primary,93863
+2001,31,Female,Primary,150165
+2001,31,Female,Secondary,95833
+2001,31,Female,Higher,42114
+2001,31,Female,Unspecified,0
+2001,31,Female,Not applicable,0
+2001,32,Male,No schooling/less than primary,81393
+2001,32,Male,Primary,123397
+2001,32,Male,Secondary,81950
+2001,32,Male,Higher,34306
+2001,32,Male,Unspecified,0
+2001,32,Male,Not applicable,0
+2001,32,Female,No schooling/less than primary,92467
+2001,32,Female,Primary,142706
+2001,32,Female,Secondary,84822
+2001,32,Female,Higher,39433
+2001,32,Female,Unspecified,0
+2001,32,Female,Not applicable,0
+2001,33,Male,No schooling/less than primary,83490
+2001,33,Male,Primary,123746
+2001,33,Male,Secondary,76960
+2001,33,Male,Higher,33796
+2001,33,Male,Unspecified,0
+2001,33,Male,Not applicable,0
+2001,33,Female,No schooling/less than primary,94488
+2001,33,Female,Primary,141346
+2001,33,Female,Secondary,77500
+2001,33,Female,Higher,38383
+2001,33,Female,Unspecified,0
+2001,33,Female,Not applicable,0
+2001,34,Male,No schooling/less than primary,71171
+2001,34,Male,Primary,107206
+2001,34,Male,Secondary,65290
+2001,34,Male,Higher,31935
+2001,34,Male,Unspecified,0
+2001,34,Male,Not applicable,0
+2001,34,Female,No schooling/less than primary,81824
+2001,34,Female,Primary,122634
+2001,34,Female,Secondary,66516
+2001,34,Female,Higher,35623
+2001,34,Female,Unspecified,0
+2001,34,Female,Not applicable,0
+2001,35,Male,No schooling/less than primary,83876
+2001,35,Male,Primary,111849
+2001,35,Male,Secondary,61551
+2001,35,Male,Higher,31423
+2001,35,Male,Unspecified,0
+2001,35,Male,Not applicable,0
+2001,35,Female,No schooling/less than primary,99700
+2001,35,Female,Primary,129856
+2001,35,Female,Secondary,62515
+2001,35,Female,Higher,34694
+2001,35,Female,Unspecified,0
+2001,35,Female,Not applicable,0
+2001,36,Male,No schooling/less than primary,90878
+2001,36,Male,Primary,116532
+2001,36,Male,Secondary,57856
+2001,36,Male,Higher,30540
+2001,36,Male,Unspecified,0
+2001,36,Male,Not applicable,0
+2001,36,Female,No schooling/less than primary,109338
+2001,36,Female,Primary,134898
+2001,36,Female,Secondary,58528
+2001,36,Female,Higher,32814
+2001,36,Female,Unspecified,0
+2001,36,Female,Not applicable,0
+2001,37,Male,No schooling/less than primary,89749
+2001,37,Male,Primary,113043
+2001,37,Male,Secondary,53552
+2001,37,Male,Higher,29367
+2001,37,Male,Unspecified,0
+2001,37,Male,Not applicable,0
+2001,37,Female,No schooling/less than primary,109337
+2001,37,Female,Primary,129384
+2001,37,Female,Secondary,53555
+2001,37,Female,Higher,30982
+2001,37,Female,Unspecified,0
+2001,37,Female,Not applicable,0
+2001,38,Male,No schooling/less than primary,96425
+2001,38,Male,Primary,114340
+2001,38,Male,Secondary,50893
+2001,38,Male,Higher,28960
+2001,38,Male,Unspecified,0
+2001,38,Male,Not applicable,0
+2001,38,Female,No schooling/less than primary,119419
+2001,38,Female,Primary,129924
+2001,38,Female,Secondary,51696
+2001,38,Female,Higher,30193
+2001,38,Female,Unspecified,0
+2001,38,Female,Not applicable,0
+2001,39,Male,No schooling/less than primary,95880
+2001,39,Male,Primary,108942
+2001,39,Male,Secondary,47951
+2001,39,Male,Higher,27901
+2001,39,Male,Unspecified,0
+2001,39,Male,Not applicable,0
+2001,39,Female,No schooling/less than primary,116937
+2001,39,Female,Primary,119977
+2001,39,Female,Secondary,47655
+2001,39,Female,Higher,28863
+2001,39,Female,Unspecified,0
+2001,39,Female,Not applicable,0
+2001,40,Male,No schooling/less than primary,90133
+2001,40,Male,Primary,96720
+2001,40,Male,Secondary,44017
+2001,40,Male,Higher,26809
+2001,40,Male,Unspecified,0
+2001,40,Male,Not applicable,0
+2001,40,Female,No schooling/less than primary,107939
+2001,40,Female,Primary,106779
+2001,40,Female,Secondary,43902
+2001,40,Female,Higher,27837
+2001,40,Female,Unspecified,0
+2001,40,Female,Not applicable,0
+2001,41,Male,No schooling/less than primary,97854
+2001,41,Male,Primary,102544
+2001,41,Male,Secondary,42962
+2001,41,Male,Higher,26517
+2001,41,Male,Unspecified,0
+2001,41,Male,Not applicable,0
+2001,41,Female,No schooling/less than primary,119997
+2001,41,Female,Primary,113830
+2001,41,Female,Secondary,41462
+2001,41,Female,Higher,27969
+2001,41,Female,Unspecified,0
+2001,41,Female,Not applicable,0
+2001,42,Male,No schooling/less than primary,88382
+2001,42,Male,Primary,89687
+2001,42,Male,Secondary,36935
+2001,42,Male,Higher,24308
+2001,42,Male,Unspecified,0
+2001,42,Male,Not applicable,0
+2001,42,Female,No schooling/less than primary,114180
+2001,42,Female,Primary,104870
+2001,42,Female,Secondary,35643
+2001,42,Female,Higher,25349
+2001,42,Female,Unspecified,0
+2001,42,Female,Not applicable,0
+2001,43,Male,No schooling/less than primary,96432
+2001,43,Male,Primary,93430
+2001,43,Male,Secondary,34450
+2001,43,Male,Higher,23337
+2001,43,Male,Unspecified,0
+2001,43,Male,Not applicable,0
+2001,43,Female,No schooling/less than primary,117402
+2001,43,Female,Primary,102058
+2001,43,Female,Secondary,32582
+2001,43,Female,Higher,24463
+2001,43,Female,Unspecified,0
+2001,43,Female,Not applicable,0
+2001,44,Male,No schooling/less than primary,85061
+2001,44,Male,Primary,82581
+2001,44,Male,Secondary,30266
+2001,44,Male,Higher,21208
+2001,44,Male,Unspecified,0
+2001,44,Male,Not applicable,0
+2001,44,Female,No schooling/less than primary,101339
+2001,44,Female,Primary,88063
+2001,44,Female,Secondary,28262
+2001,44,Female,Higher,21907
+2001,44,Female,Unspecified,0
+2001,44,Female,Not applicable,0
+2001,45,Male,No schooling/less than primary,83149
+2001,45,Male,Primary,77243
+2001,45,Male,Secondary,28190
+2001,45,Male,Higher,20339
+2001,45,Male,Unspecified,0
+2001,45,Male,Not applicable,0
+2001,45,Female,No schooling/less than primary,104691
+2001,45,Female,Primary,86459
+2001,45,Female,Secondary,27283
+2001,45,Female,Higher,20715
+2001,45,Female,Unspecified,0
+2001,45,Female,Not applicable,0
+2001,46,Male,No schooling/less than primary,78090
+2001,46,Male,Primary,68017
+2001,46,Male,Secondary,24764
+2001,46,Male,Higher,18628
+2001,46,Male,Unspecified,0
+2001,46,Male,Not applicable,0
+2001,46,Female,No schooling/less than primary,100749
+2001,46,Female,Primary,78637
+2001,46,Female,Secondary,23823
+2001,46,Female,Higher,18759
+2001,46,Female,Unspecified,0
+2001,46,Female,Not applicable,0
+2001,47,Male,No schooling/less than primary,78961
+2001,47,Male,Primary,67759
+2001,47,Male,Secondary,23619
+2001,47,Male,Higher,17547
+2001,47,Male,Unspecified,0
+2001,47,Male,Not applicable,0
+2001,47,Female,No schooling/less than primary,100228
+2001,47,Female,Primary,77527
+2001,47,Female,Secondary,22804
+2001,47,Female,Higher,17484
+2001,47,Female,Unspecified,0
+2001,47,Female,Not applicable,0
+2001,48,Male,No schooling/less than primary,81541
+2001,48,Male,Primary,65552
+2001,48,Male,Secondary,22023
+2001,48,Male,Higher,16595
+2001,48,Male,Unspecified,0
+2001,48,Male,Not applicable,0
+2001,48,Female,No schooling/less than primary,105393
+2001,48,Female,Primary,75883
+2001,48,Female,Secondary,21845
+2001,48,Female,Higher,16161
+2001,48,Female,Unspecified,0
+2001,48,Female,Not applicable,0
+2001,49,Male,No schooling/less than primary,91175
+2001,49,Male,Primary,66527
+2001,49,Male,Secondary,21789
+2001,49,Male,Higher,16094
+2001,49,Male,Unspecified,0
+2001,49,Male,Not applicable,0
+2001,49,Female,No schooling/less than primary,110963
+2001,49,Female,Primary,74391
+2001,49,Female,Secondary,21065
+2001,49,Female,Higher,14915
+2001,49,Female,Unspecified,0
+2001,49,Female,Not applicable,0
+2001,50,Male,No schooling/less than primary,72791
+2001,50,Male,Primary,52312
+2001,50,Male,Secondary,19281
+2001,50,Male,Higher,14627
+2001,50,Male,Unspecified,0
+2001,50,Male,Not applicable,0
+2001,50,Female,No schooling/less than primary,92953
+2001,50,Female,Primary,62326
+2001,50,Female,Secondary,20110
+2001,50,Female,Higher,14150
+2001,50,Female,Unspecified,0
+2001,50,Female,Not applicable,0
+2001,51,Male,No schooling/less than primary,84326
+2001,51,Male,Primary,57152
+2001,51,Male,Secondary,19143
+2001,51,Male,Higher,14324
+2001,51,Male,Unspecified,0
+2001,51,Male,Not applicable,0
+2001,51,Female,No schooling/less than primary,98978
+2001,51,Female,Primary,60358
+2001,51,Female,Secondary,17773
+2001,51,Female,Higher,11921
+2001,51,Female,Unspecified,0
+2001,51,Female,Not applicable,0
+2001,52,Male,No schooling/less than primary,73201
+2001,52,Male,Primary,50103
+2001,52,Male,Secondary,17774
+2001,52,Male,Higher,12932
+2001,52,Male,Unspecified,0
+2001,52,Male,Not applicable,0
+2001,52,Female,No schooling/less than primary,89013
+2001,52,Female,Primary,56175
+2001,52,Female,Secondary,17168
+2001,52,Female,Higher,11594
+2001,52,Female,Unspecified,0
+2001,52,Female,Not applicable,0
+2001,53,Male,No schooling/less than primary,68913
+2001,53,Male,Primary,47745
+2001,53,Male,Secondary,16525
+2001,53,Male,Higher,12551
+2001,53,Male,Unspecified,0
+2001,53,Male,Not applicable,0
+2001,53,Female,No schooling/less than primary,83174
+2001,53,Female,Primary,54215
+2001,53,Female,Secondary,16779
+2001,53,Female,Higher,10839
+2001,53,Female,Unspecified,0
+2001,53,Female,Not applicable,0
+2001,54,Male,No schooling/less than primary,62824
+2001,54,Male,Primary,44115
+2001,54,Male,Secondary,16400
+2001,54,Male,Higher,12461
+2001,54,Male,Unspecified,0
+2001,54,Male,Not applicable,0
+2001,54,Female,No schooling/less than primary,75572
+2001,54,Female,Primary,49028
+2001,54,Female,Secondary,16082
+2001,54,Female,Higher,10313
+2001,54,Female,Unspecified,0
+2001,54,Female,Not applicable,0
+2001,55,Male,No schooling/less than primary,56057
+2001,55,Male,Primary,38608
+2001,55,Male,Secondary,14766
+2001,55,Male,Higher,11141
+2001,55,Male,Unspecified,0
+2001,55,Male,Not applicable,0
+2001,55,Female,No schooling/less than primary,69309
+2001,55,Female,Primary,45407
+2001,55,Female,Secondary,14855
+2001,55,Female,Higher,9685
+2001,55,Female,Unspecified,0
+2001,55,Female,Not applicable,0
+2001,56,Male,No schooling/less than primary,52914
+2001,56,Male,Primary,36463
+2001,56,Male,Secondary,14302
+2001,56,Male,Higher,10166
+2001,56,Male,Unspecified,0
+2001,56,Male,Not applicable,0
+2001,56,Female,No schooling/less than primary,68048
+2001,56,Female,Primary,42590
+2001,56,Female,Secondary,13703
+2001,56,Female,Higher,8631
+2001,56,Female,Unspecified,0
+2001,56,Female,Not applicable,0
+2001,57,Male,No schooling/less than primary,48420
+2001,57,Male,Primary,31880
+2001,57,Male,Secondary,12935
+2001,57,Male,Higher,9535
+2001,57,Male,Unspecified,0
+2001,57,Male,Not applicable,0
+2001,57,Female,No schooling/less than primary,62659
+2001,57,Female,Primary,37905
+2001,57,Female,Secondary,12672
+2001,57,Female,Higher,8483
+2001,57,Female,Unspecified,0
+2001,57,Female,Not applicable,0
+2001,58,Male,No schooling/less than primary,49735
+2001,58,Male,Primary,31202
+2001,58,Male,Secondary,12175
+2001,58,Male,Higher,8762
+2001,58,Male,Unspecified,0
+2001,58,Male,Not applicable,0
+2001,58,Female,No schooling/less than primary,65444
+2001,58,Female,Primary,38408
+2001,58,Female,Secondary,12037
+2001,58,Female,Higher,7598
+2001,58,Female,Unspecified,0
+2001,58,Female,Not applicable,0
+2001,59,Male,No schooling/less than primary,59992
+2001,59,Male,Primary,33158
+2001,59,Male,Secondary,11868
+2001,59,Male,Higher,8244
+2001,59,Male,Unspecified,0
+2001,59,Male,Not applicable,0
+2001,59,Female,No schooling/less than primary,77398
+2001,59,Female,Primary,39832
+2001,59,Female,Secondary,11334
+2001,59,Female,Higher,6944
+2001,59,Female,Unspecified,0
+2001,59,Female,Not applicable,0
+2001,60,Male,No schooling/less than primary,51782
+2001,60,Male,Primary,26918
+2001,60,Male,Secondary,10926
+2001,60,Male,Higher,7918
+2001,60,Male,Unspecified,0
+2001,60,Male,Not applicable,0
+2001,60,Female,No schooling/less than primary,74465
+2001,60,Female,Primary,34481
+2001,60,Female,Secondary,10754
+2001,60,Female,Higher,6724
+2001,60,Female,Unspecified,0
+2001,60,Female,Not applicable,0
+2001,61,Male,No schooling/less than primary,63195
+2001,61,Male,Primary,29571
+2001,61,Male,Secondary,10738
+2001,61,Male,Higher,7525
+2001,61,Male,Unspecified,0
+2001,61,Male,Not applicable,0
+2001,61,Female,No schooling/less than primary,105080
+2001,61,Female,Primary,38502
+2001,61,Female,Secondary,10568
+2001,61,Female,Higher,6502
+2001,61,Female,Unspecified,0
+2001,61,Female,Not applicable,0
+2001,62,Male,No schooling/less than primary,43322
+2001,62,Male,Primary,23966
+2001,62,Male,Secondary,9344
+2001,62,Male,Higher,6884
+2001,62,Male,Unspecified,0
+2001,62,Male,Not applicable,0
+2001,62,Female,No schooling/less than primary,72354
+2001,62,Female,Primary,32475
+2001,62,Female,Secondary,9785
+2001,62,Female,Higher,5925
+2001,62,Female,Unspecified,0
+2001,62,Female,Not applicable,0
+2001,63,Male,No schooling/less than primary,41109
+2001,63,Male,Primary,23305
+2001,63,Male,Secondary,9121
+2001,63,Male,Higher,6122
+2001,63,Male,Unspecified,0
+2001,63,Male,Not applicable,0
+2001,63,Female,No schooling/less than primary,66616
+2001,63,Female,Primary,31026
+2001,63,Female,Secondary,9359
+2001,63,Female,Higher,5354
+2001,63,Female,Unspecified,0
+2001,63,Female,Not applicable,0
+2001,64,Male,No schooling/less than primary,37722
+2001,64,Male,Primary,21119
+2001,64,Male,Secondary,8192
+2001,64,Male,Higher,5731
+2001,64,Male,Unspecified,0
+2001,64,Male,Not applicable,0
+2001,64,Female,No schooling/less than primary,59276
+2001,64,Female,Primary,28328
+2001,64,Female,Secondary,8442
+2001,64,Female,Higher,4770
+2001,64,Female,Unspecified,0
+2001,64,Female,Not applicable,0
+2001,65,Male,No schooling/less than primary,41097
+2001,65,Male,Primary,20739
+2001,65,Male,Secondary,7625
+2001,65,Male,Higher,5351
+2001,65,Male,Unspecified,0
+2001,65,Male,Not applicable,0
+2001,65,Female,No schooling/less than primary,71484
+2001,65,Female,Primary,28473
+2001,65,Female,Secondary,8465
+2001,65,Female,Higher,4614
+2001,65,Female,Unspecified,0
+2001,65,Female,Not applicable,0
+2001,66,Male,No schooling/less than primary,31830
+2001,66,Male,Primary,17326
+2001,66,Male,Secondary,6948
+2001,66,Male,Higher,4766
+2001,66,Male,Unspecified,0
+2001,66,Male,Not applicable,0
+2001,66,Female,No schooling/less than primary,59266
+2001,66,Female,Primary,24717
+2001,66,Female,Secondary,7361
+2001,66,Female,Higher,3966
+2001,66,Female,Unspecified,0
+2001,66,Female,Not applicable,0
+2001,67,Male,No schooling/less than primary,30162
+2001,67,Male,Primary,15462
+2001,67,Male,Secondary,6317
+2001,67,Male,Higher,4387
+2001,67,Male,Unspecified,0
+2001,67,Male,Not applicable,0
+2001,67,Female,No schooling/less than primary,60915
+2001,67,Female,Primary,22668
+2001,67,Female,Secondary,7053
+2001,67,Female,Higher,3560
+2001,67,Female,Unspecified,0
+2001,67,Female,Not applicable,0
+2001,68,Male,No schooling/less than primary,32277
+2001,68,Male,Primary,14678
+2001,68,Male,Secondary,5930
+2001,68,Male,Higher,4011
+2001,68,Male,Unspecified,0
+2001,68,Male,Not applicable,0
+2001,68,Female,No schooling/less than primary,60585
+2001,68,Female,Primary,22139
+2001,68,Female,Secondary,6700
+2001,68,Female,Higher,3339
+2001,68,Female,Unspecified,0
+2001,68,Female,Not applicable,0
+2001,69,Male,No schooling/less than primary,31158
+2001,69,Male,Primary,14985
+2001,69,Male,Secondary,5955
+2001,69,Male,Higher,3759
+2001,69,Male,Unspecified,0
+2001,69,Male,Not applicable,0
+2001,69,Female,No schooling/less than primary,56187
+2001,69,Female,Primary,21987
+2001,69,Female,Secondary,6593
+2001,69,Female,Higher,3091
+2001,69,Female,Unspecified,0
+2001,69,Female,Not applicable,0
+2001,70,Male,No schooling/less than primary,28611
+2001,70,Male,Primary,12579
+2001,70,Male,Secondary,5711
+2001,70,Male,Higher,3747
+2001,70,Male,Unspecified,0
+2001,70,Male,Not applicable,0
+2001,70,Female,No schooling/less than primary,52761
+2001,70,Female,Primary,18424
+2001,70,Female,Secondary,6689
+2001,70,Female,Higher,3131
+2001,70,Female,Unspecified,0
+2001,70,Female,Not applicable,0
+2001,71,Male,No schooling/less than primary,37340
+2001,71,Male,Primary,13193
+2001,71,Male,Secondary,5494
+2001,71,Male,Higher,3598
+2001,71,Male,Unspecified,0
+2001,71,Male,Not applicable,0
+2001,71,Female,No schooling/less than primary,80624
+2001,71,Female,Primary,20187
+2001,71,Female,Secondary,6493
+2001,71,Female,Higher,3159
+2001,71,Female,Unspecified,0
+2001,71,Female,Not applicable,0
+2001,72,Male,No schooling/less than primary,27051
+2001,72,Male,Primary,10538
+2001,72,Male,Secondary,4953
+2001,72,Male,Higher,3169
+2001,72,Male,Unspecified,0
+2001,72,Male,Not applicable,0
+2001,72,Female,No schooling/less than primary,53958
+2001,72,Female,Primary,16846
+2001,72,Female,Secondary,5934
+2001,72,Female,Higher,2724
+2001,72,Female,Unspecified,0
+2001,72,Female,Not applicable,0
+2001,73,Male,No schooling/less than primary,23849
+2001,73,Male,Primary,9648
+2001,73,Male,Secondary,4422
+2001,73,Male,Higher,2787
+2001,73,Male,Unspecified,0
+2001,73,Male,Not applicable,0
+2001,73,Female,No schooling/less than primary,45341
+2001,73,Female,Primary,15689
+2001,73,Female,Secondary,5604
+2001,73,Female,Higher,2562
+2001,73,Female,Unspecified,0
+2001,73,Female,Not applicable,0
+2001,74,Male,No schooling/less than primary,20644
+2001,74,Male,Primary,8583
+2001,74,Male,Secondary,4038
+2001,74,Male,Higher,2593
+2001,74,Male,Unspecified,0
+2001,74,Male,Not applicable,0
+2001,74,Female,No schooling/less than primary,37274
+2001,74,Female,Primary,14015
+2001,74,Female,Secondary,5181
+2001,74,Female,Higher,2326
+2001,74,Female,Unspecified,0
+2001,74,Female,Not applicable,0
+2001,75,Male,No schooling/less than primary,19944
+2001,75,Male,Primary,7800
+2001,75,Male,Secondary,3793
+2001,75,Male,Higher,2423
+2001,75,Male,Unspecified,0
+2001,75,Male,Not applicable,0
+2001,75,Female,No schooling/less than primary,36850
+2001,75,Female,Primary,12979
+2001,75,Female,Secondary,4835
+2001,75,Female,Higher,2298
+2001,75,Female,Unspecified,0
+2001,75,Female,Not applicable,0
+2001,76,Male,No schooling/less than primary,19018
+2001,76,Male,Primary,7095
+2001,76,Male,Secondary,3245
+2001,76,Male,Higher,2146
+2001,76,Male,Unspecified,0
+2001,76,Male,Not applicable,0
+2001,76,Female,No schooling/less than primary,35433
+2001,76,Female,Primary,11786
+2001,76,Female,Secondary,4649
+2001,76,Female,Higher,2059
+2001,76,Female,Unspecified,0
+2001,76,Female,Not applicable,0
+2001,77,Male,No schooling/less than primary,15942
+2001,77,Male,Primary,6046
+2001,77,Male,Secondary,3032
+2001,77,Male,Higher,2016
+2001,77,Male,Unspecified,0
+2001,77,Male,Not applicable,0
+2001,77,Female,No schooling/less than primary,29759
+2001,77,Female,Primary,10812
+2001,77,Female,Secondary,4252
+2001,77,Female,Higher,1882
+2001,77,Female,Unspecified,0
+2001,77,Female,Not applicable,0
+2001,78,Male,No schooling/less than primary,11776
+2001,78,Male,Primary,5107
+2001,78,Male,Secondary,2678
+2001,78,Male,Higher,1758
+2001,78,Male,Unspecified,0
+2001,78,Male,Not applicable,0
+2001,78,Female,No schooling/less than primary,21880
+2001,78,Female,Primary,9353
+2001,78,Female,Secondary,3932
+2001,78,Female,Higher,1667
+2001,78,Female,Unspecified,0
+2001,78,Female,Not applicable,0
+2001,79,Male,No schooling/less than primary,13520
+2001,79,Male,Primary,4825
+2001,79,Male,Secondary,2584
+2001,79,Male,Higher,1688
+2001,79,Male,Unspecified,0
+2001,79,Male,Not applicable,0
+2001,79,Female,No schooling/less than primary,22425
+2001,79,Female,Primary,8874
+2001,79,Female,Secondary,3709
+2001,79,Female,Higher,1667
+2001,79,Female,Unspecified,0
+2001,79,Female,Not applicable,0
+2001,80,Male,No schooling/less than primary,14427
+2001,80,Male,Primary,4676
+2001,80,Male,Secondary,2433
+2001,80,Male,Higher,1518
+2001,80,Male,Unspecified,0
+2001,80,Male,Not applicable,0
+2001,80,Female,No schooling/less than primary,28482
+2001,80,Female,Primary,8366
+2001,80,Female,Secondary,3523
+2001,80,Female,Higher,1624
+2001,80,Female,Unspecified,0
+2001,80,Female,Not applicable,0
+2001,81,Male,No schooling/less than primary,16789
+2001,81,Male,Primary,4243
+2001,81,Male,Secondary,2113
+2001,81,Male,Higher,1278
+2001,81,Male,Unspecified,0
+2001,81,Male,Not applicable,0
+2001,81,Female,No schooling/less than primary,35336
+2001,81,Female,Primary,8006
+2001,81,Female,Secondary,3062
+2001,81,Female,Higher,1458
+2001,81,Female,Unspecified,0
+2001,81,Female,Not applicable,0
+2001,82,Male,No schooling/less than primary,10423
+2001,82,Male,Primary,2835
+2001,82,Male,Secondary,1498
+2001,82,Male,Higher,971
+2001,82,Male,Unspecified,0
+2001,82,Male,Not applicable,0
+2001,82,Female,No schooling/less than primary,22490
+2001,82,Female,Primary,6011
+2001,82,Female,Secondary,2407
+2001,82,Female,Higher,1078
+2001,82,Female,Unspecified,0
+2001,82,Female,Not applicable,0
+2001,83,Male,No schooling/less than primary,13608
+2001,83,Male,Primary,2976
+2001,83,Male,Secondary,1410
+2001,83,Male,Higher,811
+2001,83,Male,Unspecified,0
+2001,83,Male,Not applicable,0
+2001,83,Female,No schooling/less than primary,31321
+2001,83,Female,Primary,6582
+2001,83,Female,Secondary,2350
+2001,83,Female,Higher,1066
+2001,83,Female,Unspecified,0
+2001,83,Female,Not applicable,0
+2001,84,Male,No schooling/less than primary,4552
+2001,84,Male,Primary,2022
+2001,84,Male,Secondary,1131
+2001,84,Male,Higher,1121
+2001,84,Male,Unspecified,0
+2001,84,Male,Not applicable,0
+2001,84,Female,No schooling/less than primary,9938
+2001,84,Female,Primary,4362
+2001,84,Female,Secondary,1804
+2001,84,Female,Higher,844
+2001,84,Female,Unspecified,0
+2001,84,Female,Not applicable,0
+2001,85,Male,No schooling/less than primary,3761
+2001,85,Male,Primary,1459
+2001,85,Male,Secondary,786
+2001,85,Male,Higher,515
+2001,85,Male,Unspecified,0
+2001,85,Male,Not applicable,0
+2001,85,Female,No schooling/less than primary,9103
+2001,85,Female,Primary,3642
+2001,85,Female,Secondary,1514
+2001,85,Female,Higher,710
+2001,85,Female,Unspecified,0
+2001,85,Female,Not applicable,0
+2001,86,Male,No schooling/less than primary,3688
+2001,86,Male,Primary,1271
+2001,86,Male,Secondary,729
+2001,86,Male,Higher,433
+2001,86,Male,Unspecified,0
+2001,86,Male,Not applicable,0
+2001,86,Female,No schooling/less than primary,8356
+2001,86,Female,Primary,3064
+2001,86,Female,Secondary,1345
+2001,86,Female,Higher,673
+2001,86,Female,Unspecified,0
+2001,86,Female,Not applicable,0
+2001,87,Male,No schooling/less than primary,6141
+2001,87,Male,Primary,1271
+2001,87,Male,Secondary,595
+2001,87,Male,Higher,427
+2001,87,Male,Unspecified,0
+2001,87,Male,Not applicable,0
+2001,87,Female,No schooling/less than primary,12361
+2001,87,Female,Primary,3252
+2001,87,Female,Secondary,1195
+2001,87,Female,Higher,591
+2001,87,Female,Unspecified,0
+2001,87,Female,Not applicable,0
+2001,88,Male,No schooling/less than primary,2263
+2001,88,Male,Primary,767
+2001,88,Male,Secondary,473
+2001,88,Male,Higher,278
+2001,88,Male,Unspecified,0
+2001,88,Male,Not applicable,0
+2001,88,Female,No schooling/less than primary,5483
+2001,88,Female,Primary,2345
+2001,88,Female,Secondary,1037
+2001,88,Female,Higher,469
+2001,88,Female,Unspecified,0
+2001,88,Female,Not applicable,0
+2001,89,Male,No schooling/less than primary,2689
+2001,89,Male,Primary,725
+2001,89,Male,Secondary,336
+2001,89,Male,Higher,237
+2001,89,Male,Unspecified,0
+2001,89,Male,Not applicable,0
+2001,89,Female,No schooling/less than primary,6816
+2001,89,Female,Primary,2182
+2001,89,Female,Secondary,794
+2001,89,Female,Higher,449
+2001,89,Female,Unspecified,0
+2001,89,Female,Not applicable,0
+2001,90,Male,No schooling/less than primary,2268
+2001,90,Male,Primary,598
+2001,90,Male,Secondary,259
+2001,90,Male,Higher,186
+2001,90,Male,Unspecified,0
+2001,90,Male,Not applicable,0
+2001,90,Female,No schooling/less than primary,5821
+2001,90,Female,Primary,1663
+2001,90,Female,Secondary,664
+2001,90,Female,Higher,319
+2001,90,Female,Unspecified,0
+2001,90,Female,Not applicable,0
+2001,91,Male,No schooling/less than primary,2916
+2001,91,Male,Primary,501
+2001,91,Male,Secondary,226
+2001,91,Male,Higher,151
+2001,91,Male,Unspecified,0
+2001,91,Male,Not applicable,0
+2001,91,Female,No schooling/less than primary,8188
+2001,91,Female,Primary,1464
+2001,91,Female,Secondary,572
+2001,91,Female,Higher,291
+2001,91,Female,Unspecified,0
+2001,91,Female,Not applicable,0
+2001,92,Male,No schooling/less than primary,1212
+2001,92,Male,Primary,348
+2001,92,Male,Secondary,169
+2001,92,Male,Higher,92
+2001,92,Male,Unspecified,0
+2001,92,Male,Not applicable,0
+2001,92,Female,No schooling/less than primary,3522
+2001,92,Female,Primary,938
+2001,92,Female,Secondary,404
+2001,92,Female,Higher,202
+2001,92,Female,Unspecified,0
+2001,92,Female,Not applicable,0
+2001,93,Male,No schooling/less than primary,850
+2001,93,Male,Primary,246
+2001,93,Male,Secondary,125
+2001,93,Male,Higher,94
+2001,93,Male,Unspecified,0
+2001,93,Male,Not applicable,0
+2001,93,Female,No schooling/less than primary,2276
+2001,93,Female,Primary,799
+2001,93,Female,Secondary,273
+2001,93,Female,Higher,182
+2001,93,Female,Unspecified,0
+2001,93,Female,Not applicable,0
+2001,94,Male,No schooling/less than primary,684
+2001,94,Male,Primary,214
+2001,94,Male,Secondary,107
+2001,94,Male,Higher,60
+2001,94,Male,Unspecified,0
+2001,94,Male,Not applicable,0
+2001,94,Female,No schooling/less than primary,1848
+2001,94,Female,Primary,578
+2001,94,Female,Secondary,258
+2001,94,Female,Higher,146
+2001,94,Female,Unspecified,0
+2001,94,Female,Not applicable,0
+2001,95,Male,No schooling/less than primary,743
+2001,95,Male,Primary,173
+2001,95,Male,Secondary,78
+2001,95,Male,Higher,52
+2001,95,Male,Unspecified,0
+2001,95,Male,Not applicable,0
+2001,95,Female,No schooling/less than primary,2041
+2001,95,Female,Primary,466
+2001,95,Female,Secondary,174
+2001,95,Female,Higher,95
+2001,95,Female,Unspecified,0
+2001,95,Female,Not applicable,0
+2001,96,Male,No schooling/less than primary,532
+2001,96,Male,Primary,158
+2001,96,Male,Secondary,38
+2001,96,Male,Higher,30
+2001,96,Male,Unspecified,0
+2001,96,Male,Not applicable,0
+2001,96,Female,No schooling/less than primary,1540
+2001,96,Female,Primary,429
+2001,96,Female,Secondary,124
+2001,96,Female,Higher,85
+2001,96,Female,Unspecified,0
+2001,96,Female,Not applicable,0
+2001,97,Male,No schooling/less than primary,542
+2001,97,Male,Primary,133
+2001,97,Male,Secondary,44
+2001,97,Male,Higher,22
+2001,97,Male,Unspecified,0
+2001,97,Male,Not applicable,0
+2001,97,Female,No schooling/less than primary,1505
+2001,97,Female,Primary,318
+2001,97,Female,Secondary,108
+2001,97,Female,Higher,48
+2001,97,Female,Unspecified,0
+2001,97,Female,Not applicable,0
+2001,98,Male,No schooling/less than primary,477
+2001,98,Male,Primary,110
+2001,98,Male,Secondary,28
+2001,98,Male,Higher,13
+2001,98,Male,Unspecified,0
+2001,98,Male,Not applicable,0
+2001,98,Female,No schooling/less than primary,1249
+2001,98,Female,Primary,259
+2001,98,Female,Secondary,88
+2001,98,Female,Higher,46
+2001,98,Female,Unspecified,0
+2001,98,Female,Not applicable,0
+2001,99,Male,No schooling/less than primary,862
+2001,99,Male,Primary,113
+2001,99,Male,Secondary,38
+2001,99,Male,Higher,14
+2001,99,Male,Unspecified,0
+2001,99,Male,Not applicable,0
+2001,99,Female,No schooling/less than primary,2289
+2001,99,Female,Primary,261
+2001,99,Female,Secondary,76
+2001,99,Female,Higher,38
+2001,99,Female,Unspecified,0
+2001,99,Female,Not applicable,0
+2001,100,Male,No schooling/less than primary,561
+2001,100,Male,Primary,69
+2001,100,Male,Secondary,30
+2001,100,Male,Higher,18
+2001,100,Male,Unspecified,0
+2001,100,Male,Not applicable,0
+2001,100,Female,No schooling/less than primary,1415
+2001,100,Female,Primary,204
+2001,100,Female,Secondary,55
+2001,100,Female,Higher,29
+2001,100,Female,Unspecified,0
+2001,100,Female,Not applicable,0
+2001,101,Male,No schooling/less than primary,265
+2001,101,Male,Primary,61
+2001,101,Male,Secondary,17
+2001,101,Male,Higher,8
+2001,101,Male,Unspecified,0
+2001,101,Male,Not applicable,0
+2001,101,Female,No schooling/less than primary,954
+2001,101,Female,Primary,116
+2001,101,Female,Secondary,46
+2001,101,Female,Higher,28
+2001,101,Female,Unspecified,0
+2001,101,Female,Not applicable,0
+2001,102,Male,No schooling/less than primary,95
+2001,102,Male,Primary,8
+2001,102,Male,Secondary,1
+2001,102,Male,Higher,0
+2001,102,Male,Unspecified,0
+2001,102,Male,Not applicable,0
+2001,102,Female,No schooling/less than primary,335
+2001,102,Female,Primary,34
+2001,102,Female,Secondary,11
+2001,102,Female,Higher,4
+2001,102,Female,Unspecified,0
+2001,102,Female,Not applicable,0
+2001,103,Male,No schooling/less than primary,51
+2001,103,Male,Primary,3
+2001,103,Male,Secondary,0
+2001,103,Male,Higher,0
+2001,103,Male,Unspecified,0
+2001,103,Male,Not applicable,0
+2001,103,Female,No schooling/less than primary,158
+2001,103,Female,Primary,10
+2001,103,Female,Secondary,3
+2001,103,Female,Higher,3
+2001,103,Female,Unspecified,0
+2001,103,Female,Not applicable,0
+2001,104,Male,No schooling/less than primary,35
+2001,104,Male,Primary,4
+2001,104,Male,Secondary,3
+2001,104,Male,Higher,1
+2001,104,Male,Unspecified,0
+2001,104,Male,Not applicable,0
+2001,104,Female,No schooling/less than primary,139
+2001,104,Female,Primary,10
+2001,104,Female,Secondary,6
+2001,104,Female,Higher,3
+2001,104,Female,Unspecified,0
+2001,104,Female,Not applicable,0
+2001,105,Male,No schooling/less than primary,48
+2001,105,Male,Primary,3
+2001,105,Male,Secondary,1
+2001,105,Male,Higher,0
+2001,105,Male,Unspecified,0
+2001,105,Male,Not applicable,0
+2001,105,Female,No schooling/less than primary,155
+2001,105,Female,Primary,16
+2001,105,Female,Secondary,4
+2001,105,Female,Higher,0
+2001,105,Female,Unspecified,0
+2001,105,Female,Not applicable,0
+2001,106,Male,No schooling/less than primary,25
+2001,106,Male,Primary,2
+2001,106,Male,Secondary,0
+2001,106,Male,Higher,1
+2001,106,Male,Unspecified,0
+2001,106,Male,Not applicable,0
+2001,106,Female,No schooling/less than primary,91
+2001,106,Female,Primary,4
+2001,106,Female,Secondary,0
+2001,106,Female,Higher,1
+2001,106,Female,Unspecified,0
+2001,106,Female,Not applicable,0
+2001,107,Male,No schooling/less than primary,16
+2001,107,Male,Primary,0
+2001,107,Male,Secondary,0
+2001,107,Male,Higher,0
+2001,107,Male,Unspecified,0
+2001,107,Male,Not applicable,0
+2001,107,Female,No schooling/less than primary,49
+2001,107,Female,Primary,8
+2001,107,Female,Secondary,1
+2001,107,Female,Higher,0
+2001,107,Female,Unspecified,0
+2001,107,Female,Not applicable,0
+2001,108,Male,No schooling/less than primary,10
+2001,108,Male,Primary,2
+2001,108,Male,Secondary,0
+2001,108,Male,Higher,0
+2001,108,Male,Unspecified,0
+2001,108,Male,Not applicable,0
+2001,108,Female,No schooling/less than primary,39
+2001,108,Female,Primary,3
+2001,108,Female,Secondary,0
+2001,108,Female,Higher,0
+2001,108,Female,Unspecified,0
+2001,108,Female,Not applicable,0
+2001,109,Male,No schooling/less than primary,17
+2001,109,Male,Primary,3
+2001,109,Male,Secondary,0
+2001,109,Male,Higher,0
+2001,109,Male,Unspecified,0
+2001,109,Male,Not applicable,0
+2001,109,Female,No schooling/less than primary,50
+2001,109,Female,Primary,5
+2001,109,Female,Secondary,1
+2001,109,Female,Higher,1
+2001,109,Female,Unspecified,0
+2001,109,Female,Not applicable,0
+2001,110,Male,No schooling/less than primary,23
+2001,110,Male,Primary,1
+2001,110,Male,Secondary,1
+2001,110,Male,Higher,1
+2001,110,Male,Unspecified,0
+2001,110,Male,Not applicable,0
+2001,110,Female,No schooling/less than primary,69
+2001,110,Female,Primary,1
+2001,110,Female,Secondary,0
+2001,110,Female,Higher,1
+2001,110,Female,Unspecified,0
+2001,110,Female,Not applicable,0
+2001,111,Male,No schooling/less than primary,25
+2001,111,Male,Primary,4
+2001,111,Male,Secondary,0
+2001,111,Male,Higher,0
+2001,111,Male,Unspecified,0
+2001,111,Male,Not applicable,0
+2001,111,Female,No schooling/less than primary,94
+2001,111,Female,Primary,8
+2001,111,Female,Secondary,1
+2001,111,Female,Higher,1
+2001,111,Female,Unspecified,0
+2001,111,Female,Not applicable,0
+2001,112,Male,No schooling/less than primary,14
+2001,112,Male,Primary,1
+2001,112,Male,Secondary,1
+2001,112,Male,Higher,0
+2001,112,Male,Unspecified,0
+2001,112,Male,Not applicable,0
+2001,112,Female,No schooling/less than primary,33
+2001,112,Female,Primary,7
+2001,112,Female,Secondary,0
+2001,112,Female,Higher,0
+2001,112,Female,Unspecified,0
+2001,112,Female,Not applicable,0
+2001,113,Male,No schooling/less than primary,16
+2001,113,Male,Primary,8
+2001,113,Male,Secondary,1
+2001,113,Male,Higher,0
+2001,113,Male,Unspecified,0
+2001,113,Male,Not applicable,0
+2001,113,Female,No schooling/less than primary,18
+2001,113,Female,Primary,8
+2001,113,Female,Secondary,1
+2001,113,Female,Higher,1
+2001,113,Female,Unspecified,0
+2001,113,Female,Not applicable,0
+2001,114,Male,No schooling/less than primary,6
+2001,114,Male,Primary,7
+2001,114,Male,Secondary,0
+2001,114,Male,Higher,0
+2001,114,Male,Unspecified,0
+2001,114,Male,Not applicable,0
+2001,114,Female,No schooling/less than primary,16
+2001,114,Female,Primary,7
+2001,114,Female,Secondary,0
+2001,114,Female,Higher,0
+2001,114,Female,Unspecified,0
+2001,114,Female,Not applicable,0
+2001,115,Male,No schooling/less than primary,6
+2001,115,Male,Primary,2
+2001,115,Male,Secondary,0
+2001,115,Male,Higher,0
+2001,115,Male,Unspecified,0
+2001,115,Male,Not applicable,0
+2001,115,Female,No schooling/less than primary,16
+2001,115,Female,Primary,9
+2001,115,Female,Secondary,1
+2001,115,Female,Higher,1
+2001,115,Female,Unspecified,0
+2001,115,Female,Not applicable,0
+2001,116,Male,No schooling/less than primary,33
+2001,116,Male,Primary,32
+2001,116,Male,Secondary,8
+2001,116,Male,Higher,7
+2001,116,Male,Unspecified,0
+2001,116,Male,Not applicable,0
+2001,116,Female,No schooling/less than primary,71
+2001,116,Female,Primary,35
+2001,116,Female,Secondary,11
+2001,116,Female,Higher,1
+2001,116,Female,Unspecified,0
+2001,116,Female,Not applicable,0
+2001,Unspecified,Male,No schooling/less than primary,0
+2001,Unspecified,Male,Primary,0
+2001,Unspecified,Male,Secondary,0
+2001,Unspecified,Male,Higher,0
+2001,Unspecified,Male,Unspecified,0
+2001,Unspecified,Male,Not applicable,0
+2001,Unspecified,Female,No schooling/less than primary,0
+2001,Unspecified,Female,Primary,0
+2001,Unspecified,Female,Secondary,0
+2001,Unspecified,Female,Higher,0
+2001,Unspecified,Female,Unspecified,0
+2001,Unspecified,Female,Not applicable,0
+2011,0,Male,No schooling/less than primary,0
+2011,0,Male,Primary,0
+2011,0,Male,Secondary,0
+2011,0,Male,Higher,0
+2011,0,Male,Unspecified,0
+2011,0,Male,Not applicable,584097
+2011,0,Female,No schooling/less than primary,0
+2011,0,Female,Primary,0
+2011,0,Female,Secondary,0
+2011,0,Female,Higher,0
+2011,0,Female,Unspecified,0
+2011,0,Female,Not applicable,575028
+2011,1,Male,No schooling/less than primary,0
+2011,1,Male,Primary,0
+2011,1,Male,Secondary,0
+2011,1,Male,Higher,0
+2011,1,Male,Unspecified,0
+2011,1,Male,Not applicable,573534
+2011,1,Female,No schooling/less than primary,0
+2011,1,Female,Primary,0
+2011,1,Female,Secondary,0
+2011,1,Female,Higher,0
+2011,1,Female,Unspecified,0
+2011,1,Female,Not applicable,560848
+2011,2,Male,No schooling/less than primary,0
+2011,2,Male,Primary,0
+2011,2,Male,Secondary,0
+2011,2,Male,Higher,0
+2011,2,Male,Unspecified,0
+2011,2,Male,Not applicable,579129
+2011,2,Female,No schooling/less than primary,0
+2011,2,Female,Primary,0
+2011,2,Female,Secondary,0
+2011,2,Female,Higher,0
+2011,2,Female,Unspecified,0
+2011,2,Female,Not applicable,571403
+2011,3,Male,No schooling/less than primary,0
+2011,3,Male,Primary,0
+2011,3,Male,Secondary,0
+2011,3,Male,Higher,0
+2011,3,Male,Unspecified,0
+2011,3,Male,Not applicable,572138
+2011,3,Female,No schooling/less than primary,0
+2011,3,Female,Primary,0
+2011,3,Female,Secondary,0
+2011,3,Female,Higher,0
+2011,3,Female,Unspecified,0
+2011,3,Female,Not applicable,563772
+2011,4,Male,No schooling/less than primary,0
+2011,4,Male,Primary,0
+2011,4,Male,Secondary,0
+2011,4,Male,Higher,0
+2011,4,Male,Unspecified,0
+2011,4,Male,Not applicable,558687
+2011,4,Female,No schooling/less than primary,0
+2011,4,Female,Primary,0
+2011,4,Female,Secondary,0
+2011,4,Female,Higher,0
+2011,4,Female,Unspecified,0
+2011,4,Female,Not applicable,546817
+2011,5,Male,No schooling/less than primary,529752
+2011,5,Male,Primary,0
+2011,5,Male,Secondary,0
+2011,5,Male,Higher,0
+2011,5,Male,Unspecified,155
+2011,5,Male,Not applicable,1217
+2011,5,Female,No schooling/less than primary,523657
+2011,5,Female,Primary,0
+2011,5,Female,Secondary,0
+2011,5,Female,Higher,0
+2011,5,Female,Unspecified,142
+2011,5,Female,Not applicable,1053
+2011,6,Male,No schooling/less than primary,520486
+2011,6,Male,Primary,0
+2011,6,Male,Secondary,0
+2011,6,Male,Higher,0
+2011,6,Male,Unspecified,76
+2011,6,Male,Not applicable,1152
+2011,6,Female,No schooling/less than primary,513176
+2011,6,Female,Primary,0
+2011,6,Female,Secondary,0
+2011,6,Female,Higher,0
+2011,6,Female,Unspecified,46
+2011,6,Female,Not applicable,1100
+2011,7,Male,No schooling/less than primary,480531
+2011,7,Male,Primary,0
+2011,7,Male,Secondary,0
+2011,7,Male,Higher,0
+2011,7,Male,Unspecified,33
+2011,7,Male,Not applicable,1472
+2011,7,Female,No schooling/less than primary,471188
+2011,7,Female,Primary,0
+2011,7,Female,Secondary,0
+2011,7,Female,Higher,0
+2011,7,Female,Unspecified,13
+2011,7,Female,Not applicable,1424
+2011,8,Male,No schooling/less than primary,449944
+2011,8,Male,Primary,0
+2011,8,Male,Secondary,0
+2011,8,Male,Higher,0
+2011,8,Male,Unspecified,56
+2011,8,Male,Not applicable,1571
+2011,8,Female,No schooling/less than primary,444906
+2011,8,Female,Primary,0
+2011,8,Female,Secondary,0
+2011,8,Female,Higher,0
+2011,8,Female,Unspecified,27
+2011,8,Female,Not applicable,1563
+2011,9,Male,No schooling/less than primary,437042
+2011,9,Male,Primary,0
+2011,9,Male,Secondary,0
+2011,9,Male,Higher,0
+2011,9,Male,Unspecified,34
+2011,9,Male,Not applicable,1660
+2011,9,Female,No schooling/less than primary,434469
+2011,9,Female,Primary,0
+2011,9,Female,Secondary,0
+2011,9,Female,Higher,0
+2011,9,Female,Unspecified,62
+2011,9,Female,Not applicable,1743
+2011,10,Male,No schooling/less than primary,456936
+2011,10,Male,Primary,381
+2011,10,Male,Secondary,0
+2011,10,Male,Higher,0
+2011,10,Male,Unspecified,71
+2011,10,Male,Not applicable,1921
+2011,10,Female,No schooling/less than primary,452640
+2011,10,Female,Primary,391
+2011,10,Female,Secondary,0
+2011,10,Female,Higher,0
+2011,10,Female,Unspecified,55
+2011,10,Female,Not applicable,1830
+2011,11,Male,No schooling/less than primary,472491
+2011,11,Male,Primary,825
+2011,11,Male,Secondary,0
+2011,11,Male,Higher,0
+2011,11,Male,Unspecified,73
+2011,11,Male,Not applicable,2547
+2011,11,Female,No schooling/less than primary,460940
+2011,11,Female,Primary,981
+2011,11,Female,Secondary,0
+2011,11,Female,Higher,0
+2011,11,Female,Unspecified,35
+2011,11,Female,Not applicable,2314
+2011,12,Male,No schooling/less than primary,377902
+2011,12,Male,Primary,81371
+2011,12,Male,Secondary,0
+2011,12,Male,Higher,0
+2011,12,Male,Unspecified,54
+2011,12,Male,Not applicable,2725
+2011,12,Female,No schooling/less than primary,326969
+2011,12,Female,Primary,105520
+2011,12,Female,Secondary,0
+2011,12,Female,Higher,0
+2011,12,Female,Unspecified,73
+2011,12,Female,Not applicable,2654
+2011,13,Male,No schooling/less than primary,261097
+2011,13,Male,Primary,201042
+2011,13,Male,Secondary,12
+2011,13,Male,Higher,0
+2011,13,Male,Unspecified,71
+2011,13,Male,Not applicable,3451
+2011,13,Female,No schooling/less than primary,194988
+2011,13,Female,Primary,240755
+2011,13,Female,Secondary,10
+2011,13,Female,Higher,0
+2011,13,Female,Unspecified,66
+2011,13,Female,Not applicable,3787
+2011,14,Male,No schooling/less than primary,155439
+2011,14,Male,Primary,320238
+2011,14,Male,Secondary,4
+2011,14,Male,Higher,0
+2011,14,Male,Unspecified,82
+2011,14,Male,Not applicable,5544
+2011,14,Female,No schooling/less than primary,96570
+2011,14,Female,Primary,354186
+2011,14,Female,Secondary,3
+2011,14,Female,Higher,0
+2011,14,Female,Unspecified,62
+2011,14,Female,Not applicable,5783
+2011,15,Male,No schooling/less than primary,93782
+2011,15,Male,Primary,388713
+2011,15,Male,Secondary,3
+2011,15,Male,Higher,0
+2011,15,Male,Unspecified,99
+2011,15,Male,Not applicable,7539
+2011,15,Female,No schooling/less than primary,54754
+2011,15,Female,Primary,428144
+2011,15,Female,Secondary,8
+2011,15,Female,Higher,0
+2011,15,Female,Unspecified,100
+2011,15,Female,Not applicable,8094
+2011,16,Male,No schooling/less than primary,57792
+2011,16,Male,Primary,423093
+2011,16,Male,Secondary,201
+2011,16,Male,Higher,565
+2011,16,Male,Unspecified,147
+2011,16,Male,Not applicable,8633
+2011,16,Female,No schooling/less than primary,33311
+2011,16,Female,Primary,447543
+2011,16,Female,Secondary,236
+2011,16,Female,Higher,692
+2011,16,Female,Unspecified,105
+2011,16,Female,Not applicable,9172
+2011,17,Male,No schooling/less than primary,39791
+2011,17,Male,Primary,428433
+2011,17,Male,Secondary,24157
+2011,17,Male,Higher,1320
+2011,17,Male,Unspecified,200
+2011,17,Male,Not applicable,9150
+2011,17,Female,No schooling/less than primary,23457
+2011,17,Female,Primary,430957
+2011,17,Female,Secondary,35992
+2011,17,Female,Higher,1997
+2011,17,Female,Unspecified,122
+2011,17,Female,Not applicable,9582
+2011,18,Male,No schooling/less than primary,30060
+2011,18,Male,Primary,364584
+2011,18,Male,Secondary,81135
+2011,18,Male,Higher,11726
+2011,18,Male,Unspecified,308
+2011,18,Male,Not applicable,12110
+2011,18,Female,No schooling/less than primary,19958
+2011,18,Female,Primary,333702
+2011,18,Female,Secondary,130631
+2011,18,Female,Higher,4998
+2011,18,Female,Unspecified,189
+2011,18,Female,Not applicable,11610
+2011,19,Male,No schooling/less than primary,28356
+2011,19,Male,Primary,314018
+2011,19,Male,Secondary,123635
+2011,19,Male,Higher,32721
+2011,19,Male,Unspecified,491
+2011,19,Male,Not applicable,15811
+2011,19,Female,No schooling/less than primary,19456
+2011,19,Female,Primary,275603
+2011,19,Female,Secondary,195667
+2011,19,Female,Higher,12548
+2011,19,Female,Unspecified,391
+2011,19,Female,Not applicable,15887
+2011,20,Male,No schooling/less than primary,33221
+2011,20,Male,Primary,289506
+2011,20,Male,Secondary,185767
+2011,20,Male,Higher,25904
+2011,20,Male,Unspecified,1000
+2011,20,Male,Not applicable,18562
+2011,20,Female,No schooling/less than primary,22914
+2011,20,Female,Primary,247584
+2011,20,Female,Secondary,223246
+2011,20,Female,Higher,33145
+2011,20,Female,Unspecified,919
+2011,20,Female,Not applicable,17718
+2011,21,Male,No schooling/less than primary,37960
+2011,21,Male,Primary,268498
+2011,21,Male,Secondary,207410
+2011,21,Male,Higher,34018
+2011,21,Male,Unspecified,1245
+2011,21,Male,Not applicable,22450
+2011,21,Female,No schooling/less than primary,25782
+2011,21,Female,Primary,235837
+2011,21,Female,Secondary,236483
+2011,21,Female,Higher,43633
+2011,21,Female,Unspecified,1138
+2011,21,Female,Not applicable,16800
+2011,22,Male,No schooling/less than primary,36993
+2011,22,Male,Primary,229958
+2011,22,Male,Secondary,201587
+2011,22,Male,Higher,40694
+2011,22,Male,Unspecified,1568
+2011,22,Male,Not applicable,18121
+2011,22,Female,No schooling/less than primary,26578
+2011,22,Female,Primary,211842
+2011,22,Female,Secondary,224706
+2011,22,Female,Higher,53260
+2011,22,Female,Unspecified,1536
+2011,22,Female,Not applicable,13223
+2011,23,Male,No schooling/less than primary,40463
+2011,23,Male,Primary,219609
+2011,23,Male,Secondary,203330
+2011,23,Male,Higher,46328
+2011,23,Male,Unspecified,1718
+2011,23,Male,Not applicable,16802
+2011,23,Female,No schooling/less than primary,29234
+2011,23,Female,Primary,205711
+2011,23,Female,Secondary,221911
+2011,23,Female,Higher,59809
+2011,23,Female,Unspecified,1472
+2011,23,Female,Not applicable,10392
+2011,24,Male,No schooling/less than primary,39656
+2011,24,Male,Primary,208612
+2011,24,Male,Secondary,195575
+2011,24,Male,Higher,50138
+2011,24,Male,Unspecified,1827
+2011,24,Male,Not applicable,16126
+2011,24,Female,No schooling/less than primary,28922
+2011,24,Female,Primary,197814
+2011,24,Female,Secondary,213092
+2011,24,Female,Higher,64650
+2011,24,Female,Unspecified,1564
+2011,24,Female,Not applicable,8981
+2011,25,Male,No schooling/less than primary,46329
+2011,25,Male,Primary,211315
+2011,25,Male,Secondary,192689
+2011,25,Male,Higher,55930
+2011,25,Male,Unspecified,1979
+2011,25,Male,Not applicable,15840
+2011,25,Female,No schooling/less than primary,34758
+2011,25,Female,Primary,202518
+2011,25,Female,Secondary,206922
+2011,25,Female,Higher,71470
+2011,25,Female,Unspecified,1888
+2011,25,Female,Not applicable,8152
+2011,26,Male,No schooling/less than primary,47418
+2011,26,Male,Primary,213024
+2011,26,Male,Secondary,192412
+2011,26,Male,Higher,59367
+2011,26,Male,Unspecified,1985
+2011,26,Male,Not applicable,16419
+2011,26,Female,No schooling/less than primary,35941
+2011,26,Female,Primary,202212
+2011,26,Female,Secondary,202708
+2011,26,Female,Higher,73422
+2011,26,Female,Unspecified,1770
+2011,26,Female,Not applicable,8343
+2011,27,Male,No schooling/less than primary,45654
+2011,27,Male,Primary,202423
+2011,27,Male,Secondary,180386
+2011,27,Male,Higher,58490
+2011,27,Male,Unspecified,1934
+2011,27,Male,Not applicable,13820
+2011,27,Female,No schooling/less than primary,34938
+2011,27,Female,Primary,193733
+2011,27,Female,Secondary,188544
+2011,27,Female,Higher,71055
+2011,27,Female,Unspecified,1705
+2011,27,Female,Not applicable,6165
+2011,28,Male,No schooling/less than primary,46788
+2011,28,Male,Primary,200802
+2011,28,Male,Secondary,175854
+2011,28,Male,Higher,59238
+2011,28,Male,Unspecified,1891
+2011,28,Male,Not applicable,13458
+2011,28,Female,No schooling/less than primary,36371
+2011,28,Female,Primary,195722
+2011,28,Female,Secondary,182600
+2011,28,Female,Higher,70681
+2011,28,Female,Unspecified,1822
+2011,28,Female,Not applicable,6152
+2011,29,Male,No schooling/less than primary,47727
+2011,29,Male,Primary,197745
+2011,29,Male,Secondary,169248
+2011,29,Male,Higher,57992
+2011,29,Male,Unspecified,1908
+2011,29,Male,Not applicable,12617
+2011,29,Female,No schooling/less than primary,37480
+2011,29,Female,Primary,190445
+2011,29,Female,Secondary,173854
+2011,29,Female,Higher,68280
+2011,29,Female,Unspecified,1584
+2011,29,Female,Not applicable,5399
+2011,30,Male,No schooling/less than primary,43218
+2011,30,Male,Primary,173593
+2011,30,Male,Secondary,154400
+2011,30,Male,Higher,56253
+2011,30,Male,Unspecified,1829
+2011,30,Male,Not applicable,10915
+2011,30,Female,No schooling/less than primary,33977
+2011,30,Female,Primary,167674
+2011,30,Female,Secondary,155893
+2011,30,Female,Higher,64865
+2011,30,Female,Unspecified,1491
+2011,30,Female,Not applicable,4825
+2011,31,Male,No schooling/less than primary,47062
+2011,31,Male,Primary,178402
+2011,31,Male,Secondary,151491
+2011,31,Male,Higher,54846
+2011,31,Male,Unspecified,1796
+2011,31,Male,Not applicable,12992
+2011,31,Female,No schooling/less than primary,37768
+2011,31,Female,Primary,171429
+2011,31,Female,Secondary,150955
+2011,31,Female,Higher,62184
+2011,31,Female,Unspecified,1410
+2011,31,Female,Not applicable,5045
+2011,32,Male,No schooling/less than primary,45672
+2011,32,Male,Primary,161799
+2011,32,Male,Secondary,140662
+2011,32,Male,Higher,51598
+2011,32,Male,Unspecified,1645
+2011,32,Male,Not applicable,9310
+2011,32,Female,No schooling/less than primary,37115
+2011,32,Female,Primary,158291
+2011,32,Female,Secondary,139782
+2011,32,Female,Higher,58918
+2011,32,Female,Unspecified,1304
+2011,32,Female,Not applicable,3811
+2011,33,Male,No schooling/less than primary,40431
+2011,33,Male,Primary,138283
+2011,33,Male,Secondary,126959
+2011,33,Male,Higher,49378
+2011,33,Male,Unspecified,1495
+2011,33,Male,Not applicable,10307
+2011,33,Female,No schooling/less than primary,34700
+2011,33,Female,Primary,140793
+2011,33,Female,Secondary,128551
+2011,33,Female,Higher,55976
+2011,33,Female,Unspecified,1135
+2011,33,Female,Not applicable,3542
+2011,34,Male,No schooling/less than primary,45587
+2011,34,Male,Primary,140099
+2011,34,Male,Secondary,126462
+2011,34,Male,Higher,49617
+2011,34,Male,Unspecified,1523
+2011,34,Male,Not applicable,8581
+2011,34,Female,No schooling/less than primary,39720
+2011,34,Female,Primary,143770
+2011,34,Female,Secondary,127053
+2011,34,Female,Higher,56302
+2011,34,Female,Unspecified,1216
+2011,34,Female,Not applicable,3310
+2011,35,Male,No schooling/less than primary,46433
+2011,35,Male,Primary,134809
+2011,35,Male,Secondary,124502
+2011,35,Male,Higher,50450
+2011,35,Male,Unspecified,1476
+2011,35,Male,Not applicable,8639
+2011,35,Female,No schooling/less than primary,41351
+2011,35,Female,Primary,140551
+2011,35,Female,Secondary,123305
+2011,35,Female,Higher,56273
+2011,35,Female,Unspecified,1101
+2011,35,Female,Not applicable,3462
+2011,36,Male,No schooling/less than primary,50059
+2011,36,Male,Primary,133153
+2011,36,Male,Secondary,118700
+2011,36,Male,Higher,49182
+2011,36,Male,Unspecified,1414
+2011,36,Male,Not applicable,8503
+2011,36,Female,No schooling/less than primary,46209
+2011,36,Female,Primary,139989
+2011,36,Female,Secondary,117684
+2011,36,Female,Higher,54036
+2011,36,Female,Unspecified,1137
+2011,36,Female,Not applicable,3455
+2011,37,Male,No schooling/less than primary,46827
+2011,37,Male,Primary,119918
+2011,37,Male,Secondary,107793
+2011,37,Male,Higher,47729
+2011,37,Male,Unspecified,1289
+2011,37,Male,Not applicable,7188
+2011,37,Female,No schooling/less than primary,45577
+2011,37,Female,Primary,131272
+2011,37,Female,Secondary,109058
+2011,37,Female,Higher,53826
+2011,37,Female,Unspecified,1017
+2011,37,Female,Not applicable,3044
+2011,38,Male,No schooling/less than primary,49014
+2011,38,Male,Primary,118320
+2011,38,Male,Secondary,101389
+2011,38,Male,Higher,47049
+2011,38,Male,Unspecified,1252
+2011,38,Male,Not applicable,6888
+2011,38,Female,No schooling/less than primary,49783
+2011,38,Female,Primary,131541
+2011,38,Female,Secondary,103967
+2011,38,Female,Higher,52735
+2011,38,Female,Unspecified,1061
+2011,38,Female,Not applicable,2920
+2011,39,Male,No schooling/less than primary,53621
+2011,39,Male,Primary,119311
+2011,39,Male,Secondary,99119
+2011,39,Male,Higher,47094
+2011,39,Male,Unspecified,1318
+2011,39,Male,Not applicable,6908
+2011,39,Female,No schooling/less than primary,55038
+2011,39,Female,Primary,131622
+2011,39,Female,Secondary,100600
+2011,39,Female,Higher,52867
+2011,39,Female,Unspecified,1118
+2011,39,Female,Not applicable,2819
+2011,40,Male,No schooling/less than primary,47792
+2011,40,Male,Primary,103052
+2011,40,Male,Secondary,86660
+2011,40,Male,Higher,46524
+2011,40,Male,Unspecified,1297
+2011,40,Male,Not applicable,6677
+2011,40,Female,No schooling/less than primary,50265
+2011,40,Female,Primary,114213
+2011,40,Female,Secondary,87543
+2011,40,Female,Higher,49921
+2011,40,Female,Unspecified,1021
+2011,40,Female,Not applicable,3241
+2011,41,Male,No schooling/less than primary,58453
+2011,41,Male,Primary,113734
+2011,41,Male,Secondary,84954
+2011,41,Male,Higher,44560
+2011,41,Male,Unspecified,1228
+2011,41,Male,Not applicable,7229
+2011,41,Female,No schooling/less than primary,63994
+2011,41,Female,Primary,129616
+2011,41,Female,Secondary,86381
+2011,41,Female,Higher,48763
+2011,41,Female,Unspecified,1100
+2011,41,Female,Not applicable,2860
+2011,42,Male,No schooling/less than primary,56149
+2011,42,Male,Primary,105294
+2011,42,Male,Secondary,75719
+2011,42,Male,Higher,43038
+2011,42,Male,Unspecified,1199
+2011,42,Male,Not applicable,6756
+2011,42,Female,No schooling/less than primary,65757
+2011,42,Female,Primary,126323
+2011,42,Female,Secondary,79120
+2011,42,Female,Higher,46797
+2011,42,Female,Unspecified,997
+2011,42,Female,Not applicable,2836
+2011,43,Male,No schooling/less than primary,57491
+2011,43,Male,Primary,103186
+2011,43,Male,Secondary,69871
+2011,43,Male,Higher,40888
+2011,43,Male,Unspecified,1068
+2011,43,Male,Not applicable,6159
+2011,43,Female,No schooling/less than primary,68908
+2011,43,Female,Primary,125446
+2011,43,Female,Secondary,72818
+2011,43,Female,Higher,44748
+2011,43,Female,Unspecified,1000
+2011,43,Female,Not applicable,2619
+2011,44,Male,No schooling/less than primary,48198
+2011,44,Male,Primary,85330
+2011,44,Male,Secondary,56815
+2011,44,Male,Higher,36104
+2011,44,Male,Unspecified,937
+2011,44,Male,Not applicable,5967
+2011,44,Female,No schooling/less than primary,59700
+2011,44,Female,Primary,105469
+2011,44,Female,Secondary,61707
+2011,44,Female,Higher,39643
+2011,44,Female,Unspecified,824
+2011,44,Female,Not applicable,2661
+2011,45,Male,No schooling/less than primary,55075
+2011,45,Male,Primary,88936
+2011,45,Male,Secondary,54184
+2011,45,Male,Higher,35435
+2011,45,Male,Unspecified,928
+2011,45,Male,Not applicable,5626
+2011,45,Female,No schooling/less than primary,70833
+2011,45,Female,Primary,112259
+2011,45,Female,Secondary,59577
+2011,45,Female,Higher,38294
+2011,45,Female,Unspecified,953
+2011,45,Female,Not applicable,2653
+2011,46,Male,No schooling/less than primary,59025
+2011,46,Male,Primary,90384
+2011,46,Male,Secondary,50668
+2011,46,Male,Higher,34074
+2011,46,Male,Unspecified,910
+2011,46,Male,Not applicable,5753
+2011,46,Female,No schooling/less than primary,77451
+2011,46,Female,Primary,114732
+2011,46,Female,Secondary,56498
+2011,46,Female,Higher,36454
+2011,46,Female,Unspecified,863
+2011,46,Female,Not applicable,2612
+2011,47,Male,No schooling/less than primary,62354
+2011,47,Male,Primary,92148
+2011,47,Male,Secondary,48169
+2011,47,Male,Higher,33797
+2011,47,Male,Unspecified,953
+2011,47,Male,Not applicable,6008
+2011,47,Female,No schooling/less than primary,82564
+2011,47,Female,Primary,114154
+2011,47,Female,Secondary,53514
+2011,47,Female,Higher,34887
+2011,47,Female,Unspecified,857
+2011,47,Female,Not applicable,2603
+2011,48,Male,No schooling/less than primary,66642
+2011,48,Male,Primary,91223
+2011,48,Male,Secondary,44908
+2011,48,Male,Higher,31935
+2011,48,Male,Unspecified,900
+2011,48,Male,Not applicable,6154
+2011,48,Female,No schooling/less than primary,88867
+2011,48,Female,Primary,113135
+2011,48,Female,Secondary,50395
+2011,48,Female,Higher,32858
+2011,48,Female,Unspecified,851
+2011,48,Female,Not applicable,2431
+2011,49,Male,No schooling/less than primary,64994
+2011,49,Male,Primary,85409
+2011,49,Male,Secondary,42386
+2011,49,Male,Higher,30388
+2011,49,Male,Unspecified,873
+2011,49,Male,Not applicable,5500
+2011,49,Female,No schooling/less than primary,87570
+2011,49,Female,Primary,104386
+2011,49,Female,Secondary,47192
+2011,49,Female,Higher,31689
+2011,49,Female,Unspecified,795
+2011,49,Female,Not applicable,2615
+2011,50,Male,No schooling/less than primary,58730
+2011,50,Male,Primary,74769
+2011,50,Male,Secondary,38752
+2011,50,Male,Higher,29223
+2011,50,Male,Unspecified,863
+2011,50,Male,Not applicable,4505
+2011,50,Female,No schooling/less than primary,78481
+2011,50,Female,Primary,91363
+2011,50,Female,Secondary,41833
+2011,50,Female,Higher,30016
+2011,50,Female,Unspecified,814
+2011,50,Female,Not applicable,2131
+2011,51,Male,No schooling/less than primary,67887
+2011,51,Male,Primary,80099
+2011,51,Male,Secondary,37462
+2011,51,Male,Higher,28268
+2011,51,Male,Unspecified,872
+2011,51,Male,Not applicable,5222
+2011,51,Female,No schooling/less than primary,93849
+2011,51,Female,Primary,98442
+2011,51,Female,Secondary,40739
+2011,51,Female,Higher,29174
+2011,51,Female,Unspecified,772
+2011,51,Female,Not applicable,2498
+2011,52,Male,No schooling/less than primary,61643
+2011,52,Male,Primary,71306
+2011,52,Male,Secondary,33148
+2011,52,Male,Higher,26799
+2011,52,Male,Unspecified,803
+2011,52,Male,Not applicable,4567
+2011,52,Female,No schooling/less than primary,86886
+2011,52,Female,Primary,88612
+2011,52,Female,Secondary,35694
+2011,52,Female,Higher,27098
+2011,52,Female,Unspecified,770
+2011,52,Female,Not applicable,2234
+2011,53,Male,No schooling/less than primary,67914
+2011,53,Male,Primary,73627
+2011,53,Male,Secondary,31301
+2011,53,Male,Higher,25666
+2011,53,Male,Unspecified,798
+2011,53,Male,Not applicable,4327
+2011,53,Female,No schooling/less than primary,92100
+2011,53,Female,Primary,87735
+2011,53,Female,Secondary,32586
+2011,53,Female,Higher,25882
+2011,53,Female,Unspecified,788
+2011,53,Female,Not applicable,2187
+2011,54,Male,No schooling/less than primary,61483
+2011,54,Male,Primary,65689
+2011,54,Male,Secondary,27709
+2011,54,Male,Higher,23251
+2011,54,Male,Unspecified,737
+2011,54,Male,Not applicable,3928
+2011,54,Female,No schooling/less than primary,81355
+2011,54,Female,Primary,77762
+2011,54,Female,Secondary,29000
+2011,54,Female,Higher,23255
+2011,54,Female,Unspecified,669
+2011,54,Female,Not applicable,2216
+2011,55,Male,No schooling/less than primary,60693
+2011,55,Male,Primary,61018
+2011,55,Male,Secondary,25660
+2011,55,Male,Higher,22064
+2011,55,Male,Unspecified,700
+2011,55,Male,Not applicable,3559
+2011,55,Female,No schooling/less than primary,83181
+2011,55,Female,Primary,74523
+2011,55,Female,Secondary,27775
+2011,55,Female,Higher,22019
+2011,55,Female,Unspecified,700
+2011,55,Female,Not applicable,1937
+2011,56,Male,No schooling/less than primary,59188
+2011,56,Male,Primary,56842
+2011,56,Male,Secondary,24017
+2011,56,Male,Higher,21384
+2011,56,Male,Unspecified,775
+2011,56,Male,Not applicable,3952
+2011,56,Female,No schooling/less than primary,82952
+2011,56,Female,Primary,69784
+2011,56,Female,Secondary,25654
+2011,56,Female,Higher,20131
+2011,56,Female,Unspecified,692
+2011,56,Female,Not applicable,1915
+2011,57,Male,No schooling/less than primary,58649
+2011,57,Male,Primary,54490
+2011,57,Male,Secondary,21834
+2011,57,Male,Higher,19450
+2011,57,Male,Unspecified,663
+2011,57,Male,Not applicable,3180
+2011,57,Female,No schooling/less than primary,80847
+2011,57,Female,Primary,66929
+2011,57,Female,Secondary,23609
+2011,57,Female,Higher,18607
+2011,57,Female,Unspecified,621
+2011,57,Female,Not applicable,2090
+2011,58,Male,No schooling/less than primary,60946
+2011,58,Male,Primary,52893
+2011,58,Male,Secondary,20362
+2011,58,Male,Higher,18214
+2011,58,Male,Unspecified,630
+2011,58,Male,Not applicable,2584
+2011,58,Female,No schooling/less than primary,83775
+2011,58,Female,Primary,65472
+2011,58,Female,Secondary,22766
+2011,58,Female,Higher,17073
+2011,58,Female,Unspecified,633
+2011,58,Female,Not applicable,1642
+2011,59,Male,No schooling/less than primary,65887
+2011,59,Male,Primary,51822
+2011,59,Male,Secondary,19558
+2011,59,Male,Higher,17521
+2011,59,Male,Unspecified,668
+2011,59,Male,Not applicable,2747
+2011,59,Female,No schooling/less than primary,86531
+2011,59,Female,Primary,63609
+2011,59,Female,Secondary,21593
+2011,59,Female,Higher,16007
+2011,59,Female,Unspecified,637
+2011,59,Female,Not applicable,1755
+2011,60,Male,No schooling/less than primary,53488
+2011,60,Male,Primary,41551
+2011,60,Male,Secondary,17405
+2011,60,Male,Higher,15831
+2011,60,Male,Unspecified,623
+2011,60,Male,Not applicable,1998
+2011,60,Female,No schooling/less than primary,72958
+2011,60,Female,Primary,51470
+2011,60,Female,Secondary,20086
+2011,60,Female,Higher,13883
+2011,60,Female,Unspecified,581
+2011,60,Female,Not applicable,1503
+2011,61,Male,No schooling/less than primary,60481
+2011,61,Male,Primary,42618
+2011,61,Male,Secondary,16573
+2011,61,Male,Higher,14844
+2011,61,Male,Unspecified,596
+2011,61,Male,Not applicable,1975
+2011,61,Female,No schooling/less than primary,85768
+2011,61,Female,Primary,55014
+2011,61,Female,Secondary,19044
+2011,61,Female,Higher,12839
+2011,61,Female,Unspecified,542
+2011,61,Female,Not applicable,1652
+2011,62,Male,No schooling/less than primary,51481
+2011,62,Male,Primary,37964
+2011,62,Male,Secondary,15359
+2011,62,Male,Higher,13821
+2011,62,Male,Unspecified,631
+2011,62,Male,Not applicable,1864
+2011,62,Female,No schooling/less than primary,71933
+2011,62,Female,Primary,48995
+2011,62,Female,Secondary,17958
+2011,62,Female,Higher,12019
+2011,62,Female,Unspecified,568
+2011,62,Female,Not applicable,2022
+2011,63,Male,No schooling/less than primary,49947
+2011,63,Male,Primary,36367
+2011,63,Male,Secondary,15197
+2011,63,Male,Higher,13589
+2011,63,Male,Unspecified,660
+2011,63,Male,Not applicable,1690
+2011,63,Female,No schooling/less than primary,69928
+2011,63,Female,Primary,47638
+2011,63,Female,Secondary,17480
+2011,63,Female,Higher,11455
+2011,63,Female,Unspecified,535
+2011,63,Female,Not applicable,1616
+2011,64,Male,No schooling/less than primary,43855
+2011,64,Male,Primary,32344
+2011,64,Male,Secondary,14058
+2011,64,Male,Higher,13123
+2011,64,Male,Unspecified,600
+2011,64,Male,Not applicable,1828
+2011,64,Female,No schooling/less than primary,63853
+2011,64,Female,Primary,42476
+2011,64,Female,Secondary,16625
+2011,64,Female,Higher,10537
+2011,64,Female,Unspecified,572
+2011,64,Female,Not applicable,1852
+2011,65,Male,No schooling/less than primary,38615
+2011,65,Male,Primary,28762
+2011,65,Male,Secondary,13019
+2011,65,Male,Higher,11707
+2011,65,Male,Unspecified,564
+2011,65,Male,Not applicable,1464
+2011,65,Female,No schooling/less than primary,58093
+2011,65,Female,Primary,39077
+2011,65,Female,Secondary,15308
+2011,65,Female,Higher,9575
+2011,65,Female,Unspecified,475
+2011,65,Female,Not applicable,1573
+2011,66,Male,No schooling/less than primary,33374
+2011,66,Male,Primary,24812
+2011,66,Male,Secondary,11390
+2011,66,Male,Higher,9959
+2011,66,Male,Unspecified,498
+2011,66,Male,Not applicable,1546
+2011,66,Female,No schooling/less than primary,54394
+2011,66,Female,Primary,34516
+2011,66,Female,Secondary,13733
+2011,66,Female,Higher,8343
+2011,66,Female,Unspecified,461
+2011,66,Female,Not applicable,1672
+2011,67,Male,No schooling/less than primary,31970
+2011,67,Male,Primary,22686
+2011,67,Male,Secondary,10906
+2011,67,Male,Higher,9870
+2011,67,Male,Unspecified,528
+2011,67,Male,Not applicable,1462
+2011,67,Female,No schooling/less than primary,51943
+2011,67,Female,Primary,31776
+2011,67,Female,Secondary,12959
+2011,67,Female,Higher,8257
+2011,67,Female,Unspecified,453
+2011,67,Female,Not applicable,1690
+2011,68,Male,No schooling/less than primary,31445
+2011,68,Male,Primary,20864
+2011,68,Male,Secondary,9687
+2011,68,Male,Higher,8744
+2011,68,Male,Unspecified,443
+2011,68,Male,Not applicable,1409
+2011,68,Female,No schooling/less than primary,52603
+2011,68,Female,Primary,30821
+2011,68,Female,Secondary,11870
+2011,68,Female,Higher,7196
+2011,68,Female,Unspecified,431
+2011,68,Female,Not applicable,1685
+2011,69,Male,No schooling/less than primary,35705
+2011,69,Male,Primary,21373
+2011,69,Male,Secondary,9133
+2011,69,Male,Higher,7907
+2011,69,Male,Unspecified,431
+2011,69,Male,Not applicable,1275
+2011,69,Female,No schooling/less than primary,56957
+2011,69,Female,Primary,30384
+2011,69,Female,Secondary,11203
+2011,69,Female,Higher,6683
+2011,69,Female,Unspecified,467
+2011,69,Female,Not applicable,1658
+2011,70,Male,No schooling/less than primary,30090
+2011,70,Male,Primary,17253
+2011,70,Male,Secondary,8352
+2011,70,Male,Higher,7481
+2011,70,Male,Unspecified,422
+2011,70,Male,Not applicable,1425
+2011,70,Female,No schooling/less than primary,48320
+2011,70,Female,Primary,25658
+2011,70,Female,Secondary,10280
+2011,70,Female,Higher,6025
+2011,70,Female,Unspecified,415
+2011,70,Female,Not applicable,1683
+2011,71,Male,No schooling/less than primary,38062
+2011,71,Male,Primary,18681
+2011,71,Male,Secondary,8035
+2011,71,Male,Higher,6867
+2011,71,Male,Unspecified,409
+2011,71,Male,Not applicable,1471
+2011,71,Female,No schooling/less than primary,72343
+2011,71,Female,Primary,28514
+2011,71,Female,Secondary,9941
+2011,71,Female,Higher,5923
+2011,71,Female,Unspecified,414
+2011,71,Female,Not applicable,1842
+2011,72,Male,No schooling/less than primary,26083
+2011,72,Male,Primary,15194
+2011,72,Male,Secondary,7337
+2011,72,Male,Higher,6471
+2011,72,Male,Unspecified,429
+2011,72,Male,Not applicable,1474
+2011,72,Female,No schooling/less than primary,48949
+2011,72,Female,Primary,23608
+2011,72,Female,Secondary,9432
+2011,72,Female,Higher,5298
+2011,72,Female,Unspecified,425
+2011,72,Female,Not applicable,1956
+2011,73,Male,No schooling/less than primary,24157
+2011,73,Male,Primary,14209
+2011,73,Male,Secondary,6605
+2011,73,Male,Higher,5584
+2011,73,Male,Unspecified,347
+2011,73,Male,Not applicable,1166
+2011,73,Female,No schooling/less than primary,44062
+2011,73,Female,Primary,22239
+2011,73,Female,Secondary,8519
+2011,73,Female,Higher,4668
+2011,73,Female,Unspecified,366
+2011,73,Female,Not applicable,1823
+2011,74,Male,No schooling/less than primary,20804
+2011,74,Male,Primary,12366
+2011,74,Male,Secondary,6077
+2011,74,Male,Higher,5037
+2011,74,Male,Unspecified,323
+2011,74,Male,Not applicable,1286
+2011,74,Female,No schooling/less than primary,38493
+2011,74,Female,Primary,19611
+2011,74,Female,Secondary,7592
+2011,74,Female,Higher,4159
+2011,74,Female,Unspecified,306
+2011,74,Female,Not applicable,1967
+2011,75,Male,No schooling/less than primary,20103
+2011,75,Male,Primary,11679
+2011,75,Male,Secondary,5570
+2011,75,Male,Higher,4569
+2011,75,Male,Unspecified,312
+2011,75,Male,Not applicable,1191
+2011,75,Female,No schooling/less than primary,43939
+2011,75,Female,Primary,19387
+2011,75,Female,Secondary,7343
+2011,75,Female,Higher,4109
+2011,75,Female,Unspecified,284
+2011,75,Female,Not applicable,1979
+2011,76,Male,No schooling/less than primary,15446
+2011,76,Male,Primary,9574
+2011,76,Male,Secondary,4814
+2011,76,Male,Higher,3784
+2011,76,Male,Unspecified,220
+2011,76,Male,Not applicable,897
+2011,76,Female,No schooling/less than primary,36378
+2011,76,Female,Primary,16407
+2011,76,Female,Secondary,6608
+2011,76,Female,Higher,3301
+2011,76,Female,Unspecified,304
+2011,76,Female,Not applicable,1619
+2011,77,Male,No schooling/less than primary,13790
+2011,77,Male,Primary,7681
+2011,77,Male,Secondary,4187
+2011,77,Male,Higher,3376
+2011,77,Male,Unspecified,259
+2011,77,Male,Not applicable,780
+2011,77,Female,No schooling/less than primary,36319
+2011,77,Female,Primary,14306
+2011,77,Female,Secondary,5879
+2011,77,Female,Higher,2769
+2011,77,Female,Unspecified,252
+2011,77,Female,Not applicable,1757
+2011,78,Male,No schooling/less than primary,14445
+2011,78,Male,Primary,7321
+2011,78,Male,Secondary,3804
+2011,78,Male,Higher,2941
+2011,78,Male,Unspecified,220
+2011,78,Male,Not applicable,691
+2011,78,Female,No schooling/less than primary,35009
+2011,78,Female,Primary,13774
+2011,78,Female,Secondary,5589
+2011,78,Female,Higher,2561
+2011,78,Female,Unspecified,239
+2011,78,Female,Not applicable,1732
+2011,79,Male,No schooling/less than primary,13444
+2011,79,Male,Primary,6844
+2011,79,Male,Secondary,3521
+2011,79,Male,Higher,2744
+2011,79,Male,Unspecified,183
+2011,79,Male,Not applicable,891
+2011,79,Female,No schooling/less than primary,31860
+2011,79,Female,Primary,12727
+2011,79,Female,Secondary,5103
+2011,79,Female,Higher,2304
+2011,79,Female,Unspecified,247
+2011,79,Female,Not applicable,1900
+2011,80,Male,No schooling/less than primary,11140
+2011,80,Male,Primary,5486
+2011,80,Male,Secondary,3119
+2011,80,Male,Higher,2442
+2011,80,Male,Unspecified,203
+2011,80,Male,Not applicable,788
+2011,80,Female,No schooling/less than primary,27331
+2011,80,Female,Primary,10592
+2011,80,Female,Secondary,4956
+2011,80,Female,Higher,2231
+2011,80,Female,Unspecified,238
+2011,80,Female,Not applicable,1952
+2011,81,Male,No schooling/less than primary,15008
+2011,81,Male,Primary,5737
+2011,81,Male,Secondary,2917
+2011,81,Male,Higher,2175
+2011,81,Male,Unspecified,144
+2011,81,Male,Not applicable,796
+2011,81,Female,No schooling/less than primary,43790
+2011,81,Female,Primary,11195
+2011,81,Female,Secondary,4506
+2011,81,Female,Higher,2114
+2011,81,Female,Unspecified,237
+2011,81,Female,Not applicable,2099
+2011,82,Male,No schooling/less than primary,10067
+2011,82,Male,Primary,4283
+2011,82,Male,Secondary,2464
+2011,82,Male,Higher,1907
+2011,82,Male,Unspecified,120
+2011,82,Male,Not applicable,783
+2011,82,Female,No schooling/less than primary,27290
+2011,82,Female,Primary,8780
+2011,82,Female,Secondary,3863
+2011,82,Female,Higher,1744
+2011,82,Female,Unspecified,202
+2011,82,Female,Not applicable,2118
+2011,83,Male,No schooling/less than primary,8836
+2011,83,Male,Primary,3729
+2011,83,Male,Secondary,2165
+2011,83,Male,Higher,1555
+2011,83,Male,Unspecified,126
+2011,83,Male,Not applicable,731
+2011,83,Female,No schooling/less than primary,22091
+2011,83,Female,Primary,7524
+2011,83,Female,Secondary,3258
+2011,83,Female,Higher,1442
+2011,83,Female,Unspecified,156
+2011,83,Female,Not applicable,1942
+2011,84,Male,No schooling/less than primary,7072
+2011,84,Male,Primary,3102
+2011,84,Male,Secondary,1736
+2011,84,Male,Higher,1257
+2011,84,Male,Unspecified,117
+2011,84,Male,Not applicable,691
+2011,84,Female,No schooling/less than primary,17746
+2011,84,Female,Primary,6420
+2011,84,Female,Secondary,2836
+2011,84,Female,Higher,1312
+2011,84,Female,Unspecified,139
+2011,84,Female,Not applicable,2116
+2011,85,Male,No schooling/less than primary,6412
+2011,85,Male,Primary,2542
+2011,85,Male,Secondary,1536
+2011,85,Male,Higher,1078
+2011,85,Male,Unspecified,89
+2011,85,Male,Not applicable,607
+2011,85,Female,No schooling/less than primary,16427
+2011,85,Female,Primary,5439
+2011,85,Female,Secondary,2396
+2011,85,Female,Higher,1167
+2011,85,Female,Unspecified,141
+2011,85,Female,Not applicable,1923
+2011,86,Male,No schooling/less than primary,5857
+2011,86,Male,Primary,2131
+2011,86,Male,Secondary,1166
+2011,86,Male,Higher,918
+2011,86,Male,Unspecified,84
+2011,86,Male,Not applicable,637
+2011,86,Female,No schooling/less than primary,14814
+2011,86,Female,Primary,4700
+2011,86,Female,Secondary,2143
+2011,86,Female,Higher,879
+2011,86,Female,Unspecified,121
+2011,86,Female,Not applicable,1843
+2011,87,Male,No schooling/less than primary,4688
+2011,87,Male,Primary,1751
+2011,87,Male,Secondary,1031
+2011,87,Male,Higher,742
+2011,87,Male,Unspecified,72
+2011,87,Male,Not applicable,566
+2011,87,Female,No schooling/less than primary,12695
+2011,87,Female,Primary,3820
+2011,87,Female,Secondary,1758
+2011,87,Female,Higher,760
+2011,87,Female,Unspecified,119
+2011,87,Female,Not applicable,1888
+2011,88,Male,No schooling/less than primary,3213
+2011,88,Male,Primary,1317
+2011,88,Male,Secondary,837
+2011,88,Male,Higher,517
+2011,88,Male,Unspecified,49
+2011,88,Male,Not applicable,509
+2011,88,Female,No schooling/less than primary,8432
+2011,88,Female,Primary,2873
+2011,88,Female,Secondary,1479
+2011,88,Female,Higher,605
+2011,88,Female,Unspecified,75
+2011,88,Female,Not applicable,1654
+2011,89,Male,No schooling/less than primary,3489
+2011,89,Male,Primary,1204
+2011,89,Male,Secondary,709
+2011,89,Male,Higher,472
+2011,89,Male,Unspecified,49
+2011,89,Male,Not applicable,454
+2011,89,Female,No schooling/less than primary,7984
+2011,89,Female,Primary,2538
+2011,89,Female,Secondary,1239
+2011,89,Female,Higher,500
+2011,89,Female,Unspecified,48
+2011,89,Female,Not applicable,1546
+2011,90,Male,No schooling/less than primary,3246
+2011,90,Male,Primary,952
+2011,90,Male,Secondary,517
+2011,90,Male,Higher,355
+2011,90,Male,Unspecified,33
+2011,90,Male,Not applicable,409
+2011,90,Female,No schooling/less than primary,9032
+2011,90,Female,Primary,2183
+2011,90,Female,Secondary,926
+2011,90,Female,Higher,460
+2011,90,Female,Unspecified,41
+2011,90,Female,Not applicable,1405
+2011,91,Male,No schooling/less than primary,3905
+2011,91,Male,Primary,870
+2011,91,Male,Secondary,449
+2011,91,Male,Higher,271
+2011,91,Male,Unspecified,27
+2011,91,Male,Not applicable,328
+2011,91,Female,No schooling/less than primary,11847
+2011,91,Female,Primary,1819
+2011,91,Female,Secondary,809
+2011,91,Female,Higher,353
+2011,91,Female,Unspecified,57
+2011,91,Female,Not applicable,1159
+2011,92,Male,No schooling/less than primary,2197
+2011,92,Male,Primary,483
+2011,92,Male,Secondary,266
+2011,92,Male,Higher,181
+2011,92,Male,Unspecified,20
+2011,92,Male,Not applicable,219
+2011,92,Female,No schooling/less than primary,6439
+2011,92,Female,Primary,1218
+2011,92,Female,Secondary,469
+2011,92,Female,Higher,180
+2011,92,Female,Unspecified,37
+2011,92,Female,Not applicable,800
+2011,93,Male,No schooling/less than primary,2642
+2011,93,Male,Primary,527
+2011,93,Male,Secondary,221
+2011,93,Male,Higher,110
+2011,93,Male,Unspecified,12
+2011,93,Male,Not applicable,221
+2011,93,Female,No schooling/less than primary,8271
+2011,93,Female,Primary,1246
+2011,93,Female,Secondary,428
+2011,93,Female,Higher,184
+2011,93,Female,Unspecified,31
+2011,93,Female,Not applicable,685
+2011,94,Male,No schooling/less than primary,792
+2011,94,Male,Primary,230
+2011,94,Male,Secondary,141
+2011,94,Male,Higher,73
+2011,94,Male,Unspecified,12
+2011,94,Male,Not applicable,164
+2011,94,Female,No schooling/less than primary,2372
+2011,94,Female,Primary,543
+2011,94,Female,Secondary,235
+2011,94,Female,Higher,100
+2011,94,Female,Unspecified,19
+2011,94,Female,Not applicable,537
+2011,95,Male,No schooling/less than primary,607
+2011,95,Male,Primary,276
+2011,95,Male,Secondary,112
+2011,95,Male,Higher,72
+2011,95,Male,Unspecified,5
+2011,95,Male,Not applicable,146
+2011,95,Female,No schooling/less than primary,2215
+2011,95,Female,Primary,510
+2011,95,Female,Secondary,241
+2011,95,Female,Higher,92
+2011,95,Female,Unspecified,16
+2011,95,Female,Not applicable,405
+2011,96,Male,No schooling/less than primary,609
+2011,96,Male,Primary,231
+2011,96,Male,Secondary,100
+2011,96,Male,Higher,55
+2011,96,Male,Unspecified,4
+2011,96,Male,Not applicable,173
+2011,96,Female,No schooling/less than primary,1904
+2011,96,Female,Primary,449
+2011,96,Female,Secondary,167
+2011,96,Female,Higher,82
+2011,96,Female,Unspecified,11
+2011,96,Female,Not applicable,378
+2011,97,Male,No schooling/less than primary,1007
+2011,97,Male,Primary,275
+2011,97,Male,Secondary,107
+2011,97,Male,Higher,42
+2011,97,Male,Unspecified,3
+2011,97,Male,Not applicable,82
+2011,97,Female,No schooling/less than primary,2730
+2011,97,Female,Primary,430
+2011,97,Female,Secondary,148
+2011,97,Female,Higher,65
+2011,97,Female,Unspecified,3
+2011,97,Female,Not applicable,281
+2011,98,Male,No schooling/less than primary,487
+2011,98,Male,Primary,182
+2011,98,Male,Secondary,88
+2011,98,Male,Higher,62
+2011,98,Male,Unspecified,5
+2011,98,Male,Not applicable,53
+2011,98,Female,No schooling/less than primary,1295
+2011,98,Female,Primary,286
+2011,98,Female,Secondary,144
+2011,98,Female,Higher,67
+2011,98,Female,Unspecified,5
+2011,98,Female,Not applicable,163
+2011,99,Male,No schooling/less than primary,405
+2011,99,Male,Primary,167
+2011,99,Male,Secondary,68
+2011,99,Male,Higher,30
+2011,99,Male,Unspecified,2
+2011,99,Male,Not applicable,95
+2011,99,Female,No schooling/less than primary,1368
+2011,99,Female,Primary,261
+2011,99,Female,Secondary,120
+2011,99,Female,Higher,54
+2011,99,Female,Unspecified,1
+2011,99,Female,Not applicable,134
+2011,100,Male,No schooling/less than primary,258
+2011,100,Male,Primary,91
+2011,100,Male,Secondary,49
+2011,100,Male,Higher,16
+2011,100,Male,Unspecified,0
+2011,100,Male,Not applicable,82
+2011,100,Female,No schooling/less than primary,1022
+2011,100,Female,Primary,171
+2011,100,Female,Secondary,84
+2011,100,Female,Higher,39
+2011,100,Female,Unspecified,1
+2011,100,Female,Not applicable,93
+2011,101,Male,No schooling/less than primary,409
+2011,101,Male,Primary,107
+2011,101,Male,Secondary,57
+2011,101,Male,Higher,16
+2011,101,Male,Unspecified,1
+2011,101,Male,Not applicable,45
+2011,101,Female,No schooling/less than primary,1401
+2011,101,Female,Primary,190
+2011,101,Female,Secondary,76
+2011,101,Female,Higher,36
+2011,101,Female,Unspecified,1
+2011,101,Female,Not applicable,60
+2011,102,Male,No schooling/less than primary,227
+2011,102,Male,Primary,110
+2011,102,Male,Secondary,57
+2011,102,Male,Higher,20
+2011,102,Male,Unspecified,1
+2011,102,Male,Not applicable,31
+2011,102,Female,No schooling/less than primary,723
+2011,102,Female,Primary,177
+2011,102,Female,Secondary,80
+2011,102,Female,Higher,44
+2011,102,Female,Unspecified,4
+2011,102,Female,Not applicable,34
+2011,103,Male,No schooling/less than primary,153
+2011,103,Male,Primary,110
+2011,103,Male,Secondary,43
+2011,103,Male,Higher,22
+2011,103,Male,Unspecified,0
+2011,103,Male,Not applicable,43
+2011,103,Female,No schooling/less than primary,393
+2011,103,Female,Primary,197
+2011,103,Female,Secondary,83
+2011,103,Female,Higher,33
+2011,103,Female,Unspecified,0
+2011,103,Female,Not applicable,24
+2011,104,Male,No schooling/less than primary,139
+2011,104,Male,Primary,127
+2011,104,Male,Secondary,53
+2011,104,Male,Higher,24
+2011,104,Male,Unspecified,1
+2011,104,Male,Not applicable,43
+2011,104,Female,No schooling/less than primary,308
+2011,104,Female,Primary,170
+2011,104,Female,Secondary,84
+2011,104,Female,Higher,36
+2011,104,Female,Unspecified,0
+2011,104,Female,Not applicable,31
+2011,105,Male,No schooling/less than primary,153
+2011,105,Male,Primary,105
+2011,105,Male,Secondary,47
+2011,105,Male,Higher,18
+2011,105,Male,Unspecified,0
+2011,105,Male,Not applicable,36
+2011,105,Female,No schooling/less than primary,317
+2011,105,Female,Primary,179
+2011,105,Female,Secondary,64
+2011,105,Female,Higher,36
+2011,105,Female,Unspecified,1
+2011,105,Female,Not applicable,14
+2011,106,Male,No schooling/less than primary,126
+2011,106,Male,Primary,167
+2011,106,Male,Secondary,39
+2011,106,Male,Higher,11
+2011,106,Male,Unspecified,2
+2011,106,Male,Not applicable,32
+2011,106,Female,No schooling/less than primary,231
+2011,106,Female,Primary,183
+2011,106,Female,Secondary,87
+2011,106,Female,Higher,20
+2011,106,Female,Unspecified,4
+2011,106,Female,Not applicable,34
+2011,107,Male,No schooling/less than primary,120
+2011,107,Male,Primary,112
+2011,107,Male,Secondary,49
+2011,107,Male,Higher,16
+2011,107,Male,Unspecified,4
+2011,107,Male,Not applicable,39
+2011,107,Female,No schooling/less than primary,313
+2011,107,Female,Primary,201
+2011,107,Female,Secondary,48
+2011,107,Female,Higher,39
+2011,107,Female,Unspecified,2
+2011,107,Female,Not applicable,28
+2011,108,Male,No schooling/less than primary,116
+2011,108,Male,Primary,142
+2011,108,Male,Secondary,60
+2011,108,Male,Higher,21
+2011,108,Male,Unspecified,1
+2011,108,Male,Not applicable,37
+2011,108,Female,No schooling/less than primary,212
+2011,108,Female,Primary,166
+2011,108,Female,Secondary,93
+2011,108,Female,Higher,41
+2011,108,Female,Unspecified,1
+2011,108,Female,Not applicable,31
+2011,109,Male,No schooling/less than primary,109
+2011,109,Male,Primary,142
+2011,109,Male,Secondary,81
+2011,109,Male,Higher,18
+2011,109,Male,Unspecified,0
+2011,109,Male,Not applicable,48
+2011,109,Female,No schooling/less than primary,274
+2011,109,Female,Primary,172
+2011,109,Female,Secondary,127
+2011,109,Female,Higher,38
+2011,109,Female,Unspecified,1
+2011,109,Female,Not applicable,44
+2011,110,Male,No schooling/less than primary,140
+2011,110,Male,Primary,148
+2011,110,Male,Secondary,87
+2011,110,Male,Higher,11
+2011,110,Male,Unspecified,2
+2011,110,Male,Not applicable,55
+2011,110,Female,No schooling/less than primary,296
+2011,110,Female,Primary,163
+2011,110,Female,Secondary,120
+2011,110,Female,Higher,34
+2011,110,Female,Unspecified,7
+2011,110,Female,Not applicable,40
+2011,111,Male,No schooling/less than primary,121
+2011,111,Male,Primary,157
+2011,111,Male,Secondary,108
+2011,111,Male,Higher,18
+2011,111,Male,Unspecified,3
+2011,111,Male,Not applicable,65
+2011,111,Female,No schooling/less than primary,236
+2011,111,Female,Primary,193
+2011,111,Female,Secondary,136
+2011,111,Female,Higher,36
+2011,111,Female,Unspecified,1
+2011,111,Female,Not applicable,49
+2011,112,Male,No schooling/less than primary,19
+2011,112,Male,Primary,5
+2011,112,Male,Secondary,4
+2011,112,Male,Higher,4
+2011,112,Male,Unspecified,0
+2011,112,Male,Not applicable,5
+2011,112,Female,No schooling/less than primary,35
+2011,112,Female,Primary,14
+2011,112,Female,Secondary,8
+2011,112,Female,Higher,1
+2011,112,Female,Unspecified,0
+2011,112,Female,Not applicable,4
+2011,113,Male,No schooling/less than primary,18
+2011,113,Male,Primary,6
+2011,113,Male,Secondary,1
+2011,113,Male,Higher,3
+2011,113,Male,Unspecified,0
+2011,113,Male,Not applicable,4
+2011,113,Female,No schooling/less than primary,15
+2011,113,Female,Primary,8
+2011,113,Female,Secondary,2
+2011,113,Female,Higher,1
+2011,113,Female,Unspecified,0
+2011,113,Female,Not applicable,1
+2011,114,Male,No schooling/less than primary,19
+2011,114,Male,Primary,11
+2011,114,Male,Secondary,1
+2011,114,Male,Higher,1
+2011,114,Male,Unspecified,0
+2011,114,Male,Not applicable,4
+2011,114,Female,No schooling/less than primary,12
+2011,114,Female,Primary,10
+2011,114,Female,Secondary,1
+2011,114,Female,Higher,1
+2011,114,Female,Unspecified,0
+2011,114,Female,Not applicable,2
+2011,115,Male,No schooling/less than primary,12
+2011,115,Male,Primary,14
+2011,115,Male,Secondary,3
+2011,115,Male,Higher,0
+2011,115,Male,Unspecified,0
+2011,115,Male,Not applicable,8
+2011,115,Female,No schooling/less than primary,21
+2011,115,Female,Primary,30
+2011,115,Female,Secondary,3
+2011,115,Female,Higher,1
+2011,115,Female,Unspecified,0
+2011,115,Female,Not applicable,2
+2011,116,Male,No schooling/less than primary,32
+2011,116,Male,Primary,57
+2011,116,Male,Secondary,23
+2011,116,Male,Higher,4
+2011,116,Male,Unspecified,0
+2011,116,Male,Not applicable,29
+2011,116,Female,No schooling/less than primary,41
+2011,116,Female,Primary,47
+2011,116,Female,Secondary,15
+2011,116,Female,Higher,3
+2011,116,Female,Unspecified,0
+2011,116,Female,Not applicable,22
+2011,Unspecified,Male,No schooling/less than primary,0
+2011,Unspecified,Male,Primary,0
+2011,Unspecified,Male,Secondary,0
+2011,Unspecified,Male,Higher,0
+2011,Unspecified,Male,Unspecified,0
+2011,Unspecified,Male,Not applicable,0
+2011,Unspecified,Female,No schooling/less than primary,0
+2011,Unspecified,Female,Primary,0
+2011,Unspecified,Female,Secondary,0
+2011,Unspecified,Female,Higher,0
+2011,Unspecified,Female,Unspecified,0
+2011,Unspecified,Female,Not applicable,0
+2016,0,Male,No schooling/less than primary,570694
+2016,0,Male,Other/Do not know,41
+2016,0,Female,No schooling/less than primary,555298
+2016,0,Female,Other/Do not know,100
+2016,1,Male,No schooling/less than primary,609112
+2016,1,Male,Other/Do not know,261
+2016,1,Female,No schooling/less than primary,600261
+2016,1,Female,Other/Do not know,153
+2016,2,Male,No schooling/less than primary,617450
+2016,2,Male,Other/Do not know,494
+2016,2,Female,No schooling/less than primary,607351
+2016,2,Female,Other/Do not know,359
+2016,3,Male,No schooling/less than primary,610620
+2016,3,Male,Other/Do not know,696
+2016,3,Female,No schooling/less than primary,595521
+2016,3,Female,Other/Do not know,788
+2016,4,Male,No schooling/less than primary,606718
+2016,4,Male,Other/Do not know,608
+2016,4,Female,No schooling/less than primary,599335
+2016,4,Female,Other/Do not know,658
+2016,5,Male,No schooling/less than primary,572627
+2016,5,Male,Other/Do not know,488
+2016,5,Female,No schooling/less than primary,560575
+2016,5,Female,Other/Do not know,378
+2016,6,Male,No schooling/less than primary,565518
+2016,6,Male,Other/Do not know,402
+2016,6,Female,No schooling/less than primary,548890
+2016,6,Female,Other/Do not know,263
+2016,7,Male,No schooling/less than primary,570168
+2016,7,Male,Other/Do not know,574
+2016,7,Female,No schooling/less than primary,569928
+2016,7,Female,Other/Do not know,458
+2016,8,Male,No schooling/less than primary,556958
+2016,8,Male,Other/Do not know,836
+2016,8,Female,No schooling/less than primary,557476
+2016,8,Female,Other/Do not know,522
+2016,9,Male,No schooling/less than primary,559876
+2016,9,Male,Other/Do not know,921
+2016,9,Female,No schooling/less than primary,552270
+2016,9,Female,Other/Do not know,667
+2016,10,Male,No schooling/less than primary,572846
+2016,10,Male,Other/Do not know,745
+2016,10,Female,No schooling/less than primary,566705
+2016,10,Female,Other/Do not know,567
+2016,11,Male,No schooling/less than primary,517312
+2016,11,Male,Primary,27863
+2016,11,Male,Other/Do not know,1129
+2016,11,Female,No schooling/less than primary,508907
+2016,11,Female,Primary,37338
+2016,11,Female,Other/Do not know,667
+2016,12,Male,No schooling/less than primary,178427
+2016,12,Male,Primary,327511
+2016,12,Male,Other/Do not know,1286
+2016,12,Female,No schooling/less than primary,197385
+2016,12,Female,Primary,301219
+2016,12,Female,Other/Do not know,1032
+2016,13,Male,No schooling/less than primary,8664
+2016,13,Male,Primary,482966
+2016,13,Male,Other/Do not know,1929
+2016,13,Female,No schooling/less than primary,6020
+2016,13,Female,Primary,482470
+2016,13,Female,Other/Do not know,784
+2016,14,Male,No schooling/less than primary,9421
+2016,14,Male,Primary,472997
+2016,14,Male,Secondary,105
+2016,14,Male,Other/Do not know,1540
+2016,14,Female,No schooling/less than primary,5525
+2016,14,Female,Primary,475250
+2016,14,Female,Secondary,108
+2016,14,Female,Other/Do not know,1085
+2016,15,Male,No schooling/less than primary,10450
+2016,15,Male,Primary,503707
+2016,15,Male,Secondary,1010
+2016,15,Male,Higher,12
+2016,15,Male,Other/Do not know,2026
+2016,15,Male,Unspecified,37
+2016,15,Female,No schooling/less than primary,6434
+2016,15,Female,Primary,506659
+2016,15,Female,Secondary,995
+2016,15,Female,Higher,16
+2016,15,Female,Other/Do not know,1703
+2016,15,Female,Unspecified,105
+2016,16,Male,No schooling/less than primary,13255
+2016,16,Male,Primary,505379
+2016,16,Male,Secondary,3611
+2016,16,Male,Higher,242
+2016,16,Male,Other/Do not know,3103
+2016,16,Male,Unspecified,75
+2016,16,Female,No schooling/less than primary,8539
+2016,16,Female,Primary,502446
+2016,16,Female,Secondary,3596
+2016,16,Female,Higher,242
+2016,16,Female,Other/Do not know,1413
+2016,16,Female,Unspecified,37
+2016,17,Male,No schooling/less than primary,14992
+2016,17,Male,Primary,464031
+2016,17,Male,Secondary,18180
+2016,17,Male,Higher,600
+2016,17,Male,Other/Do not know,2702
+2016,17,Male,Unspecified,32
+2016,17,Female,No schooling/less than primary,8706
+2016,17,Female,Primary,461375
+2016,17,Female,Secondary,28725
+2016,17,Female,Higher,907
+2016,17,Female,Other/Do not know,1599
+2016,17,Female,Unspecified,76
+2016,18,Male,No schooling/less than primary,18369
+2016,18,Male,Primary,397605
+2016,18,Male,Secondary,82759
+2016,18,Male,Higher,3427
+2016,18,Male,Other/Do not know,2832
+2016,18,Male,Unspecified,57
+2016,18,Female,No schooling/less than primary,11652
+2016,18,Female,Primary,365169
+2016,18,Female,Secondary,122191
+2016,18,Female,Higher,5110
+2016,18,Female,Other/Do not know,2310
+2016,18,Female,Unspecified,43
+2016,19,Male,No schooling/less than primary,21095
+2016,19,Male,Primary,335557
+2016,19,Male,Secondary,137940
+2016,19,Male,Higher,7874
+2016,19,Male,Other/Do not know,4348
+2016,19,Male,Unspecified,36
+2016,19,Female,No schooling/less than primary,14239
+2016,19,Female,Primary,293666
+2016,19,Female,Secondary,187629
+2016,19,Female,Higher,10406
+2016,19,Female,Other/Do not know,3076
+2016,19,Female,Unspecified,74
+2016,20,Male,No schooling/less than primary,26096
+2016,20,Male,Primary,303516
+2016,20,Male,Secondary,196710
+2016,20,Male,Higher,14211
+2016,20,Male,Other/Do not know,4469
+2016,20,Male,Unspecified,99
+2016,20,Female,No schooling/less than primary,16501
+2016,20,Female,Primary,247978
+2016,20,Female,Secondary,225797
+2016,20,Female,Higher,17879
+2016,20,Female,Other/Do not know,3877
+2016,20,Female,Unspecified,26
+2016,21,Male,No schooling/less than primary,29817
+2016,21,Male,Primary,270485
+2016,21,Male,Secondary,226284
+2016,21,Male,Higher,22753
+2016,21,Male,Other/Do not know,5722
+2016,21,Male,Unspecified,135
+2016,21,Female,No schooling/less than primary,18627
+2016,21,Female,Primary,234482
+2016,21,Female,Secondary,247346
+2016,21,Female,Higher,30917
+2016,21,Female,Other/Do not know,4601
+2016,21,Female,Unspecified,14
+2016,22,Male,No schooling/less than primary,32171
+2016,22,Male,Primary,220369
+2016,22,Male,Secondary,234780
+2016,22,Male,Higher,31710
+2016,22,Male,Other/Do not know,5867
+2016,22,Male,Unspecified,69
+2016,22,Female,No schooling/less than primary,22885
+2016,22,Female,Primary,194818
+2016,22,Female,Secondary,256890
+2016,22,Female,Higher,44734
+2016,22,Female,Other/Do not know,4804
+2016,22,Female,Unspecified,57
+2016,23,Male,No schooling/less than primary,33177
+2016,23,Male,Primary,211663
+2016,23,Male,Secondary,231089
+2016,23,Male,Higher,39648
+2016,23,Male,Other/Do not know,5596
+2016,23,Male,Unspecified,73
+2016,23,Female,No schooling/less than primary,23762
+2016,23,Female,Primary,200008
+2016,23,Female,Secondary,257911
+2016,23,Female,Higher,54092
+2016,23,Female,Other/Do not know,5313
+2016,23,Female,Unspecified,73
+2016,24,Male,No schooling/less than primary,33032
+2016,24,Male,Primary,206102
+2016,24,Male,Secondary,221430
+2016,24,Male,Higher,45112
+2016,24,Male,Other/Do not know,6629
+2016,24,Male,Unspecified,62
+2016,24,Female,No schooling/less than primary,23358
+2016,24,Female,Primary,194986
+2016,24,Female,Secondary,247561
+2016,24,Female,Higher,58417
+2016,24,Female,Other/Do not know,5733
+2016,24,Female,Unspecified,15
+2016,25,Male,No schooling/less than primary,39909
+2016,25,Male,Primary,229995
+2016,25,Male,Secondary,245723
+2016,25,Male,Higher,51590
+2016,25,Male,Other/Do not know,7248
+2016,25,Male,Unspecified,87
+2016,25,Female,No schooling/less than primary,26319
+2016,25,Female,Primary,206618
+2016,25,Female,Secondary,249824
+2016,25,Female,Higher,62078
+2016,25,Female,Other/Do not know,5950
+2016,25,Female,Unspecified,30
+2016,26,Male,No schooling/less than primary,38287
+2016,26,Male,Primary,221902
+2016,26,Male,Secondary,227057
+2016,26,Male,Higher,51389
+2016,26,Male,Other/Do not know,7746
+2016,26,Male,Unspecified,106
+2016,26,Female,No schooling/less than primary,26371
+2016,26,Female,Primary,201461
+2016,26,Female,Secondary,240386
+2016,26,Female,Higher,59957
+2016,26,Female,Other/Do not know,5629
+2016,26,Female,Unspecified,27
+2016,27,Male,No schooling/less than primary,38787
+2016,27,Male,Primary,215635
+2016,27,Male,Secondary,211741
+2016,27,Male,Higher,49807
+2016,27,Male,Other/Do not know,7630
+2016,27,Male,Unspecified,145
+2016,27,Female,No schooling/less than primary,28387
+2016,27,Female,Primary,198259
+2016,27,Female,Secondary,221598
+2016,27,Female,Higher,57955
+2016,27,Female,Other/Do not know,5170
+2016,27,Female,Unspecified,56
+2016,28,Male,No schooling/less than primary,40574
+2016,28,Male,Primary,211992
+2016,28,Male,Secondary,204404
+2016,28,Male,Higher,45570
+2016,28,Male,Other/Do not know,7605
+2016,28,Male,Unspecified,92
+2016,28,Female,No schooling/less than primary,28255
+2016,28,Female,Primary,196008
+2016,28,Female,Secondary,215105
+2016,28,Female,Higher,57339
+2016,28,Female,Other/Do not know,5949
+2016,28,Female,Unspecified,170
+2016,29,Male,No schooling/less than primary,41479
+2016,29,Male,Primary,206829
+2016,29,Male,Secondary,204666
+2016,29,Male,Higher,49872
+2016,29,Male,Other/Do not know,8352
+2016,29,Male,Unspecified,40
+2016,29,Female,No schooling/less than primary,31230
+2016,29,Female,Primary,203174
+2016,29,Female,Secondary,214708
+2016,29,Female,Higher,60396
+2016,29,Female,Other/Do not know,5690
+2016,29,Female,Unspecified,146
+2016,30,Male,No schooling/less than primary,39244
+2016,30,Male,Primary,194023
+2016,30,Male,Secondary,189693
+2016,30,Male,Higher,47646
+2016,30,Male,Other/Do not know,9018
+2016,30,Male,Unspecified,77
+2016,30,Female,No schooling/less than primary,32411
+2016,30,Female,Primary,192615
+2016,30,Female,Secondary,207433
+2016,30,Female,Higher,56833
+2016,30,Female,Other/Do not know,6154
+2016,31,Male,No schooling/less than primary,38397
+2016,31,Male,Primary,178223
+2016,31,Male,Secondary,176073
+2016,31,Male,Higher,46062
+2016,31,Male,Other/Do not know,7649
+2016,31,Male,Unspecified,211
+2016,31,Female,No schooling/less than primary,31019
+2016,31,Female,Primary,185951
+2016,31,Female,Secondary,191594
+2016,31,Female,Higher,54940
+2016,31,Female,Other/Do not know,5645
+2016,31,Female,Unspecified,150
+2016,32,Male,No schooling/less than primary,39518
+2016,32,Male,Primary,175559
+2016,32,Male,Secondary,166005
+2016,32,Male,Higher,46589
+2016,32,Male,Other/Do not know,7869
+2016,32,Male,Unspecified,34
+2016,32,Female,No schooling/less than primary,29661
+2016,32,Female,Primary,182221
+2016,32,Female,Secondary,178165
+2016,32,Female,Higher,53704
+2016,32,Female,Other/Do not know,6028
+2016,32,Female,Unspecified,99
+2016,33,Male,No schooling/less than primary,39916
+2016,33,Male,Primary,177285
+2016,33,Male,Secondary,168900
+2016,33,Male,Higher,45729
+2016,33,Male,Other/Do not know,8480
+2016,33,Male,Unspecified,70
+2016,33,Female,No schooling/less than primary,33137
+2016,33,Female,Primary,188262
+2016,33,Female,Secondary,177461
+2016,33,Female,Higher,53068
+2016,33,Female,Other/Do not know,5241
+2016,33,Female,Unspecified,87
+2016,34,Male,No schooling/less than primary,37779
+2016,34,Male,Primary,153119
+2016,34,Male,Secondary,142413
+2016,34,Male,Higher,43753
+2016,34,Male,Other/Do not know,7384
+2016,34,Male,Unspecified,47
+2016,34,Female,No schooling/less than primary,30127
+2016,34,Female,Primary,159934
+2016,34,Female,Secondary,154187
+2016,34,Female,Higher,46612
+2016,34,Female,Other/Do not know,5180
+2016,34,Female,Unspecified,5
+2016,35,Male,No schooling/less than primary,35701
+2016,35,Male,Primary,167895
+2016,35,Male,Secondary,164597
+2016,35,Male,Higher,51996
+2016,35,Male,Other/Do not know,8744
+2016,35,Male,Unspecified,38
+2016,35,Female,No schooling/less than primary,30129
+2016,35,Female,Primary,167865
+2016,35,Female,Secondary,170003
+2016,35,Female,Higher,56529
+2016,35,Female,Other/Do not know,5895
+2016,35,Female,Unspecified,85
+2016,36,Male,No schooling/less than primary,38141
+2016,36,Male,Primary,157606
+2016,36,Male,Secondary,157319
+2016,36,Male,Higher,46407
+2016,36,Male,Other/Do not know,9758
+2016,36,Male,Unspecified,170
+2016,36,Female,No schooling/less than primary,33460
+2016,36,Female,Primary,168317
+2016,36,Female,Secondary,158601
+2016,36,Female,Higher,50730
+2016,36,Female,Other/Do not know,6552
+2016,36,Female,Unspecified,135
+2016,37,Male,No schooling/less than primary,32914
+2016,37,Male,Primary,137841
+2016,37,Male,Secondary,138746
+2016,37,Male,Higher,42693
+2016,37,Male,Other/Do not know,8114
+2016,37,Male,Unspecified,50
+2016,37,Female,No schooling/less than primary,28874
+2016,37,Female,Primary,140816
+2016,37,Female,Secondary,138628
+2016,37,Female,Higher,46718
+2016,37,Female,Other/Do not know,5971
+2016,37,Female,Unspecified,14
+2016,38,Male,No schooling/less than primary,37669
+2016,38,Male,Primary,132551
+2016,38,Male,Secondary,128790
+2016,38,Male,Higher,41696
+2016,38,Male,Other/Do not know,8560
+2016,38,Male,Unspecified,44
+2016,38,Female,No schooling/less than primary,33763
+2016,38,Female,Primary,142538
+2016,38,Female,Secondary,137189
+2016,38,Female,Higher,45547
+2016,38,Female,Other/Do not know,5861
+2016,38,Female,Unspecified,61
+2016,39,Male,No schooling/less than primary,39889
+2016,39,Male,Primary,132795
+2016,39,Male,Secondary,132455
+2016,39,Male,Higher,41887
+2016,39,Male,Other/Do not know,9652
+2016,39,Male,Unspecified,80
+2016,39,Female,No schooling/less than primary,35466
+2016,39,Female,Primary,143961
+2016,39,Female,Secondary,135543
+2016,39,Female,Higher,47808
+2016,39,Female,Other/Do not know,5865
+2016,39,Female,Unspecified,242
+2016,40,Male,No schooling/less than primary,43852
+2016,40,Male,Primary,136446
+2016,40,Male,Secondary,131573
+2016,40,Male,Higher,43678
+2016,40,Male,Other/Do not know,10069
+2016,40,Male,Unspecified,250
+2016,40,Female,No schooling/less than primary,38927
+2016,40,Female,Primary,142105
+2016,40,Female,Secondary,127382
+2016,40,Female,Higher,45064
+2016,40,Female,Other/Do not know,5834
+2016,40,Female,Unspecified,59
+2016,41,Male,No schooling/less than primary,44307
+2016,41,Male,Primary,121746
+2016,41,Male,Secondary,121896
+2016,41,Male,Higher,39834
+2016,41,Male,Other/Do not know,8954
+2016,41,Male,Unspecified,66
+2016,41,Female,No schooling/less than primary,40925
+2016,41,Female,Primary,134351
+2016,41,Female,Secondary,116180
+2016,41,Female,Higher,42083
+2016,41,Female,Other/Do not know,6056
+2016,41,Female,Unspecified,107
+2016,42,Male,No schooling/less than primary,41919
+2016,42,Male,Primary,112442
+2016,42,Male,Secondary,108298
+2016,42,Male,Higher,39269
+2016,42,Male,Other/Do not know,8383
+2016,42,Male,Unspecified,48
+2016,42,Female,No schooling/less than primary,40860
+2016,42,Female,Primary,123658
+2016,42,Female,Secondary,103908
+2016,42,Female,Higher,38702
+2016,42,Female,Other/Do not know,5985
+2016,42,Female,Unspecified,47
+2016,43,Male,No schooling/less than primary,46568
+2016,43,Male,Primary,120115
+2016,43,Male,Secondary,109754
+2016,43,Male,Higher,40900
+2016,43,Male,Other/Do not know,8009
+2016,43,Male,Unspecified,115
+2016,43,Female,No schooling/less than primary,49057
+2016,43,Female,Primary,133395
+2016,43,Female,Secondary,109286
+2016,43,Female,Higher,42967
+2016,43,Female,Other/Do not know,6854
+2016,43,Female,Unspecified,52
+2016,44,Male,No schooling/less than primary,43162
+2016,44,Male,Primary,101352
+2016,44,Male,Secondary,95385
+2016,44,Male,Higher,35320
+2016,44,Male,Other/Do not know,7689
+2016,44,Male,Unspecified,69
+2016,44,Female,No schooling/less than primary,41856
+2016,44,Female,Primary,110898
+2016,44,Female,Secondary,87459
+2016,44,Female,Higher,38909
+2016,44,Female,Other/Do not know,6111
+2016,44,Female,Unspecified,37
+2016,45,Male,No schooling/less than primary,48353
+2016,45,Male,Primary,112400
+2016,45,Male,Secondary,101458
+2016,45,Male,Higher,41351
+2016,45,Male,Other/Do not know,9232
+2016,45,Male,Unspecified,36
+2016,45,Female,No schooling/less than primary,50011
+2016,45,Female,Primary,120504
+2016,45,Female,Secondary,89148
+2016,45,Female,Higher,41700
+2016,45,Female,Other/Do not know,5628
+2016,45,Female,Unspecified,371
+2016,46,Male,No schooling/less than primary,50125
+2016,46,Male,Primary,105783
+2016,46,Male,Secondary,88482
+2016,46,Male,Higher,38173
+2016,46,Male,Other/Do not know,9056
+2016,46,Male,Unspecified,83
+2016,46,Female,No schooling/less than primary,55377
+2016,46,Female,Primary,117973
+2016,46,Female,Secondary,82924
+2016,46,Female,Higher,37015
+2016,46,Female,Other/Do not know,6499
+2016,46,Female,Unspecified,31
+2016,47,Male,No schooling/less than primary,51859
+2016,47,Male,Primary,102739
+2016,47,Male,Secondary,78545
+2016,47,Male,Higher,35291
+2016,47,Male,Other/Do not know,8814
+2016,47,Male,Unspecified,38
+2016,47,Female,No schooling/less than primary,61584
+2016,47,Female,Primary,119374
+2016,47,Female,Secondary,75056
+2016,47,Female,Higher,36996
+2016,47,Female,Other/Do not know,6276
+2016,47,Female,Unspecified,39
+2016,48,Male,No schooling/less than primary,47648
+2016,48,Male,Primary,87199
+2016,48,Male,Secondary,67187
+2016,48,Male,Higher,32523
+2016,48,Male,Other/Do not know,8373
+2016,48,Male,Unspecified,34
+2016,48,Female,No schooling/less than primary,51934
+2016,48,Female,Primary,103937
+2016,48,Female,Secondary,62598
+2016,48,Female,Higher,32371
+2016,48,Female,Other/Do not know,5091
+2016,48,Female,Unspecified,52
+2016,49,Male,No schooling/less than primary,47281
+2016,49,Male,Primary,88229
+2016,49,Male,Secondary,60335
+2016,49,Male,Higher,30507
+2016,49,Male,Other/Do not know,8567
+2016,49,Male,Unspecified,55
+2016,49,Female,No schooling/less than primary,60373
+2016,49,Female,Primary,103334
+2016,49,Female,Secondary,59725
+2016,49,Female,Higher,30458
+2016,49,Female,Other/Do not know,6691
+2016,49,Female,Unspecified,103
+2016,50,Male,No schooling/less than primary,55483
+2016,50,Male,Primary,86715
+2016,50,Male,Secondary,62510
+2016,50,Male,Higher,31861
+2016,50,Male,Other/Do not know,8964
+2016,50,Female,No schooling/less than primary,64795
+2016,50,Female,Primary,100058
+2016,50,Female,Secondary,55314
+2016,50,Female,Higher,28911
+2016,50,Female,Other/Do not know,7086
+2016,50,Female,Unspecified,47
+2016,51,Male,No schooling/less than primary,54510
+2016,51,Male,Primary,85869
+2016,51,Male,Secondary,53254
+2016,51,Male,Higher,28848
+2016,51,Male,Other/Do not know,7977
+2016,51,Male,Unspecified,62
+2016,51,Female,No schooling/less than primary,66983
+2016,51,Female,Primary,98917
+2016,51,Female,Secondary,55494
+2016,51,Female,Higher,27370
+2016,51,Female,Other/Do not know,6112
+2016,51,Female,Unspecified,22
+2016,52,Male,No schooling/less than primary,58482
+2016,52,Male,Primary,83827
+2016,52,Male,Secondary,50539
+2016,52,Male,Higher,26175
+2016,52,Male,Other/Do not know,8222
+2016,52,Male,Unspecified,356
+2016,52,Female,No schooling/less than primary,73945
+2016,52,Female,Primary,98265
+2016,52,Female,Secondary,45560
+2016,52,Female,Higher,25632
+2016,52,Female,Other/Do not know,6671
+2016,52,Female,Unspecified,46
+2016,53,Male,No schooling/less than primary,57366
+2016,53,Male,Primary,83922
+2016,53,Male,Secondary,47091
+2016,53,Male,Higher,25310
+2016,53,Male,Other/Do not know,7973
+2016,53,Male,Unspecified,3
+2016,53,Female,No schooling/less than primary,75786
+2016,53,Female,Primary,96029
+2016,53,Female,Secondary,43570
+2016,53,Female,Higher,25776
+2016,53,Female,Other/Do not know,5984
+2016,53,Female,Unspecified,79
+2016,54,Male,No schooling/less than primary,51822
+2016,54,Male,Primary,67209
+2016,54,Male,Secondary,40642
+2016,54,Male,Higher,23116
+2016,54,Male,Other/Do not know,7124
+2016,54,Male,Unspecified,134
+2016,54,Female,No schooling/less than primary,64209
+2016,54,Female,Primary,77240
+2016,54,Female,Secondary,40366
+2016,54,Female,Higher,23219
+2016,54,Female,Other/Do not know,5617
+2016,54,Female,Unspecified,40
+2016,55,Male,No schooling/less than primary,55581
+2016,55,Male,Primary,74250
+2016,55,Male,Secondary,42693
+2016,55,Male,Higher,25571
+2016,55,Male,Other/Do not know,7606
+2016,55,Male,Unspecified,32
+2016,55,Female,No schooling/less than primary,74867
+2016,55,Female,Primary,86537
+2016,55,Female,Secondary,41727
+2016,55,Female,Higher,24692
+2016,55,Female,Other/Do not know,5620
+2016,55,Female,Unspecified,244
+2016,56,Male,No schooling/less than primary,54763
+2016,56,Male,Primary,65430
+2016,56,Male,Secondary,36647
+2016,56,Male,Higher,22805
+2016,56,Male,Other/Do not know,7839
+2016,56,Male,Unspecified,127
+2016,56,Female,No schooling/less than primary,75813
+2016,56,Female,Primary,81462
+2016,56,Female,Secondary,34532
+2016,56,Female,Higher,22093
+2016,56,Female,Other/Do not know,5554
+2016,56,Female,Unspecified,29
+2016,57,Male,No schooling/less than primary,58184
+2016,57,Male,Primary,62658
+2016,57,Male,Secondary,32297
+2016,57,Male,Higher,21829
+2016,57,Male,Other/Do not know,6508
+2016,57,Female,No schooling/less than primary,79027
+2016,57,Female,Primary,76464
+2016,57,Female,Secondary,32667
+2016,57,Female,Higher,21351
+2016,57,Female,Other/Do not know,5210
+2016,57,Female,Unspecified,6
+2016,58,Male,No schooling/less than primary,55948
+2016,58,Male,Primary,60578
+2016,58,Male,Secondary,30925
+2016,58,Male,Higher,18595
+2016,58,Male,Other/Do not know,7598
+2016,58,Male,Unspecified,86
+2016,58,Female,No schooling/less than primary,73365
+2016,58,Female,Primary,70412
+2016,58,Female,Secondary,29285
+2016,58,Female,Higher,19299
+2016,58,Female,Other/Do not know,5319
+2016,58,Female,Unspecified,49
+2016,59,Male,No schooling/less than primary,53972
+2016,59,Male,Primary,56125
+2016,59,Male,Secondary,29464
+2016,59,Male,Higher,17453
+2016,59,Male,Other/Do not know,7972
+2016,59,Male,Unspecified,23
+2016,59,Female,No schooling/less than primary,73252
+2016,59,Female,Primary,69024
+2016,59,Female,Secondary,27939
+2016,59,Female,Higher,19066
+2016,59,Female,Other/Do not know,5700
+2016,59,Female,Unspecified,30
+2016,60,Male,No schooling/less than primary,54458
+2016,60,Male,Primary,52526
+2016,60,Male,Secondary,24901
+2016,60,Male,Higher,16305
+2016,60,Male,Other/Do not know,5968
+2016,60,Male,Unspecified,70
+2016,60,Female,No schooling/less than primary,80842
+2016,60,Female,Primary,63997
+2016,60,Female,Secondary,27167
+2016,60,Female,Higher,16490
+2016,60,Female,Other/Do not know,5261
+2016,60,Female,Unspecified,14
+2016,61,Male,No schooling/less than primary,53537
+2016,61,Male,Primary,47859
+2016,61,Male,Secondary,23173
+2016,61,Male,Higher,16049
+2016,61,Male,Other/Do not know,5834
+2016,61,Female,No schooling/less than primary,75869
+2016,61,Female,Primary,62252
+2016,61,Female,Secondary,23337
+2016,61,Female,Higher,14533
+2016,61,Female,Other/Do not know,4610
+2016,62,Male,No schooling/less than primary,53791
+2016,62,Male,Primary,45736
+2016,62,Male,Secondary,20961
+2016,62,Male,Higher,13748
+2016,62,Male,Other/Do not know,5339
+2016,62,Male,Unspecified,35
+2016,62,Female,No schooling/less than primary,74631
+2016,62,Female,Primary,57901
+2016,62,Female,Secondary,21902
+2016,62,Female,Higher,13491
+2016,62,Female,Other/Do not know,4573
+2016,62,Female,Unspecified,62
+2016,63,Male,No schooling/less than primary,59790
+2016,63,Male,Primary,44903
+2016,63,Male,Secondary,20180
+2016,63,Male,Higher,14561
+2016,63,Male,Other/Do not know,4734
+2016,63,Male,Unspecified,47
+2016,63,Female,No schooling/less than primary,82286
+2016,63,Female,Primary,57621
+2016,63,Female,Secondary,22313
+2016,63,Female,Higher,14294
+2016,63,Female,Other/Do not know,4276
+2016,63,Female,Unspecified,53
+2016,64,Male,No schooling/less than primary,49186
+2016,64,Male,Primary,36408
+2016,64,Male,Secondary,16778
+2016,64,Male,Higher,13096
+2016,64,Male,Other/Do not know,4254
+2016,64,Male,Unspecified,29
+2016,64,Female,No schooling/less than primary,62795
+2016,64,Female,Primary,45078
+2016,64,Female,Secondary,17592
+2016,64,Female,Higher,11691
+2016,64,Female,Other/Do not know,3671
+2016,64,Female,Unspecified,58
+2016,65,Male,No schooling/less than primary,47696
+2016,65,Male,Primary,38370
+2016,65,Male,Secondary,18845
+2016,65,Male,Higher,11551
+2016,65,Male,Other/Do not know,3721
+2016,65,Male,Unspecified,110
+2016,65,Female,No schooling/less than primary,75694
+2016,65,Female,Primary,50086
+2016,65,Female,Secondary,20489
+2016,65,Female,Higher,11055
+2016,65,Female,Other/Do not know,3927
+2016,65,Female,Unspecified,70
+2016,66,Male,No schooling/less than primary,47055
+2016,66,Male,Primary,34035
+2016,66,Male,Secondary,15533
+2016,66,Male,Higher,11535
+2016,66,Male,Other/Do not know,3110
+2016,66,Male,Unspecified,26
+2016,66,Female,No schooling/less than primary,72116
+2016,66,Female,Primary,46423
+2016,66,Female,Secondary,18224
+2016,66,Female,Higher,9910
+2016,66,Female,Other/Do not know,2805
+2016,66,Female,Unspecified,56
+2016,67,Male,No schooling/less than primary,40488
+2016,67,Male,Primary,30949
+2016,67,Male,Secondary,14704
+2016,67,Male,Higher,9700
+2016,67,Male,Other/Do not know,3326
+2016,67,Female,No schooling/less than primary,63074
+2016,67,Female,Primary,42249
+2016,67,Female,Secondary,16922
+2016,67,Female,Higher,8333
+2016,67,Female,Other/Do not know,3115
+2016,67,Female,Unspecified,27
+2016,68,Male,No schooling/less than primary,36078
+2016,68,Male,Primary,26298
+2016,68,Male,Secondary,13983
+2016,68,Male,Higher,8811
+2016,68,Male,Other/Do not know,3456
+2016,68,Male,Unspecified,18
+2016,68,Female,No schooling/less than primary,56813
+2016,68,Female,Primary,38799
+2016,68,Female,Secondary,16503
+2016,68,Female,Higher,8537
+2016,68,Female,Other/Do not know,2731
+2016,68,Female,Unspecified,72
+2016,69,Male,No schooling/less than primary,32099
+2016,69,Male,Primary,23673
+2016,69,Male,Secondary,12964
+2016,69,Male,Higher,9393
+2016,69,Male,Other/Do not know,2720
+2016,69,Male,Unspecified,73
+2016,69,Female,No schooling/less than primary,54056
+2016,69,Female,Primary,32476
+2016,69,Female,Secondary,13073
+2016,69,Female,Higher,8437
+2016,69,Female,Other/Do not know,2887
+2016,69,Female,Unspecified,9
+2016,70,Male,No schooling/less than primary,31488
+2016,70,Male,Primary,22192
+2016,70,Male,Secondary,12185
+2016,70,Male,Higher,7570
+2016,70,Male,Other/Do not know,2572
+2016,70,Male,Unspecified,37
+2016,70,Female,No schooling/less than primary,56407
+2016,70,Female,Primary,33013
+2016,70,Female,Secondary,14727
+2016,70,Female,Higher,8288
+2016,70,Female,Other/Do not know,2969
+2016,70,Female,Unspecified,85
+2016,71,Male,No schooling/less than primary,27681
+2016,71,Male,Primary,19357
+2016,71,Male,Secondary,10418
+2016,71,Male,Higher,7055
+2016,71,Male,Other/Do not know,2366
+2016,71,Male,Unspecified,9
+2016,71,Female,No schooling/less than primary,52224
+2016,71,Female,Primary,29456
+2016,71,Female,Secondary,12374
+2016,71,Female,Higher,8213
+2016,71,Female,Other/Do not know,2825
+2016,71,Female,Unspecified,13
+2016,72,Male,No schooling/less than primary,25830
+2016,72,Male,Primary,16855
+2016,72,Male,Secondary,9101
+2016,72,Male,Higher,6239
+2016,72,Male,Other/Do not know,2065
+2016,72,Female,No schooling/less than primary,50247
+2016,72,Female,Primary,25947
+2016,72,Female,Secondary,11832
+2016,72,Female,Higher,7004
+2016,72,Female,Other/Do not know,2684
+2016,72,Female,Unspecified,10
+2016,73,Male,No schooling/less than primary,28560
+2016,73,Male,Primary,17710
+2016,73,Male,Secondary,9836
+2016,73,Male,Higher,5062
+2016,73,Male,Other/Do not know,2820
+2016,73,Male,Unspecified,47
+2016,73,Female,No schooling/less than primary,56478
+2016,73,Female,Primary,29307
+2016,73,Female,Secondary,11026
+2016,73,Female,Higher,6364
+2016,73,Female,Other/Do not know,2568
+2016,73,Female,Unspecified,31
+2016,74,Male,No schooling/less than primary,25233
+2016,74,Male,Primary,13660
+2016,74,Male,Secondary,7294
+2016,74,Male,Higher,5399
+2016,74,Male,Other/Do not know,1550
+2016,74,Male,Unspecified,16
+2016,74,Female,No schooling/less than primary,43080
+2016,74,Female,Primary,21987
+2016,74,Female,Secondary,8023
+2016,74,Female,Higher,5126
+2016,74,Female,Other/Do not know,2218
+2016,75,Male,No schooling/less than primary,21332
+2016,75,Male,Primary,12872
+2016,75,Male,Secondary,6340
+2016,75,Male,Higher,4811
+2016,75,Male,Other/Do not know,1235
+2016,75,Male,Unspecified,22
+2016,75,Female,No schooling/less than primary,45883
+2016,75,Female,Primary,21917
+2016,75,Female,Secondary,11556
+2016,75,Female,Higher,5247
+2016,75,Female,Other/Do not know,2618
+2016,76,Male,No schooling/less than primary,17149
+2016,76,Male,Primary,9381
+2016,76,Male,Secondary,5843
+2016,76,Male,Higher,3616
+2016,76,Male,Other/Do not know,1507
+2016,76,Male,Unspecified,13
+2016,76,Female,No schooling/less than primary,39206
+2016,76,Female,Primary,18544
+2016,76,Female,Secondary,9591
+2016,76,Female,Higher,4105
+2016,76,Female,Other/Do not know,1981
+2016,76,Female,Unspecified,114
+2016,77,Male,No schooling/less than primary,13330
+2016,77,Male,Primary,7477
+2016,77,Male,Secondary,4611
+2016,77,Male,Higher,3954
+2016,77,Male,Other/Do not know,1291
+2016,77,Female,No schooling/less than primary,30795
+2016,77,Female,Primary,15731
+2016,77,Female,Secondary,7571
+2016,77,Female,Higher,4396
+2016,77,Female,Other/Do not know,1676
+2016,78,Male,No schooling/less than primary,11108
+2016,78,Male,Primary,6764
+2016,78,Male,Secondary,3870
+2016,78,Male,Higher,2636
+2016,78,Male,Other/Do not know,981
+2016,78,Male,Unspecified,20
+2016,78,Female,No schooling/less than primary,24158
+2016,78,Female,Primary,14061
+2016,78,Female,Secondary,7593
+2016,78,Female,Higher,3622
+2016,78,Female,Other/Do not know,1876
+2016,78,Female,Unspecified,15
+2016,79,Male,No schooling/less than primary,9870
+2016,79,Male,Primary,6393
+2016,79,Male,Secondary,3716
+2016,79,Male,Higher,2291
+2016,79,Male,Other/Do not know,763
+2016,79,Female,No schooling/less than primary,25721
+2016,79,Female,Primary,12987
+2016,79,Female,Secondary,6688
+2016,79,Female,Higher,3848
+2016,79,Female,Other/Do not know,1642
+2016,80,Male,No schooling/less than primary,8537
+2016,80,Male,Primary,5207
+2016,80,Male,Secondary,3040
+2016,80,Male,Higher,2414
+2016,80,Male,Other/Do not know,838
+2016,80,Female,No schooling/less than primary,23922
+2016,80,Female,Primary,10897
+2016,80,Female,Secondary,5411
+2016,80,Female,Higher,2759
+2016,80,Female,Other/Do not know,1694
+2016,80,Female,Unspecified,42
+2016,81,Male,No schooling/less than primary,7188
+2016,81,Male,Primary,4439
+2016,81,Male,Secondary,2513
+2016,81,Male,Higher,1403
+2016,81,Male,Other/Do not know,739
+2016,81,Female,No schooling/less than primary,21575
+2016,81,Female,Primary,9191
+2016,81,Female,Secondary,3781
+2016,81,Female,Higher,2095
+2016,81,Female,Other/Do not know,1641
+2016,81,Female,Unspecified,18
+2016,82,Male,No schooling/less than primary,6586
+2016,82,Male,Primary,3487
+2016,82,Male,Secondary,1847
+2016,82,Male,Higher,1462
+2016,82,Male,Other/Do not know,704
+2016,82,Female,No schooling/less than primary,20474
+2016,82,Female,Primary,7601
+2016,82,Female,Secondary,3643
+2016,82,Female,Higher,1403
+2016,82,Female,Other/Do not know,1367
+2016,82,Female,Unspecified,22
+2016,83,Male,No schooling/less than primary,6678
+2016,83,Male,Primary,3031
+2016,83,Male,Secondary,1766
+2016,83,Male,Higher,1134
+2016,83,Male,Other/Do not know,599
+2016,83,Female,No schooling/less than primary,19587
+2016,83,Female,Primary,7218
+2016,83,Female,Secondary,4451
+2016,83,Female,Higher,1862
+2016,83,Female,Other/Do not know,1087
+2016,83,Female,Unspecified,8
+2016,84,Male,No schooling/less than primary,4871
+2016,84,Male,Primary,2504
+2016,84,Male,Secondary,1288
+2016,84,Male,Higher,1180
+2016,84,Male,Other/Do not know,622
+2016,84,Male,Unspecified,29
+2016,84,Female,No schooling/less than primary,13851
+2016,84,Female,Primary,6236
+2016,84,Female,Secondary,2660
+2016,84,Female,Higher,1468
+2016,84,Female,Other/Do not know,935
+2016,85,Male,No schooling/less than primary,5705
+2016,85,Male,Primary,2543
+2016,85,Male,Secondary,1338
+2016,85,Male,Higher,765
+2016,85,Male,Other/Do not know,441
+2016,85,Male,Unspecified,10
+2016,85,Female,No schooling/less than primary,22389
+2016,85,Female,Primary,5960
+2016,85,Female,Secondary,2567
+2016,85,Female,Higher,1366
+2016,85,Female,Other/Do not know,1471
+2016,85,Female,Unspecified,10
+2016,86,Male,No schooling/less than primary,5071
+2016,86,Male,Primary,1786
+2016,86,Male,Secondary,1158
+2016,86,Male,Higher,782
+2016,86,Male,Other/Do not know,354
+2016,86,Female,No schooling/less than primary,18235
+2016,86,Female,Primary,4797
+2016,86,Female,Secondary,2029
+2016,86,Female,Higher,849
+2016,86,Female,Other/Do not know,976
+2016,87,Male,No schooling/less than primary,3532
+2016,87,Male,Primary,1586
+2016,87,Male,Secondary,637
+2016,87,Male,Higher,706
+2016,87,Male,Other/Do not know,157
+2016,87,Female,No schooling/less than primary,11592
+2016,87,Female,Primary,3235
+2016,87,Female,Secondary,2014
+2016,87,Female,Higher,733
+2016,87,Female,Other/Do not know,879
+2016,87,Female,Unspecified,12
+2016,88,Male,No schooling/less than primary,2929
+2016,88,Male,Primary,896
+2016,88,Male,Secondary,518
+2016,88,Male,Higher,436
+2016,88,Male,Other/Do not know,435
+2016,88,Female,No schooling/less than primary,9195
+2016,88,Female,Primary,2637
+2016,88,Female,Secondary,1227
+2016,88,Female,Higher,605
+2016,88,Female,Other/Do not know,889
+2016,89,Male,No schooling/less than primary,2413
+2016,89,Male,Primary,477
+2016,89,Male,Secondary,627
+2016,89,Male,Higher,339
+2016,89,Male,Other/Do not know,181
+2016,89,Female,No schooling/less than primary,7572
+2016,89,Female,Primary,1969
+2016,89,Female,Secondary,772
+2016,89,Female,Higher,376
+2016,89,Female,Other/Do not know,610
+2016,89,Female,Unspecified,5
+2016,90,Male,No schooling/less than primary,2160
+2016,90,Male,Primary,683
+2016,90,Male,Secondary,234
+2016,90,Male,Higher,477
+2016,90,Male,Other/Do not know,98
+2016,90,Female,No schooling/less than primary,7007
+2016,90,Female,Primary,1755
+2016,90,Female,Secondary,776
+2016,90,Female,Higher,253
+2016,90,Female,Other/Do not know,357
+2016,91,Male,No schooling/less than primary,1870
+2016,91,Male,Primary,392
+2016,91,Male,Secondary,186
+2016,91,Male,Higher,146
+2016,91,Male,Other/Do not know,161
+2016,91,Female,No schooling/less than primary,5520
+2016,91,Female,Primary,1313
+2016,91,Female,Secondary,702
+2016,91,Female,Higher,183
+2016,91,Female,Other/Do not know,469
+2016,91,Female,Unspecified,16
+2016,92,Male,No schooling/less than primary,1212
+2016,92,Male,Primary,374
+2016,92,Male,Secondary,466
+2016,92,Male,Higher,62
+2016,92,Male,Other/Do not know,121
+2016,92,Female,No schooling/less than primary,4274
+2016,92,Female,Primary,954
+2016,92,Female,Secondary,361
+2016,92,Female,Higher,159
+2016,92,Female,Other/Do not know,330
+2016,93,Male,No schooling/less than primary,1153
+2016,93,Male,Primary,190
+2016,93,Male,Secondary,109
+2016,93,Male,Higher,130
+2016,93,Male,Other/Do not know,165
+2016,93,Female,No schooling/less than primary,3394
+2016,93,Female,Primary,673
+2016,93,Female,Secondary,326
+2016,93,Female,Higher,128
+2016,93,Female,Other/Do not know,384
+2016,93,Female,Unspecified,31
+2016,94,Male,No schooling/less than primary,1211
+2016,94,Male,Primary,94
+2016,94,Male,Secondary,72
+2016,94,Male,Higher,41
+2016,94,Male,Other/Do not know,47
+2016,94,Female,No schooling/less than primary,3321
+2016,94,Female,Primary,819
+2016,94,Female,Secondary,179
+2016,94,Female,Higher,155
+2016,94,Female,Other/Do not know,361
+2016,95,Male,No schooling/less than primary,1204
+2016,95,Male,Primary,242
+2016,95,Male,Secondary,108
+2016,95,Male,Higher,57
+2016,95,Male,Other/Do not know,103
+2016,95,Female,No schooling/less than primary,4168
+2016,95,Female,Primary,462
+2016,95,Female,Secondary,265
+2016,95,Female,Higher,66
+2016,95,Female,Other/Do not know,314
+2016,95,Female,Unspecified,10
+2016,96,Male,No schooling/less than primary,691
+2016,96,Male,Primary,111
+2016,96,Male,Secondary,16
+2016,96,Male,Higher,16
+2016,96,Male,Other/Do not know,15
+2016,96,Female,No schooling/less than primary,2765
+2016,96,Female,Primary,170
+2016,96,Female,Secondary,42
+2016,96,Female,Higher,60
+2016,96,Female,Other/Do not know,171
+2016,97,Male,No schooling/less than primary,705
+2016,97,Male,Primary,55
+2016,97,Male,Secondary,2
+2016,97,Male,Higher,16
+2016,97,Male,Other/Do not know,181
+2016,97,Female,No schooling/less than primary,2890
+2016,97,Female,Primary,213
+2016,97,Female,Secondary,78
+2016,97,Female,Higher,2
+2016,97,Female,Other/Do not know,214
+2016,98,Male,No schooling/less than primary,382
+2016,98,Male,Primary,53
+2016,98,Male,Secondary,14
+2016,98,Male,Other/Do not know,28
+2016,98,Female,No schooling/less than primary,1281
+2016,98,Female,Primary,139
+2016,98,Female,Secondary,52
+2016,98,Female,Higher,35
+2016,98,Female,Other/Do not know,132
+2016,99,Male,No schooling/less than primary,230
+2016,99,Male,Secondary,18
+2016,99,Male,Higher,16
+2016,99,Female,No schooling/less than primary,608
+2016,99,Female,Primary,69
+2016,99,Female,Higher,31
+2016,99,Female,Other/Do not know,10
+2016,100,Male,No schooling/less than primary,134
+2016,100,Male,Primary,21
+2016,100,Male,Secondary,11
+2016,100,Male,Higher,23
+2016,100,Male,Other/Do not know,24
+2016,100,Female,No schooling/less than primary,665
+2016,100,Female,Primary,63
+2016,100,Female,Secondary,45
+2016,101,Male,No schooling/less than primary,224
+2016,101,Male,Primary,23
+2016,101,Male,Higher,16
+2016,101,Female,No schooling/less than primary,841
+2016,101,Female,Primary,15
+2016,101,Female,Higher,8
+2016,101,Female,Other/Do not know,24
+2016,102,Male,No schooling/less than primary,92
+2016,102,Male,Primary,2
+2016,102,Male,Secondary,19
+2016,102,Female,No schooling/less than primary,515
+2016,102,Female,Other/Do not know,9
+2016,103,Male,No schooling/less than primary,92
+2016,103,Female,No schooling/less than primary,428
+2016,103,Female,Primary,29
+2016,103,Female,Higher,42
+2016,103,Female,Other/Do not know,21
+2016,104,Male,No schooling/less than primary,40
+2016,104,Male,Secondary,4
+2016,104,Female,No schooling/less than primary,259
+2016,104,Female,Primary,12
+2016,104,Female,Secondary,2
+2016,104,Female,Other/Do not know,41
+2016,105,Male,No schooling/less than primary,148
+2016,105,Male,Other/Do not know,23
+2016,105,Female,No schooling/less than primary,295
+2016,105,Female,Primary,11
+2016,105,Female,Higher,31
+2016,105,Female,Other/Do not know,51
+2016,106,Male,No schooling/less than primary,25
+2016,106,Male,Primary,17
+2016,106,Female,No schooling/less than primary,280
+2016,106,Female,Primary,9
+2016,106,Female,Other/Do not know,11
+2016,107,Male,No schooling/less than primary,27
+2016,107,Female,No schooling/less than primary,163
+2016,108,Male,No schooling/less than primary,10
+2016,108,Male,Unspecified,11
+2016,108,Female,No schooling/less than primary,59
+2016,109,Male,No schooling/less than primary,7
+2016,109,Female,No schooling/less than primary,79
+2016,110,Male,No schooling/less than primary,14
+2016,110,Male,Primary,15
+2016,110,Female,No schooling/less than primary,62
+2016,111,Male,No schooling/less than primary,22
+2016,111,Female,No schooling/less than primary,53
+2016,112,Male,No schooling/less than primary,5
+2016,112,Female,No schooling/less than primary,59
+2016,113,Male,No schooling/less than primary,11
+2016,113,Female,No schooling/less than primary,57
+2016,114,Male,No schooling/less than primary,36
+2016,114,Female,No schooling/less than primary,43
+2016,114,Female,Primary,10
+2016,115,Male,Primary,9
+2016,115,Male,Secondary,28
+2016,115,Female,No schooling/less than primary,122
+2016,115,Female,Primary,8
+2016,115,Female,Other/Do not know,53
+2016,116,Male,No schooling/less than primary,46
+2016,116,Male,Higher,29
+2016,116,Female,No schooling/less than primary,18
+2016,116,Female,Unspecified,8

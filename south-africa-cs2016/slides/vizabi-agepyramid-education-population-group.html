@@ -47,7 +47,6 @@
     <span id="btn-indian">indian</span>
     <span id="btn-coloured">coloured</span>
   </div>
-  <div id="mock">MOCK DATA FOR COLOURED and INDIAN</div>
   
   
   <script>
@@ -67,7 +66,7 @@
   })
   d3.select("#btn-indian").on("click",function(){
     viz.setModel({state: {entities_side: {show: {
-      "population_group": ["Indian", "Black African"]
+      "population_group": ["Indian or Asian", "Black African"]
     }}}})
   })
   d3.select("#btn-coloured").on("click",function(){
@@ -79,7 +78,9 @@
   var viz = Vizabi('AgePyramid', document.getElementById('placeholder'), {
     state: {
       time: {
-        value: "1996"
+        value: "1996",
+        dim: "year",
+        step: 5
       },
       entities_age: {
         grouping: 5
@@ -96,6 +97,10 @@
       marker: {
         color: {
           which: "educational_attainment_4_groups"
+        },
+        axis_x: {
+          domainMin:0,
+          domainMax:5000000
         }
       },
       marker_minimap: {
@@ -106,7 +111,7 @@
     },
     data: {
       reader: "csv",
-      path: "../data/ddf--datapoints--population--by--year--age--population_group--education_attainment.csv",
+      path: "../data/2016/ddf--datapoints--population--by--year--age_by_1_year--population_group--educational.csv",
       splash: false
     },
     ui: {

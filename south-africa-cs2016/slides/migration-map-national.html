@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <script src="../lib/d3.v3.min.js"></script>
+  <link rel="stylesheet" href="migration-map.css">
+</head>
+
+<body onkeyup="parent.keyCode(event)"></body>
+<div id="title">Emigration-immigration</div>  
+
+<script>
+//SETTINGS
+//specify data file
+//var DATA_FILE = "../data/ddf--datapoints--flow--by--province_from--municipality_to--population_group.csv";
+//var DATA_FILE = "../data/ddf--datapoints--black--coloured--indian_asian--white--other--total--by--province_from--province_to.csv";
+var DATA_FILE = "../data/2016/ddf--datapoints--immigration_or_emigration_flow--by--province_from--province_to.csv";
+//specify where the map is  
+var MAP_FILE = "../maps/municipalities-blowup.svg";
+//specify how data column "from" looks like
+var FROM = "province_from";
+//specify how data column "to" looks like
+var TO = "province_to";
+//specify how the column width data looks like
+var FLOW = "immigration_or_emigration_flow";
+// exclude the following "from" OR "to" entries from the data
+var EXCLUDE = ["10", "98", "99"];
+var PARTICLES_SHOW_WHEN_LESS_LINES_THAN = 100;
+var PARTICLES_SHOW_FROM_START = true;
+  
+var MAX_ARROW_WIDTH = 15;
+  
+  
+var FILTERS = {  
+  "direction": {
+    "total": "All",
+    "1": "Emigration",
+    "2": "Immigration"
+  }
+};
+
+// if want to pre-filter stuff like "Indian Children" it would look like this:
+var UI_FILTERS = {
+//  "Population group": "3",
+//  "Sex": "total",
+//  "Age group": "1"
+};
+  
+var domReadyCallback = function(callback){
+  d3.select("#municipality-group").selectAll("path")
+    .style("opacity", 0)
+  d3.select("#province-group").selectAll("path")
+    .style("stroke", "black")
+    .style("fill", "#f5e8bf")
+    .style("stroke-width", 1)
+  d3.select("#world-group")
+    .style("opacity", 0); 
+  
+  if(callback) callback();
+
+};
+
+
+var dataReadyCallback = function(callback){
+
+  d3.select("#world-group")
+    .transition().duration(1000)
+    .style("opacity", 1); 
+
+ if(callback) callback();
+};
+  
+</script>
+
+<script src="migration-map.js"></script>
+
+</html>

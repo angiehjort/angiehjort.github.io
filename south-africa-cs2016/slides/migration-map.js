@@ -3,7 +3,9 @@
         var node = selection.node();
         if(!node) return console.error(error_message);
         var bbox = node.getBBox();
-        return [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2];
+        var transform = selection.attr("transform") || "translate(0,0)";
+        transform = transform.replace("translate(","").replace(")","").split(",");
+        return [bbox.x + +transform[0] + bbox.width / 2, bbox.y + +transform[1] + bbox.height / 2];
       },
       
       distance: function(point1, point2) {
@@ -171,18 +173,24 @@
             var id = d3.select(this).attr("id");
             d3.select(this).classed("active", true);
             
+            if(id.indexOf("world")>-1)id = "shape-world";
 
             var totalFlowIn = 0;
             var totalFlowOut = 0;
 
             _this.arrows.each(function(d) {
               var view = d3.select(this);
-              var relevant = id == "shape" + d[FROM] || id == "shape" + d[TO];
-              view.style("opacity", relevant ? 1 : 0.15)
+              var thisArrowIsGain = id == "shape-" + d[TO];
+              var thisArrowIsLoss = id == "shape-" + d[FROM];
+              view.style("opacity", thisArrowIsGain||thisArrowIsLoss ? 1 : 0.15)
               
               var pathId = ["from-" + d[FROM] + " to-" + d[TO]];
+              
+              if(d.flow <= 0) return;
 
-              if (relevant && _this.arrows.data().length<PARTICLES_SHOW_WHEN_LESS_LINES_THAN) {
+              if ((thisArrowIsGain||thisArrowIsLoss)
+                  && _this.arrows.data().length<PARTICLES_SHOW_WHEN_LESS_LINES_THAN
+                  && !PARTICLES_SHOW_FROM_START) {
                 view.append("path")
                   .attr("class", "particles")
                   .datum(_this.cache[pathId].points)
@@ -193,12 +201,12 @@
                   .attr("transform", _this.cache[pathId].transform);
               }
 
-              if (id == "shape" + d[FROM]) {
+              if (thisArrowIsLoss) {
                 view.select(".lines").style("stroke","url(#grad-loss)").style("marker-end","url(#end-mark-loss)");
                 view.select(".particles").style("stroke","url(#grad-loss)");
                 totalFlowOut += d.flow;
               }
-              if (id == "shape" + d[TO]) {
+              if (thisArrowIsGain) {
                 view.select(".lines").style("stroke","url(#grad-gain)").style("marker-end","url(#end-mark-gain)");
                 view.select(".particles").style("stroke","url(#grad-gain)");
                 totalFlowIn += d.flow;
@@ -215,7 +223,10 @@
           
           mouseout: function() {
             d3.select(this).classed("active", false);
-            if(_this.arrows.data().length<PARTICLES_SHOW_WHEN_LESS_LINES_THAN) d3.selectAll(".particles").remove();
+            if(_this.arrows.data().length<PARTICLES_SHOW_WHEN_LESS_LINES_THAN
+              && !PARTICLES_SHOW_FROM_START) {
+              d3.selectAll(".particles").remove();
+            }
             _this.arrows.style("opacity", null).selectAll("path").style("stroke",null).style("marker-end",null);
             _this.setTooltip();
           },
@@ -231,7 +242,7 @@
       setTooltip: function(flow){
         
         this.tooltipEl.style("visibility", flow?"visible":"hidden")
-        if(!flow) return;
+        if(!flow || flow.in ==0 && flow.out ==0) return;
         
         var shareIn = flow.in / (flow.in + flow.out)
         
@@ -270,7 +281,7 @@
 
         this.wScale = d3.scale.linear()
           .domain(extent)
-          .range([0.1, 10]);
+          .range([0.1, MAX_ARROW_WIDTH]);
 
         this.arrows = this.arrowsEl.selectAll("g").data(this.frame, function(d) {return "from-" + d[FROM] + " to-" + d[TO];});
         
@@ -279,17 +290,17 @@
         this.arrows.enter().append("g")
           .each(function(d, i) {
             var view = d3.select(this);
-            var shapeFrom = _this.mapEl.select("#shape" + d[FROM])
+            var shapeFrom = _this.mapEl.select("#shape-" + (d[FROM]=="world"?"world-"+d[TO]:d[FROM]))
               .classed("interactive", true);
-            var shapeTo = _this.mapEl.select("#shape" + d[TO])
+            var shapeTo = _this.mapEl.select("#shape-" + (d[TO]=="world"?"world-"+d[FROM]:d[TO]))
               .classed("interactive", true);
           
-            var start = utils.centroid(shapeFrom, "selection is empty. check if element " + "#shape" + d[FROM] + " exists");
-            var end = utils.centroid(shapeTo, "selection is empty. check if element " + "#shape" + d[TO] + " exists");
+            var start = utils.centroid(shapeFrom, "selection is empty. check if element " + "#shape-" + d[FROM] + " exists");
+            var end = utils.centroid(shapeTo, "selection is empty. check if element " + "#shape-" + d[TO] + " exists");
             end = utils.unshift(end, start);
           
-            var cParentFrom = utils.centroid(_this.mapEl.select("#shape" + shapeFrom.attr("parent")));
-            var cParentTo = utils.centroid(_this.mapEl.select("#shape" + shapeTo.attr("parent")));
+            var cParentFrom = utils.centroid(_this.mapEl.select("#shape-" + shapeFrom.attr("parent")));
+            var cParentTo = utils.centroid(_this.mapEl.select("#shape-" + shapeTo.attr("parent")));
           
             var length = utils.distance(end);
 
@@ -326,18 +337,37 @@
               .attr("d", _this.lineGenerator)
               .attr("transform", transform);
           
+          
+            if(PARTICLES_SHOW_FROM_START){
+              view.append("path")
+                .attr("class", "particles from-" + d[FROM] + " to-" + d[TO])
+                .datum(points)
+                .attr("d", _this.lineGenerator)
+                .attr("transform", transform);
+            }
+          
             _this.cache["from-" + d[FROM] + " to-" + d[TO]] = {points: points, transform: transform};
           });
 
         this.arrows
           .each(function(d, i) {
             var view = d3.select(this);
+          
+            view.select(".linesshade")
+              .style("stroke-width", _this.wScale(d.flow) * 1.2)
+              .style("visibility", d.flow>0?null:"hidden");
 
-            view.select(".linesshade.from-" + d[FROM] + ".to-" + d[TO])
-              .style("stroke-width", _this.wScale(d.flow) * 1.2);
-
-            view.select(".lines.from-" + d[FROM] + ".to-" + d[TO])
-              .style("stroke-width", _this.wScale(d.flow));
+            view.select(".lines")
+              .style("stroke-width", _this.wScale(d.flow))
+              .style("visibility", d.flow>0?null:"hidden");
+          
+          
+            if(PARTICLES_SHOW_FROM_START){
+              view.select(".particles")
+                .attr("stroke-dasharray", "0," + _this.dScale(d.flow))
+                .style("stroke-width", _this.wScale(d.flow) + 3)
+                .style("animation", "dash " + _this.tScale(d.flow) + "s linear infinite")
+            }
           });
 
       },
@@ -364,20 +394,25 @@
       d3.xml(MAP_FILE, "image/svg+xml", function(error, xml) {
         if (error) throw error;
         migrationMap.element.node().appendChild(xml.documentElement);
-      
-      
-        d3.csv(DATA_FILE, function(error, response) {
-          if (error) return console.error(error);
+        
+        domReadyCallback(function(){
+          d3.csv(DATA_FILE, function(error, response) {
+            if (error) return console.error(error);
 
-          response = response
-            //remove internal entity migration and configurable exceptions 
-            .filter(function(f) {return f[FROM] != f[TO] && EXCLUDE.indexOf(f[FROM])==-1 && EXCLUDE.indexOf(f[TO])==-1;})
-            .filter(function(f) {return !isWithinSameProvince(f[FROM],f[TO])})
-            .map(function(m) {m[FLOW] = +m[FLOW]; return m;});
-          
-          migrationMap.readyOnce();
-          migrationMap.ready(response);
+            response = response
+              //remove internal entity migration and configurable exceptions 
+              .filter(function(f) {return f[FROM] != f[TO] && EXCLUDE.indexOf(f[FROM])==-1 && EXCLUDE.indexOf(f[TO])==-1;})
+              .filter(function(f) {return !isWithinSameProvince(f[FROM],f[TO])})
+              .map(function(m) {m[FLOW] = +m[FLOW]; return m;});
+
+            dataReadyCallback(function(){
+              migrationMap.readyOnce();
+              migrationMap.ready(response);
+            });
+
+          });
         });
+      
       });
     };
 
@@ -387,5 +422,7 @@
     }
     
     var isWithinSameProvince = function isWithinSameProvince(fromId, toId){
-      return d3.select("#shape" + fromId).attr("parent") == d3.select("#shape" + toId).attr("parent");
+      if(toId == "world") toId = toId + "-" + fromId;
+      if(fromId == "world") fromId = fromId + "-" + toId;
+      return d3.select("#shape-" + fromId).attr("parent") == d3.select("#shape-" + toId).attr("parent");
     }

@@ -5,6 +5,34 @@ font-size: 22px;
   
 }
 
+@font-face {
+  font-family: 'geoslab703_md_bt_medium';
+  src: url('../assets/fonts/geoslab703_md_bt_medium.woff2') format('woff2'),
+       url('../assets/fonts/geoslab703_md_bt_medium.woff') format('woff'),
+       url('../assets/fonts/geoslab703_md_bt_medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'geo703mi';
+  src: url('../assets/fonts/geo703mi.woff2') format('woff2'),
+       url('../assets/fonts/geo703mi.woff') format('woff'),
+       url('../assets/fonts/geo703mi.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'cargts';
+  src: url('../assets/fonts/cargts.woff2') format('woff2'),
+       url('../assets/fonts/cargts.woff') format('woff'),
+       url('../assets/fonts/cargts.ttf') format('truetype');
+}
+
+    
+#title{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-size: 6vh;
+  font-family: 'geoslab703_md_bt_medium';
+  font-weight: bolder;
+}
 
 .migrationmap {
   width: 100%;
@@ -35,6 +63,14 @@ font-size: 22px;
   pointer-events: none;
 }
 
+#world-group path {
+  fill: white;
+  stroke: white;
+  stroke-width: 3%;
+  pointer-events: none;
+}
+
+#world-group path.interactive,
 #municipality-group path.interactive,
 #province-group path.interactive {
   pointer-events: visible;

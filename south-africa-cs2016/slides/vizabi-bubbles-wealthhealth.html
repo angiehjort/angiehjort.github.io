@@ -10,8 +10,9 @@
     #controls {
       position: absolute;
       top: 40px;
-      right: 30%;
+      right: 10%;
       font-family: sans-serif;
+      font-size: 20px;
     }
     #controls span {
       background: #f5e8bf;
@@ -29,9 +30,7 @@
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
   <div id='controls'>
-    <span id="btn-2014">2014</span>
-    <span id="btn-explode">Explode</span>
-    <span id="btn-labels">Labels</span>
+    <span id="btn-explode">Explode at 2014</span>
   </div>
   
   <script>
@@ -45,13 +44,15 @@
     conceptpropsPath: localUrl + 'dictionaries/metadata.json'
   };
     
+    
+  var start = "2000";
 
   var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
       time: {
-        start: "2000",
+        start: start,
         end: "2014",
-        value: "1996"
+        value: start
       },
       entities: {
         select: [
@@ -114,28 +115,45 @@
       }
     }
   });
-//d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
+d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
     
-    
-    
-//viz.model.on("change:state.time", function(){
-//  console.log("change")
-//  provincesHideShow();
-//})
+        
+
 viz.model.on("ready", function(){
-  console.log("ready")
-  labelsHideShow(true);
+  labelsHideShow(true,0);
   setTimeout(function(){
-    provincesHideShow(true);
+    provincesHideShow(true, 0);
   }, 100)
 })
 
-//viz.setModel({state: {entities: {select: []}}})
-
-d3.select("#btn-2014").on("click",function(){
-  viz.setModel({state: {time: {value: "2014"}}})
-})
+var exploded = false;
+    
 d3.select("#btn-explode").on("click",function(){
+  
+//    if(viz.getModel().state.time.value.getUTCFullYear() < 2014) {
+//      viz.setModel({state: {time: {playing: true}}})
+//      
+//      viz.model.on("change:state.time", function(){
+//        setTimeout(function(){
+//          if(viz.getModel().state.time.value.getUTCFullYear() == 2014 && !exploded) explode();
+//        },viz.getModel().state.time.delay*2)
+//      })
+//      
+//    } else {
+      viz.setModel({state: {time: {value: "2014", playing: false}}})
+      
+      setTimeout(function(){
+        if(!exploded) explode();
+      },500)
+//    }
+      
+      d3.select(this).style("visibility", "hidden");
+});
+  
+function explode(){
+    
+    exploded = true;
+  
     viz.setModel({state: {entities: {select: [
       {"geo":"1","labelOffset":[0.024,0.119]},
       {"geo":"2","labelOffset":[-0.133,0.029]},
@@ -149,99 +167,72 @@ d3.select("#btn-explode").on("click",function(){
   ]}}})
     
     
-
+  var bubbleZaf = d3.select(".vzb-bc-bubbles").select(".bubble-zaf")
+    .style("opacity",0.8) 
+    .style("pointer-events","none");
+  var to = {"zaf": {x: bubbleZaf.attr("cx"), y: bubbleZaf.attr("cy")}};
   
-  var x = d3.select("circle.bubble-zaf").attr("cx");
-  var y = d3.select("circle.bubble-zaf").attr("cy");
-  var x1 = d3.select("circle.bubble-1").attr("cx");
-  var x2 = d3.select("circle.bubble-2").attr("cx");
-  var x3 = d3.select("circle.bubble-3").attr("cx");
-  var x4 = d3.select("circle.bubble-4").attr("cx");
-  var x5 = d3.select("circle.bubble-5").attr("cx");
-  var x6 = d3.select("circle.bubble-6").attr("cx");
-  var x7 = d3.select("circle.bubble-7").attr("cx");
-  var x8 = d3.select("circle.bubble-8").attr("cx");
-  var x9 = d3.select("circle.bubble-9").attr("cx");
-  var y1 = d3.select("circle.bubble-1").attr("cy");
-  var y2 = d3.select("circle.bubble-2").attr("cy");
-  var y3 = d3.select("circle.bubble-3").attr("cy");
-  var y4 = d3.select("circle.bubble-4").attr("cy");
-  var y5 = d3.select("circle.bubble-5").attr("cy");
-  var y6 = d3.select("circle.bubble-6").attr("cy");
-  var y7 = d3.select("circle.bubble-7").attr("cy");
-  var y8 = d3.select("circle.bubble-8").attr("cy");
-  var y9 = d3.select("circle.bubble-9").attr("cy");
+  var provinceBubbles = d3.select(".vzb-bc-bubbles")
+    .selectAll(".bubble-1, .bubble-2, .bubble-3, .bubble-4, .bubble-5, .bubble-6, .bubble-7, .bubble-8, .bubble-9")
+    .each(function(d){
+      to[d.geo] = {x: d3.select(this).attr("cx"),  y: d3.select(this).attr("cy")}
+    });
   
   
-  var rndFactor = 20;
-  d3.select("circle.bubble-1").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-2").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-3").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-4").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-5").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-6").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-7").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-8").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
-  d3.select("circle.bubble-9").attr("cy", parseInt(y,10)+(Math.random()-0.5)*rndFactor).attr("cx", parseInt(x,10)+(Math.random()-0.5)*rndFactor);
+  var rndFactor = 30;
+  provinceBubbles
+    .attr("cy", function(){return parseInt(to["zaf"].y,10)+(Math.random()-0.5)*rndFactor})
+    .attr("cx", function(){return parseInt(to["zaf"].x,10)+(Math.random()-0.5)*rndFactor})
   
-  labelsHideShow(true);
-
   
-  provincesHideShow(false);
-  labelsHideShow(true);
-  
-  d3.select("circle.bubble-zaf").transition().duration(1000).ease("back").attr("r",0);
+  provincesHideShow(false,500);
+  labelsHideShow(true,0);
   
   setTimeout(function(){
-  d3.select("circle.bubble-1").transition().duration(3000).ease("elastic").attr("cy", y1).attr("cx", x1);
-  d3.select("circle.bubble-2").transition().duration(3000).ease("elastic").attr("cy", y2).attr("cx", x2);
-  d3.select("circle.bubble-3").transition().duration(3000).ease("elastic").attr("cy", y3).attr("cx", x3);
-  d3.select("circle.bubble-4").transition().duration(3000).ease("elastic").attr("cy", y4).attr("cx", x4);
-  d3.select("circle.bubble-5").transition().duration(3000).ease("elastic").attr("cy", y5).attr("cx", x5);
-  d3.select("circle.bubble-6").transition().duration(3000).ease("elastic").attr("cy", y6).attr("cx", x6);
-  d3.select("circle.bubble-7").transition().duration(3000).ease("elastic").attr("cy", y7).attr("cx", x7);
-  d3.select("circle.bubble-8").transition().duration(3000).ease("elastic").attr("cy", y8).attr("cx", x8);
-  d3.select("circle.bubble-9").transition().duration(3000).ease("elastic").attr("cy", y9).attr("cx", x9);
-  },300)
+    bubbleZaf.transition().duration(500).ease("cubic")
+      .attr("r", 500)
+      .style("opacity", 0)
+      .each("end", function(){
+        d3.select(this).attr("r",0)
+      })
+    
+    provinceBubbles
+      .transition().duration(5000).ease("elastic")
+      .attr("cy", function(d){return to[d.geo].y})
+      .attr("cx", function(d){return to[d.geo].x})
+  },500)
   
+  setTimeout(function(){
+    labelsHideShow(null, 500);
+  },3000)
 
-})
-d3.select("#btn-labels").on("click",function(){
-  labelsHideShow();
-})
-
-function provincesHideShow(hide){
-  var t = hide?"scale(0.0001)":null;
-  d3.select("circle.bubble-1").attr("transform",t);
-  d3.select("circle.bubble-2").attr("transform",t);
-  d3.select("circle.bubble-3").attr("transform",t);
-  d3.select("circle.bubble-4").attr("transform",t);
-  d3.select("circle.bubble-5").attr("transform",t);
-  d3.select("circle.bubble-6").attr("transform",t);
-  d3.select("circle.bubble-7").attr("transform",t);
-  d3.select("circle.bubble-8").attr("transform",t);
-  d3.select("circle.bubble-9").attr("transform",t);
 }
-function labelsHideShow(hide){
-  var o = hide?"0":null;
-  d3.select("g.trail-1").attr("opacity",o);  d3.select("g.line-1").attr("opacity",o);
-  d3.select("g.trail-2").attr("opacity",o);  d3.select("g.line-2").attr("opacity",o);
-  d3.select("g.trail-3").attr("opacity",o);  d3.select("g.line-3").attr("opacity",o);
-  d3.select("g.trail-4").attr("opacity",o);  d3.select("g.line-4").attr("opacity",o);
-  d3.select("g.trail-5").attr("opacity",o);  d3.select("g.line-5").attr("opacity",o);
-  d3.select("g.trail-6").attr("opacity",o);  d3.select("g.line-6").attr("opacity",o);
-  d3.select("g.trail-7").attr("opacity",o);  d3.select("g.line-7").attr("opacity",o);
-  d3.select("g.trail-8").attr("opacity",o);  d3.select("g.line-8").attr("opacity",o);
-  d3.select("g.trail-9").attr("opacity",o);  d3.select("g.line-9").attr("opacity",o);
-  d3.select("g.label-1").attr("opacity",o);  d3.select("g.line-1").attr("opacity",o);
-  d3.select("g.label-2").attr("opacity",o);  d3.select("g.line-2").attr("opacity",o);
-  d3.select("g.label-3").attr("opacity",o);  d3.select("g.line-3").attr("opacity",o);
-  d3.select("g.label-4").attr("opacity",o);  d3.select("g.line-4").attr("opacity",o);
-  d3.select("g.label-5").attr("opacity",o);  d3.select("g.line-5").attr("opacity",o);
-  d3.select("g.label-6").attr("opacity",o);  d3.select("g.line-6").attr("opacity",o);
-  d3.select("g.label-7").attr("opacity",o);  d3.select("g.line-7").attr("opacity",o);
-  d3.select("g.label-8").attr("opacity",o);  d3.select("g.line-8").attr("opacity",o);
-  d3.select("g.label-9").attr("opacity",o);  d3.select("g.line-9").attr("opacity",o);
+
+function provincesHideShow(hide, duration){
+  d3.select(".vzb-bc-bubbles")
+    .selectAll(".bubble-1, .bubble-2, .bubble-3, .bubble-4, .bubble-5, .bubble-6, .bubble-7, .bubble-8, .bubble-9")
+    .style("opacity",hide?1:0) 
+    .attr("transform",hide?"scale(0.000001)":null)
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);
+    
+}
+    
+    
+function labelsHideShow(hide, duration){
+  var o = hide?0:1;
+    
+  d3.select(".vzb-bc-labels")
+    .selectAll(".label-1, .label-2, .label-3, .label-4, .label-5, .label-6, .label-7, .label-8, .label-9")
+    .style("opacity",hide?1:0) 
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);  
+  
+  d3.select(".vzb-bc-lines")
+    .selectAll(".line-1, .line-2, .line-3, .line-4, .line-5, .line-6, .line-7, .line-8, .line-9")
+    .style("opacity",hide?1:0)
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);
 }
 
   </script>

@@ -7,28 +7,72 @@
 </head>
 
 <body onkeyup="parent.keyCode(event)"></body>
-  
-<script>
-//example: province_from,province_to,black,coloured,indian_asian,white,other,total
-var MEASURES = "my data has measures for every filter";
-//example: province_from,municipality_to,population_group,flow
-var DIMENSIONS = "my data treats filters as dimensions";
+<div id="title">Migration between metro municipalities</div>  
 
+<script>
 //SETTINGS
 //specify data file
-var DATA_FILE = "../data/ddf--datapoints--flow--by--province_from--municipality_to--population_group.csv";
-//var DATA_FILE = "../data/ddf--datapoints--black--coloured--indian_asian--white--other--total--by--province_from--province_to.csv";
+var DATA_FILE = "../data/2016/ddf--datapoints--flow--by--municipality_from--municipality_to.csv";
 //specify where the map is  
 var MAP_FILE = "../maps/municipalities-blowup.svg";
-//specify the format of data, see above
-var DATA_FORMAT = DIMENSIONS;
 //specify how data column "from" looks like
-var FROM = "province_from";
+var FROM = "municipality_from";
 //specify how data column "to" looks like
 var TO = "municipality_to";
+//specify how the column width data looks like
+var FLOW = "flow";
 // exclude the following "from" OR "to" entries from the data
 var EXCLUDE = ["10", "98", "99"];
 var PARTICLES_SHOW_WHEN_LESS_LINES_THAN = 100;
+var PARTICLES_SHOW_FROM_START = true;
+  
+var MAX_ARROW_WIDTH = 10;
+  
+var FILTERS = {  
+//  "Population group": {
+//    "total": "All",
+//    "1": "Black African",
+//    "2": "Coloured",
+//    "3": "Indian or Asian",
+//    "4": "White"
+//  },
+//  "Sex": {
+//    "total": "All",
+//    "1": "Male",
+//    "2": "Female"
+//  },
+//  "Age group": {
+//    "total": "All",
+//    "1": "Children 0-14",
+//    "2": "Youth 15-34",
+//    "3": "Adults 35-64",
+//    "4": "Elderly 65+"
+//  }
+};
+
+// if want to pre-filter stuff like "Indian Children" it would look like this:
+var UI_FILTERS = {
+//  "Population group": "3",
+//  "Sex": "total",
+//  "Age group": "1"
+};
+var domReadyCallback = function(callback){
+  d3.select("#world-group")
+    .style("visibility", "hidden");
+  
+  d3.select("#province-group").selectAll("path")
+    .attr("transform","translate(0,0)");
+    
+  d3.select("#municipality-group").selectAll("g")
+    .attr("transform","translate(0,0)");
+    
+  if(callback) callback();
+};
+  
+var dataReadyCallback = function(callback){
+  if(callback) callback();
+};
+  
 </script>
 
 <script src="migration-map.js"></script>
