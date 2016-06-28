@@ -30,7 +30,7 @@
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
   <div id='controls'>
-    <span id="btn-explode">Explode at 2014</span>
+    <span id="btn-explode">Explode</span>
   </div>
   
   <script>
@@ -45,7 +45,7 @@
   };
     
     
-  var start = "2000";
+  var start = "1996";
 
   var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
@@ -69,16 +69,20 @@
           which: "child_mortality_0_5_year_olds_dying_per_1000_born",
           scaleType: "linear",
           domainMin: 0,
-          domainMax: 120,
           zoomedMin: 0,
-          zoomedMax: 120
+          domainMax: 80,
+          zoomedMax: 80
         },
         size: {
           extent: [0, 1]
         },
         axis_x: {
           which: "income_per_person_gdppercapita_ppp_inflation_adjusted",
-          scaleType: "log"
+          scaleType: "log",
+          domainMin: 3500,
+          zoomedMin: 3500,
+          domainMax: 23000,
+          zoomedMax: 23000
         },
         size: {
           which: "population_total",
@@ -104,7 +108,8 @@
     },
     ui: {
       chart:{
-        trails: true
+        trails: true,
+        labels: {removeLabelBox: true}
       },
       presentation: true,
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
@@ -117,7 +122,7 @@
   });
 d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
     
-        
+viz.model.state.entities.on("change", labelsCoatOfArms);    
 
 viz.model.on("ready", function(){
   labelsHideShow(true,0);
@@ -129,23 +134,10 @@ viz.model.on("ready", function(){
 var exploded = false;
     
 d3.select("#btn-explode").on("click",function(){
-  
-//    if(viz.getModel().state.time.value.getUTCFullYear() < 2014) {
-//      viz.setModel({state: {time: {playing: true}}})
-//      
-//      viz.model.on("change:state.time", function(){
-//        setTimeout(function(){
-//          if(viz.getModel().state.time.value.getUTCFullYear() == 2014 && !exploded) explode();
-//        },viz.getModel().state.time.delay*2)
-//      })
-//      
-//    } else {
-      viz.setModel({state: {time: {value: "2014", playing: false}}})
       
       setTimeout(function(){
         if(!exploded) explode();
       },500)
-//    }
       
       d3.select(this).style("visibility", "hidden");
 });
@@ -168,8 +160,7 @@ function explode(){
     
     
   var bubbleZaf = d3.select(".vzb-bc-bubbles").select(".bubble-zaf")
-    .style("opacity",0.8) 
-    .style("pointer-events","none");
+    .style("opacity",0.8);
   var to = {"zaf": {x: bubbleZaf.attr("cx"), y: bubbleZaf.attr("cy")}};
   
   var provinceBubbles = d3.select(".vzb-bc-bubbles")
@@ -187,13 +178,15 @@ function explode(){
   
   provincesHideShow(false,500);
   labelsHideShow(true,0);
+  labelsCoatOfArms();
   
   setTimeout(function(){
+    var zafRadius = bubbleZaf.attr("r")
     bubbleZaf.transition().duration(500).ease("cubic")
       .attr("r", 500)
       .style("opacity", 0)
       .each("end", function(){
-        d3.select(this).attr("r",0)
+        d3.select(this).attr("r",zafRadius)
       })
     
     provinceBubbles
@@ -233,6 +226,34 @@ function labelsHideShow(hide, duration){
     .style("opacity",hide?1:0)
     .transition().duration(duration)
     .style("opacity",hide?0:1);
+}
+
+function labelsCoatOfArms() {
+  for (var i=1;i<=9;i++) {
+    var label = d3.select(".label-"+i);
+    var rect = label.select("rect");
+    var extension = (i==3) ? 'png' : 'svg';
+
+    label.selectAll("text").text(function(d,i) { 
+      var txt = d3.select(this).text();
+      var year19 = txt.lastIndexOf('19');
+      var year20 = txt.lastIndexOf('20');
+      if (year19 !== -1 || year20 !== -1)
+        return txt.substr(0,txt.length-4); 
+      else
+        return txt;
+      });
+    label.selectAll("rect").attr('width', function() { return d3.select(this).attr('width') + 50 } );
+    label.selectAll("image")
+     .data(["just one element to append"])
+     .enter().append("image")
+     .attr('x',parseFloat(rect.attr('x')) + parseFloat(rect.attr('width')*0.03))
+     .attr('y',parseFloat(rect.attr('y')) + parseFloat(rect.attr('height')*-0.5))
+     .attr('height', rect.attr('height')*2)
+     .attr('width', rect.attr('height')*2)
+     .attr('preserveAspectRatio', 'xMinYMin')
+     .attr("xlink:href","../assets/coat_of_arms/" + i + "."+ extension);
+  }
 }
 
   </script>

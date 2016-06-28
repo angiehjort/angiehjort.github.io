@@ -64,9 +64,6 @@ font-size: 22px;
 }
 
 #world-group path {
-  fill: white;
-  stroke: white;
-  stroke-width: 3%;
   pointer-events: none;
 }
 

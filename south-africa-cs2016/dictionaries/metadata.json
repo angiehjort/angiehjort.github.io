@@ -169,6 +169,21 @@
          }
      }
  },
+  "unemployment_rate": {
+    "sourceLink": "http://spreadsheets.google.com/pub?key=rb0oP4d1BREXa8xMIUf4NZg",
+    "scales": [
+      "linear",
+      "log"
+    ],
+    "use": "indicator",
+    "domain": [
+      0,1
+    ],
+    "availability": [
+      2008,
+      2016
+    ]
+  },
  "age": {
      "use": "indicator",
      "scales": ["linear", "log"],

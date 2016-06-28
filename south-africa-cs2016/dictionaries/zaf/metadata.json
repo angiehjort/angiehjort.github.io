@@ -711,6 +711,16 @@
       "scales": ["ordinal"],
       "sourceLink": ""
     },
+    "district": {
+      "use": "property",
+      "scales": ["ordinal"],
+      "sourceLink": ""
+    },
+    "district.name": {
+      "use": "property",
+      "scales": ["ordinal"],
+      "sourceLink": ""
+    },
     "geo.name": {
       "use": "property",
       "scales": ["ordinal"],
@@ -894,6 +904,55 @@
         "selectable": false
       }
     },
+    "district.pr": {
+      "use": "property",
+      "scales": ["ordinal"],
+      "sourceLink": "http://spreadsheets.google.com/spreadsheet/pub?key=0ArfEDsV3bBwCdHlocWJBM1Uyd1ZPeHduU3c4WGplMEE",
+      "color": {
+        "shades": {
+          "fill1": 0,
+          "fill2": 0,
+          "fill3": 0,
+          "shade": 0,
+          "print_fill": 0,
+          "print_stroke": 0
+        },
+        "palette": {
+          "1": ["#e41a1c"],
+          "2": ["#377eb8"],
+          "3": ["#4daf4a"],
+          "4": ["#984ea3"],
+          "5": ["#ff7f00"],
+          "6": ["#ffff33"],
+          "7": ["#a65628"],
+          "8": ["#f781bf"],
+          "9": ["#999999"]
+        },
+        "selectable": false
+      }
+    },
+    "municipality.sampi_progress_group": {
+      "use": "property",
+      "scales": ["ordinal"],
+      "sourceLink": "http://spreadsheets.google.com/spreadsheet/pub?key=0ArfEDsV3bBwCdHlocWJBM1Uyd1ZPeHduU3c4WGplMEE",
+      "color": {
+        "shades": {
+          "fill1": 0,
+          "fill2": 0,
+          "fill3": 0,
+          "shade": 0,
+          "print_fill": 0,
+          "print_stroke": 0
+        },
+        "palette": {
+          "sampi_progress_group1": ["#92f092"],
+          "sampi_progress_group2": ["#ef75ef"],
+          "sampi_progress_group3": ["#e2b654"],
+          "sampi_progress_group4": ["#7c1e1e"]
+        },
+        "selectable": true
+      }
+    },
     "sg_population": {
       "use": "indicator",
       "scales": ["linear", "log"],
@@ -980,7 +1039,11 @@
       "children": [{
         "id": "geo.name"
       }, {
-        "id": "geo"
+        "id": "geo"      
+      }, {
+        "id": "municipality.pr"
+      }, {
+        "id": "municipality.sampi_progress_group"
       }]
     }]
   }

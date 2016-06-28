@@ -1,19 +1,19 @@
 {
   "_args": [
     [
-      "vizabi@0.15.0-33",
+      "vizabi@0.15.0-35",
       "/Users/angieskazka/south-africa-cs2016"
     ]
   ],
-  "_from": "vizabi@0.15.0-33",
-  "_id": "vizabi@0.15.0-33",
+  "_from": "vizabi@0.15.0-35",
+  "_id": "vizabi@0.15.0-35",
   "_inCache": true,
   "_installable": true,
   "_location": "/vizabi",
   "_nodeVersion": "5.9.1",
   "_npmOperationalInternal": {
     "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/vizabi-0.15.0-33.tgz_1467020037915_0.007363480050116777"
+    "tmp": "tmp/vizabi-0.15.0-35.tgz_1467045976408_0.052524400409311056"
   },
   "_npmUser": {
     "email": "konzeptmeister@gmail.com",
@@ -23,18 +23,18 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "vizabi",
-    "raw": "vizabi@0.15.0-33",
-    "rawSpec": "0.15.0-33",
+    "raw": "vizabi@0.15.0-35",
+    "rawSpec": "0.15.0-35",
     "scope": null,
-    "spec": "0.15.0-33",
+    "spec": "0.15.0-35",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_shasum": "06d76b7db9938b60b5be41fd5ee4c9b8b6e2a0a6",
+  "_shasum": "32502516a29e6ec3c8218f99b233c05c6980d589",
   "_shrinkwrap": null,
-  "_spec": "vizabi@0.15.0-33",
+  "_spec": "vizabi@0.15.0-35",
   "_where": "/Users/angieskazka/south-africa-cs2016",
   "author": "",
   "bugs": {
@@ -118,13 +118,13 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "06d76b7db9938b60b5be41fd5ee4c9b8b6e2a0a6",
-    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-33.tgz"
+    "shasum": "32502516a29e6ec3c8218f99b233c05c6980d589",
+    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-35.tgz"
   },
   "files": [
     "build/dist"
   ],
-  "gitHead": "d2dae21fccb8618f1c033047c4b148c18e4fbaaa",
+  "gitHead": "0e84195ae9b2843edf64f1f258f2b098899c21e6",
   "homepage": "http://vizabi.org",
   "license": "BSD-3-Clause",
   "main": "build/dist/vizabi.js",
@@ -158,5 +158,5 @@
     "e2e:local": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/.bin/protractor .cicd/protractor.conf.js",
     "test": "karma start karma.conf.js"
   },
-  "version": "0.15.0-33"
+  "version": "0.15.0-35"
 }

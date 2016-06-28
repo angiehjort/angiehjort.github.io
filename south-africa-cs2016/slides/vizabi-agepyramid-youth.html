@@ -30,12 +30,13 @@
         start: "1996",
         value: "1996",
         end: "2016",
-        delay: 600,
         step: 5
       },
-      entities_side: null,
+      entities_side: {
+        dim: null
+      },
       entities_age: {
-         grouping: 5
+        grouping: 5
       },
       marker: {
         color: {
@@ -54,10 +55,11 @@
          }
       },
       entities_stack: {
+        dim: null,
         select: [
-        {"age": "0"}, 
-        {"age": "5"}, 
-        {"age": "10"}, 
+        {"age": 0}, 
+        {"age": 5}, 
+        {"age": 10}, 
         ]
       }
     },

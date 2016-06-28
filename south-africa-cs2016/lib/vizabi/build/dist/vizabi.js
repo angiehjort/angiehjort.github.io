@@ -1,7 +1,7 @@
 /**
  * vizabi - Vizabi Framework, Interactive charts and visualization tools animated through time
- * @version v0.15.0-33
- * @build timestampMon Jun 27 2016 11:33:10 GMT+0200 (CEST)
+ * @version v0.15.0-19
+ * @build timestampTue Jun 28 2016 12:23:10 GMT+0200 (W. Europe Daylight Time)
  * @link http://vizabi.org
  * @license BSD-3-Clause
  */
@@ -23,7 +23,7 @@
       //
       var interpolator = {
           linear: function(x1, x2, y1, y2, x) {
-            return +y1 + (x - x1) / (x2 - x1) * (y2 - y1);
+            return +y1 + (y2 - y1) * (x - x1) / (x2 - x1);
           },
           exp: function(x1, x2, y1, y2, x) {
             return Math.exp((Math.log(y1) * (x2 - x) - Math.log(y2) * (x1 - x)) / (x2 - x1));
@@ -23537,6 +23537,95 @@
 
         },
 
+
+
+        profiles: {
+          "small": {
+            margin: {
+              top: 30,
+              right: 20,
+              left: 55,
+              bottom: 30
+            },
+            infoElHeight: 16,
+            yAxisTitleBottomMargin: 6,
+            tick_spacing: 60,
+            text_padding: 8,
+            lollipopRadius: 6,
+            limitMaxTickNumberX: 5
+          },
+          "medium": {
+            margin: {
+              top: 40,
+              right: 60,
+              left: 65,
+              bottom: 40
+            },
+            infoElHeight: 20,
+            yAxisTitleBottomMargin: 6,
+            tick_spacing: 80,
+            text_padding: 12,
+            lollipopRadius: 7,
+            limitMaxTickNumberX: 10
+          },
+          "large": {
+            margin: {
+              top: 50,
+              right: 60,
+              left: 70,
+              bottom: 50
+            },
+            infoElHeight: 22,
+            yAxisTitleBottomMargin: 6,
+            tick_spacing: 100,
+            text_padding: 20,
+            lollipopRadius: 9,
+            limitMaxTickNumberX: 0 // unlimited
+          }
+        },
+        presentationProfileChanges: {
+          "medium": {
+            margin: { top: 80, bottom: 80, left: 100 },
+            yAxisTitleBottomMargin: 20,
+            xAxisTitleBottomMargin: 20,
+            infoElHeight: 26,
+          },
+          "large": {
+            margin: { top: 80, bottom: 100, left: 100 },
+            yAxisTitleBottomMargin: 20,
+            xAxisTitleBottomMargin: 20,
+            infoElHeight: 32,
+            hideSTitle: true
+          }
+        },
+
+        timeSliderProfiles: {
+          small: {
+            margin: {
+              top: 9,
+              right: 15,
+              bottom: 10,
+              left: 10
+            }
+          },
+          medium: {
+            margin: {
+              top: 9,
+              right: 15,
+              bottom: 10,
+              left: 20
+            }
+          },
+          large: {
+            margin: {
+              top: 9,
+              right: 15,
+              bottom: 10,
+              left: 25
+            }
+          }
+        },
+
         /*
          * RESIZE:
          * Executed whenever the container is resized
@@ -23550,93 +23639,7 @@
 
           var padding = 2;
 
-          var profiles = {
-            "small": {
-              margin: {
-                top: 30,
-                right: 20,
-                left: 55,
-                bottom: 30
-              },
-              infoElHeight: 16,
-              yAxisTitleBottomMargin: 6,
-              tick_spacing: 60,
-              text_padding: 8,
-              lollipopRadius: 6,
-              limitMaxTickNumberX: 5
-            },
-            "medium": {
-              margin: {
-                top: 40,
-                right: 60,
-                left: 65,
-                bottom: 40
-              },
-              infoElHeight: 20,
-              yAxisTitleBottomMargin: 6,
-              tick_spacing: 80,
-              text_padding: 12,
-              lollipopRadius: 7,
-              limitMaxTickNumberX: 10
-            },
-            "large": {
-              margin: {
-                top: 50,
-                right: 60,
-                left: 70,
-                bottom: 50
-              },
-              infoElHeight: 22,
-              yAxisTitleBottomMargin: 6,
-              tick_spacing: 100,
-              text_padding: 20,
-              lollipopRadius: 9,
-              limitMaxTickNumberX: 0 // unlimited
-            }
-          };
-          var presentationProfileChanges = {
-            "medium": {
-              margin: { top: 80, bottom: 80, left: 100 },
-              yAxisTitleBottomMargin: 20,
-              xAxisTitleBottomMargin: 20,
-              infoElHeight: 26,
-            },
-            "large": {
-              margin: { top: 80, bottom: 100, left: 100 },
-              yAxisTitleBottomMargin: 20,
-              xAxisTitleBottomMargin: 20,
-              infoElHeight: 32,
-              hideSTitle: true
-            }
-          };
-
-          var timeSliderProfiles = {
-            small: {
-              margin: {
-                top: 9,
-                right: 15,
-                bottom: 10,
-                left: 10
-              }
-            },
-            medium: {
-              margin: {
-                top: 9,
-                right: 15,
-                bottom: 10,
-                left: 20
-              }
-            },
-            large: {
-              margin: {
-                top: 9,
-                right: 15,
-                bottom: 10,
-                left: 25
-              }
-            }
-          };
-          this.activeProfile = this.getActiveProfile(profiles, presentationProfileChanges);
+          this.activeProfile = this.getActiveProfile(this.profiles, this.presentationProfileChanges);
           this.margin = this.activeProfile.margin;
           this.tick_spacing = this.activeProfile.tick_spacing;
           
@@ -23791,7 +23794,7 @@
           var opts = {
             rangeMax: this.xScale.range()[1],
             mRight: this.margin.right,
-            profile: timeSliderProfiles[this.getLayoutProfile()]
+            profile: this.timeSliderProfiles[this.getLayoutProfile()]
           };
           this.parent.trigger('myEvent', opts);
 
@@ -29055,14 +29058,13 @@
           var sizeConceptprops = this.model.marker.size.getConceptprops();
           this.strings = {
             title: {
-              C: (_this.model.marker.size.use !== "constant"? this.translator("buttons/color") + ": " : "") + this.translator("indicator/" + _this.model.marker.color.which),
-              S: this.translator("buttons/size") + ": " + this.translator("indicator/" + _this.model.marker.size.which)
+              S: this.translator("indicator/" + _this.model.marker.size.which),
+              C: this.translator("indicator/" + _this.model.marker.color.which)
             }
           };
-          
+
           this.yTitleEl.select("text")
-            //don't show "Color:" when the size is constant and we are only showing color
-            .text(this.strings.title.C)
+            .text(this.translator("buttons/color") + ": " + this.strings.title.C)
             .on("click", function() {
               _this.parent
                 .findChildByName("gapminder-treemenu")
@@ -29074,7 +29076,7 @@
             });
 
           this.sTitleEl.select("text")
-            .text(this.strings.title.S)
+            .text(this.translator("buttons/size") + ": " + this.strings.title.S)
             .on("click", function() {
               _this.parent
                 .findChildByName("gapminder-treemenu")
@@ -29342,33 +29344,30 @@
             var formatterC = _this.model.marker.color.getTickFormatter();
 
             var unitC = _this.translator("unit/" + _this.model.marker.color.which);
+
             //suppress unit strings that found no translation (returns same thing as requested)
             if(unitC === "unit/" + _this.model.marker.color.which) unitC = "";
-            
             var valueC = _this.values.color[_this._getKey(hovered)];
             _this.yTitleEl.select("text")
-              .text(this.strings.title.C + ": " +
+              .text(_this.translator("buttons/color") + ": " +
               (valueC || valueC===0 ? formatterC(valueC) + " " + unitC : _this.translator("hints/nodata")));
 
             if (this.model.marker.size.use !== "constant") {
               var formatterS = _this.model.marker.size.getTickFormatter();
-              
-              var unitS = _this.translator("unit/" + _this.model.marker.size.which);
-              //suppress unit strings that found no translation (returns same thing as requested)
-              if(unitS === "unit/" + _this.model.marker.size.which) unitS = "";
-              
+              var unitY = _this.translator("unit/" + _this.model.marker.size.which);
+              if(unitY === "unit/" + _this.model.marker.size.which) unitY = "";
               var valueS = _this.values.size[_this._getKey(hovered)];
               _this.sTitleEl.select("text")
-                .text(this.strings.title.S + ": " + formatterS(valueS) + " " + unitS);
+                .text(_this.translator("buttons/size") + ": " + formatterS(valueS) + " " + unitY);
             }
 
             this.yInfoEl.classed("vzb-hidden", true);
             this.sInfoEl.classed("vzb-hidden", true);
           } else {
             this.yTitleEl.select("text")
-              .text(this.strings.title.C);
+              .text(this.translator("buttons/color") + ": " + this.strings.title.C);
             this.sTitleEl.select("text")
-              .text(this.strings.title.S);
+              .text(this.translator("buttons/size") + ": " + this.strings.title.S);
 
             this.yInfoEl.classed("vzb-hidden", false);
             this.sInfoEl.classed("vzb-hidden", false);
@@ -34022,8 +34021,9 @@
         return promise;
 
       });
-      globals.version = "0.15.0-33"; globals.build = "1467019990983"; globals.templates = (function(templates) {templates['bubblesize.html'] = '<div class="vzb-bs-holder"> <svg class="vzb-bs-svg"> <g class="vzb-bs-slider-wrap"> <g class="vzb-bs-slider"> </g> </g> </svg> </div> ';templates['about.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/about") %> </div> <div class="vzb-dialog-content"> <p class="vzb-about-text0"></p> <p class="vzb-about-text1"></p> <br/> <p class="vzb-about-version"></p> <p class="vzb-about-updated"></p> <br/> <p class="vzb-about-text2"></p> <br/> <p class="vzb-about-report"></p> <br/> <p class="vzb-about-credits"></p> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['axes.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axes" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axes" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_x") %> <span class="vzb-xaxis-selector"></span> </p> <div class="vzb-xaxis-minmax vzb-dialog-paragraph"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_y") %> <span class="vzb-yaxis-selector"></span> </p> <div class="vzb-yaxis-minmax vzb-dialog-paragraph"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['axesmc.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axesmc" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axesmc" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <div class="vzb-yaxis-container"> <p class="vzb-dialog-sublabel"><%=t ( "hints/mount/maxYvalue") %></p> <form class="vzb-dialog-paragraph"> <label><input type="radio" name="ymax" value="immediate"><%=t ( "mount/maxYmode/immediate") %></label> <label><input type="radio" name="ymax" value="latest"><%=t ( "mount/maxYmode/latest") %></label> </form> </div> <div class="vzb-xaxis-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/logXstops") %> </p> <form class="vzb-dialog-paragraph"> <input type="checkbox" name="logstops" value="1">1 <input type="checkbox" name="logstops" value="2">2 <input type="checkbox" name="logstops" value="5">5 </form> </div> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/xlimits") %> </p> <div class="vzb-xlimits-container vzb-dialog-paragraph"></div> <div class="vzb-probe-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/probe") %> </p> <input type="text" class="vzb-probe-field" name="probe"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['colors.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="colors" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="colors" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/colors") %> <span class="vzb-caxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-clegend-container"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['find.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="find" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="find" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "dialogs/find") %> <span class="vzb-dialog-content vzb-find-filter"> <input id="vzb-find-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <div class="vzb-find-list">  </div> </div> <div class="vzb-dialog-buttons"> <div class="vzb-dialog-bubbleopacity vzb-dialog-control"></div> <div id="vzb-find-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['label.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/label") %> </div> <div class="vzb-dialog-content"> <span class="vzb-saxis-selector"></span> <div class="vzb-dialog-sizeslider"></div> <div class="vzb-removelabelbox-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['moreoptions.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="moreoptions" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="moreoptions" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ("buttons/more_options") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable"> <div class="vzb-dialog-options-buttonlist"> </div> <div class="vzb-accordion"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['opacity.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/opacity") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityRegular") %> </p> <div class="vzb-dialog-bubbleopacity-regular"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityNonselect") %> </p> <div class="vzb-dialog-bubbleopacity-selectdim"></div> </div> </div> </div> ';templates['presentation.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "dialogs/presentation") %> </div> <div class="vzb-dialog-content"> <div class="vzb-presentationmode-switch"></div> </div> </div> ';templates['show.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="show" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="show" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/show") %> <span class="vzb-dialog-content vzb-show-filter"> <input id="vzb-show-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/onlyshowthefollowing") %> </p> <div class="vzb-show-list">  </div> </div> <div class="vzb-dialog-buttons"> <div id="vzb-show-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['size.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="size" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="size" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/size") %> <span class="vzb-saxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-bubblesize"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['speed.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/speed") %> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-placeholder"></div> </div> </div> ';templates['stack.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="stack" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="stack" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/stack") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable">  <form class="vzb-howtostack vzb-dialog-paragraph"> <label> <input type="radio" name="stack" value="none"> <%=t ( "mount/stacking/none") %> </label> <label> <input type="radio" name="stack" value="geo.world_4region"> <%=t ( "mount/stacking/region") %> </label> <label> <input type="radio" name="stack" value="all"> <%=t ( "mount/stacking/world") %> </label> </form> <form class="vzb-howtomerge vzb-dialog-paragraph"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/howtomerge") %> </p> <label> <input type="radio" name="merge" value="none"> <%=t ( "mount/merging/none") %> </label> <label> <input type="radio" name="merge" value="grouped"> <%=t ( "mount/merging/region") %> </label> <label> <input type="radio" name="merge" value="stacked"> <%=t ( "mount/merging/world") %> </label> </form> <form class="vzb-manual-sorting"> <p class="vzb-dialog-sublabel"> <%=t ( "mount/manualSorting") %> </p> <div class="vzb-dialog-draggablelist vzb-dialog-control"></div> </form> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary">OK</div> </div> </div>';templates['zoom.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/zoom") %> <div class="vzb-dialog-zoom-buttonlist"></div> </div> <div class="vzb-dialog-content"> <div class="vzb-zoomonscrolling-switch"></div> <div class="vzb-adaptminmaxzoom-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['minmaxinputs.html'] = '<div class="vzb-mmi-holder"> <span class="vzb-mmi-domainmin-label"></span> <input type="text" class="vzb-mmi-domainmin" name="min"> <span class="vzb-mmi-domainmax-label"></span> <input type="text" class="vzb-mmi-domainmax" name="max"> <br class="vzb-mmi-break"/> <span class="vzb-mmi-zoomedmin-label"></span> <input type="text" class="vzb-mmi-zoomedmin" name="min"> <span class="vzb-mmi-zoomedmax-label"></span> <input type="text" class="vzb-mmi-zoomedmax" name="max"> </div>';templates['sizeslider.html'] = '<div class="vzb-szs-holder"> <svg class="vzb-szs-svg"> <g class="vzb-szs-slider-wrap"> <g class="vzb-szs-slider"> </g> </g> </svg> </div> ';templates['timeslider.html'] = '<div class="vzb-timeslider vzb-ts-loading"> <div class="vzb-ts-slider-wrapper"> <svg class="vzb-ts-slider"> <g> <g class="vzb-ts-slider-axis"></g> <g class="vzb-ts-slider-select"></g> <g class="vzb-ts-slider-slide"> <circle class="vzb-ts-slider-handle"></circle> <text class="vzb-ts-slider-value"></text> </g> </g> </svg> </div>  <div class="vzb-ts-btns"> <button class="vzb-ts-btn-loading vzb-ts-btn"> <div class="vzb-loader"></div> </button> <button class="vzb-ts-btn-play vzb-ts-btn"> <svg class="vzb-icon vzb-icon-play" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/> </svg> </button> <button class="vzb-ts-btn-pause vzb-ts-btn"> <svg class="vzb-icon vzb-icon-pause" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/> </svg> </button> </div> </div> ';templates['agepyramid.html'] = ' <svg class="vzb-agepyramid"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-title vzb-bc-title-right"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <svg class="vzb-bc-bars-crop"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> </svg> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-x vzb-bc-axis-x-left"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['axislabeler.html'] = ' <svg class="vzb-axislabeler"> <g class="vzb-al-graph"> <g class="vzb-al-axis-x"></g> <g class="vzb-al-axis-y"></g> </g> </svg> ';templates['barchart.html'] = ' <svg class="vzb-barchart"> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-bar-labels"></g> <g class="vzb-bc-axis-y-title"></g> <text class="vzb-bc-year"></text> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['barrank.html'] = ' <div class="vzb-barrankchart"> <svg class="vzb-br-header"> <text class="vzb-br-title"></text> <text class="vzb-br-total"></text> </svg> <div class="barsviewport"> <svg class="vzb-br-bars-svg"> <g class="vzb-br-bars"></g> </svg> </div> </div> ';templates['bubblechart.html'] = ' <div class="vzb-bubblechart"> <svg class="vzb-bubblechart-svg vzb-export"> <g class="vzb-bc-graph"> <g class="vzb-bc-year"></g> <svg class="vzb-bc-axis-x"><g></g></svg> <svg class="vzb-bc-axis-y"><g></g></svg> <line class="vzb-bc-projection-x"></line> <line class="vzb-bc-projection-y"></line> <svg class="vzb-bc-bubbles-crop"> <rect class="vzb-bc-eventarea"></rect> <g class="vzb-bc-trails"></g> <g class="vzb-bc-bubbles"></g> <g class="vzb-bc-lines"></g> <g class="vzb-bc-bubble-crown vzb-hidden"> <circle class="vzb-crown-glow"></circle> <circle class="vzb-crown"></circle> </g> </svg> <g class="vzb-bc-axis-y-title"></g> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-s-title"></g> <g class="vzb-bc-axis-c-title"></g> <g class="vzb-bc-axis-y-info vzb-noexport"></g> <g class="vzb-bc-axis-x-info vzb-noexport"></g> <svg class="vzb-bc-labels-crop"> <g class="vzb-bc-labels"></g> </svg> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <rect class="vzb-bc-zoom-rect"></rect> <g class="vzb-bc-tooltip vzb-hidden"> <rect class="vzb-tooltip-glow"></rect> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> <svg> <defs> <filter id="vzb-glow-filter" x="-50%" y="-50%" width="200%" height="200%"> <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur> </filter> </defs> </svg>  <div class="vzb-tooltip vzb-hidden vzb-tooltip-mobile"></div> </div> ';templates['bubblemap.html'] = ' <div class="vzb-bubblemap"> <svg class="vzb-bmc-map-background vzb-export"> <g class="vzb-bmc-map-graph"></g> </svg> <svg class="vzb-bubblemap-svg vzb-export"> <g class="vzb-bmc-graph"> <g class="vzb-bmc-year"></g> <g class="vzb-bmc-lines"></g> <g class="vzb-bmc-bubbles"></g> <g class="vzb-bmc-bubble-labels"></g> <g class="vzb-bmc-axis-y-title"> <text></text> </g> <g class="vzb-bmc-axis-c-title"> <text></text> </g> <g class="vzb-bmc-axis-y-info vzb-noexport"> </g> <g class="vzb-bmc-axis-c-info vzb-noexport"> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <g class="vzb-bmc-labels"></g> <g class="vzb-bmc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['cartogram.html'] = ' <div class="vzb-cartogram"> <svg class="vzb-cartogram-svg"> <g class="vzb-ct-graph"> <g class="vzb-ct-year"></g> <svg class="vzb-ct-map-background vzb-export"> <g class="vzb-ct-map-graph"></g> </svg> <svg class="vzb-ct-labels-crop"> <g class="vzb-ct-labels"> <line class="vzb-ct-vertical-now"></line> </g> </svg> <g class="vzb-ct-axis-y-title"><text></text></g> <g class="vzb-ct-axis-c-title"><text></text></g> <g class="vzb-ct-axis-y-info"></g> <g class="vzb-ct-axis-c-info"></g> <g class="vzb-ct-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> </g> </svg> </div> ';templates['donutchart.html'] = ' <div class="vzb-donutchart"> <svg class="vzb-dc-graph">  </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['linechart.html'] = ' <div class="vzb-linechart"> <svg class="vzb-linechart-svg"> <g class="vzb-lc-graph"> <svg class="vzb-lc-axis-x"><g></g></svg> <svg class="vzb-lc-axis-y"><g></g></svg> <text class="vzb-lc-axis-x-value"></text> <text class="vzb-lc-axis-y-value"></text> <svg class="vzb-lc-lines-crop"> <svg class="vzb-lc-lines"></svg> <line class="vzb-lc-projection-x"></line> <line class="vzb-lc-projection-y"></line> </svg> <svg class="vzb-lc-labels-crop"> <g class="vzb-lc-labels"> <line class="vzb-lc-vertical-now"></line> </g> </svg> <g class="vzb-lc-axis-y-title"></g> <g class="vzb-lc-axis-x-title"></g> <g class="vzb-lc-axis-y-info"></g>  </g> </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['mountainchart.html'] = ' <div class="vzb-mountainchart"> <svg class="vzb-mountainchart-svg"> <g class="vzb-mc-graph"> <rect class="vzb-mc-eventarea"></rect> <g class="vzb-mc-year"></g> <g class="vzb-mc-mountains-mergestacked"></g> <g class="vzb-mc-mountains-mergegrouped"></g> <g class="vzb-mc-mountains"></g> <g class="vzb-mc-mountains-labels"></g> <g class="vzb-mc-axis-y-title"> <text></text> </g> <g class="vzb-mc-axis-x-title"> <text></text> </g> <g class="vzb-mc-axis-info"> </g> <g class="vzb-data-warning"> <svg></svg> <text></text> </g> <g class="vzb-mc-axis-x"></g> <g class="vzb-mc-axis-labels"></g> <g class="vzb-mc-probe"> <text class="vzb-shadow vzb-mc-probe-value-ul"></text> <text class="vzb-shadow vzb-mc-probe-value-ur"></text> <text class="vzb-shadow vzb-mc-probe-value-dl"></text> <text class="vzb-shadow vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-value-ul"></text> <text class="vzb-mc-probe-value-ur"></text> <text class="vzb-mc-probe-value-dl"></text> <text class="vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-extremepoverty"></text> <line></line> </g> <g class="vzb-mc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['popbyage.html'] = ' <svg class="vzb-popbyage"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> '; return templates})({});
+      globals.version = "0.15.0-19"; globals.build = "1467109390319"; globals.templates = (function(templates) {templates['bubblesize.html'] = '<div class="vzb-bs-holder"> <svg class="vzb-bs-svg"> <g class="vzb-bs-slider-wrap"> <g class="vzb-bs-slider"> </g> </g> </svg> </div> ';templates['about.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/about") %> </div> <div class="vzb-dialog-content"> <p class="vzb-about-text0"></p> <p class="vzb-about-text1"></p> <br/> <p class="vzb-about-version"></p> <p class="vzb-about-updated"></p> <br/> <p class="vzb-about-text2"></p> <br/> <p class="vzb-about-report"></p> <br/> <p class="vzb-about-credits"></p> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['axes.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axes" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axes" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_x") %> <span class="vzb-xaxis-selector"></span> </p> <div class="vzb-xaxis-minmax vzb-dialog-paragraph"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/axis_y") %> <span class="vzb-yaxis-selector"></span> </p> <div class="vzb-yaxis-minmax vzb-dialog-paragraph"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['axesmc.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="axesmc" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="axesmc" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/axes") %> </div> <div class="vzb-dialog-content"> <div class="vzb-yaxis-container"> <p class="vzb-dialog-sublabel"><%=t ( "hints/mount/maxYvalue") %></p> <form class="vzb-dialog-paragraph"> <label><input type="radio" name="ymax" value="immediate"><%=t ( "mount/maxYmode/immediate") %></label> <label><input type="radio" name="ymax" value="latest"><%=t ( "mount/maxYmode/latest") %></label> </form> </div> <div class="vzb-xaxis-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/logXstops") %> </p> <form class="vzb-dialog-paragraph"> <input type="checkbox" name="logstops" value="1">1 <input type="checkbox" name="logstops" value="2">2 <input type="checkbox" name="logstops" value="5">5 </form> </div> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/xlimits") %> </p> <div class="vzb-xlimits-container vzb-dialog-paragraph"></div> <div class="vzb-probe-container"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/probe") %> </p> <input type="text" class="vzb-probe-field" name="probe"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['colors.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="colors" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="colors" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/colors") %> <span class="vzb-caxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-clegend-container"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['find.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="find" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="find" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "dialogs/find") %> <span class="vzb-dialog-content vzb-find-filter"> <input id="vzb-find-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <div class="vzb-find-list">  </div> </div> <div class="vzb-dialog-buttons"> <div class="vzb-dialog-bubbleopacity vzb-dialog-control"></div> <div id="vzb-find-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['label.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/label") %> </div> <div class="vzb-dialog-content"> <span class="vzb-saxis-selector"></span> <div class="vzb-dialog-sizeslider"></div> <div class="vzb-removelabelbox-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['moreoptions.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="moreoptions" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="moreoptions" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ("buttons/more_options") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable"> <div class="vzb-dialog-options-buttonlist"> </div> <div class="vzb-accordion"> </div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div>';templates['opacity.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/opacity") %> </div> <div class="vzb-dialog-content"> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityRegular") %> </p> <div class="vzb-dialog-bubbleopacity-regular"></div> <p class="vzb-dialog-sublabel"> <%=t ("buttons/opacityNonselect") %> </p> <div class="vzb-dialog-bubbleopacity-selectdim"></div> </div> </div> </div> ';templates['presentation.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "dialogs/presentation") %> </div> <div class="vzb-dialog-content"> <div class="vzb-presentationmode-switch"></div> </div> </div> ';templates['show.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="show" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="show" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/show") %> <span class="vzb-dialog-content vzb-show-filter"> <input id="vzb-show-search" type="search"/> </span> </div> <div class="vzb-dialog-content vzb-dialog-content-fixed vzb-dialog-scrollable"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/onlyshowthefollowing") %> </p> <div class="vzb-show-list">  </div> </div> <div class="vzb-dialog-buttons"> <div id="vzb-show-deselect" class="vzb-dialog-button"> <%=t ( "buttons/deselect") %> </div> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> <%=t ( "buttons/ok") %> </div> </div> </div> ';templates['size.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="size" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="size" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/size") %> <span class="vzb-saxis-selector"></span> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-bubblesize"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['speed.html'] = '<div class="vzb-dialog-modal"> <div class="vzb-dialog-title"> <%=t ( "buttons/speed") %> </div> <div class="vzb-dialog-content"> <div class="vzb-dialog-placeholder"></div> </div> </div> ';templates['stack.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="stack" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="stack" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/stack") %> </div> <div class="vzb-dialog-content vzb-dialog-scrollable">  <form class="vzb-howtostack vzb-dialog-paragraph"> <label> <input type="radio" name="stack" value="none"> <%=t ( "mount/stacking/none") %> </label> <label> <input type="radio" name="stack" value="geo.world_4region"> <%=t ( "mount/stacking/region") %> </label> <label> <input type="radio" name="stack" value="all"> <%=t ( "mount/stacking/world") %> </label> </form> <form class="vzb-howtomerge vzb-dialog-paragraph"> <p class="vzb-dialog-sublabel"> <%=t ( "hints/mount/howtomerge") %> </p> <label> <input type="radio" name="merge" value="none"> <%=t ( "mount/merging/none") %> </label> <label> <input type="radio" name="merge" value="grouped"> <%=t ( "mount/merging/region") %> </label> <label> <input type="radio" name="merge" value="stacked"> <%=t ( "mount/merging/world") %> </label> </form> <form class="vzb-manual-sorting"> <p class="vzb-dialog-sublabel"> <%=t ( "mount/manualSorting") %> </p> <div class="vzb-dialog-draggablelist vzb-dialog-control"></div> </form> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary">OK</div> </div> </div>';templates['zoom.html'] = '<div class="vzb-dialog-modal"> <span class="thumb-tack-class thumb-tack-class-ico-pin fa" data-dialogtype="label" data-click="pinDialog"></span> <span class="thumb-tack-class thumb-tack-class-ico-drag fa" data-dialogtype="label" data-click="dragDialog"></span> <div class="vzb-dialog-title"> <%=t ( "buttons/zoom") %> <div class="vzb-dialog-zoom-buttonlist"></div> </div> <div class="vzb-dialog-content"> <div class="vzb-zoomonscrolling-switch"></div> <div class="vzb-adaptminmaxzoom-switch"></div> </div> <div class="vzb-dialog-buttons"> <div data-click="closeDialog" class="vzb-dialog-button vzb-label-primary"> OK </div> </div> </div> ';templates['minmaxinputs.html'] = '<div class="vzb-mmi-holder"> <span class="vzb-mmi-domainmin-label"></span> <input type="text" class="vzb-mmi-domainmin" name="min"> <span class="vzb-mmi-domainmax-label"></span> <input type="text" class="vzb-mmi-domainmax" name="max"> <br class="vzb-mmi-break"/> <span class="vzb-mmi-zoomedmin-label"></span> <input type="text" class="vzb-mmi-zoomedmin" name="min"> <span class="vzb-mmi-zoomedmax-label"></span> <input type="text" class="vzb-mmi-zoomedmax" name="max"> </div>';templates['sizeslider.html'] = '<div class="vzb-szs-holder"> <svg class="vzb-szs-svg"> <g class="vzb-szs-slider-wrap"> <g class="vzb-szs-slider"> </g> </g> </svg> </div> ';templates['timeslider.html'] = '<div class="vzb-timeslider vzb-ts-loading"> <div class="vzb-ts-slider-wrapper"> <svg class="vzb-ts-slider"> <g> <g class="vzb-ts-slider-axis"></g> <g class="vzb-ts-slider-select"></g> <g class="vzb-ts-slider-slide"> <circle class="vzb-ts-slider-handle"></circle> <text class="vzb-ts-slider-value"></text> </g> </g> </svg> </div>  <div class="vzb-ts-btns"> <button class="vzb-ts-btn-loading vzb-ts-btn"> <div class="vzb-loader"></div> </button> <button class="vzb-ts-btn-play vzb-ts-btn"> <svg class="vzb-icon vzb-icon-play" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/> </svg> </button> <button class="vzb-ts-btn-pause vzb-ts-btn"> <svg class="vzb-icon vzb-icon-pause" viewBox="3 3 42 42" xmlns="http://www.w3.org/2000/svg"> <path xmlns="http://www.w3.org/2000/svg" d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/> </svg> </button> </div> </div> ';templates['agepyramid.html'] = ' <svg class="vzb-agepyramid"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-title vzb-bc-title-right"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <svg class="vzb-bc-bars-crop"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> </svg> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-x vzb-bc-axis-x-left"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['axislabeler.html'] = ' <svg class="vzb-axislabeler"> <g class="vzb-al-graph"> <g class="vzb-al-axis-x"></g> <g class="vzb-al-axis-y"></g> </g> </svg> ';templates['barchart.html'] = ' <svg class="vzb-barchart"> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-bar-labels"></g> <g class="vzb-bc-axis-y-title"></g> <text class="vzb-bc-year"></text> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> ';templates['barrank.html'] = ' <div class="vzb-barrankchart"> <svg class="vzb-br-header"> <text class="vzb-br-title"></text> <text class="vzb-br-total"></text> </svg> <div class="barsviewport"> <svg class="vzb-br-bars-svg"> <g class="vzb-br-bars"></g> </svg> </div> </div> ';templates['bubblechart.html'] = ' <div class="vzb-bubblechart"> <svg class="vzb-bubblechart-svg vzb-export"> <g class="vzb-bc-graph"> <g class="vzb-bc-year"></g> <svg class="vzb-bc-axis-x"><g></g></svg> <svg class="vzb-bc-axis-y"><g></g></svg> <line class="vzb-bc-projection-x"></line> <line class="vzb-bc-projection-y"></line> <svg class="vzb-bc-bubbles-crop"> <rect class="vzb-bc-eventarea"></rect> <g class="vzb-bc-trails"></g> <g class="vzb-bc-bubbles"></g> <g class="vzb-bc-lines"></g> <g class="vzb-bc-bubble-crown vzb-hidden"> <circle class="vzb-crown-glow"></circle> <circle class="vzb-crown"></circle> </g> </svg> <g class="vzb-bc-axis-y-title"></g> <g class="vzb-bc-axis-x-title"></g> <g class="vzb-bc-axis-s-title"></g> <g class="vzb-bc-axis-c-title"></g> <g class="vzb-bc-axis-y-info vzb-noexport"></g> <g class="vzb-bc-axis-x-info vzb-noexport"></g> <svg class="vzb-bc-labels-crop"> <g class="vzb-bc-labels"></g> </svg> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <rect class="vzb-bc-zoom-rect"></rect> <g class="vzb-bc-tooltip vzb-hidden"> <rect class="vzb-tooltip-glow"></rect> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> <svg> <defs> <filter id="vzb-glow-filter" x="-50%" y="-50%" width="200%" height="200%"> <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur> </filter> </defs> </svg>  <div class="vzb-tooltip vzb-hidden vzb-tooltip-mobile"></div> </div> ';templates['bubblemap.html'] = ' <div class="vzb-bubblemap"> <svg class="vzb-bmc-map-background vzb-export"> <g class="vzb-bmc-map-graph"></g> </svg> <svg class="vzb-bubblemap-svg vzb-export"> <g class="vzb-bmc-graph"> <g class="vzb-bmc-year"></g> <g class="vzb-bmc-lines"></g> <g class="vzb-bmc-bubbles"></g> <g class="vzb-bmc-bubble-labels"></g> <g class="vzb-bmc-axis-y-title"> <text></text> </g> <g class="vzb-bmc-axis-c-title"> <text></text> </g> <g class="vzb-bmc-axis-y-info vzb-noexport"> </g> <g class="vzb-bmc-axis-c-info vzb-noexport"> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> <g class="vzb-bmc-labels"></g> <g class="vzb-bmc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['cartogram.html'] = ' <div class="vzb-cartogram"> <svg class="vzb-cartogram-svg"> <g class="vzb-ct-graph"> <g class="vzb-ct-year"></g> <svg class="vzb-ct-map-background vzb-export"> <g class="vzb-ct-map-graph"></g> </svg> <svg class="vzb-ct-labels-crop"> <g class="vzb-ct-labels"> <line class="vzb-ct-vertical-now"></line> </g> </svg> <g class="vzb-ct-axis-y-title"><text></text></g> <g class="vzb-ct-axis-c-title"><text></text></g> <g class="vzb-ct-axis-y-info"></g> <g class="vzb-ct-axis-c-info"></g> <g class="vzb-ct-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> <g class="vzb-data-warning vzb-noexport"> <svg></svg> <text></text> </g> </g> </svg> </div> ';templates['donutchart.html'] = ' <div class="vzb-donutchart"> <svg class="vzb-dc-graph">  </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['linechart.html'] = ' <div class="vzb-linechart"> <svg class="vzb-linechart-svg"> <g class="vzb-lc-graph"> <svg class="vzb-lc-axis-x"><g></g></svg> <svg class="vzb-lc-axis-y"><g></g></svg> <text class="vzb-lc-axis-x-value"></text> <text class="vzb-lc-axis-y-value"></text> <svg class="vzb-lc-lines-crop"> <svg class="vzb-lc-lines"></svg> <line class="vzb-lc-projection-x"></line> <line class="vzb-lc-projection-y"></line> </svg> <svg class="vzb-lc-labels-crop"> <g class="vzb-lc-labels"> <line class="vzb-lc-vertical-now"></line> </g> </svg> <g class="vzb-lc-axis-y-title"></g> <g class="vzb-lc-axis-x-title"></g> <g class="vzb-lc-axis-y-info"></g>  </g> </svg> <div class="vzb-tooltip vzb-hidden"></div> </div> ';templates['mountainchart.html'] = ' <div class="vzb-mountainchart"> <svg class="vzb-mountainchart-svg"> <g class="vzb-mc-graph"> <rect class="vzb-mc-eventarea"></rect> <g class="vzb-mc-year"></g> <g class="vzb-mc-mountains-mergestacked"></g> <g class="vzb-mc-mountains-mergegrouped"></g> <g class="vzb-mc-mountains"></g> <g class="vzb-mc-mountains-labels"></g> <g class="vzb-mc-axis-y-title"> <text></text> </g> <g class="vzb-mc-axis-x-title"> <text></text> </g> <g class="vzb-mc-axis-info"> </g> <g class="vzb-data-warning"> <svg></svg> <text></text> </g> <g class="vzb-mc-axis-x"></g> <g class="vzb-mc-axis-labels"></g> <g class="vzb-mc-probe"> <text class="vzb-shadow vzb-mc-probe-value-ul"></text> <text class="vzb-shadow vzb-mc-probe-value-ur"></text> <text class="vzb-shadow vzb-mc-probe-value-dl"></text> <text class="vzb-shadow vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-value-ul"></text> <text class="vzb-mc-probe-value-ur"></text> <text class="vzb-mc-probe-value-dl"></text> <text class="vzb-mc-probe-value-dr"></text> <text class="vzb-mc-probe-extremepoverty"></text> <line></line> </g> <g class="vzb-mc-tooltip vzb-hidden"> <rect class="vzb-tooltip-border"></rect> <text class="vzb-tooltip-text"></text> </g> </g> </svg> </div> ';templates['popbyage.html'] = ' <svg class="vzb-popbyage"> <g class="vzb-bc-header"> <text class="vzb-bc-title"></text> <text class="vzb-bc-year"></text> </g> <g class="vzb-bc-graph"> <g class="vzb-bc-bars"></g> <g class="vzb-bc-labels"></g> <text class="vzb-bc-axis-y-title"></text> <g class="vzb-bc-axis-x"></g> <g class="vzb-bc-axis-y"></g> <g class="vzb-bc-axis-labels">  </g> </g> </svg> '; return templates})({});
 
       return Vzb;
 
 }));
+//# sourceMappingURL=vizabi.js.map

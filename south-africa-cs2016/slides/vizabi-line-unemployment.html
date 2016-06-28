@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+</head>
+
+<body>
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <script>
+
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/metadata.json'
+  };
+  var viz = Vizabi('LineChart', document.getElementById('placeholder'), {
+
+    state: {
+      time: {
+        start: "2008",
+        end: "2016",
+        value: "2008"
+      },
+      entities: {
+        show: {
+          "geo": ["youth","adults","young"]
+        }
+      },
+      marker: {
+        axis_y: {
+          domainMin: 0,
+          domainMax: 60,
+          zoomedMin: 0,
+          zoomedMax: 60,
+          which: "unemployment_rate",
+          scaleType: "linear",
+        }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/qlfs-unemployment-year.csv",
+      splash: false
+    },
+    ui: {
+      presentation: false,
+      buttons: [],
+      dialogs: {}
+    }
+  });
+  viz.components[0].profiles.large.limitMaxTickNumberX = 8;
+  
+  </script>
+</body>
+
+</html>

@@ -106,6 +106,7 @@
     "indicator/sg_child_mortality_rate_per1000": "Child mortality rate",
     "indicator/size": "Big or mini",
     "indicator/sg_gini": "Gini coefficient",
+    "indicator/unemployment_rate": "Unemployment rate",
     "indicator/axis/_default": "Constant",
     "indicator/size/_default": "One size",
     "indicator/color/_default": "Single color",    

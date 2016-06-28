@@ -1967,7 +1967,10 @@
     "description/ch17": "",
     "description/ch18": "",
     "description/ch19": "",
-    "description/ch20": ""
+    "description/ch20": "",
+    "indicator/municipality.sampi_progress_group": "SAMPI progress group",
+    "unit/municipality.sampi_progress_group": "",
+    "description/municipality.sampi_progress_group": ""
 }
 
 

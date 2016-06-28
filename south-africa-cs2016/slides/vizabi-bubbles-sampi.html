@@ -11,6 +11,9 @@
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
   <script>
 
+  var geo = parent.getParamValue("geo", window) || 'municipality';
+  var geoCat
+
   var locationArray = window.location.href.split("/");
   var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
       
@@ -20,7 +23,7 @@
     conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json'
   };
     
-  var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
+  var config = {
     state: {
       time: {
         start: "2001",
@@ -31,23 +34,21 @@
       entities: {
         select: [],
         show: {
-            "municipality.cat": ["municipality"]
         },
-        dim: "municipality"
+        dim: geo
       },
       entities_minimap: {
         select: [],
         show: {
-          "municipality.cat": ["province"]
         },
-        dim: "municipality"
+        dim: geo
       },
       marker: {
         label: {
-          which: "municipality.name"
+          which: geo + ".name"
         },
         color: {
-          which: "municipality.pr"
+          which: geo + "." + (parent.getParamValue("color", window) || "pr")
         },
         axis_y: {
           which: "sampi_intensity",
@@ -56,14 +57,14 @@
         axis_x: {
           which: "sampi_headcount",
           scaleType: "linear",
-          zoomedMin: 1,
-          zoomedMax: 13000
+          zoomedMin: 0,
+          zoomedMax: 1
         },
         size: {
           which: "population",
           scaleType: "linear",      
           "domainMin": 50,
-          "domainMax": 4949347,
+          "domainMax": 5434826,
         }
       }, 
       marker_minimap:{
@@ -72,17 +73,17 @@
           shape: "svg",
           label: {
             use: "property",
-            which: "municipality.name"
+            which: geo + ".name"
           },
           geoshape: {
             use: "property",
-            which: "municipality.shape_lores_svg"
+            which: geo + ".shape_lores_svg"
           }
       }
     },
     data: {
       reader: "csv",
-      path: "../data/2016/ddf--datapoints--sampi_headcount--sampi_intensity--population--by--year--municipality.csv",
+      path: "../data/2016/ddf--datapoints--sampi_headcount--sampi_intensity--population--by--year--" + geo + ".csv",
       splash: false
     },
     ui: {
@@ -94,7 +95,12 @@
         'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
       }
     }
-  });
+  };
+  // can't set these in JSON style like above
+  config.state.entities.show[geo + ".cat"] = [geo];
+  config.state.entities_minimap.show[geo + ".cat"] = [(parent.getParamValue("color", window) || "province")];
+
+  var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), config);
     
   //this would make vizabi always show sidebar with legend
   viz.layout.screen_profiles.large.min_height = 0;

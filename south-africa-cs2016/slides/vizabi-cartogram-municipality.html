@@ -74,6 +74,17 @@
   });
   viz.model.state.time._defaults.end = "2016";
     
+  if(parent.getParamValue("unlockafterplay", window)){
+    viz.model.on("change:state.time.playing", function(path, val){
+      if(viz.getModel().state.time.value.getUTCFullYear() == 2016 && !viz.getModel().state.time.playing){
+        setTimeout(function(){
+          viz.setModel({ui:{chart: {lockNonSelected: null}}});
+        }, viz.getModel().state.time.delay*2)
+      }
+    })
+  }
+   
+    
   d3.select(".vzb-data-warning").classed("vzb-hidden",true);
   </script>
 </body>

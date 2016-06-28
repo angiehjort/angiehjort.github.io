@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
   <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/topojson.v1.min.js"></script>
   <link rel="stylesheet" href="migration-map.css">
 </head>
 
@@ -16,7 +17,7 @@
 //var DATA_FILE = "../data/ddf--datapoints--black--coloured--indian_asian--white--other--total--by--province_from--province_to.csv";
 var DATA_FILE = "../data/2016/ddf--datapoints--immigration_or_emigration_flow--by--province_from--province_to.csv";
 //specify where the map is  
-var MAP_FILE = "../maps/municipalities-blowup.svg";
+var MAP_FILE = "../maps/municipalities-blowup-world-globe.svg";
 //specify how data column "from" looks like
 var FROM = "province_from";
 //specify how data column "to" looks like
@@ -64,9 +65,44 @@ var domReadyCallback = function(callback){
 var dataReadyCallback = function(callback){
 
   d3.select("#world-group")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
-    .style("stroke-width", "3%"); 
+    .style("fill", "#ccc")
+    .style("stroke", "#ccc")
+    .style("stroke-width", "1")
+    .transition().duration(1000)
+    .style("opacity", 1);  
+  
+  
+  var width = 960;
+  var height = 500;
+
+  var path = d3.select("#world-group").select("path").node();
+  var bbox = path.getBBox();
+  var worldCenter = [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]
+  
+
+  var projection = d3.geo.orthographic()
+    .scale(100)
+    .translate([worldCenter[0], worldCenter[1]])
+    .clipAngle(90);
+  var path = d3.geo.path()
+    .projection(projection);
+  var svg = d3.select("#world-group")
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);  
+
+  d3.json('/maps/world-110m.json', function(error, world) {
+    svg.append('path')
+      .datum(topojson.feature(world, world.objects.land))
+      .attr('class', 'land')
+      .attr('d', path);
+
+    setInterval(function() {
+      projection.rotate([projection.rotate()[0] + 0.5, 0]);
+      svg.selectAll('path').attr('d', path);
+    }, 100)
+  });
+  
 
  if(callback) callback();
 };
@@ -76,3 +112,5 @@ var dataReadyCallback = function(callback){
 <script src="migration-map.js"></script>
 
 </html>
+
+
