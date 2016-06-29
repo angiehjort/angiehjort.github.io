@@ -174,8 +174,9 @@
     "sampi_intensity": {
       "use": "indicator",
       "scales": ["linear"],
-      "domain": [0.36, 0.48],
+      "domain": [0.35, 0.50],
       "availability": [2001,2016],
+      "format": "share",
       "sourceLink": "",
       "color": {"palette": { "0": "#ffffcc", "100": "#800026"}}
     },
@@ -184,6 +185,7 @@
       "scales": ["linear"],
       "domain": [0, 0.7],
       "availability": [2001,2016],
+      "format": "share",
       "sourceLink": "",
       "color": {"palette": { "0": "#ffffcc", "100": "#800026"}}
     },

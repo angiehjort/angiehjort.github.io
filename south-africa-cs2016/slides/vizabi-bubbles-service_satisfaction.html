@@ -5,6 +5,31 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  
+  <style>
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
+      background-color: transparent
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
+      background-color: transparent;
+      border-bottom: none;
+      border-top: none;
+      padding-top: 120px;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
+      display: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-buttonlist{ 
+      background-color: transparent;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar{ 
+      position: absolute; left: 150px; 
+    }
+    
+  </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -53,11 +78,15 @@
         },
         axis_y: {
           which: parent.getParamValue("which", window) + "_satisfaction",
-          scaleType: "linear"
+          scaleType: "linear",
+          domainMax: 105,
+          domainMin: 0
         },
         axis_x: {
           which: parent.getParamValue("which", window) + "_access",
-          scaleType: "linear"
+          scaleType: "linear",
+          domainMax: 105,
+          domainMin: 0
         },
         size: {
           which: "population",
@@ -86,7 +115,7 @@
       splash: false
     },
     ui: {
-      presentation: false,
+      presentation: true,
       buttons: ['colors'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 

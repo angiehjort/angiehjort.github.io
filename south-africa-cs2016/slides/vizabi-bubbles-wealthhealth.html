@@ -109,7 +109,7 @@
     ui: {
       chart:{
         trails: true,
-        labels: {removeLabelBox: true}
+        labels: {removeLabelBox: false}
       },
       presentation: true,
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
@@ -122,7 +122,7 @@
   });
 d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
     
-viz.model.state.entities.on("change", labelsCoatOfArms);    
+//viz.model.state.entities.on("change", labelsCoatOfArms);    
 
 viz.model.on("ready", function(){
   labelsHideShow(true,0);
@@ -147,15 +147,15 @@ function explode(){
     exploded = true;
   
     viz.setModel({state: {entities: {select: [
-      {"geo":"1","labelOffset":[0.024,0.119]},
-      {"geo":"2","labelOffset":[-0.133,0.029]},
-      {"geo":"3","labelOffset":[0.228,-0.016]},
-      {"geo":"4","labelOffset":[0.203,-0.055]},
-      {"geo":"5","labelOffset":[-0.012,-0.047]},
-      {"geo":"6","labelOffset":[0.14,-0.088]},
-      {"geo":"7","labelOffset":[0.167,0.048]},
-      {"geo":"8","labelOffset":[0.275,0.043]},
-      {"geo":"9","labelOffset":[-0.069,0.11]}
+      {"geo":"1","labelOffset":[-0.031,0.176]},
+      {"geo":"2","labelOffset":[-0.023,-0.109]},
+      {"geo":"3","labelOffset":[-0.039,0.298]},
+      {"geo":"4","labelOffset":[0.146,-0.181]},
+      {"geo":"5","labelOffset":[-0.042,-0.189]},
+      {"geo":"6","labelOffset":[0.232,-0.072]},
+      {"geo":"7","labelOffset":[0.15,0.004]},
+      {"geo":"8","labelOffset":[0.035,-0.269]},
+      {"geo":"9","labelOffset":[-0.058,0.094]}
   ]}}})
     
     
@@ -178,7 +178,7 @@ function explode(){
   
   provincesHideShow(false,500);
   labelsHideShow(true,0);
-  labelsCoatOfArms();
+  //labelsCoatOfArms();
   
   setTimeout(function(){
     var zafRadius = bubbleZaf.attr("r")

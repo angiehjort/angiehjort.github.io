@@ -5,6 +5,30 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <style>
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
+      background-color: transparent
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
+      padding-top: 30px;
+      background-color: transparent;
+      border-bottom: none;
+      border-top: none;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-sidebar{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
+      display: none;
+    }
+  
+  </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
@@ -87,7 +111,7 @@
       splash: false
     },
     ui: {
-      presentation: false,
+      presentation: true,
       buttons: [],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
