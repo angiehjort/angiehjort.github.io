@@ -171,6 +171,40 @@
           2011
         ]
     },
+    "mac": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "domain": [
+        0,
+        100
+      ],
+      "availability": [
+        1996,
+        2016
+      ],
+      "color": {"palette": { "0": "#ffffcc", "100": "#800026"}}
+    },
+    "smam": {
+      "use": "indicator",
+      "scales": [
+        "linear",
+        "log"
+      ],
+      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+      "domain": [
+        0,
+        100
+      ],
+      "availability": [
+        1996,
+        2016
+      ],
+      "color": {"palette": { "0": "#ffffcc", "100": "#800026"}}
+    },
     "sampi_intensity": {
       "use": "indicator",
       "scales": ["linear"],
@@ -671,10 +705,11 @@
           "Higher": "#4cd843",
           "Secondary": "#8ee8a0",
           "Primary": "#ffb43d",
-          "No schooling/less than primary": "#e83739",
-          "Unspecified": "grey",
-          "Not applicable": "grey",
-          "Other/Do not know": "grey"
+          "No schooling/less than primary": "#ff2222",
+          "Unspecified": "#a8a8a8",
+          "Not applicable": "#a8a8a8",
+          "Other/Do not know": "#a8a8a8",
+          "Under 5": "#a8a8a8"
         },
         "selectable": false
       }

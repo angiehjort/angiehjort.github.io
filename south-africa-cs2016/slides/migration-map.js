@@ -130,9 +130,10 @@
       },
       
       
-      ready: function(data) {
+      ready: function(data, properties) {
         var _this = this;
         if(data) this.model.data = data;
+        if(properties) this.model.properties = properties;
 
         var collection = {};
               
@@ -180,8 +181,8 @@
 
             _this.arrows.each(function(d) {
               var view = d3.select(this);
-              var thisArrowIsGain = id == "shape-" + d[TO];
-              var thisArrowIsLoss = id == "shape-" + d[FROM];
+              var thisArrowIsGain = (id == "shape-" + (id == "shape-world"? d[FROM] : d[TO]));
+              var thisArrowIsLoss = (id == "shape-" + (id == "shape-world"? d[TO] : d[FROM]));
               view.style("opacity", thisArrowIsGain||thisArrowIsLoss ? 1 : 0.15)
               
               var pathId = ["from-" + d[FROM] + " to-" + d[TO]];
@@ -218,7 +219,8 @@
           
           mousemove: function() {
             var id = d3.select(this).attr("id");
-            _this.setTooltip(_this.cache[id]);
+            if(id.indexOf("world")>-1)id = "shape-world";
+            _this.setTooltip(_this.cache[id], id);
           },
           
           mouseout: function() {
@@ -239,7 +241,7 @@
         }
       },
       
-      setTooltip: function(flow){
+      setTooltip: function(flow, id){
         
         this.tooltipEl.style("visibility", flow?"visible":"hidden")
         if(!flow || flow.in ==0 && flow.out ==0) return;
@@ -249,15 +251,21 @@
         var width = 100;
         var mouse = d3.mouse(d3.select("svg").node());
         this.tooltipEl
-          .attr("transform","translate(" + mouse[0] + "," + (mouse[1]+20) + ")")
+          .attr("transform","translate(" + (mouse[0] + width * shareIn + 10) + "," + (mouse[1] + 30) + ")")
+        
+        this.tooltipEl.selectAll(".line0")
+          .attr("x", -width * shareIn)
+          .text(this.model.properties[id.replace("shape-","")]);
         
         this.tooltipEl.selectAll(".line1")
           .attr("dx", "-0.3em")
+          .style("opacity",flow.in?1:0)
           .text(utils.formatter(flow.in) + " in");
         
         this.tooltipEl.selectAll(".line2")
           .attr("dx", "0.3em")
-          .text(utils.formatter(flow.out) + " out per year");
+          .style("opacity",flow.out?1:0)
+          .text(utils.formatter(flow.out) + " out");
         
         this.tooltipEl.select(".gain")
           .attr("x", (-width * shareIn) + "px")
@@ -392,14 +400,22 @@
       migrationMap.element = d3.select("body").append("div").attr("class","migrationmap");
       
       d3.xml(MAP_FILE, "image/svg+xml", function(error, xml) {
-        if (error) throw error;
+        if (error) return console.error(error);
         migrationMap.element.node().appendChild(xml.documentElement);
         
         domReadyCallback(function(){
-          d3.csv(DATA_FILE, function(error, response) {
+          d3.csv(PROPERTY_FILE, function(error, responseProperties) {
+            if (error) return console.error(error);
+            
+            var properties = {};
+            responseProperties.forEach(function(d){
+              properties[d["geo"]] = d.name;
+            })
+            
+          d3.csv(DATA_FILE, function(error, responseData) {
             if (error) return console.error(error);
 
-            response = response
+            responseData = responseData
               //remove internal entity migration and configurable exceptions 
               .filter(function(f) {return f[FROM] != f[TO] && EXCLUDE.indexOf(f[FROM])==-1 && EXCLUDE.indexOf(f[TO])==-1;})
               .filter(function(f) {return !isWithinSameProvince(f[FROM],f[TO])})
@@ -407,9 +423,10 @@
 
             dataReadyCallback(function(){
               migrationMap.readyOnce();
-              migrationMap.ready(response);
+              migrationMap.ready(responseData, properties);
             });
 
+          });
           });
         });
       

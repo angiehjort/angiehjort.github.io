@@ -5,19 +5,22 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
     <style>
     .vzb-bc-axis-y .tick {
       display: none;
     }
       
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
-      background-color: transparent
+      background-color: transparent;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
       padding-top: 100px;
       background-color: transparent;
       border-bottom: none;
       border-top: none;
+      pointer-events: none;
     }
     .vzb-tool-stage{ 
       position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
@@ -27,10 +30,12 @@
     }
     .vzb-tool-sidebar{ 
       position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-buttonlist{ 
       background-color: transparent;
       position: absolute; top: 350px; 
+      pointer-events: visible;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
       display: none;
@@ -87,12 +92,12 @@
     },
     data: {
       reader: "csv",
-      path: "../data/2016/ddf--datapoints--population--by--year--gender--age_by_1_year--educational_attainment_4_groups.csv",
+      path: "../data/2016/ddf--datapoints--population--by--year--gender--age_by_1_year--educational_attainment_4_groups_29_JUNE_2016.csv",
       splash: false
     },
     ui: {
       presentation: true,
-      buttons: ['colors', 'inpercent'],
+      buttons: [],
       buttons_expand: [],
       dialogs: {
         'popup': ['colors'],

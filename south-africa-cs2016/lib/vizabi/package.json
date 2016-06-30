@@ -1,19 +1,19 @@
 {
   "_args": [
     [
-      "vizabi@0.15.0-35",
+      "vizabi@0.15.0-36",
       "/Users/angieskazka/south-africa-cs2016"
     ]
   ],
-  "_from": "vizabi@0.15.0-35",
-  "_id": "vizabi@0.15.0-35",
+  "_from": "vizabi@0.15.0-36",
+  "_id": "vizabi@0.15.0-36",
   "_inCache": true,
   "_installable": true,
   "_location": "/vizabi",
   "_nodeVersion": "5.9.1",
   "_npmOperationalInternal": {
     "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/vizabi-0.15.0-35.tgz_1467045976408_0.052524400409311056"
+    "tmp": "tmp/vizabi-0.15.0-36.tgz_1467210890638_0.7990144700743258"
   },
   "_npmUser": {
     "email": "konzeptmeister@gmail.com",
@@ -23,18 +23,18 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "vizabi",
-    "raw": "vizabi@0.15.0-35",
-    "rawSpec": "0.15.0-35",
+    "raw": "vizabi@0.15.0-36",
+    "rawSpec": "0.15.0-36",
     "scope": null,
-    "spec": "0.15.0-35",
+    "spec": "0.15.0-36",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_shasum": "32502516a29e6ec3c8218f99b233c05c6980d589",
+  "_shasum": "ac11e98c91303bf5e343d61b0725f4a1d89e2ceb",
   "_shrinkwrap": null,
-  "_spec": "vizabi@0.15.0-35",
+  "_spec": "vizabi@0.15.0-36",
   "_where": "/Users/angieskazka/south-africa-cs2016",
   "author": "",
   "bugs": {
@@ -118,13 +118,13 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "32502516a29e6ec3c8218f99b233c05c6980d589",
-    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-35.tgz"
+    "shasum": "ac11e98c91303bf5e343d61b0725f4a1d89e2ceb",
+    "tarball": "https://registry.npmjs.org/vizabi/-/vizabi-0.15.0-36.tgz"
   },
   "files": [
     "build/dist"
   ],
-  "gitHead": "0e84195ae9b2843edf64f1f258f2b098899c21e6",
+  "gitHead": "3d217fc9a8f12c07e9e310d978298d11d6763b34",
   "homepage": "http://vizabi.org",
   "license": "BSD-3-Clause",
   "main": "build/dist/vizabi.js",
@@ -158,5 +158,5 @@
     "e2e:local": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/.bin/protractor .cicd/protractor.conf.js",
     "test": "karma start karma.conf.js"
   },
-  "version": "0.15.0-35"
+  "version": "0.15.0-36"
 }

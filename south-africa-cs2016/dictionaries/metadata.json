@@ -120,20 +120,28 @@
      "color": {
          "shades": {
              "fill1": 0,
-             "fill2": 1,
-             "fill3": 2,
-             "shade": 3,
-             "print_fill": 4,
-             "print_stroke": 5
+             "shade": 1
          },
          "palette": {
-             "asia": ["#ff5872", "#ff5178", "#ff658a", "#da0025", "#fa4e73", "#b2043a"], 
-             "europe": ["#ffe700", "#fbdd00", "#fff400", "#fbaf09", "#ffe700", "#b17f4a"], 
-             "americas": ["#7feb00", "#5de200", "#81f201", "#00b900", "#b5ea32", "#008d36"], 
-             "africa": ["#00d5e9", "#00c8ec", "#00e1ec", "#0098df", "#77dff7", "#0586c6"], 
-             "_default": ["#ffb600", "#ffaa14", "#ffc500", "#fb6d19", "#ffb600", "#9b4838"],
-             "southafrica": ["#00d5e9", "#00c8ec", "#00e1ec", "#0098df", "#77dff7", "#0586c6"], 
-             "southafricaprovince": ["#0087a7", "#0087a7", "#0087a7", "#0087a7", "#0087a7", "#0087a7"] 
+             "asia": ["#ff5872", "#da0025"],
+             "europe": ["#ffe700", "#fbaf09"],
+             "americas": ["#7feb00", "#00b900"],
+             "africa": ["#00d5e9", "#0098df"],
+             "_default": ["#ffb600", "#fb6d19"],
+             "southafrica": ["#00d5e9", "#0098df"],
+             "1": ["#e41a1c", "#c11b1c"],
+             "2": ["#377eb8", "#25679d"],
+             "3": ["#4daf4a", "#439340"],
+             "4": ["#984ea3", "#814689"],
+             "5": ["#ff7f00", "#e27000"],
+             "6": ["#ffff33", "#afa52d"],
+             "7": ["#a65628", "#964e24"],
+             "8": ["#f781bf", "#ce70a1"],
+             "9": ["#999999", "#6f6f6f"],
+             "black": ["#ff5872", "#da0025"],
+             "coloured": ["#ffe700", "#fbaf09"],
+             "indian": ["#7feb00", "#00b900"],
+             "white": ["#00d5e9", "#0098df"]
          },
          "selectable": false
          
@@ -147,6 +155,13 @@
      "availability": [1800, 2015]
  },
  "sg_gini": {
+     "use": "indicator",
+     "scales": ["linear"],
+     "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
+     "domain": [16.2, 74.3],
+     "availability": [1800, 2015]
+ },
+ "sg_life_expectancy": {
      "use": "indicator",
      "scales": ["linear"],
      "sourceLink": "http://www.gapminder.org/news/data-sources-dont-panic-end-poverty",
@@ -177,13 +192,30 @@
     ],
     "use": "indicator",
     "domain": [
-      0,1
+      0,100
     ],
     "availability": [
       2008,
       2016
     ]
   },
+  "bachelor_after_matric_proportion": {
+    "sourceLink": "http://spreadsheets.google.com/pub?key=rb0oP4d1BREXa8xMIUf4NZg",
+    "scales": [
+      "linear",
+      "log"
+    ],
+    "format": "percent",
+    "use": "indicator",
+    "domain": [
+      0,1
+    ],
+    "availability": [
+      1961,
+      2016
+    ]
+  },
+
  "age": {
      "use": "indicator",
      "scales": ["linear", "log"],

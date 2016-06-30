@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="lib/reveal.js/css/theme/white.css">
   <link rel="stylesheet" href="presentation.css">
   <script src="lib/reveal.js/js/reveal.js"></script>
+  <script src="lib/jquery.min.js"></script>
 </head>
 
 <body>
@@ -53,11 +54,6 @@
         <iframe class="withHeader" data-src="slides/vizabi-cartogram-municipality.html?unlockafterplay=true"></iframe>
       </section>
       
-      <section>
-        <h3>High growth municipalities</h3>
-        <iframe class="withHeader" data-src="slides/vizabi-cartogram-municipality.html?select=179,967,172,362,979,596,570,761,869,164,662"></iframe>
-      </section>
-      
       <section data-transition="fade">
         <iframe style="height: 100%;" data-src="slides/migration-map-national-globe.html"></iframe>
       </section>
@@ -71,22 +67,25 @@
       </section>
       
       <section>
-          <h3>Progress of South Africa</h3>
-        <iframe class="withHeader" data-src="slides/vizabi-bubbles-wealthhealth.html"></iframe>
+        <h3>Progress of South African provinces</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-bubbles-wealthhealth.html?source=--morudu"></iframe>
       </section>
-      
-
 
       <section>
-        <h1>Municipal services and challenges</h1></section>
+        <h3>Life expectancy in South African provinces</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-bubbles-wealthhealth_life_expectancy.html"></iframe>
+      </section>
+
+      <section>
+        <h1>Municipal services and challenges</h1>
+      </section>
 
       <section>
         <iframe data-src="slides/vizabi-choropleth-services.html?which=water_access_percentage"></iframe>
       </section>
 
       <section>
-          <h3>Water access satisfaction</h3>
-          <iframe class="withHeader bubble" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=water"></iframe>
+          <iframe class="bubble" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=water"></iframe>
       </section>
       
       <section>
@@ -94,22 +93,21 @@
       </section>
 
       <section>
-          <h3>Electricity access satisfaction</h3>
-          <iframe class="withHeader bubble" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=electricity"></iframe>
+          <iframe class="bubble" data-src="slides/vizabi-bubbles-service_satisfaction.html?which=electricity"></iframe>
       </section>
       
       <section>
-        <h3>Perceived municipal challenges: Water supply</h3>
+        <h3>Perceived municipal challenges</h3>
         <iframe class="withHeader" data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch1"></iframe>
       </section>
       
       <section>
-        <h3>Perceived municipal challenges: Unemployment</h3>
+        <h3>Perceived municipal challenges</h3>
         <iframe class="withHeader" data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch10"></iframe>
       </section>
       
       <section>
-        <h3>Perceived municipal challenges: Electricity cost</h3>
+        <h3>Perceived municipal challenges</h3>
         <iframe class="withHeader" data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch4"></iframe>
       </section>
       
@@ -121,12 +119,12 @@
       
       <section>
           <h3>Poverty by SAMPI progress-groups</h3>
-        <iframe class="withHeader" data-src="slides/vizabi-bubbles-sampi.html?color=sampi_progress_group"></iframe>
+        <iframe class="withHeader" data-src="slides/vizabi-bubbles-sampi.html?color=sampi_progress_group&year=2011"></iframe>
       </section>
       
       <section>
-          <h3>Poverty by districts</h3>
-        <iframe class="withHeader" data-src="slides/vizabi-bubbles-sampi.html?geo=district"></iframe>
+          <h3>Poverty in accelerated rural development nodes</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-bubbles-sampi.html?geo=district&year=2011&select=212,213,214,215,419,521,522,523,554,832,933,543,244,345,947,105"></iframe>
       </section>
 
       <section>
@@ -137,23 +135,37 @@
         Does the nation see education as a challenge?</section>
 
       <section>
-        <h3>Perceived municipal challenge: education</h3>
+        <h3>Perceived municipal challenges</h3>
         <iframe class="withHeader" data-src="slides/vizabi-choropleth-challenge-ranks.html?which=ch11"></iframe>
       </section>
       
       
       <section>
-        <h1>Youth and the RDP promise</h1></section>
+        <h1>Youth and the RDP promise</h1>
+      </section>
       
       <section>
-        <h3>QLFS Unemployment</h3>
-        <iframe class="withHeader" style="width: 70%;" data-src="slides/vizabi-line-unemployment.html"></iframe>
+        <iframe style="width: 70%;" data-src="slides/vizabi-line-unemployment.html"></iframe>
+      </section>
+
+      <section>
+          <h3>Graduate unemployment</h3>
+         <iframe data-src="slides/barchart-employment.html"></iframe>
+      </section>
+
+      <section>
+        <h3>Marriage and childbearing</h3>
+          <iframe class="withHeader bubble" data-src="slides/vizabi-bubbles-smam.html"></iframe>
       </section>
       
       
       <section>
         <h3>Age distribution</h3>
         <iframe class="withHeader" style="width: 70%;" data-src="slides/vizabi-agepyramid-youth.html"></iframe>
+      </section>
+
+      <section>
+        <iframe style="width: 70%;" data-src="slides/vizabi-line-education_timeplot.html"></iframe>
       </section>
       
       <section>
@@ -162,23 +174,23 @@
       </section>
       
       <section>
-          <h3>Gender differences</h3>
-          <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-gender.html"></iframe>
+        <h3>Educational attainment: by gender</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-gender.html"></iframe>
       </section>
       
       <section>
-          <h3>Population group differences</h3>
-          <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
+        <h3>Educational attainment: by Population group</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
       </section>
       
       <section>
-          <h3>Absolute numbers</h3>
-          <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?"></iframe>
+        <h3>Absolute numbers</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?"></iframe>
       </section>
           
       <section>
-          <h3>Population group differences</h3>
-          <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
+        <h3>Population group differences</h3>
+        <iframe class="withHeader" data-src="slides/vizabi-agepyramid-education-population-group.html?inpercent=true"></iframe>
       </section>
               
       <section>
@@ -187,10 +199,12 @@
       </section>
       
       <section>
-        Lerato Movie
+        <video width="100%" height="100%" src="assets/videos/lerato.mov" data-autoplay></video>
       </section>
       <section>
-        Call to action: look on the website to explore the data yourself!
+        <img src="assets/sitescreenshot.jpg" style="height: 74vh; width: auto; margin: 3vh; display: inline-block; vertical-align: middle;">
+        <h3 style="display: inline-block; vertical-alignment: middle;">Visit our website and explore the data yourself!<br><br>
+        <a href="#">http://website.gov.za</a></h3>
       </section>
     </div>
     <footer>
@@ -219,6 +233,18 @@
     maxScale: 2
   });
 
+  Reveal.configure({
+  keyboard: {
+    32: function(event) { 
+      var $iframe = $("section.present iframe");
+      if ($iframe.length && $iframe.get()[0].contentWindow.handleKeyPress) {
+        $iframe.get()[0].contentWindow.handleKeyPress(event);
+      }
+    } , // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+    13: Reveal.next
+  }
+});
+
   Reveal.addEventListener('slidechanged', function(event) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
     history.pushState({
@@ -239,7 +265,7 @@
     if (event.srcElement.nodeName === "INPUT") return;
     switch (event.which || event.keyCode) {
       case 32:
-        Reveal.next();
+        //Reveal.next();
         break; //space
       case 39:
         Reveal.next();

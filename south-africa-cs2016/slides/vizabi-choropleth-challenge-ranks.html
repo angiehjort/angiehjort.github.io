@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   <style>
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
       background-color: transparent
@@ -69,7 +70,7 @@
     },
     data: {
       reader: "csv",
-      path: "../data/ddf--datapoints--challenge_rank--by--municipality--challenge.csv",
+      path: "../data/2016/ddf--datapoints--challenge_rank--by--municipality--challenge.csv",
       splash: false
     },
     ui: {
@@ -82,6 +83,7 @@
       }
     }
   });
+  d3.selectAll('.vzb-ct-axis-y-info').style('display', 'none');
     
   d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
   d3.select(".vzb-ct-year").classed("vzb-hidden",true);

@@ -5,19 +5,22 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   <style>
     .vzb-bc-axis-y .tick {
       display: none;
     }
     
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
-      background-color: transparent
+      background-color: transparent;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
       padding-top: 100px;
       background-color: transparent;
       border-bottom: none;
       border-top: none;
+      pointer-events: none;
     }
     .vzb-tool-stage{ 
       position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
@@ -27,30 +30,43 @@
     }
     .vzb-tool-sidebar{ 
       position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-buttonlist{ 
       background-color: transparent;
       position: absolute; top: 350px; 
+      pointer-events: visible;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
       display: none;
     }
 
-    
+
     #controls {
       position: absolute;
-      top: 40px;
-      left: 20%;
+      top: 30px;
+      left: 10px;
       font-family: sans-serif;
     }
     #controls span {
       background: #f5e8bf;
-      border: 1px solid black;
-      padding: 5px;
-      border-radius: 2px;
+      padding: 7px;
       cursor: pointer;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      margin: 0px;
     }
-    #controls span:hover {
+    #controls span:first-child{
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    #controls span:last-child{
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-right: 1px solid black;
+    }
+    #controls span.active {
       background: #f9c242;
     }
     #mock {
@@ -70,10 +86,8 @@
 
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%;'></div>
-    <div id='controls'>
-    <span id="btn-white">white</span>
-    <span id="btn-indian">indian</span>
-    <span id="btn-coloured">coloured</span>
+  <div id='controls'>
+    <span data="White">White</span><span data="Indian or Asian">Indian or Asian</span><span data="Coloured">Coloured</span>
   </div>
   
   
@@ -86,22 +100,21 @@
     translationPath: localUrl + 'dictionaries/zaf/en.json',
     conceptpropsPath: localUrl + 'dictionaries/zaf/metadata.json',
   };
+  
+  function updateSelectors(data){
+    d3.select("#controls").selectAll("span").classed("active", function(){
+      return data == d3.select(this).attr("data");
+    })
+  }
     
-  d3.select("#btn-white").on("click",function(){
+  d3.select("#controls").selectAll("span").on("click",function(){
+    var data = d3.select(this).attr("data");
     viz.setModel({state: {entities_side: {show: {
-      "population_group": ["White", "Black African"]
+      "population_group": [data, "Black African"]
     }}}})
+    updateSelectors(data);
   })
-  d3.select("#btn-indian").on("click",function(){
-    viz.setModel({state: {entities_side: {show: {
-      "population_group": ["Indian or Asian", "Black African"]
-    }}}})
-  })
-  d3.select("#btn-coloured").on("click",function(){
-    viz.setModel({state: {entities_side: {show: {
-      "population_group": ["Coloured", "Black African"]
-    }}}})
-  })
+  updateSelectors("White");
 
   var viz = Vizabi('AgePyramid', document.getElementById('placeholder'), {
     state: {
@@ -139,7 +152,7 @@
     },
     data: {
       reader: "csv",
-      path: "../data/2016/ddf--datapoints--population--by--year--age_by_1_year--population_group--educational.csv",
+      path: "../data/2016/ddf--datapoints--population--by--year--age_by_1_year--population_group--educational_29_JUNE_2016.csv",
       splash: false
     },
     ui: {
@@ -147,7 +160,7 @@
         inpercent: !!parent.getParamValue("inpercent", window)
       },
       presentation: true,
-      buttons: ['colors', 'inpercent'],
+      buttons: [],
       buttons_expand: [],
       dialogs: {
         'popup': ['colors', 'moreoptions'],

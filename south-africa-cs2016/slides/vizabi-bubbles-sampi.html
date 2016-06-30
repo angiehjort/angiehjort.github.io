@@ -5,24 +5,31 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   <style>
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
-      background-color: transparent
+      background-color: transparent;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
       padding-top: 30px;
       background-color: transparent;
       border-bottom: none;
       border-top: none;
+      pointer-events: none;
     }
     .vzb-tool-stage{ 
       position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
     }
     .vzb-tool-stage{ 
       position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-cl-minimap, .vzb-cl-option {
+      pointer-events: visible;
     }
     .vzb-tool-sidebar{ 
       position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+      pointer-events: none;
     }
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
       display: none;
@@ -36,7 +43,14 @@
   <script>
 
   var geo = parent.getParamValue("geo", window) || 'municipality';
-  var geoCat
+
+  var selectParam = parent.getParamValue("select", window);
+  var select = [];
+  if (selectParam) {
+    select = selectParam.split(",").map(function(dist) {
+      return { district: dist };
+    }); 
+  }
 
   var locationArray = window.location.href.split("/");
   var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
@@ -50,15 +64,16 @@
   var config = {
     state: {
       time: {
-        start: "2001",
-        value: "2001",
+        start: parent.getParamValue("year", window) || "2001",
+        value: parent.getParamValue("year", window) || "2001",
         end: "2016",
         dim: "year"
       },
       entities: {
-        select: [],
+        select: select,
         show: {
         },
+        opacitySelectDim: 0.1,
         dim: geo
       },
       entities_minimap: {
@@ -125,7 +140,11 @@
   config.state.entities_minimap.show[geo + ".cat"] = [(parent.getParamValue("color", window) || "province")];
 
   var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), config);
-    
+  d3.selectAll('.vzb-bc-axis-y-info, .vzb-bc-axis-x-info, .vzb-data-warning').style('display', 'none');
+  d3.select(".vzb-bc-labels-crop").style('display','none');
+  d3.select(".vzb-bc-lines").style('display','none');
+  d3.select(".vzb-bc-bubbles circle").style('pointer-events','none');
+
   //this would make vizabi always show sidebar with legend
   viz.layout.screen_profiles.large.min_height = 0;
   viz.layout.screen_profiles.large.min_width = 0;

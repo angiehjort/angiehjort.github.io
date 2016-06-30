@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
+  <style>
+  @font-face {
+  font-family: 'geoslab703_md_bt_medium';
+  src: url('../assets/fonts/geoslab703_md_bt_medium.woff2') format('woff2'),
+       url('../assets/fonts/geoslab703_md_bt_medium.woff') format('woff'),
+       url('../assets/fonts/geoslab703_md_bt_medium.ttf') format('truetype');
+}
+.vzb-tool .vzb-lc-axis-y-title text{
+  font-family: "geoslab703_md_bt_medium";
+  font-size: 4vh;
+  font-weight: bold;
+}
+  </style>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <script>
+
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/metadata.json'
+  };
+  var viz = Vizabi('LineChart', document.getElementById('placeholder'), {
+
+    state: {
+      time: {
+        start: "1975",
+        end: "2016",
+        value: "1975"
+      },
+      entities: {
+        show: {
+          "geo": ["Black African","Indian or Asian","Coloured","White"]
+        }
+      },
+      marker: {
+        axis_y: {
+          domainMin: 0,
+          domainMax: 28,
+          zoomedMin: 0,
+          zoomedMax: 28,
+          which: "bachelor_after_matric_proportion",
+          scaleType: "linear",
+        }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/2016/ddf--datapoints--bachelor_after_matric_proportion--by--year--population_group.csv",
+      splash: false
+    },
+    ui: {
+      presentation: true,
+      buttons: [],
+      dialogs: {}
+    }
+  });
+  d3.selectAll('.vzb-lc-axis-y-info').style('display', 'none');
+  viz.components[0].profiles.large.limitMaxTickNumberX = 8;
+  viz.components[0].presentationProfileChanges.large.margin.right = 250;
+  viz.components[0].presentationProfileChanges.medium.margin.right = 200;
+  viz.components[0].presentationProfileChanges.small.margin.right = 200;
+  </script>
+</body>
+
+</html>

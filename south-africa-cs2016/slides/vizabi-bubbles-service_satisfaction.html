@@ -28,7 +28,19 @@
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar{ 
       position: absolute; left: 150px; 
     }
-    
+
+  @font-face {
+  font-family: 'geoslab703_md_bt_medium';
+  src: url('../assets/fonts/geoslab703_md_bt_medium.woff2') format('woff2'),
+       url('../assets/fonts/geoslab703_md_bt_medium.woff') format('woff'),
+       url('../assets/fonts/geoslab703_md_bt_medium.ttf') format('truetype');
+}
+.vzb-tool .vzb-bc-axis-y-title text{
+  font-family: "geoslab703_md_bt_medium";
+  font-size: 4vh;
+  font-weight: bold;
+}
+
   </style>
 </head>
 
@@ -79,14 +91,18 @@
         axis_y: {
           which: parent.getParamValue("which", window) + "_satisfaction",
           scaleType: "linear",
+          domainMin: 0,
           domainMax: 105,
-          domainMin: 0
+          zoomedMin: 0,
+          zoomedMax: 105
         },
         axis_x: {
           which: parent.getParamValue("which", window) + "_access",
           scaleType: "linear",
+          domainMin: 0,
           domainMax: 105,
-          domainMin: 0
+          zoomedMin: 0,
+          zoomedMax: 105
         },
         size: {
           which: "population",
@@ -124,6 +140,7 @@
       }
     }
   });
+  d3.selectAll('.vzb-bc-axis-y-info, .vzb-bc-axis-x-info, .vzb-data-warning').style('display', 'none');
 d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
 d3.select(".vzb-bc-year").classed("vzb-hidden",true);
 

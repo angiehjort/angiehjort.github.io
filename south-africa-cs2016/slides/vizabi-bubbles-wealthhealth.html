@@ -5,12 +5,13 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   
   <style>
     #controls {
       position: absolute;
-      top: 40px;
-      right: 10%;
+      top: 6px;
+      right: 2px;
       font-family: sans-serif;
       font-size: 20px;
     }
@@ -24,14 +25,48 @@
     #controls span:hover {
       background: #f9c242;
     }
+    
+    
+    
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
+      background-color: transparent;
+      pointer-events: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
+      padding-top: 30px;
+      background-color: transparent;
+      border-bottom: none;
+      border-top: none;
+      pointer-events: none;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-sidebar{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+      pointer-events: none;
+    }
+    .vzb-cl-minimap {
+      pointer-events: visible;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
+      display: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-buttonlist{ 
+      display: none;
+    }
+  
   </style>
 </head>
 
 <body onkeyup="parent.keyCode(event)">
   <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
-  <div id='controls'>
+  <!-- div id='controls'>
     <span id="btn-explode">Explode</span>
-  </div>
+  </div -->
   
   <script>
 
@@ -45,18 +80,19 @@
   };
     
     
-  var start = "1996";
+  var start = "2005";
 
   var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
     state: {
       time: {
         start: start,
         end: "2014",
-        value: start
+        value: start,
+        delay: "3000"
       },
       entities: {
         select: [
-          {"geo": "zaf", "trailStartTime": "1996", "labelOffset": [0.1, -0.1], "firstAvailableSegment": "1996-01-01T00:00:00.000Z"},
+          {"geo": "zaf", "trailStartTime": "2005", "labelOffset": [0.1, -0.1], "firstAvailableSegment": "2005-01-01T00:00:00.000Z"},
         ],
         show: {
           _defs_: {
@@ -103,7 +139,7 @@
     },
     data: {
       reader: "csv",
-      path: "../data/ddf--datapoints--u5mr--gdp--population--by--geo--time.csv",
+      path: "../data/2016/ddf--datapoints--u5mr--gdp--population--by--geo--time" + (parent.getParamValue("source", window) || "") + ".csv",
       splash: false
     },
     ui: {
@@ -115,35 +151,32 @@
       buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
       dialogs: {
         'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
-        'sidebar': ['colors', 'find', 'size', 'zoom'], 
+        'sidebar': ['colors'], 
         'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
       }
     }
   });
-d3.select(".vzb-tool-sidebar").classed("vzb-hidden",true);
-    
-//viz.model.state.entities.on("change", labelsCoatOfArms);    
+  d3.selectAll('.vzb-bc-axis-y-info, .vzb-bc-axis-x-info, .vzb-data-warning').style('display', 'none');
 
 viz.model.on("ready", function(){
   labelsHideShow(true,0);
   setTimeout(function(){
     provincesHideShow(true, 0);
   }, 100)
+  setTimeout(explode, 3000);
 })
 
 var exploded = false;
     
 d3.select("#btn-explode").on("click",function(){
-      
-      setTimeout(function(){
-        if(!exploded) explode();
-      },500)
-      
-      d3.select(this).style("visibility", "hidden");
+  setTimeout(explode,500)
+  d3.select(this).style("visibility", "hidden");
 });
+    
+
   
 function explode(){
-    
+    if(exploded) return;
     exploded = true;
   
     viz.setModel({state: {entities: {select: [

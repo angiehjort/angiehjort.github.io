@@ -99,7 +99,10 @@ font-size: 22px;
 }
 .tooltip text{
   alignment-baseline: hanging;
-  font-size: 12px;
+  font-size: 16px;
+}
+.tooltip text.line0{
+  font-size: 24px;
 }
 .tooltip text.line1{
   text-anchor: end;

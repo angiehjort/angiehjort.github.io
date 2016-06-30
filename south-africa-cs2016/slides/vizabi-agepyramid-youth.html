@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   <style>
     .vzb-bc-axis-y .tick {
       display: none;
@@ -65,7 +66,7 @@
     },
     data: {
       reader: "csv",
-      path: "../data/ddf--datapoints--population--by--year--gender--age_by_1_year.csv",
+      path: "../data/2016/ddf--datapoints--population--by--year--gender--age_by_1_year.csv",
       splash: false
     },
     ui: {
@@ -84,6 +85,10 @@
   viz.model.state.time._defaults.end = "2016";
   viz.components[0].presentationProfileChanges.large.margin.left = 170;
   viz.components[0].presentationProfileChanges.medium.margin.left = 150;
+  viz.components[0].presentationProfileChanges.small = {}
+  viz.components[0].presentationProfileChanges.small.margin = {};
+  viz.components[0].presentationProfileChanges.small.margin.left = 110;
+
 
   viz.on('ready', redrawAxis);
   viz.on('resize', redrawAxis);

@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
   <script src="../lib/d3.v3.min.js"></script>
   <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
   
   <style>
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs {
@@ -25,6 +26,18 @@
     .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-dialogs-dialog.vzb-sidebar[data-dlg=colors] .vzb-cl-rainbow {
       right: 15px;
     }
+
+  @font-face {
+  font-family: 'geoslab703_md_bt_medium';
+  src: url('../assets/fonts/geoslab703_md_bt_medium.woff2') format('woff2'),
+       url('../assets/fonts/geoslab703_md_bt_medium.woff') format('woff'),
+       url('../assets/fonts/geoslab703_md_bt_medium.ttf') format('truetype');
+}
+.vzb-tool .vzb-ct-axis-y-title text{
+  font-family: "geoslab703_md_bt_medium";
+  font-size: 5vh;
+  font-weight: bold;
+}
   </style>
   
 </head>
@@ -119,6 +132,7 @@
       }
     }
   });
+  d3.selectAll('.vzb-ct-axis-y-info').style('display', 'none');
 
   viz.model.state.time._defaults.end = "2016";
 

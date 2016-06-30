@@ -1,0 +1,301 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+  <link rel="stylesheet" href="../lib/vizabi/build/dist/vizabi.css">
+  <script src="../lib/d3.v3.min.js"></script>
+  <script src="../lib/vizabi/build/dist/vizabi.js"></script>
+  <script src="../lib/utils.js"></script>
+  
+  <style>
+    #controls {
+      position: absolute;
+      top: 6px;
+      right: 2px;
+      font-family: sans-serif;
+      font-size: 20px;
+    }
+    #controls span {
+      background: #f5e8bf;
+      border: 1px solid black;
+      padding: 5px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #controls span:hover {
+      background: #f9c242;
+    }
+    
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-dialogs{
+      background-color: transparent;
+      pointer-events: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar {
+      padding-top: 30px;
+      background-color: transparent;
+      border-bottom: none;
+      border-top: none;
+      pointer-events: none;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-stage{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;
+    }
+    .vzb-tool-sidebar{ 
+      position: absolute; width: 100%; height: 100%; top: 0px; right: 0px;
+      pointer-events: none;
+    }
+    .vzb-cl-minimap {
+      pointer-events: visible;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-dialogs>.vzb-dialogs-dialog.vzb-sidebar .vzb-dialog-title{
+      display: none;
+    }
+    .vzb-tool.vzb-large.vzb-dialog-expand-true .vzb-tool-sidebar .vzb-tool-buttonlist{ 
+      display: none;
+    }
+  
+  </style>
+</head>
+
+<body onkeyup="parent.keyCode(event)">
+  <div id='placeholder' style='position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%'></div>
+  <!-- div id='controls'>
+    <span id="btn-explode">Explode</span>
+  </div -->
+  
+  <script>
+
+  var locationArray = window.location.href.split("/");
+  var localUrl = locationArray.splice(0, locationArray.indexOf("slides")).join("/")+"/";
+      
+  Vizabi._globals.ext_resources = {
+    host: localUrl,
+    translationPath: localUrl + 'dictionaries/en.json',
+    conceptpropsPath: localUrl + 'dictionaries/metadata.json'
+  };
+    
+    
+  var start = "1996";
+
+  var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), {
+    state: {
+      time: {
+        start: start,
+        end: "2013",
+        value: start
+      },
+      entities: {
+        select: [
+          {"geo": "zaf", "trailStartTime": "2013", "labelOffset": [0.01, -0.082], "firstAvailableSegment": "2013-01-01T00:00:00.000Z"},
+        ],
+        show: {
+          _defs_: {
+            "geo": ["country","province"]
+          }
+        }
+      },
+      marker: {
+        axis_y: {
+          which: "sg_life_expectancy",
+          scaleType: "linear",
+          domainMin: 50,
+          zoomedMin: 50,
+          domainMax: 80,
+          zoomedMax: 80
+        },
+        size: {
+          extent: [0, 1]
+        },
+        axis_x: {
+          which: "sg_gdp_p_cap_const_ppp2011_dollar",
+          scaleType: "log",
+          domainMin: 1500,
+          zoomedMin: 1500,
+          domainMax: 23000,
+          zoomedMax: 23000
+        },
+        size: {
+          which: "sg_population",
+          scaleType: "linear",
+        }
+      },
+      marker_minimap:{
+        space: ["entities_minimap"],
+          label: {
+            use: "property",
+            which: "geo.name"
+          },
+          geoshape: {
+            use: "property",
+            which: "geo.shape_lores_svg"
+          }
+      }
+    },
+    data: {
+      reader: "csv",
+      path: "../data/2016/ddf--datapoints--life_expectancy--gdp--population--by--geo--time.csv",
+      splash: false
+    },
+    ui: {
+      chart:{
+        trails: true,
+        labels: {removeLabelBox: false}
+      },
+      presentation: true,
+      buttons: ['colors', 'find', 'size', 'trails', 'lock', 'moreoptions'],
+      dialogs: {
+        'popup': ['colors', 'find', 'size', 'zoom', 'moreoptions'], 
+        'sidebar': ['colors'], 
+        'moreoptions': ['opacity', 'speed', 'axes', 'size', 'colors', 'label', 'zoom', 'about']
+      }
+    }
+  });
+//d3.select(".vzb-tool").classed("vzb-timeslider-off",true);
+d3.selectAll('.vzb-bc-axis-y-info, .vzb-bc-axis-x-info, .vzb-data-warning').style('display', 'none');
+
+viz.model.on("ready", function(){
+  labelsHideShow(true,0);
+  setTimeout(function(){
+    provincesHideShow(true, 0);
+  }, 100)
+})
+
+viz.model.on("change:state.time.playing", function(){
+  //console.log(viz.getModel().state.time.value.getUTCFullYear(), viz.getModel().state.time.value.playing, dragging)
+  if (viz.getModel().state.time.value.getUTCFullYear()=="2013" && !viz.getModel().state.time.value.playing) {
+    setTimeout(explode, 2000);
+  }
+})
+
+var exploded = false;
+    
+d3.select("#btn-explode").on("click",function(){
+  setTimeout(explode,500)
+  d3.select(this).style("visibility", "hidden");
+});
+    
+
+  
+function explode(){
+    if(exploded) return;
+    exploded = true;
+  
+    viz.setModel({state: {entities: {select: [
+      {"geo":"1","labelOffset":[0.121, -0.082]},
+      {"geo":"2","labelOffset":[-0.005, 0.121]},
+      {"geo":"3","labelOffset":[0.254, 0.018]},
+      {"geo":"4","labelOffset":[0.207, 0.095]},
+      {"geo":"5","labelOffset":[-0.107, 0.005]},
+      {"geo":"6","labelOffset":[0.217, 0.136]},
+      {"geo":"7","labelOffset":[0.118, -0.051]},
+      {"geo":"8","labelOffset":[0.258, -0.045]},
+      {"geo":"9","labelOffset":[-0.052, -0.049]}
+  ]}}})
+    
+    
+  var bubbleZaf = d3.select(".vzb-bc-bubbles").select(".bubble-zaf")
+    .style("opacity",0.8);
+  var to = {"zaf": {x: bubbleZaf.attr("cx"), y: bubbleZaf.attr("cy")}};
+  
+  var provinceBubbles = d3.select(".vzb-bc-bubbles")
+    .selectAll(".bubble-1, .bubble-2, .bubble-3, .bubble-4, .bubble-5, .bubble-6, .bubble-7, .bubble-8, .bubble-9")
+    .each(function(d){
+      to[d.geo] = {x: d3.select(this).attr("cx"),  y: d3.select(this).attr("cy")}
+    });
+  
+  
+  var rndFactor = 30;
+  provinceBubbles
+    .attr("cy", function(){return parseInt(to["zaf"].y,10)+(Math.random()-0.5)*rndFactor})
+    .attr("cx", function(){return parseInt(to["zaf"].x,10)+(Math.random()-0.5)*rndFactor})
+  
+  
+  provincesHideShow(false,500);
+  labelsHideShow(true,0);
+  //labelsCoatOfArms();
+  
+  setTimeout(function(){
+    var zafRadius = bubbleZaf.attr("r")
+    bubbleZaf.transition().duration(500).ease("cubic")
+      .attr("r", 500)
+      .style("opacity", 0)
+      .each("end", function(){
+        d3.select(this).attr("r",zafRadius)
+      })
+        
+    provinceBubbles
+      .transition().duration(5000).ease("elastic")
+      .attr("cy", function(d){return to[d.geo].y})
+      .attr("cx", function(d){return to[d.geo].x})
+    
+  },500)
+  
+  setTimeout(function(){
+    viz.model.state.time.value = 2013;
+    labelsHideShow(null, 500);
+  },3500)
+
+}
+
+function provincesHideShow(hide, duration){
+  d3.select(".vzb-bc-bubbles")
+    .selectAll(".bubble-1, .bubble-2, .bubble-3, .bubble-4, .bubble-5, .bubble-6, .bubble-7, .bubble-8, .bubble-9")
+    .style("opacity",hide?1:0) 
+    .attr("transform",hide?"scale(0.000001)":null)
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);
+    
+}
+    
+    
+function labelsHideShow(hide, duration){
+  var o = hide?0:1;
+    
+  d3.select(".vzb-bc-labels")
+    .selectAll(".label-1, .label-2, .label-3, .label-4, .label-5, .label-6, .label-7, .label-8, .label-9")
+    .style("opacity",hide?1:0) 
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);  
+  
+  d3.select(".vzb-bc-lines")
+    .selectAll(".line-1, .line-2, .line-3, .line-4, .line-5, .line-6, .line-7, .line-8, .line-9")
+    .style("opacity",hide?1:0)
+    .transition().duration(duration)
+    .style("opacity",hide?0:1);
+}
+
+function labelsCoatOfArms() {
+  for (var i=1;i<=9;i++) {
+    var label = d3.select(".label-"+i);
+    var rect = label.select("rect");
+    var extension = (i==3) ? 'png' : 'svg';
+
+    label.selectAll("text").text(function(d,i) { 
+      var txt = d3.select(this).text();
+      var year19 = txt.lastIndexOf('19');
+      var year20 = txt.lastIndexOf('20');
+      if (year19 !== -1 || year20 !== -1)
+        return txt.substr(0,txt.length-4); 
+      else
+        return txt;
+      });
+    label.selectAll("rect").attr('width', function() { return d3.select(this).attr('width') + 50 } );
+    label.selectAll("image")
+     .data(["just one element to append"])
+     .enter().append("image")
+     .attr('x',parseFloat(rect.attr('x')) + parseFloat(rect.attr('width')*0.03))
+     .attr('y',parseFloat(rect.attr('y')) + parseFloat(rect.attr('height')*-0.5))
+     .attr('height', rect.attr('height')*2)
+     .attr('width', rect.attr('height')*2)
+     .attr('preserveAspectRatio', 'xMinYMin')
+     .attr("xlink:href","../assets/coat_of_arms/" + i + "."+ extension);
+  }
+}
+
+  </script>
+</body>
+
+</html>
