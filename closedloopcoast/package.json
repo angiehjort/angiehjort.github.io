@@ -1,0 +1,23 @@
+{
+  "name": "closedloopcoast-client",
+  "version": "0.1.0",
+  "description": "Closed loop coast website to show sensors data",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relearn/closedloopcoast-client.git"
+  },
+  "author": "Angie",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Relearn/closedloopcoast-client/issues"
+  },
+  "homepage": "https://github.com/Relearn/closedloopcoast-client#readme",
+  "dependencies": {
+    "d3": "^4.3.0",
+    "mongodb": "^2.2.11"
+  }
+}

@@ -1,5 +1,5 @@
 * {
-    font-family: "Consolas", sans-serif;
+    font-family: "Consolas", monospace;
     margin: 0px;
     overflow: hidden;
 }
@@ -16,7 +16,8 @@
     top: 0px;
     color: white;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    font-family: monospace;
 }
 
 #container div {

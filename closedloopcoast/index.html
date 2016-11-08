@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Closed loop coast</title>
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="d3.js" charset="utf-8"></script>
     <script src="view-linechart.js" charset="utf-8"></script>
     <script src="view-dome.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
@@ -21,6 +21,7 @@
         var MONGOLAB_DATABASES = "/databases";
         
         var ERROR_NO_DATA = "No data to display, sorry. Talk to <a href='mailto:konzeptmeister@gmail.com'>Angie</a>";
+        var key = ["16941762ch1","16941762ch2","15941905ch1","15941905ch2"];
         
         var httpGetAsync = function(theUrl, callback)
             {
@@ -35,7 +36,7 @@
 
         dome.init("#dome");
         dome.resize(window.innerWidth, window.innerHeight);
-        dome.update([{"_id": 0, "1":0, "2":0, "3":0, "4":0}])
+        dome.update([{"_id": 54536, "1":54536, "2":54536, "3":54536, "4":54536}])
 
         var format = d3.time.format("%Y-%m-%d %X");
         
@@ -45,13 +46,17 @@
             now = now.valueOf() - 15000;
             
             //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
-            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
+            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
             httpGetAsync(url, function(response){
                 
                 var data = JSON.parse(response);
                 var data_string = data.map(function(d){
                     var time = new Date(d["_id"]);
-                    return format(time) + " - " + processData(d["1"]) + " " + processData(d["2"]) + " " + processData(d["3"]) + " " + processData(d["4"]);
+                    return format(time) + " "
+                      + (d[key[0]] ? " 62ch1: " + d3.format(".1f")(d[key[0]]) : " -----------") 
+                      + (d[key[1]] ? " 62ch2: " + d3.format(".1f")(d[key[1]]) : " -----------") 
+                      + (d[key[2]] ? " 05ch1: " + d3.format(".1f")(d[key[2]]) : " -----------") 
+                      + (d[key[3]] ? " 05ch2: " + d3.format(".1f")(d[key[3]]) : " -----------");
                 })
                 var lines = d3.select("#container").selectAll("div").data(data_string);
                 
@@ -66,11 +71,21 @@
                                                                                 
                 d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
                 
-                
-                dome.update(data);
             });
-        },1000)
+        },2000)
         
+        setInterval(function(){
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
+            httpGetAsync(url, function(response){
+              var data = JSON.parse(response)[1];data
+                
+              dome.update([{"_id": data.heartbeat, 
+                            "1":data.raw[key[0]][0], 
+                            "2":data.raw[key[1]][0], 
+                            "3":data.raw[key[2]][0], 
+                            "4":data.raw[key[3]][0]}]);
+            });
+        },2000)
         
         window.onresize = function(event) {
             linechart.resize(window.innerWidth, window.innerHeight);

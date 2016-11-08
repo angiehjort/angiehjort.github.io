@@ -1,7 +1,8 @@
 var degToRad = function(a){return a/180*Math.PI}
 var processData = function(x){
-    x = +x/10;
-    return d3.format(".1f")(x>100? 0 : x);
+    if(x>1000) x = x - 65536; //substract Math.pow(2,16)
+    x = x/10; 
+    return x!=-1100? d3.format(".1f")(x) + "°C" : "not connected";
 };
 
 var channels = [{id: "1", a: 45, r: 0.6}, {id: "2", a: 135, r: 0.6}, {id: "3", a: 217, r: 0.51}, {id: "4", a: 315, r: 0.6}];
@@ -122,8 +123,9 @@ var dome = {
                 var view = d3.select(this);
             
                 view.select("text")
-                    .text(processData(firstMeasure[d.id]) + "°C");
+                    .text(processData(firstMeasure[d.id]));
                 
+          return;
                 var channelData = data.map(function(m){return {t: m["_id"], "v": m[d.id]};});
             
                 _this.xScale.domain(d3.extent(channelData.map(function(m){return m.t})))
