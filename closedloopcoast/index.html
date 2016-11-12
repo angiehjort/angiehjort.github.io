@@ -11,9 +11,11 @@
 <body>
     <div id="error"></div>
     <div id="dome"></div>
+  <div id="header"><div class="heartbeat"></div></div>
     <div id="container"></div>
-    <div id="title">Closed <br/> loop <br/> coast</div>
-    <div id="subtitle">dome status monitor</div>
+    <div id="footer"></div>
+    <div id="title"></div>
+    <div id="subtitle"></div>
     
     <script>
         var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
@@ -34,63 +36,97 @@
                 xmlHttp.send(null);
             }
 
-        dome.init("#dome");
-        dome.resize(window.innerWidth, window.innerHeight);
-        dome.update([{"_id": 54536, "1":54536, "2":54536, "3":54536, "4":54536}])
+//        dome.init("#dome");
+//        dome.resize(window.innerWidth, window.innerHeight);
+//        dome.update([{"_id": "54536", "1 "54536,  "2":54536, "3":54536,  "4":54536}])
 
         var format = d3.time.format("%Y-%m-%d %X");
         
-        setInterval(function(){
-            
-            var now = new Date();
-            now = now.valueOf() - 15000;
-            
-            //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
-            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
-            httpGetAsync(url, function(response){
-                
-                var data = JSON.parse(response);
-                var data_string = data.map(function(d){
-                    var time = new Date(d["_id"]);
-                    return format(time) + " "
-                      + (d[key[0]] ? " 62ch1: " + d3.format(".1f")(d[key[0]]) : " -----------") 
-                      + (d[key[1]] ? " 62ch2: " + d3.format(".1f")(d[key[1]]) : " -----------") 
-                      + (d[key[2]] ? " 05ch1: " + d3.format(".1f")(d[key[2]]) : " -----------") 
-                      + (d[key[3]] ? " 05ch2: " + d3.format(".1f")(d[key[3]]) : " -----------");
-                })
-                var lines = d3.select("#container").selectAll("div").data(data_string);
-                
-                lines.exit().remove();
-                lines.enter().append("div");
-                lines.text(function(d){return JSON.stringify(d).replace('"','').replace('"','')});
-                
-                d3.select("#container").select("div")
-                    .style("opacity", 0.2)
-                    .transition().duration(900)
-                    .style("opacity", 0.1);
-                                                                                
-                d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
-                
-            });
-        },2000)
+//        setInterval(function(){
+//            
+//            var now = new Date();
+//            now = now.valueOf() - 15000;
+//            
+//            //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+//            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
+//            httpGetAsync(url, function(response){
+//                
+//                var data = JSON.parse(response);
+//                var data_string = data.map(function(d){
+//                    var time = new Date(d["_id"]);
+//                    return format(time) + " "
+//                      + (d[key[0]] ? " 62ch1: " + d3.format(".1f")(d[key[0]]) : " -----------") 
+//                      + (d[key[1]] ? " 62ch2: " + d3.format(".1f")(d[key[1]]) : " -----------") 
+//                      + (d[key[2]] ? " 05ch1: " + d3.format(".1f")(d[key[2]]) : " -----------") 
+//                      + (d[key[3]] ? " 05ch2: " + d3.format(".1f")(d[key[3]]) : " -----------");
+//                })
+//                var lines = d3.select("#container").selectAll("div").data(data_string);
+//                
+//                lines.exit().remove();
+//                lines.enter().append("div");
+//                lines.text(function(d){return JSON.stringify(d).replace('"','').replace('"','')});
+//                
+//                d3.select("#container").select("div")
+//                    .style("opacity", 0.2)
+//                    .transition().duration(900)
+//                    .style("opacity", 0.1);
+//                                                                                
+//                d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
+//                
+//            });
+//        },2000)
         
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/closedloopconfig/collections/gui" + "?apiKey=" + MONGOLAB_API_KEY;
+        httpGetAsync(url, function(response){
+          var data = JSON.parse(response);
+          var channels = d3.select("#container").selectAll(".channel").data(data, function(d){return d._id});
+          channels.exit().remove();
+          channels.enter()
+            .append("div")
+            .attr("class","channel")
+            .style("height", (parseInt(d3.select("#container").style("height")) / data.length) + "px" )
+            .each(function(d){
+            var view = d3.select(this);
+            view.append("div").attr("class","label").text(d.shortName + " " + d.longName);
+            view.append("div").attr("class","value").text("connecting...");
+            });
+          
+          
+        var heartbeat_1 = "";
+          
         setInterval(function(){
+          
         var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
-            httpGetAsync(url, function(response){
-              var data = JSON.parse(response)[1];data
-                
-              dome.update([{"_id": data.heartbeat, 
-                            "1":data.raw[key[0]][0], 
-                            "2":data.raw[key[1]][0], 
-                            "3":data.raw[key[2]][0], 
-                            "4":data.raw[key[3]][0]}]);
-            });
+        httpGetAsync(url, function(response){
+          var data = {}
+          JSON.parse(response).forEach(function(d){data[d._id] = d})
+            
+          channels
+            .each(function(d){
+            var view = d3.select(this);
+            var raw = data[d._id].raw[0];
+            var temp = raw<=-1000? "error" : (d3.format(".1f")(raw/10) + d.unit)
+            
+            view.select(".value").text(temp);
+          })
+          
+          if(data.generic.heartbeat != heartbeat_1) {
+            d3.select(".heartbeat").text("heartbeat 💓");
+            setTimeout(function(){ d3.select(".heartbeat").text("heartbeat 💗"); }, 500);
+            heartbeat_1 = data.generic.heartbeat;
+          }
+          
+        });
+          
         },2000)
+          
+        });
+          
         
-        window.onresize = function(event) {
-            linechart.resize(window.innerWidth, window.innerHeight);
-            dome.resize(window.innerWidth, window.innerHeight);
-        };
+//        window.onresize = function(event) {
+//            linechart.resize(window.innerWidth, window.innerHeight);
+//            dome.resize(window.innerWidth, window.innerHeight);
+//        };
         
     </script>
 </body>

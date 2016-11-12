@@ -11,17 +11,56 @@
     color: pink;
     width: 100%;
 }
+
+
+#header{
+    position: absolute;
+    top: 0%;
+    color: black;
+    width: 100%;
+    height: 5%;
+    text-align: left;
+    font-family: monospace;
+}
+#footer{
+    position: absolute;
+    top: 95%;
+    color: black;
+    width: 100%;
+    height: 5%;
+    text-align: left;
+    font-family: monospace;  
+}
 #container{
     position: absolute;
-    top: 0px;
-    color: white;
+    top: 5%;
+    color: black;
     width: 100%;
+    height: 90%;
     text-align: left;
     font-family: monospace;
 }
 
+#container .channel {
+  position: relative;
+  width: 100%;
+}
+
+#container .channel .label {
+  position: absolute;
+  left: 5%;
+    width: 80%;
+  display: inline;
+}
+#container .channel .value {
+    position: absolute;
+  right: 5%;
+    width: 15%;
+    display: inline;
+  text-align: right;
+}
 #container div {
-    opacity: 0.1;
+    opacity: 1;
 }
 
 #title{
