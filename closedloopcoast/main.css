@@ -121,6 +121,8 @@
 
 
 .heartbeat {
+  position: absolute;
+  bottom: 40%;
   width: 100%;
   text-align: center;
 }

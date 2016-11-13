@@ -14,7 +14,7 @@
   <div id="dome"></div>
   <div id="header">
     <div class="hero flex-container">
-      <div class="hero flex-item">Closed loop coast remote monitoring: last 3 hours</div>
+      <div class="hero flex-item">Closed loop coast remote monitoring: last 24 hours</div>
     </div>
     <div class="axis"></div>
   </div>
@@ -60,19 +60,20 @@
       xmlHttp.send(null);
     }
 
+    var INTERVAL = 1000*60*60*24; //last 12 hours
     var channels = [];
     var channelData = {};
     var appW = parseInt(d3.select("#container").style("width"));
     var heartbeat_1 = "";
     var format = d3.time.format("%y%m%d-%H:%M:%S");
     var now = new Date().valueOf()-PERIOD;
-    var then = now - 1000*60*60*3; //last 12 hours
+    var then = now - INTERVAL;
     var frames = d3.range(then, now, (now-then)/appW).map(function(d){return Math.round(d)});
     var formatter = function(x, unit){return x<=-100? "error" : d3.format(".1f")(x) + " " + unit||""};
     
     var context = cubism.context()
       .serverDelay(0)
-      .step(60*60*3)
+      .step((now-then)/appW)
       .size(appW)
       .stop();
 
@@ -109,7 +110,7 @@
       
 
     //footer and legend
-    var legendH = parseInt(d3.select("#footer").style("height"))/2;
+    var legendH = parseInt(d3.select("#footer").style("height"))/3;
     var legendW = parseInt(d3.select("#footer").style("width"));
     var colorsInLegend = d3.keys(COLORS).filter(function(f){return COLORS[f] !== "#000000" && COLORS[f] !== "#ffffff"})
     d3.select("#footer").select(".legend").selectAll(".color")
@@ -169,7 +170,7 @@
       });
 
       //fetch historical data
-      var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':1}&q={'_id': {'$gt':" + (then-60*60*2000) + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+      var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?l=10000&s={'_id':1}&q={'_id': {'$gt':" + (then-60*60*2000) + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
       httpGetAsync(url, function(response){
         var data = JSON.parse(response);
         
