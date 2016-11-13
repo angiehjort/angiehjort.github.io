@@ -2,133 +2,276 @@
 <html>
 <head>
 <title>Closed loop coast</title>
-    <script src="d3.js" charset="utf-8"></script>
-    <script src="view-linechart.js" charset="utf-8"></script>
-    <script src="view-dome.js" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="d3.js" charset="utf-8"></script>
+  <script src="cubism.v1.js" charset="utf-8"></script>
+  <script src="view-linechart.js" charset="utf-8"></script>
+  <script src="view-dome.js" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-    <div id="error"></div>
-    <div id="dome"></div>
-  <div id="header"><div class="heartbeat"></div></div>
-    <div id="container"></div>
-    <div id="footer"></div>
-    <div id="title"></div>
-    <div id="subtitle"></div>
+  <div id="error"></div>
+  <div id="dome"></div>
+  <div id="header">
+    <div class="hero flex-container">
+      <div class="hero flex-item">Closed loop coast remote monitoring: last 3 hours</div>
+    </div>
+    <div class="axis"></div>
+  </div>
+  <div id="container"></div>
+  <div id="footer"><div class="axis"></div><div class="heartbeat"></div><div class="legend"></div></div>
+  <div id="title"></div>
+  <div id="subtitle"></div>
     
-    <script>
-        var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
-        var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
-        var MONGOLAB_DATABASES = "/databases";
+  <script>
+    var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
+    var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
+    var MONGOLAB_DATABASES = "/databases";
+    var PERIOD = 2100;
+      
+    var COLORS = {
+      "-80:-75": "#ffffff", "-75:-70": "#ffffff",
+      "-70:-65": "#ffffff", "-65:-60": "#ffffff",
+      "-60:-55": "#ffffff", "-55:-50": "#ffffff",
+      "-50:-45": "#ffffff", "-45:-40": "#ffffff",
+      "-40:-35": "#ffffff", "-35:-30": "#ffffff",
+      "-30:-25": "#6114ce", "-25:-20": "#9456eb",
+      "-20:-15": "#0857a8", "-15:-10": "#3182bd",
+      "-10:-05": "#6baed6", "-05:-00": "#bdd7e7",
+      "+00:+05": "#fff7ec", "+05:+10": "#fee8c8",
+      "+10:+15": "#fdd49e", "+15:+20": "#fdbb84",
+      "+20:+25": "#fc8d59", "+25:+30": "#ef6548",
+      "+30:+35": "#d7301f", "+35:+40": "#b30000",
+      "+40:+45": "#9d0505", "+45:+50": "#640808",
+      "+50:+55": "#960770", "+55:+60": "#bc008a",
+      "+60:+65": "#e300a7", "+65:+70": "#ff45ce",
+      "+70:+75": "#f368ff", "+75:+80": "#cf46db" 
+    };
         
-        var ERROR_NO_DATA = "No data to display, sorry. Talk to <a href='mailto:konzeptmeister@gmail.com'>Angie</a>";
-        var key = ["16941762ch1","16941762ch2","15941905ch1","15941905ch2"];
-        
-        var httpGetAsync = function(theUrl, callback)
-            {
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.onreadystatechange = function() { 
-                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                        callback(xmlHttp.responseText);
-                }
-                xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-                xmlHttp.send(null);
-            }
+    var ERROR_NO_DATA = "No data to display, sorry. Talk to <a href='mailto:konzeptmeister@gmail.com'>Angie</a>";
 
-//        dome.init("#dome");
-//        dome.resize(window.innerWidth, window.innerHeight);
-//        dome.update([{"_id": "54536", "1 "54536,  "2":54536, "3":54536,  "4":54536}])
+    var httpGetAsync = function(theUrl, callback){
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callback(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+      xmlHttp.send(null);
+    }
 
-        var format = d3.time.format("%Y-%m-%d %X");
+    var channels = [];
+    var channelData = {};
+    var appW = parseInt(d3.select("#container").style("width"));
+    var heartbeat_1 = "";
+    var format = d3.time.format("%y%m%d-%H:%M:%S");
+    var now = new Date().valueOf()-PERIOD;
+    var then = now - 1000*60*60*3; //last 12 hours
+    var frames = d3.range(then, now, (now-then)/appW).map(function(d){return Math.round(d)});
+    var formatter = function(x, unit){return x<=-100? "error" : d3.format(".1f")(x) + " " + unit||""};
+    
+    var context = cubism.context()
+      .serverDelay(0)
+      .step(60*60*3)
+      .size(appW)
+      .stop();
+
+    function random(name) {
+      return context.metric(function(start, stop, step, callback) {
+
+        values = channelData[name].concat();
+        console.log(start, stop, values.length)
+        console.log(new Date(frames[frames.length-1]))
+
+        callback(null, channelData[name].concat());
+      }, name);
+    }
+    
+//    function stock(name) {
+//      return context.metric(function(start, stop, step, callback) {
+//        
+//          rows = rows.map(function(d) { return [format.parse(d.Date), +d.Open]; }).filter(function(d) { return d[1]; }).reverse();
+//          var date = rows[0][0], compare = rows[400][1], value = rows[0][1], values = [value];
+//          rows.forEach(function(d) {
+//            while ((date = d3.time.day.offset(date, 1)) < d[0]) values.push(value);
+//            values.push(value = (d[1] - compare) / compare);
+//          });
+//          callback(null, values.slice(-context.size()));
+//
+//      }, name);
+//    }
+
+    var linear = function(x1, x2, y1, y2, x) {
+      return +y1 + (x - x1) / (x2 - x1) * (y2 - y1);
+    };
+
+
+      
+
+    //footer and legend
+    var legendH = parseInt(d3.select("#footer").style("height"))/2;
+    var legendW = parseInt(d3.select("#footer").style("width"));
+    var colorsInLegend = d3.keys(COLORS).filter(function(f){return COLORS[f] !== "#000000" && COLORS[f] !== "#ffffff"})
+    d3.select("#footer").select(".legend").selectAll(".color")
+      .data(colorsInLegend)
+      .enter().append("div")
+      .attr("class", "color")
+      .style("height", legendH + "px")
+      .style("width", legendW/colorsInLegend.length + "px")          
+      .each(function(d){
+        var view = d3.select(this);
+        view.append("div")      
+          .style("background-color", function(d){return COLORS[d]})
+          .style("width", legendW/colorsInLegend.length + "px") 
+          .style("height", legendH/5 + "px");
+        view.append("div")              
+          .style("line-height", 2*legendH/5 + "px")
+          .text(d.split(":")[0]);
+        view.append("div")              
+          .style("line-height", 2*legendH/5 + "px")
+          .text(d.split(":")[1]);
+      })
+
+    
+    
+    // fetch options
+    var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/closedloopconfig/collections/gui" + "?apiKey=" + MONGOLAB_API_KEY;
+    httpGetAsync(url, function(response){
+      channels = JSON.parse(response);
+      var height = (parseInt(d3.select("#container").style("height")) / channels.length);
+      var channelsView = d3.select("#container").selectAll(".channel")
+        .data(channels, function(d){return d._id})
+        .enter()
+        .append("div")
+        .attr("class","channel")
+        .each(function(d){
+          var view = d3.select(this);
+
+          channelData[d._id] = [];
+
+          view.style("height", height + "px")
+          view.selectAll(".horizon")
+              .data([random(d._id)])
+            .enter().append("div")
+              .attr("class", "horizon");
+        });
+
+      d3.selectAll(".axis")
+        .data(["top", "bottom"])
+        .each(function(d) { d3.select(this).call(context.axis().ticks(12).orient(d)); });
+      
+      d3.select("body").append("div")
+        .attr("class", "rule")
+        .call(context.rule());
+      
+      context.on("focus", function(i) {
+        d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
+      });
+
+      //fetch historical data
+      var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':1}&q={'_id': {'$gt':" + (then-60*60*2000) + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
+      httpGetAsync(url, function(response){
+        var data = JSON.parse(response);
         
-//        setInterval(function(){
-//            
-//            var now = new Date();
-//            now = now.valueOf() - 15000;
-//            
-//            //var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/temperature" + "?q={'_id': {'$gt':" + now + "}}" + "&apiKey=" + MONGOLAB_API_KEY;
-//            var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/timeseries" + "?s={'_id':-1}&l=120" + "&apiKey=" + MONGOLAB_API_KEY;
-//            httpGetAsync(url, function(response){
-//                
-//                var data = JSON.parse(response);
-//                var data_string = data.map(function(d){
-//                    var time = new Date(d["_id"]);
-//                    return format(time) + " "
-//                      + (d[key[0]] ? " 62ch1: " + d3.format(".1f")(d[key[0]]) : " -----------") 
-//                      + (d[key[1]] ? " 62ch2: " + d3.format(".1f")(d[key[1]]) : " -----------") 
-//                      + (d[key[2]] ? " 05ch1: " + d3.format(".1f")(d[key[2]]) : " -----------") 
-//                      + (d[key[3]] ? " 05ch2: " + d3.format(".1f")(d[key[3]]) : " -----------");
-//                })
-//                var lines = d3.select("#container").selectAll("div").data(data_string);
-//                
-//                lines.exit().remove();
-//                lines.enter().append("div");
-//                lines.text(function(d){return JSON.stringify(d).replace('"','').replace('"','')});
-//                
-//                d3.select("#container").select("div")
-//                    .style("opacity", 0.2)
-//                    .transition().duration(900)
-//                    .style("opacity", 0.1);
-//                                                                                
-//                d3.select("#error").html(data_string.length == 0 ? ERROR_NO_DATA : "");
-//                
-//            });
-//        },2000)
+
+
+        console.log(data.length)
         
-        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/closedloopconfig/collections/gui" + "?apiKey=" + MONGOLAB_API_KEY;
+        //fetch latest data
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(response){
-          var data = JSON.parse(response);
-          var channels = d3.select("#container").selectAll(".channel").data(data, function(d){return d._id});
-          channels.exit().remove();
-          channels.enter()
-            .append("div")
-            .attr("class","channel")
-            .style("height", (parseInt(d3.select("#container").style("height")) / data.length) + "px" )
-            .each(function(d){
+          var latest = {}
+          JSON.parse(response).forEach(function(d){latest[d._id] = d})
+          
+                    
+          channels.forEach(function(channel){
+            var ch = channel._id;
+            
+            var items = data.filter(function(f){return f[ch]});
+            var push = {_id: format.parse(latest.generic.heartbeat).valueOf() - 60*60*1000};
+            push[ch] = latest[ch].raw[0];
+            items.push(push);
+            if(ch == "16941765ch2") console.log(ch, items.filter(function(f){return f[ch]<0}).map(function(m){m.time = format(new Date(m._id)); return m;}))
+          
+            var times = items.map(function(d){return d._id + 60*60*1000});
+            var values = items.map(function(d){return d[ch]/10 });
+            var length = items.length;
+            channelData[ch] = frames.map(function(frame){
+              if(frame<=times[0]) return -1100;
+              if(frame>=times[length-1]) return -1100;
+              var index = d3.bisectLeft(times, frame);
+              return linear(times[index-1], times[index], values[index-1], values[index], frame);
+            })
+            
+            if(ch == "16941765ch2") console.log(ch, channelData[ch])
+          })
+        
+          channelsView.each(function(d){
             var view = d3.select(this);
-            view.append("div").attr("class","label").text(d.shortName + " " + d.longName);
-            view.append("div").attr("class","value").text("connecting...");
-            });
+            view.selectAll(".horizon").call(
+              context.horizon()
+                .title(d._id + " " +d.shortName + " " + d.longName)
+                .format(function(x){return formatter(x, d.unit)})
+                .height(height)
+                .colors(d3.values(COLORS))
+                .extent([-80, 80])
+            );
+
+            view.selectAll(".horizon").selectAll(".title")
+              .style("line-height", height + "px")
+              .style("font-size", height/4 + "px")
+              .style("text-shadow", height/50+"px "+height/50+"px "+height/20+"px rgba(255,255,255,1)");
+            view.selectAll(".horizon").selectAll(".value")
+              .style("line-height", height + "px")
+              .style("font-size", height/2 + "px")
+              .style("text-shadow", height/25+"px "+height/25+"px "+height/10+"px rgba(255,255,255,1)");
+          })
+        })
           
-          
-        var heartbeat_1 = "";
-          
-        setInterval(function(){
-          
+      })
+
+
+
+
+      setInterval(function(){
+
+        //fetch latest data
         var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(response){
           var data = {}
           JSON.parse(response).forEach(function(d){data[d._id] = d})
-            
-          channels
-            .each(function(d){
+
+          channelsView.each(function(d){
             var view = d3.select(this);
-            var raw = data[d._id].raw[0];
-            var temp = raw<=-1000? "error" : (d3.format(".1f")(raw/10) + d.unit)
-            
-            view.select(".value").text(temp);
+            view.selectAll(".horizon").selectAll(".value").text(formatter(data[d._id].raw[0]/10, d.unit));
           })
-          
+
           if(data.generic.heartbeat != heartbeat_1) {
-            d3.select(".heartbeat").text("heartbeat 💓");
-            setTimeout(function(){ d3.select(".heartbeat").text("heartbeat 💗"); }, 500);
+            d3.select(".heartbeat")
+              .classed("dead",false)
+              .text("HEARTBEAT 💗 last update: " + data.generic.heartbeat + ", last history entry: " + data.generic.historyUpdated);
+            setTimeout(function(){ 
+              d3.select(".heartbeat")
+                .text("heartbeat 💓 last update: " + data.generic.heartbeat + ", last history entry: " + data.generic.historyUpdated); 
+            }, PERIOD/5);
             heartbeat_1 = data.generic.heartbeat;
+          } else {
+            d3.select(".heartbeat").classed("dead",true)
           }
-          
+
         });
-          
-        },2000)
-          
-        });
-          
+
+      },PERIOD)
+
+      });
+
+
+//  window.onresize = function(event) {
+//      linechart.resize(window.innerWidth, window.innerHeight);
+//      dome.resize(window.innerWidth, window.innerHeight);
+//  };
         
-//        window.onresize = function(event) {
-//            linechart.resize(window.innerWidth, window.innerHeight);
-//            dome.resize(window.innerWidth, window.innerHeight);
-//        };
-        
-    </script>
+  </script>
 </body>
 
 </html>

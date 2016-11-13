@@ -19,15 +19,25 @@
     color: black;
     width: 100%;
     height: 5%;
-    text-align: left;
     font-family: monospace;
 }
+
+.hero {
+  font-size: 2vh;
+}
+
+.flex-container {
+    display:flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+}
+
 #footer{
     position: absolute;
-    top: 95%;
+    top: 90%;
     color: black;
     width: 100%;
-    height: 5%;
+    height: 10%;
     text-align: left;
     font-family: monospace;  
 }
@@ -36,7 +46,7 @@
     top: 5%;
     color: black;
     width: 100%;
-    height: 90%;
+    height: 85%;
     text-align: left;
     font-family: monospace;
 }
@@ -46,22 +56,96 @@
   width: 100%;
 }
 
-#container .channel .label {
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis text {
+  -webkit-transition: fill-opacity 250ms linear;
+}
+
+.axis path {
+  display: none;
+}
+
+.axis line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.horizon {
+  border-bottom: solid 1px #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.horizon {
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+}
+
+.horizon + .horizon {
+  border-top: none;
+}
+
+.horizon canvas {
+  display: block;
+}
+
+.horizon .title,
+.horizon .value {
+  bottom: 0;
+  line-height: 30px;
+  margin: 0 6px;
   position: absolute;
-  left: 5%;
-    width: 80%;
-  display: inline;
+  white-space: nowrap;
+  pointer-events: none;
 }
-#container .channel .value {
-    position: absolute;
-  right: 5%;
-    width: 15%;
-    display: inline;
-  text-align: right;
+.horizon .value {
+  font-weight: bold;
 }
-#container div {
-    opacity: 1;
+
+.horizon .title {
+  left: 0;
 }
+
+.horizon .value {
+  right: 0;
+}
+
+.line {
+  background: #000;
+  opacity: .2;
+  z-index: 2;
+}
+
+
+.heartbeat {
+  width: 100%;
+  text-align: center;
+}
+.heartbeat.dead {
+  background-color: pink;
+}
+
+.legend {
+  position: absolute;
+  bottom: 0px;
+}
+
+.legend .color {
+  display: inline-block;
+}
+.legend .color div {
+  display: block;
+  padding: 0px 3px;
+  text-shadow: 1px 1px 1px rgba(255,255,255,1);
+  text-align: center;
+}
+
+
+
+
 
 #title{
     position: absolute;
