@@ -81,8 +81,8 @@
       return context.metric(function(start, stop, step, callback) {
 
         values = channelData[name].concat();
-        console.log(start, stop, values.length)
-        console.log(new Date(frames[frames.length-1]))
+        //console.log(start, stop, values.length)
+        //console.log(new Date(frames[frames.length-1]))
 
         callback(null, channelData[name].concat());
       }, name);
@@ -136,7 +136,7 @@
     
     
     // fetch options
-    var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/closedloopconfig/collections/gui" + "?apiKey=" + MONGOLAB_API_KEY;
+    var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/closedloopconfig/collections/gui" + "?s={'sorting':1}&apiKey=" + MONGOLAB_API_KEY;
     httpGetAsync(url, function(response){
       channels = JSON.parse(response);
       var height = (parseInt(d3.select("#container").style("height")) / channels.length);
@@ -176,25 +176,22 @@
         
 
 
-        console.log(data.length)
+        console.log("data length: "+ data.length)
         
         //fetch latest data
-        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
-        httpGetAsync(url, function(response){
-          var latest = {}
-          JSON.parse(response).forEach(function(d){latest[d._id] = d})
-          
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'_id': 'status'}&apiKey=" + MONGOLAB_API_KEY;
+        httpGetAsync(url, function(latest){
+          latest = JSON.parse(latest)[0];
                     
           channels.forEach(function(channel){
             var ch = channel._id;
             
             var items = data.filter(function(f){return f[ch]});
-            var push = {_id: format.parse(latest.generic.heartbeat).valueOf() - 60*60*1000};
+            var push = {_id: latest.generic.heartbeat};
             push[ch] = latest[ch].raw[0];
             items.push(push);
-            if(ch == "16941765ch2") console.log(ch, items.filter(function(f){return f[ch]<0}).map(function(m){m.time = format(new Date(m._id)); return m;}))
           
-            var times = items.map(function(d){return d._id + 60*60*1000});
+            var times = items.map(function(d){return d._id});
             var values = items.map(function(d){return d[ch]/10 });
             var length = items.length;
             channelData[ch] = frames.map(function(frame){
@@ -204,7 +201,6 @@
               return linear(times[index-1], times[index], values[index-1], values[index], frame);
             })
             
-            if(ch == "16941765ch2") console.log(ch, channelData[ch])
           })
         
           channelsView.each(function(d){
@@ -237,10 +233,11 @@
       setInterval(function(){
 
         //fetch latest data
-        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?apiKey=" + MONGOLAB_API_KEY;
-        httpGetAsync(url, function(response){
-          var data = {}
-          JSON.parse(response).forEach(function(d){data[d._id] = d})
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'_id': 'status'}&apiKey=" + MONGOLAB_API_KEY;
+        httpGetAsync(url, function(data){
+          data = JSON.parse(data)[0];
+          var heartbeat = format(new Date(data.generic.heartbeat));
+          var historyUpdated = format(new Date(data.generic.historyUpdated));
 
           channelsView.each(function(d){
             var view = d3.select(this);
@@ -250,10 +247,10 @@
           if(data.generic.heartbeat != heartbeat_1) {
             d3.select(".heartbeat")
               .classed("dead",false)
-              .text("HEARTBEAT 💗 last update: " + data.generic.heartbeat + ", last history entry: " + data.generic.historyUpdated);
+              .text("HEARTBEAT 💗 last update: " + heartbeat + ", last history entry: " + historyUpdated);
             setTimeout(function(){ 
               d3.select(".heartbeat")
-                .text("heartbeat 💓 last update: " + data.generic.heartbeat + ", last history entry: " + data.generic.historyUpdated); 
+                .text("heartbeat 💓 last update: " + heartbeat + ", last history entry: " + historyUpdated); 
             }, PERIOD/5);
             heartbeat_1 = data.generic.heartbeat;
           } else {
