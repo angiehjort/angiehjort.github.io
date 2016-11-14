@@ -14,7 +14,7 @@
   <div id="dome"></div>
   <div id="header">
     <div class="hero flex-container">
-      <div class="hero flex-item">Closed loop coast remote monitoring: last 24 hours</div>
+      <div class="hero flex-item">Closed loop coast remote monitoring: last 48 hours</div>
     </div>
     <div class="axis"></div>
   </div>
@@ -60,7 +60,7 @@
       xmlHttp.send(null);
     }
 
-    var INTERVAL = 1000*60*60*24; //last 12 hours
+    var INTERVAL = 1000*60*60*48; //last 12 hours
     var channels = [];
     var channelData = {};
     var appW = parseInt(d3.select("#container").style("width"));
