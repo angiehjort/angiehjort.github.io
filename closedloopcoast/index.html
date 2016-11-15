@@ -70,6 +70,7 @@
     var then = now - INTERVAL;
     var frames = d3.range(then, now, (now-then)/appW).map(function(d){return Math.round(d)});
     var formatter = function(x, unit){return x<=-100? "error" : d3.format(".1f")(x) + " " + unit||""};
+    var hovering = false;
     
     var context = cubism.context()
       .serverDelay(0)
@@ -166,6 +167,7 @@
         .call(context.rule());
       
       context.on("focus", function(i) {
+        hovering = !(i == null);
         d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
       });
 
@@ -239,7 +241,7 @@
           var heartbeat = format(new Date(data.generic.heartbeat));
           var historyUpdated = format(new Date(data.generic.historyUpdated));
 
-          channelsView.each(function(d){
+          if(!hovering) channelsView.each(function(d){
             var view = d3.select(this);
             view.selectAll(".horizon").selectAll(".value").text(formatter(data[d._id].raw[0]/10, d.unit));
           })
