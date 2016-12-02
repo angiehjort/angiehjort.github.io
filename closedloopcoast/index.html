@@ -27,9 +27,9 @@
     var MONGOLAB_API_KEY = "-fMnXxKexEfV92dWFsUQvOCALgSBNyxJ";
     var MONGOLAB_BASE_URL = "https://api.mongolab.com/api/1";
     var MONGOLAB_DATABASES = "/databases";
-    var PERIOD = 2100;
+    var PERIOD = 10100;
       
-    var COLORS = {
+    var COLORS_TEMPERATURE = {
       "-80:-75": "#ffffff", "-75:-70": "#ffffff",
       "-70:-65": "#ffffff", "-65:-60": "#ffffff",
       "-60:-55": "#ffffff", "-55:-50": "#ffffff",
@@ -47,6 +47,18 @@
       "+60:+65": "#e300a7", "+65:+70": "#ff45ce",
       "+70:+75": "#f368ff", "+75:+80": "#cf46db" 
     };
+    var COLORS_HUMIDITY = {
+      "00:10": "#575745",
+      "10:20": "#918f5a",
+      "20:30": "#aca853",
+      "30:40": "#cbcb2f",
+      "40:50": "#d5e240",
+      "50:60": "#caeb5b",
+      "60:70": "#a7db60",
+      "70:80": "#80be4a",
+      "80:90": "#34ac4b",
+      "90:100": "#1b8e59"
+    };
         
     var ERROR_NO_DATA = "No data to display, sorry. Talk to <a href='mailto:konzeptmeister@gmail.com'>Angie</a>";
 
@@ -60,7 +72,7 @@
       xmlHttp.send(null);
     }
 
-    var INTERVAL = 1000*60*60*24*7; //last week
+    var INTERVAL = 1000*60*60*8 //1000*60*60*24*7; //last week
     var channels = [];
     var channelData = {};
     var appW = parseInt(d3.select("#container").style("width"));
@@ -113,7 +125,7 @@
     //footer and legend
     var legendH = parseInt(d3.select("#footer").style("height"))/3;
     var legendW = parseInt(d3.select("#footer").style("width"));
-    var colorsInLegend = d3.keys(COLORS).filter(function(f){return COLORS[f] !== "#000000" && COLORS[f] !== "#ffffff"})
+    var colorsInLegend = d3.keys(COLORS_TEMPERATURE).filter(function(f){return COLORS_TEMPERATURE[f] !== "#000000" && COLORS_TEMPERATURE[f] !== "#ffffff"})
     d3.select("#footer").select(".legend").selectAll(".color")
       .data(colorsInLegend)
       .enter().append("div")
@@ -123,7 +135,7 @@
       .each(function(d){
         var view = d3.select(this);
         view.append("div")      
-          .style("background-color", function(d){return COLORS[d]})
+          .style("background-color", function(d){return COLORS_TEMPERATURE[d]})
           .style("width", legendW/colorsInLegend.length + "px") 
           .style("height", legendH/5 + "px");
         view.append("div")              
@@ -181,9 +193,10 @@
         console.log("data length: "+ data.length)
         
         //fetch latest data
-        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'_id': 'status'}&apiKey=" + MONGOLAB_API_KEY;
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'type':'status'}&apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(latest){
           latest = JSON.parse(latest)[0];
+          
                     
           channels.forEach(function(channel){
             var ch = channel._id;
@@ -191,7 +204,7 @@
             
             var items = data.filter(function(f){return f[ch]});
             var push = {_id: latest.generic.heartbeat};
-            push[ch] = latest[ch].raw[0];
+            push[ch] = latest[ch];
             items.push(push);
           
             var times = items.map(function(d){return d._id});
@@ -211,11 +224,11 @@
             var view = d3.select(this);
             view.selectAll(".horizon").call(
               context.horizon()
-                .title(d._id + " " +d.shortName + " " + d.longName)
+                .title(d._id + " " + d.longName)
                 .format(function(x){return formatter(x, d.unit)})
                 .height(height)
-                .colors(d3.values(COLORS))
-                .extent([-80, 80])
+                .colors(d3.values(/*d._id.indexOf("rh")?COLORS_HUMIDITY:*/COLORS_TEMPERATURE))
+                .extent(/*d._id.indexOf("rh")?[0,100]:*/[-80, 80])
             );
 
             view.selectAll(".horizon").selectAll(".title")
@@ -237,7 +250,7 @@
       setInterval(function(){
 
         //fetch latest data
-        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'_id': 'status'}&apiKey=" + MONGOLAB_API_KEY;
+        var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'type':'status'}&apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(data){
           data = JSON.parse(data)[0];
           var heartbeat = format(new Date(data.generic.heartbeat));
@@ -245,7 +258,7 @@
 
           if(!hovering) channelsView.each(function(d){
             var view = d3.select(this);
-            view.selectAll(".horizon").selectAll(".value").text(formatter(data[d._id].raw[0]/10, d.unit));
+            view.selectAll(".horizon").selectAll(".value").text(formatter(data[d._id]/10, d.unit));
           })
 
           if(data.generic.heartbeat != heartbeat_1) {
@@ -277,3 +290,5 @@
 </body>
 
 </html>
+
+
