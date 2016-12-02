@@ -195,7 +195,11 @@
         //fetch latest data
         var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'type':'status'}&apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(latest){
-          latest = JSON.parse(latest)[0];
+          var obj = {};
+          latest = JSON.parse(latest).forEach(function(l){
+            obj = Object.assign(obj,l);
+          });
+          latest = obj;
           
                     
           channels.forEach(function(channel){
@@ -233,7 +237,7 @@
 
             view.selectAll(".horizon").selectAll(".title")
               .style("line-height", height + "px")
-              .style("font-size", height/4 + "px")
+              .style("font-size", height/3 + "px")
               .style("text-shadow", height/50+"px "+height/50+"px "+height/20+"px rgba(255,255,255,1)");
             view.selectAll(".horizon").selectAll(".value")
               .style("line-height", height + "px")
@@ -252,7 +256,12 @@
         //fetch latest data
         var url = MONGOLAB_BASE_URL + MONGOLAB_DATABASES + "/domesensors/collections/status" + "?q={'type':'status'}&apiKey=" + MONGOLAB_API_KEY;
         httpGetAsync(url, function(data){
-          data = JSON.parse(data)[0];
+          var obj = {};
+          data = JSON.parse(data).forEach(function(l){
+            obj = Object.assign(obj,l);
+          });
+          data = obj;
+          
           var heartbeat = format(new Date(data.generic.heartbeat));
           var historyUpdated = format(new Date(data.generic.historyUpdated));
 
