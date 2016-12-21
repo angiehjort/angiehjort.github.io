@@ -1281,8 +1281,10 @@ var defer = exports.defer = function defer(func) {
  * Defers a function
  * @param {Function} func
  */
-var delay = exports.delay = function delay(func, _delay) {
-  return setTimeout(func, _delay);
+var delay = exports.delay = function delay(_delay) {
+  return new Promise(function (resolve) {
+    return setTimeout(resolve, _delay);
+  });
 };
 
 var clearDelay = exports.clearDelay = function clearDelay(delayId) {
@@ -2752,11 +2754,6 @@ var Tool = _component2.default.extend({
       model: external_model
     });
 
-    // 
-
-    //splash
-    this.model.ui.splash = this.model && this.model.data && this.model.data.splash;
-
     this.render();
 
     this.setCSSClasses();
@@ -2790,10 +2787,6 @@ var Tool = _component2.default.extend({
           _this.beforeLoading();
         }
       },
-      'change:ui.presentation': function changeUiPresentation() {
-        _this.model.ui.updatePresentation();
-        _this.trigger('resize');
-      },
       'resize:ui': function resizeUi() {
         if (_this._ready) {
           _this.triggerResize();
@@ -2818,55 +2811,27 @@ var Tool = _component2.default.extend({
 
   startLoading: function startLoading() {
     this._super();
-    var splashScreen = this.model && this.model.data && this.model.data.splash;
-    var _this = this;
 
-    var preloadPromises = []; //holds all promises
+    Promise.all([this.model.startPreload(), this.startPreload()]).then(this.afterPreload.bind(this)).then(this.loadSplashScreen.bind(this)).then(function () {
+      return utils.delay(300);
+    }).then(this.model.startLoading.bind(this.model)).then(this.finishLoading.bind(this));
+  },
 
-    preloadPromises.push(this.model.startPreload());
-    preloadPromises.push(this.startPreload());
+  loadSplashScreen: function loadSplashScreen() {
+    if (this.model.ui.splash) {
+      //TODO: cleanup hardcoded splash screen
+      this.model.state.time.splash = true;
+      return this.model.startLoading({
+        splashScreen: true
+      });
+    } else {
+      return Promise.resolve();
+    }
+  },
 
-    Promise.all(preloadPromises).then(function () {
-      _this.afterPreload();
-
-      var timeMdl = _this.model.state.time;
-
-      if (splashScreen) {
-
-        //TODO: cleanup hardcoded splash screen
-        timeMdl.splash = true;
-
-        _this.model.startLoading({
-          splashScreen: true
-        }).then(function () {
-          //delay to avoid conflicting with setReady
-          utils.delay(function () {
-            //force loading because we're restoring time.
-
-            _this.model.startLoading().then(function () {
-              timeMdl.splash = false;
-              _this.startEverything();
-              //_this.model.data.splash = false;
-            });
-          }, 300);
-        }, function () {
-          _this.renderError();
-        });
-      } else {
-        _this.model.startLoading().then(function () {
-          utils.delay(function () {
-            if (timeMdl) {
-              timeMdl.splash = false;
-              timeMdl.trigger('change');
-            } else {
-              _this.loadingDone();
-            }
-          }, 300);
-        }, function () {
-          _this.renderError();
-        });
-      }
-    });
+  finishLoading: function finishLoading() {
+    this.model.state.time.splash = false;
+    this.startEverything();
   },
 
   getPersistentModel: function getPersistentModel() {
@@ -4442,16 +4407,6 @@ var TimeSlider = _component2.default.extend({
 
     this._setSelectedLimitsId = 0; //counter for setSelectedLimits
 
-    utils.forEach(_this.model.marker.getSubhooks(), function (hook) {
-      if (hook._important) hook.on('change:which', function () {
-        _this._needRecalcSelectedLimits = true;
-        _this.model.time.set({
-          startSelected: new Date(_this.model.time.start),
-          endSelected: new Date(_this.model.time.end)
-        }, null, false /*make change non-persistent for URL and history*/);
-      });
-    });
-
     if (this.model.time.startSelected > this.model.time.start) {
       _this.updateSelectedStartLimiter();
     }
@@ -4460,6 +4415,7 @@ var TimeSlider = _component2.default.extend({
       _this.updateSelectedEndLimiter();
     }
 
+    // special for linechart: resize timeslider to match time x-axis length
     this.parent.on('myEvent', function (evt, arg) {
       var layoutProfile = _this.getLayoutProfile();
 
@@ -8044,7 +8000,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
   ext_resources: {},
-  build: 1482323420819,
+  build: 1482357469625,
   version: "0.18.2-1"
 };
 
@@ -10184,8 +10140,7 @@ var DataModel = _model2.default.extend({
    */
   getClassDefaults: function getClassDefaults() {
     var defaults = {
-      reader: "csv",
-      splash: false
+      reader: "csv"
     };
     return utils.deepExtend(this._super(), defaults);
   },
@@ -15546,7 +15501,7 @@ var OptionsButtonList = _buttonlist2.default.extend({
     this.buttonListComp.proceedClick(id);
     var btn_data = this.element.selectAll(".vzb-buttonlist-btn[data-btn='" + id + "']").datum();
     if (btn_data.func) {
-      utils.delay(function () {
+      setTimeout(function () {
         _this.root.findChildByName("gapminder-dialogs").closeAllDialogs();
       }, 200);
     }
@@ -22960,7 +22915,8 @@ var UI = _model2.default.extend({
         popup: [],
         sidebar: [],
         moreoptions: []
-      }
+      },
+      splash: false
     };
     return utils.deepExtend(this._super(), defaults);
   },
@@ -22975,13 +22931,18 @@ var UI = _model2.default.extend({
     //dom element
     this._curr_profile = null;
     this._prev_size = {};
+
     //resize when window resizes
-    var _this = this;
+    window.addEventListener('resize', this.resizeHandler.bind(this));
+    bind['change:presentation'] = this.updatePresentation.bind(this);
 
-    this.resizeHandler = this.resizeHandler || resize.bind(this);
-
-    window.addEventListener('resize', this.resizeHandler);
     this._super(name, values, parent, bind);
+  },
+
+  resizeHandler: function resizeHandler() {
+    if (this._container) {
+      this.setSize();
+    }
   },
 
   /**
@@ -23038,6 +22999,7 @@ var UI = _model2.default.extend({
     this._prev_size.height = height;
     this.trigger('resize');
   },
+
   /**
    * Sets the container for this layout
    * @param container DOM element
@@ -23054,6 +23016,7 @@ var UI = _model2.default.extend({
    */
   updatePresentation: function updatePresentation() {
     utils.classed(this._container, class_prefix + class_presentation, this.presentation);
+    this.trigger('resize');
   },
 
   getPresentationMode: function getPresentationMode() {
@@ -23077,12 +23040,6 @@ var UI = _model2.default.extend({
   }
 
 });
-
-function resize() {
-  if (this._container) {
-    this.setSize();
-  }
-}
 
 exports.default = UI;
 
