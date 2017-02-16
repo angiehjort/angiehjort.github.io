@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Vizabi Testing</title>
+    <link rel="stylesheet" type="text/css" href="libs/vizabi.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="libs/vizabi.js"></script>
+    <script src="libs/vizabi-ddf-reader.web.js"></script>
+    <script src="libs/vizabi-ws-reader.web.js"></script>
+  </head>
+
+  <body>
+    <p style="width: 900px; margin: auto; margin-bottom: 20px;">You just exported this file from Gapminder Tools Offline. Congratulations!</p>
+    
+    <p style="width: 900px; margin: auto; margin-bottom: 20px;"> If you don't see the chart below, you probably did not open the file from a webserver. Out of safety concerns, web browsers don't allow us to read the data straight from your hard drive. Run a webserver locally or upload the files to a webserver online to view them.</p>
+
+    <p style="width: 900px; margin: auto; margin-bottom: 20px;"> If you have any comments, praise, bugs or ideas that you would like to share, please let us know on <a href = "https://getsatisfaction.com/gapminder">Get Satisfaction</a>. We love feedback!</p>
+    
+    <div>
+      <button style="cursor: pointer" onclick="setLocale('en')">Would you kindly mind your language, sir?</button>
+      <button style="cursor: pointer" onclick="setLocale('sv-SE')">Det roligast språk på jorden finns här</button>
+    </div>
+      
+    <div id="placeholder" style="width: 900px; height: 700px; margin: auto; margin-bottom: 20px;"></div>
+    
+    <script src="config.js"></script>
+    <script>
+            
+      //WS reader integration
+      var wsReader = new WSReader.WSReader().getReader();
+      Vizabi.Reader.extend("waffle", wsReader);
+
+      //DDFCSV reader integration
+      var ddfReader = new DDFCsvReader.getDDFCsvReaderObject()
+      Vizabi.Reader.extend("ddf", ddfReader);
+
+      var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), VIZABI_MODEL);
+
+      function setLocale(arg){
+        viz.model.locale.id = arg;
+      }
+      
+    </script>
+  </body>
+</html>
