@@ -98,12 +98,12 @@ var VIZABI_MODEL = {
   "data": {
     "reader": "waffle",
     "splash": true,
-    "path": "https://waffle-server-dev.gapminderdev.org/api/ddf/"
+    "path": "https://waffle-server-stage.gapminderdev.org/api/ddf/"
   },
   "data_alternative": {
     "reader": "waffle",
     "splash": true,
-    "path": "https://waffle-server-stage.gapminderdev.org/api/ddf/"
+    "path": "https://waffle-server.gapminder.org/api/ddf/"
   }
 };
 
