@@ -1,0 +1,103 @@
+geo,year,poverty,iwi,population,type
+Total,1992,97.9,14.5,27.2,total
+Urban,1992,92.5,28,5.96,urban/rural
+Rural,1992,99.6,10.1,21.2,urban/rural
+Poor,1992,100,13.4,26.2,poor/nonpoor
+Nonpoor,1992,0,64.9,0.71,poor/nonpoor
+Lowest 25%,1992,100,7.48,8.22,quartiles
+Second 25%,1992,100,10.2,7.81,quartiles
+Third 25%,1992,98.4,14.1,5.77,quartiles
+Highest 25%,1992,90.3,32.5,5.39,quartiles
+"Central (Dodoma, Singida)",1992,98.1,13.2,3.81,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",1992,95.6,22.2,3.46,provinces
+"Lake (Kagera, Mwanza, Mara)",1992,98.7,11.3,5.31,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",1992,96.3,17.4,4.57,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",1992,99.7,10.8,2.75,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",1992,99.2,11.6,2.83,provinces
+"Western (Tabora, Kigoma, Shinyanga)",1992,99.1,11.6,3.7,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",1992,95.4,21.2,0.82,provinces
+Total,1996,97.5,13.1,30.7,total
+Urban,1996,91.1,26.1,6.09,urban/rural
+Rural,1996,99.4,9.38,24.6,urban/rural
+Poor,1996,100,11.8,29.6,poor/nonpoor
+Nonpoor,1996,0,67,0.92,poor/nonpoor
+Lowest 25%,1996,100,3.86,8.67,quartiles
+Second 25%,1996,100,7.17,6.92,quartiles
+Third 25%,1996,100,11.1,7.81,quartiles
+Highest 25%,1996,89.9,30.6,7.35,quartiles
+"Central (Dodoma, Singida)",1996,97.8,11.3,3.44,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",1996,93.2,21.1,4.15,provinces
+"Lake (Kagera, Mwanza, Mara)",1996,98,11.2,5.96,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",1996,97.8,13.2,5.44,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",1996,99.6,10.4,3.17,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",1996,99,10.9,3.35,provinces
+"Western (Tabora, Kigoma, Shinyanga)",1996,99.4,10.5,4.24,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",1996,90.4,23.4,0.98,provinces
+Total,1999,96.9,12,33.1,total
+Urban,1999,88.6,26.4,7.46,urban/rural
+Rural,1999,99.8,6.83,25.7,urban/rural
+Poor,1999,100,10.3,31.7,poor/nonpoor
+Nonpoor,1999,0,63.5,1.19,poor/nonpoor
+Lowest 25%,1999,100,2.46,8.35,quartiles
+Second 25%,1999,100,5.52,8.78,quartiles
+Third 25%,1999,100,8.68,8.58,quartiles
+Highest 25%,1999,87.7,31.1,7.42,quartiles
+"Central (Dodoma, Singida)",1999,97.4,7.7,3.74,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",1999,93.2,19.9,4.51,provinces
+"Lake (Kagera, Mwanza, Mara)",1999,98.5,10.1,7.09,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",1999,97.4,13.4,7.06,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",1999,99.8,8.03,3.02,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",1999,95.9,11.2,3.41,provinces
+"Western (Tabora, Kigoma, Shinyanga)",1999,99.1,7.08,3.41,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",1999,87.3,21.9,0.9,provinces
+Total,2004,94.9,15.8,37.9,total
+Urban,2004,83.1,29.6,9.1,urban/rural
+Rural,2004,99.2,10.9,28.8,urban/rural
+Poor,2004,100,13.1,35.7,poor/nonpoor
+Nonpoor,2004,0,66.7,2.2,poor/nonpoor
+Lowest 25%,2004,100,6.51,9.86,quartiles
+Second 25%,2004,100,9.25,9.56,quartiles
+Third 25%,2004,100,12.6,9.6,quartiles
+Highest 25%,2004,79.7,34.9,8.92,quartiles
+"Central (Dodoma, Singida)",2004,97.6,11.9,5.05,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",2004,85.4,25.6,5.58,provinces
+"Lake (Kagera, Mwanza, Mara)",2004,97.8,14.1,8.27,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",2004,94.2,16.6,5.46,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",2004,97.5,12.2,3.19,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",2004,98.4,12.6,4.06,provinces
+"Western (Tabora, Kigoma, Shinyanga)",2004,99.5,10.9,5.2,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",2004,81.3,30.3,1.14,provinces
+Total,2010,89.5,22.3,45.6,total
+Urban,2010,67.2,40.6,10.5,urban/rural
+Rural,2010,97.4,15.8,35.1,urban/rural
+Poor,2010,100,17.1,40.7,poor/nonpoor
+Nonpoor,2010,0,66.7,4.93,poor/nonpoor
+Lowest 25%,2010,100,7.75,11,quartiles
+Second 25%,2010,100,12.5,12.1,quartiles
+Third 25%,2010,100,20.2,12.1,quartiles
+Highest 25%,2010,58,48.6,10.5,quartiles
+"Central (Dodoma, Singida)",2010,97.2,14.6,6.21,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",2010,77.9,33.1,6.35,provinces
+"Lake (Kagera, Mwanza, Mara)",2010,91.2,20.9,9.68,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",2010,87.6,23.5,6.89,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",2010,95,17.4,4.15,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",2010,88.6,23.3,4.84,provinces
+"Western (Tabora, Kigoma, Shinyanga)",2010,96.6,16.5,6.21,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",2010,68,40.6,1.32,provinces
+Total,2015,81.8,30.1,45.6,total
+Urban,2015,55.5,48.7,10.5,urban/rural
+Rural,2015,94.7,21,35.1,urban/rural
+Poor,2015,100,21.5,40.7,poor/nonpoor
+Nonpoor,2015,0,68.8,4.93,poor/nonpoor
+Lowest 25%,2015,100,12.5,11,quartiles
+Second 25%,2015,100,16.6,12.1,quartiles
+Third 25%,2015,96.2,30.5,12.1,quartiles
+Highest 25%,2015,31,61,10.5,quartiles
+"Central (Dodoma, Singida)",2015,93.2,22,6.21,provinces
+"Eastern (Morogoro, Pwani, Dar Es Salam)",2015,62.7,43.2,6.35,provinces
+"Lake (Kagera, Mwanza, Mara)",2015,88.6,26.2,9.68,provinces
+"Northern (Arusha, Kilimanjaro, Tanga, Manyara)",2015,76.4,34.1,6.89,provinces
+"Southern (Lindi, Mtwara, Ruvuma)",2015,89.6,24.5,4.15,provinces
+"Southern Highlands (Iringa, Mbeya, Rukwa)",2015,83.9,28.3,4.84,provinces
+"Western (Tabora, Kigoma, Shinyanga)",2015,92.6,21.8,6.21,provinces
+"Zanzibar (Zanzibar North, Zanziba South, Town West, Pemba North, Pemba South)",2015,53.5,51.2,1.32,provinces
