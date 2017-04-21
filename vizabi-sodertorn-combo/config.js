@@ -1,7 +1,8 @@
 var CONFIG = {
   "data": {
-    "path": "./data/ddf--sodertorn--stockholm_lan_basomrade",
-    "reader": "ddf"
+    reader: 'waffle',
+    path: 'https://waffle-server-dev.gapminderdev.org/api/ddf',
+    dataset: 'open-numbers/ddf--sodertorn--stockholm_lan_basomrade'
   },
 
   
@@ -105,6 +106,7 @@ var CONFIG = {
   },
 
   locale: {
-    id: "sv-SE"
+    id: "sv-SE",
+    filePath: "//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/vizabi/develop/dist/assets/translation/"
   }
 }

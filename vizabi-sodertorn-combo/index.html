@@ -13,7 +13,7 @@
   <script src="//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/vizabi.js"></script>
   <script src="//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/bubblechart.js"></script>
   <script src="//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/extapimap.js"></script>
-  <script src="//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/vizabi-ddfcsv-reader.js"></script>
+  <script src="//s3-eu-west-1.amazonaws.com/static.gapminderdev.org/preview/master/assets/vendor/js/vizabi-ws-reader/bundle.web.js"></script>
 </head>
 
 <body style="width: 80%; height: 100%; margin: 0 auto; font-family: 'Arial';">
@@ -43,9 +43,7 @@
               '<div class="vzb-tool-dialogs"></div>' +
               '<div class="vzb-tool-buttonlist"></div>' + 
             '</div>' +
-            '<div class="vzb-tool-datanotes vzb-hidden"></div>' +
             '<div class="vzb-tool-treemenu vzb-hidden"></div>' +
-            '<div class="vzb-tool-datawarning vzb-hidden"></div>' +
             '<div class="vzb-tool-labels vzb-hidden"></div>' +
           '</div>';
 
@@ -73,14 +71,6 @@
           component: Vizabi.Component.get("treemenu"),
           placeholder: ".vzb-tool-treemenu",
           model: ["state.marker", "state.marker_tags", "state.time", "locale"]
-        }, {
-          component: Vizabi.Component.get("datawarning"),
-          placeholder: ".vzb-tool-datawarning",
-          model: ["locale"]
-        }, {
-          component: Vizabi.Component.get("datanotes"),
-          placeholder: ".vzb-tool-datanotes",
-          model: ["state.marker", "locale"]
         }];
 
         this._super(placeholder, external_model);
@@ -90,23 +80,10 @@
         default_model: {
     state: {
       time: {
-        autogenerate: {
-          data: "data",
-          conceptIndex: 0,
-          conceptType: "time"
-        }
       },
       entities: {
-        autogenerate: {
-          data: "data",
-          conceptIndex: 0
-        }
       },
       entities_colorlegend: {
-        autogenerate: {
-          data: "data",
-          conceptIndex: 0
-        }
       },
       entities_tags: {},
       marker_tags: {
@@ -116,39 +93,11 @@
       },
       marker: {
         space: ["entities", "time"],
-        axis_x: {
-          use: "indicator",
-          autogenerate: {
-            conceptIndex: 1,
-            conceptType: "measure"
-          }
-        },
-        axis_y: {
-          use: "indicator",
-          autogenerate: {
-            conceptIndex: 0,
-            conceptType: "measure"
-          }
-        },
-        label: {
-          use: "property",
-          autogenerate: {
-            conceptIndex: 0
-          }
-        },
-        size: {
-          autogenerate: {
-            conceptIndex: 2,
-            conceptType: "measure"
-          }
-        },
-        color: {
-          syncModels: ["marker_colorlegend"],
-          autogenerate: {
-            conceptIndex: 0,
-            conceptType: "entity_set"
-          }
-        },
+        axis_x: {},
+        axis_y: {},
+        label: {},
+        size: {},
+        color: {},
         size_label: {
           use: "constant",
           which: "_default",
@@ -254,8 +203,8 @@
 
 
 
-    var ddfcsvReader = new DDFCsvReader.getDDFCsvReaderObject();
-    Vizabi.Reader.extend("ddf", ddfcsvReader);
+    var wsReader = new WSReader.WSReader().getReader();
+    Vizabi.Reader.extend("waffle", wsReader);
 
     var viz = Vizabi('combo', document.getElementById('placeholder'), CONFIG);
   </script>
