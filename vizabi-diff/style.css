@@ -1,7 +1,11 @@
-div#placeholder {
-    width: 1024px;
-    height: 768px;
+#placeholder {
+  margin-top: 20px;
+  width: 100%;
+  height: 768px;
+}
+#instructions {
+  font-size: 12px;
 }
 * {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }

@@ -1,8 +1,5 @@
 var VIZABI_MODEL = {
   "state": {
-    "time": {
-      "dim": "time"
-    },
     "entities": {
       "dim": "geo",
       "show": {
@@ -38,10 +35,10 @@ var VIZABI_MODEL = {
       "axis_x": {
         "use": "indicator",
         "scaleType": "log",
-        "domainMax": 150000,
+        "domainMax": 180000,
         "domainMin": 300,
         "zoomedMax": 150000,
-        "zoomedMin": 300,
+        "zoomedMin": 400,
         "which": "income_per_person_gdppercapita_ppp_inflation_adjusted"
       },
       "size": {
@@ -57,6 +54,7 @@ var VIZABI_MODEL = {
       "color": {
         "use": "property",
         "which": "world_4region",
+        "scaleType": "ordinal",
         "syncModels": ["marker_colorlegend"]
       }
     },
@@ -93,16 +91,17 @@ var VIZABI_MODEL = {
     "datawarning": {
       "doubtDomain": [1800, 1950, 2015],
       "doubtRange": [1.0, 0.3, 0.2]
-    }
+    },
+    "splash": true
   },
   "data": {
     "reader": "waffle",
-    "splash": true,
-    "path": "https://waffle-server.gapminder.org/api/ddf/"
+    "dataset": "open-numbers/ddf--gapminder--systema_globalis#stage",
+    "path": "https://waffle-server-dev.gapminderdev.org/api/ddf/"
   },
   "data_alternative": {
     "reader": "waffle",
-    "splash": true,
+    "dataset": "open-numbers/ddf--gapminder--systema_globalis#develop",
     "path": "https://waffle-server-dev.gapminderdev.org/api/ddf/"
   }
 };
