@@ -31,16 +31,30 @@
         position: absolute;
         left: 0;
         right: 0;
+        top: 0;
+        height: 35px;
         padding-left: 20px;
         padding-right: 20px;
+        background-color: #333333;
+        overflow: hidden;
       }
       .header div a {
+        text-transform: uppercase;
+        font-size: calc(7px + .5vw);
+        letter-spacing: 1px;
         text-decoration: underline;
         cursor: pointer;
-        color: blue;
-        font-family: sans-serif;
+        color: #a6c4ff;
+        font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
         margin-right: 10px;
         padding: 2px;
+        line-height: 35px;
+      }
+      .header div a.active {
+        cursor: default;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
       }
       #placeholder {
         border-top: 2px solid #f2fafc;
@@ -59,9 +73,7 @@
   <body>
     <div class="header">
     
-      <div style="float: right"> 
-        <a onclick="setLocale('sv-SE')">SE</a>
-        <a onclick="setLocale('en')">EN</a>
+      <div id="langlist" style="float: right">
       </div>
 
       <div id="toolslist" style="float: left"> 
@@ -89,9 +101,20 @@
         //"barchart-ds": {name: "Inkomst och utbildning efter kön", config: "BarChartDS-sodertorn.js", toolID: "BubbleChart"}
       }
       
-      d3.select("#toolslist").selectAll("a").data(d3.keys(tools)).enter().append("a")
+      var locales = {
+        "sv-SE": "se",
+        //"en": "en"
+      }
+      
+      var toolLinks = d3.select("#toolslist")
+        .selectAll("a").data(d3.keys(tools)).enter().append("a")
         .on("click", d => setTool(d))
         .html(d => tools[d].name)
+      
+      var langLinks = d3.select("#langlist")
+        .selectAll("a").data(d3.keys(locales)).enter().append("a")
+        .on("click", d => setLocale(d))
+        .html(d => locales[d])
 
       function setLocale(arg){
         if (!arg) arg = appState.language;
@@ -99,6 +122,7 @@
         
         viz.model.locale.id = arg;
         appState.language = arg;
+        updateView();
       }
       
       function setTool(arg){
@@ -119,6 +143,12 @@
         }, document.body);
         
         appState.tool = arg;
+        updateView();
+      }
+      
+      var updateView = function(){
+        toolLinks.classed("active", d => appState.tool === d);
+        langLinks.classed("active", d => appState.language === d);
       }
       
       var loadJS = function(url, implementationCode, location){
