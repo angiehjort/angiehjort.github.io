@@ -2,46 +2,145 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Vizabi Testing</title>
+    <title>Södertörnsmodellen</title>
     <link rel="stylesheet" type="text/css" href="libs/vizabi.css">
+    
     <script src="https://d3js.org/d3.v4.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="libs/vizabi.css">
+    <link rel="stylesheet" type="text/css" href="libs/barchart-ds.css">
+    <link rel="stylesheet" type="text/css" href="libs/barrankchart.css">
+    <link rel="stylesheet" type="text/css" href="libs/bubblechart.css">
+    <link rel="stylesheet" type="text/css" href="libs/extapimap.css">
+    <link rel="stylesheet" type="text/css" href="libs/linechart.css">
+        
     <script src="libs/vizabi.js"></script>
-    <script src="libs/vizabi-ddf-reader.web.js"></script>
-    <script src="libs/vizabi-ws-reader.web.js"></script>
+
+    <script src="libs/barchart-ds.js"></script>
+    <script src="libs/extapimap.js"></script>
+    <script src="libs/bubblechart.js"></script>
+    <script src="libs/barrankchart.js"></script>
+    <script src="libs/linechart.js"></script>
+
+    <script src="libs/vizabi-ddfcsv-reader.js"></script>
+    <script src="libs/vizabi-ws-reader.js"></script>
+    
+    <style>
+      .header {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .header div a {
+        text-decoration: underline;
+        cursor: pointer;
+        color: blue;
+        font-family: sans-serif;
+        margin-right: 10px;
+        padding: 2px;
+      }
+      #placeholder {
+        border-top: 2px solid #f2fafc;
+        position: absolute;
+        top: 35px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      body {
+        height: 100%;
+      }
+    </style>
   </head>
 
   <body>
-    <p style="width: 900px; margin: auto; margin-bottom: 20px;">This is vizabi on a website! <a href="http://angieskazka.github.io/vizabi-sodertorn/website%20example%20sodertorn.zip" style="cursor: pointer; color: blue; text-decoration: underline">Download this page with all you need</a></p>
+    <div class="header">
     
-    <p style="width: 900px; margin: auto; margin-bottom: 20px;"> If you don't see the chart below, you probably did not open the file from a webserver. Out of safety concerns, web browsers don't allow us to read the data straight from your hard drive. Run a webserver locally or upload the files to a webserver online to view them.</p>
+      <div style="float: right"> 
+        <a onclick="setLocale('sv-SE')">SE</a>
+        <a onclick="setLocale('en')">EN</a>
+      </div>
 
-    <p style="width: 900px; margin: auto; margin-bottom: 20px;"> If you have any comments, praise, bugs or ideas that you would like to share, please let us know on <a href = "https://getsatisfaction.com/gapminder">Get Satisfaction</a>. We love feedback!</p>
-    
-    <p style="width: 900px; margin: auto; margin-bottom: 20px;"> 
-      — <a style="cursor: pointer; color: blue; text-decoration: underline" onclick="setLocale('sv-SE')">Fy vilken räääälig krabba</a> 🦀🇸🇪
-      <br/>
-      — <a style="cursor: pointer; color: blue; text-decoration: underline" onclick="setLocale('en')">Would you kindly mind your language, sir?</a> 🎩🇬🇧
-    </p>
-      
-    <div id="placeholder" style="width: 900px; height: 700px; margin: auto; margin-bottom: 20px;"></div>
-    
-    <script src="config.js"></script>
+      <div style="float: left"> 
+        <a onclick="setTool('bubbles')">Bubbles</a>
+        <a onclick="setTool('map-basomrade')">Basområde karta</a>
+        <a onclick="setTool('map-kommun')">Kommun karta</a>
+        <a onclick="setTool('barchart-ds')">Inkomst och utbildning efter kön</a>
+      </div>
+    </div>
+
     <script>
             
       //WS reader integration
-      var wsReader = new WSReader.WSReader().getReader();
+      var wsReader = WsReader.WsReader.getReader();
       Vizabi.Reader.extend("waffle", wsReader);
 
       //DDFCSV reader integration
       var ddfReader = new DDFCsvReader.getDDFCsvReaderObject()
       Vizabi.Reader.extend("ddf", ddfReader);
 
-      var viz = Vizabi('BubbleChart', document.getElementById('placeholder'), VIZABI_MODEL);
+      var viz = null;
+      var VIZABI_MODEL = {};
+      
+      var tools = {
+        "bubbles": {config: "BubbleChart-sodertorn.js", toolID: "BubbleChart"},
+        "map-basomrade": {config: "ExtApiMap-sodertorn.js", toolID: "ExtApiMap"},
+        "map-kommun": {config: "ExtApiMap-sodertorn-kommun.js", toolID: "ExtApiMap"},
+        "barchart-ds": {config: "BarChartDS-sodertorn.js", toolID: "BubbleChart"}
+      }
 
       function setLocale(arg){
+        if (!arg) arg = appState.language;
+        if (!viz || !viz.model) return;
+        
         viz.model.locale.id = arg;
+        appState.language = arg;
       }
+      
+      function setTool(arg){
+        if (!arg) arg = appState.tool;
+        
+        Vizabi.clearInstances();
+        
+        d3.select("#placeholder").remove();        
+        d3.select("body").append("div").attr("id","placeholder");
+                
+        loadJS(tools[arg].config, function(){
+          VIZABI_MODEL.locale = {
+            "id": appState.language,
+            "filePath": "assets/translation/"
+          };
+          
+          viz = Vizabi(tools[arg].toolID, document.getElementById('placeholder'), VIZABI_MODEL);
+        }, document.body);
+        
+        appState.tool = arg;
+      }
+      
+      var loadJS = function(url, implementationCode, location){
+        //url is URL of external file, implementationCode is the code
+        //to be called from the file, location is the location to 
+        //insert the <script> element
+
+        var scriptTag = document.createElement('script');
+        scriptTag.src = url;
+
+        scriptTag.onload = implementationCode;
+        scriptTag.onreadystatechange = implementationCode;
+
+        location.appendChild(scriptTag);
+      };
+
+      
+      var appState = {tool: "bubbles", language: "sv-SE"};
+      setTool();  
       
     </script>
   </body>
 </html>
+
+
+
+
