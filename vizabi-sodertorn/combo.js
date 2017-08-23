@@ -110,7 +110,7 @@ Vizabi.Tool.extend('combo', {
           dragging: true,
           removeLabelBox: false
         },
-        trails: true,
+        trails: false,
         lockNonSelected: 0,
       },
       presentation: false,
