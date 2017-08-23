@@ -9,7 +9,9 @@ VIZABI_MODEL = {
     },
     "entities": {
       "dim": "basomrade",
-      "show": {"size": "big"}
+      "show": {
+        "size": "big"
+      }
     },
     "entities_colorlegend": {
       "dim": "municipality"
@@ -26,10 +28,16 @@ VIZABI_MODEL = {
         "use": "property",
         "which": "name"
       },
-      "hook_centroid": {
-        "use": "property",
-        "which": "baskod2010",
-        "_important": true
+      "axis_y": {
+        "which": "mean_income_aged_gt_20",
+        "use": "indicator"
+      },
+      "axis_x": {
+        "which": "mean_income_aged_gt_20",
+        "use": "indicator",
+        "scaleType": "linear",
+        "zoomedMin": "64000",
+        "zoomedMax": "700000"
       },
       "size": {
         "which": "population_20xx_12_31",
@@ -46,6 +54,11 @@ VIZABI_MODEL = {
         "scaleType": "log",
         "syncModels": ["marker_colorlegend"]
       },
+      "hook_centroid": {
+        "use": "property",
+        "which": "baskod2010",
+        "_important": true
+      },
       "color_map": {
         "use": "property",
         "which": "municipality",
@@ -53,14 +66,8 @@ VIZABI_MODEL = {
         "syncModels": ["marker_colorlegend"]
       }
     },
-    "marker_allpossible": {
-      "space": ["entities"],
-      "label": {
-          "use": "property",
-          "which": "name"
-      },
-      "skipFilter": true
-    },
+ 
+    
     "marker_colorlegend": {
       "space": ["entities_colorlegend"],
       "opacityRegular": 0.8,
@@ -91,9 +98,9 @@ VIZABI_MODEL = {
     }
   },
   "ui": {
-    "datawarning": {
-      "doubtDomain": [],
-      "doubtRange": []
+    datawarning: {
+      doubtDomain: [],
+      doubtRange: []
     },
     "map": {
       "scale": 1,
@@ -127,11 +134,12 @@ VIZABI_MODEL = {
       }
     },
     "splash": true
+  
   },
   "data": {
     reader: 'waffle',
     path: 'https://waffle-server-dev.gapminderdev.org/api/ddf/ql',
     dataset: 'open-numbers/ddf--sodertornsmodellen',
     assetsPath: 'https://import-waffle-server-dev.gapminderdev.org/api/ddf/assets/'
-  }
+  }  
 };

@@ -21,6 +21,7 @@
     <script src="libs/bubblechart.js"></script>
     <script src="libs/barrankchart.js"></script>
     <script src="libs/linechart.js"></script>
+    <script src="combo.js"></script>
 
     <script src="libs/vizabi-ddfcsv-reader.js"></script>
     <script src="libs/vizabi-ws-reader.js"></script>
@@ -63,11 +64,7 @@
         <a onclick="setLocale('en')">EN</a>
       </div>
 
-      <div style="float: left"> 
-        <a onclick="setTool('bubbles')">Bubbles</a>
-        <a onclick="setTool('map-basomrade')">Basområde karta</a>
-        <a onclick="setTool('map-kommun')">Kommun karta</a>
-        <a onclick="setTool('barchart-ds')">Inkomst och utbildning efter kön</a>
+      <div id="toolslist" style="float: left"> 
       </div>
     </div>
 
@@ -85,11 +82,16 @@
       var VIZABI_MODEL = {};
       
       var tools = {
-        "bubbles": {config: "BubbleChart-sodertorn.js", toolID: "BubbleChart"},
-        "map-basomrade": {config: "ExtApiMap-sodertorn.js", toolID: "ExtApiMap"},
-        "map-kommun": {config: "ExtApiMap-sodertorn-kommun.js", toolID: "ExtApiMap"},
-        "barchart-ds": {config: "BarChartDS-sodertorn.js", toolID: "BubbleChart"}
+        "bubbles": {name: "Bubbles", config: "BubbleChart-sodertorn.js", toolID: "BubbleChart"},
+        "map-kommun": {name: "Kommun karta", config: "ExtApiMap-sodertorn-kommun.js", toolID: "ExtApiMap"},
+        "map-basomrade": {name: "Basområde karta", config: "ExtApiMap-sodertorn.js", toolID: "ExtApiMap"},
+        "combo": {name: "Map and bubbles combo", config: "Combo-map-and-bubbles.js", toolID: "combo"},
+        //"barchart-ds": {name: "Inkomst och utbildning efter kön", config: "BarChartDS-sodertorn.js", toolID: "BubbleChart"}
       }
+      
+      d3.select("#toolslist").selectAll("a").data(d3.keys(tools)).enter().append("a")
+        .on("click", d => setTool(d))
+        .html(d => tools[d].name)
 
       function setLocale(arg){
         if (!arg) arg = appState.language;
@@ -134,7 +136,7 @@
       };
 
       
-      var appState = {tool: "bubbles", language: "sv-SE"};
+      var appState = {tool: "bubbles", language: "en"};
       setTool();  
       
     </script>
