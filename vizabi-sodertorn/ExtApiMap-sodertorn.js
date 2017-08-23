@@ -91,9 +91,9 @@ VIZABI_MODEL = {
     }
   },
   "ui": {
-    "datawarning": {
-      "doubtDomain": [],
-      "doubtRange": []
+    datawarning: {
+      doubtDomain: [2000, 2014],
+      doubtRange: [0, 0]
     },
     "map": {
       "scale": 1,
@@ -131,7 +131,7 @@ VIZABI_MODEL = {
   "data": {
     reader: 'waffle',
     path: 'https://waffle-server-dev.gapminderdev.org/api/ddf/ql',
-    dataset: 'open-numbers/ddf--sodertornsmodellen',
+    dataset: 'open-numbers/ddf--sodertornsmodellen#develop',
     assetsPath: 'https://import-waffle-server-dev.gapminderdev.org/api/ddf/assets/'
   }
 };

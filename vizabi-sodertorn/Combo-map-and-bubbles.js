@@ -29,7 +29,7 @@ VIZABI_MODEL = {
         "which": "name"
       },
       "axis_y": {
-        "which": "mean_income_aged_gt_20",
+        "which": "post_secondary_education_min_3_years_aged_25_64",
         "use": "indicator"
       },
       "axis_x": {
@@ -40,7 +40,7 @@ VIZABI_MODEL = {
         "zoomedMax": "700000"
       },
       "size": {
-        "which": "population_20xx_12_31",
+        "which": "population_aged_gt_20",
         "use": "indicator",
         "scaleType": "linear",
         "extent": [0, 0.4],
@@ -49,9 +49,9 @@ VIZABI_MODEL = {
         }
       },
       "color": {
-        "use": "indicator",
-        "which": "mean_income_aged_gt_20",
-        "scaleType": "log",
+        "use": "property",
+        "which": "municipality",
+        "scaleType": "ordinal",
         "syncModels": ["marker_colorlegend"]
       },
       "hook_centroid": {
@@ -99,8 +99,8 @@ VIZABI_MODEL = {
   },
   "ui": {
     datawarning: {
-      doubtDomain: [],
-      doubtRange: []
+      doubtDomain: [2000, 2014],
+      doubtRange: [0, 0]
     },
     "map": {
       "scale": 1,
@@ -132,14 +132,13 @@ VIZABI_MODEL = {
         },
         "geoIdProperty": "BASKOD2010"
       }
-    },
-    "splash": true
+    }
   
   },
   "data": {
     reader: 'waffle',
     path: 'https://waffle-server-dev.gapminderdev.org/api/ddf/ql',
-    dataset: 'open-numbers/ddf--sodertornsmodellen',
+    dataset: 'open-numbers/ddf--sodertornsmodellen#develop',
     assetsPath: 'https://import-waffle-server-dev.gapminderdev.org/api/ddf/assets/'
   }  
 };

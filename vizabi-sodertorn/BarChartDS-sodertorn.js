@@ -39,7 +39,7 @@ var VIZABI_MODEL = {
       "space": ["entities_allpossible", "time"],
       "hook_order": {
         "use": "indicator",
-        "which": "share_emigration_min_3_years_of_higher_education_aged_25_64"
+        "which": "post_secondary_education_min_3_years_aged_25_64"
       }
     },
     "marker": {
@@ -72,7 +72,7 @@ var VIZABI_MODEL = {
       },
       "color": {
         "use": "indicator",
-        "which": "share_emigration_min_3_years_of_higher_education_aged_25_64",
+        "which": "post_secondary_education_min_3_years_aged_25_64",
         "spaceRef": "entities",
         "syncModels": ["marker_colorlegend"]
       },
@@ -141,6 +141,6 @@ var VIZABI_MODEL = {
   "data": {
     reader: 'waffle',
     path: 'https://waffle-server-dev.gapminderdev.org/api/ddf/ql',
-    dataset: 'open-numbers/ddf--sodertornsmodellen'
+    dataset: 'open-numbers/ddf--sodertornsmodellen#develop'
   }
 }

@@ -114,10 +114,10 @@ Vizabi.Tool.extend('combo', {
         lockNonSelected: 0,
       },
       presentation: false,
-      panWithArrow: false,
+      panWithArrow: true,
       adaptMinMaxZoom: false,
       cursorMode: "arrow",
-      zoomOnScrolling: false,
+      zoomOnScrolling: true,
       buttons: ["colors", "find", "trails", "lock", "moreoptions", "fullscreen", "presentation"],
       dialogs: {
         popup: ["colors", "find", "size", "zoom", "moreoptions"],

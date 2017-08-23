@@ -25,16 +25,16 @@ VIZABI_MODEL = {
         "which": "name"
       },
       "axis_y": {
-        "which": "educational_level_higher_education_min_3_years_aged_25_64_female",
+        "which": "post_secondary_education_min_3_years_aged_25_64",
         "use": "indicator"
       },
       "axis_x": {
         "which": "mean_income_aged_gt_20",
         "use": "indicator",
-        "scaleType": "log"
+        "scaleType": "linear"
       },
       "size": {
-        "which": "population_20xx_12_31",
+        "which": "population_aged_gt_20",
         "use": "indicator",
         "scaleType": "linear",
         "extent": [0, 1],
@@ -91,12 +91,12 @@ VIZABI_MODEL = {
   "data": {
     reader: 'waffle',
     path: 'https://waffle-server-dev.gapminderdev.org/api/ddf/ql',
-    dataset: 'open-numbers/ddf--sodertornsmodellen'
+    dataset: 'open-numbers/ddf--sodertornsmodellen#develop'
   },
   "ui": {
-    "datawarning": {
-      "doubtDomain": [1993, 2015],
-      "doubtRange": [0, 0]
+    datawarning: {
+      doubtDomain: [2000, 2014],
+      doubtRange: [0, 0]
     },
     "chart": {
       "maxRadiusEm": 0.15, 
