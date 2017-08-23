@@ -8262,7 +8262,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  build: 1503508066102,
+  build: 1503526276063,
   version: "0.25.1-1"
 };
 
@@ -13677,7 +13677,7 @@ var CSVReader = _reader2.default.extend({
   },
 
 
-  versionInfo: { version: "0.25.1-1", build: 1503508066102 }
+  versionInfo: { version: "0.25.1-1", build: 1503526276063 }
 
 });
 
@@ -25438,7 +25438,7 @@ var CSVTimeInColumnsReader = _csv2.default.extend({
   },
 
 
-  versionInfo: { version: "0.25.1-1", build: 1503508066102 }
+  versionInfo: { version: "0.25.1-1", build: 1503526276063 }
 
 });
 
@@ -25551,7 +25551,7 @@ var InlineReader = _reader2.default.extend({
   },
 
 
-  versionInfo: { version: "0.25.1-1", build: 1503508066102 }
+  versionInfo: { version: "0.25.1-1", build: 1503526276063 }
 
 });
 
