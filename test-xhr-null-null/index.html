@@ -18,7 +18,16 @@
   <p>[Deprecation] Subresource requests whose URLs contain embedded credentials (e.g. `https://user:pass@host/`) are blocked. See <a href="https://www.chromestatus.com/feature/5669008342777856">https://www.chromestatus.com/feature/5669008342777856</a> for more details.</p>
   <p>The FetchEvent for "http://null:null@localhost:4200/tools/assets/translation/en.json" resulted in a network error response: the promise was rejected.</p>
   
-  
+  <h2>Source code of this page</h2>
+  <p style="font-family: monospace">
+    xhr = new XMLHttpRequest; </br>
+    url = "en.json"; </br>
+    user = null; </br>
+    password = null; </br>
+    xhr.withCredentials = false; </br>
+    xhr.open("GET", url, true, user, password); </br>
+    xhr.send() </br>
+  </p>
   
   <script>
     
