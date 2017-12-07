@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  
+<body style="font-family: sans-serif">
+  <h1>hi! i believe i found a bug in Chrome Canary</h1>
+  <h1>and i'm afraid of it arriving to production Chrome</h1>
+  <p>so i made this test</p>
+  <p>This page requests a json file from the same place where the page is</p>
+  <p>Chrome Canary adds null:null in the file request, which sometimes results in error</p>
+  <h2>how to use it</h2>
+  <p>1. open chrome developer tools, Network tab</p>
+  <p>2. See en.json and its request URL</p>
+  <p>Expected result: in Google Chrome Version 63.0.3239.84 (Official Build) (64-bit) you will see Request URL: <b>http://127.0.0.1:50195/en.json</b></p>
+  <p>Observed result: in Google Chrome Version 65.0.3287.0 (Official Build) canary (64-bit) you will see Request URL: <b>http://null:null@127.0.0.1:50195/en.json</b></p>
+  <h2>Why is it important?</h2>
+  <p>My page <a href="http://tools-dev.gapminderdev.org/tools/">here</a> doesn't work anymore, because of this:</p>
+  <p>[Deprecation] Subresource requests whose URLs contain embedded credentials (e.g. `https://user:pass@host/`) are blocked. See <a href="https://www.chromestatus.com/feature/5669008342777856">https://www.chromestatus.com/feature/5669008342777856</a> for more details.</p>
+  <p>The FetchEvent for "http://null:null@localhost:4200/tools/assets/translation/en.json" resulted in a network error response: the promise was rejected.</p>
+  
+  
+  
+  <script>
+    
+    xhr = new XMLHttpRequest;
+    url = "en.json";
+    user = null;
+    password = null;
+    xhr.withCredentials = false;
+    xhr.open("GET", url, true, user, password);
+    xhr.send()
+    
+  </script>
+</body>
+
+</html>
