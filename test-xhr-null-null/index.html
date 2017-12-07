@@ -9,9 +9,10 @@
   <p>Chrome Canary adds null:null in the file request, which sometimes results in error</p>
   <h2>how to use it</h2>
   <p>1. open chrome developer tools, Network tab</p>
-  <p>2. See en.json and its request URL</p>
-  <p>Expected result: in Google Chrome Version 63.0.3239.84 (Official Build) (64-bit) you will see Request URL: <b>http://127.0.0.1:50195/en.json</b></p>
-  <p>Observed result: in Google Chrome Version 65.0.3287.0 (Official Build) canary (64-bit) you will see Request URL: <b>http://null:null@127.0.0.1:50195/en.json</b></p>
+  <p>2. refresh the page</p>
+  <p>3. See en.json and its request URL</p>
+  <p>Expected result: in Google Chrome Version 63.0.3239.84 (Official Build) (64-bit) you will see Request URL: <b>http://angieskazka.github.io/test-xhr-null-null/en.json</b></p>
+  <p>Observed result: in Google Chrome Version 65.0.3287.0 (Official Build) canary (64-bit) you will see Request URL: <b>http://null:null@angieskazka.github.io/test-xhr-null-null/en.json</b></p>
   <h2>Why is it important?</h2>
   <p>My page <a href="http://tools-dev.gapminderdev.org/tools/">here</a> doesn't work anymore, because of this:</p>
   <p>[Deprecation] Subresource requests whose URLs contain embedded credentials (e.g. `https://user:pass@host/`) are blocked. See <a href="https://www.chromestatus.com/feature/5669008342777856">https://www.chromestatus.com/feature/5669008342777856</a> for more details.</p>
