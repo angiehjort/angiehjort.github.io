@@ -19,7 +19,7 @@
   "dependencies": {
     "cubism": "^1.6.0",
     "d3": "^4.3.0",
-    "mongodb": "^2.2.11",
+    "mongodb": "^3.6.1",
     "vizabi-interpolators": "^1.2.0"
   }
 }
