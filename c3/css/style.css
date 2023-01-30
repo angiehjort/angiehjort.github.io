@@ -1,0 +1,392 @@
+/** { zoom: 100%; -moz-transform: scale(100%); -moz-transform-origin: 0 0}*/
+
+
+body {
+	font: 12px Tahoma;
+	font-family: Helvetica, Arial, Verdana;
+	color: #333333;
+  shape-rendering: crispEdges;
+}
+
+@font-face {
+    font-family: 'molotregular';
+    src: url('fonts/molot-webfont.eot');
+    src: url('fonts/molot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/molot-webfont.woff') format('woff'),
+         url('fonts/molot-webfont.ttf') format('truetype'),
+         url('fonts/molot-webfont.svg#molotregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('fonts/bebasneue-webfont.eot');
+    src: url('fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/bebasneue-webfont.woff') format('woff'),
+         url('fonts/bebasneue-webfont.ttf') format('truetype'),
+         url('fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+p {
+  font: 14px Verdana;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  shape-rendering: crispEdges;
+
+}
+
+.legend {
+	padding: 0px;
+	font: 10px Tahoma;
+	margin-bottom:10px;
+            }  
+
+.cldrListSquare	{ 
+	background-color: #FFFFFF; 
+	border: 1px solid #CCCCCC; 
+	width: 12px; height: 12px; 
+	display: inline-block;
+						}
+
+.cldrListCaption{ 
+	margin-bottom:2px;
+						}
+						
+.important{
+	color: #BB0000;
+}
+
+.goright{
+
+	float:right;
+
+}
+
+h1{
+	font: 22px 'bebas_neueregular';
+	font-family: 'bebas_neueregular', Helvetica, Arial, Verdana;
+	letter-spacing: 2px;
+}
+
+#container
+{
+	width: 1171px;
+	height: auto;
+	margin: auto;
+	margin-top: 10px;
+	background-color: #fefefe;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.top{
+	z-index:1;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
+	top:0;
+    height:auto;
+    padding: 5px 5px 5px 5px;
+}
+#title{
+	font: 22px 'bebas_neueregular';
+	font-family: 'bebas_neueregular', Helvetica, Arial, Verdana;
+	color: #666;
+	margin-left:5px;
+	letter-spacing: 2px;
+}
+#title sup{
+	margin-left:2px;
+	font-size: 12px;
+}
+#mainlogo {
+	font: 'molotregular';
+	font-family: 'molotregular', Helvetica, Arial, Verdana;
+	color: #888;
+}
+#login{
+	float:right;
+}
+
+#authorize-button, #signout {
+    border-radius: 3px;
+    background: #eeeeee;
+	background: rgba(238, 238, 238, 1);
+	margin: 1px;
+	padding: 3px;
+  	border: 1px solid #c6c6c6;
+  	color: #666666;
+  	text-decoration: none;
+}
+
+#authorize-button:hover , #signout:hover {
+  color: #fda363;
+  background: #f7f7f7;
+  background: rgba(247, 247, 247, 1);
+  -webkit-box-shadow: inset 1px 1px 1px #444;
+  -moz-box-shadow: inset 1px 1px 1px #444;
+  box-shadow: inset 1px 1px 1px #444;
+}
+#leftnav
+{
+	width:180px;
+	height:auto;
+	float:left;
+	margin-top: 0px;
+	padding: 1em;
+}
+#leftnav p{
+	font: 12px Tahoma;
+	font-family: Helvetica, Arial, Verdana;
+	color: #333333;
+}
+#center {
+	float: right;
+	width: 960px;
+	padding-bottom: 15px;
+}
+#footer
+{
+	background-color: #f1f1f1;
+	border-top: 1px solid #e5e5e5;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	border-radius: 0px 0px 5px 5px;
+	clear: both;
+	padding: 5px 5px 5px 5px;
+	color: #333;
+	bottom:0;
+}
+#footer a {
+	color: #666666;
+	text-decoration: none;
+	margin-left: 3px;
+}
+#footer a:hover {
+  color: #fda363;
+ }
+ /*
+.spinspan {
+ 	background-color: #346634;
+	margin: 0px;
+	padding: 0px;
+	width: 16px;
+	display: inline-block;
+};*/
+.statustextspan{
+	margin-left: 20px;
+	margin-top: 4px;
+	padding: 0px;
+	display: inline-block;
+};
+
+
+
+
+.compacttextbox{
+	width: 25px;
+};
+
+
+
+
+
+
+
+
+
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #555;
+  width: 3px;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis path {
+	display: none;
+  fill: none;
+  stroke: #CCC;
+  stroke-width: 1px;
+}
+
+
+
+
+
+
+
+.complexLabel, .historyLabel {
+font: 12px Tahoma;
+background-color: #eee;
+cursor: pointer;
+    border-radius: 3px;
+  	border: 1px solid #c6c6c6;
+
+padding: 2px 10px 2px 10px;
+margin-right: 8px;
+}
+
+.complexLabel-active, .historyLabel-active{
+background-color: #F5BF70;
+}
+
+.monthTitle {
+text-anchor: end;
+font: 48px Tahoma;
+fill: #ccc;
+font-weight:100;
+}
+
+.monthLabel {
+fill:black;
+font: 12px Tahoma;
+ cursor: pointer;
+text-decoration:underline;
+}
+
+.monthLabelMouse {
+fill:#FF0000;
+}
+
+.label {
+fill:#000000;
+font: 8px Tahoma;
+}
+
+.labelGrey {
+fill:#E5E5E5;
+font: 8px Tahoma;
+/*font-weight:50;*/
+}
+
+.weekdayLabel {
+fill:#CCCCDD;
+font: 10px Tahoma;
+/*font-weight:50;*/
+}
+
+.weeknumberLabel {
+fill:#CCCCDD;
+font: 10px Tahoma;
+/*font-weight:50;*/
+}
+
+.day {
+  fill: #ffffff;
+}
+
+.activeday {
+  cursor: pointer;
+}
+
+.month {
+  fill: none;
+  stroke: #CBCBCB;
+  stroke-width: 1px;
+}  
+
+
+.RdYlGn .q0-11{fill:rgb(255,255,220)}
+.RdYlGn .q1-11{fill:rgb(255,255,204)}
+.RdYlGn .q2-11{fill:rgb(255,237,160)}
+.RdYlGn .q3-11{fill:rgb(254,217,118)}
+.RdYlGn .q4-11{fill:rgb(254,178,76)}
+.RdYlGn .q5-11{fill:rgb(253,141,60)}
+.RdYlGn .q6-11{fill:rgb(252,78,42)}
+.RdYlGn .q7-11{fill:rgb(227,26,28)}
+.RdYlGn .q8-11{fill:rgb(177,0,38)}
+.RdYlGn .q9-11{fill:rgb(137,0,27)}
+.RdYlGn .q10-11{fill:rgb(73,0,12)}
+
+.filtered {fill:#eee}
+
+.tooltip {
+  position: absolute;
+  display: block;
+  text-align: center;
+  width: 300px;
+  height: auto;
+  padding: 8px;
+  font-family: Tahoma, Helvetica, Arial, Verdana;
+  font-size: 12px;
+  background: #FFFFFF;
+  border: solid 1px #aaa;
+  visibility: hidden;
+  word-spacing: -1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.tooltipTitle {
+	height: 20px;
+	width: 200px;
+	margin: 5px;
+	color: #666666;
+	font: 12px Tahoma;
+	text-align: left;
+}
+
+.tooltipTable {
+	width: 300px;
+	font: 12px Tahoma;
+	text-align: left;
+}
+
+.tooltipTableRow {
+	border-bottom : 1px solid #DEDEDE;
+}
+
+.leftTooltipColumn {
+	display: inline-block;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 220px;
+}
+
+.rightTooltipColumn {
+}
+
+.tooltipCloseButton {
+	position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+a:link {
+	text-decoration: none;
+	color: #666666;
+	margin-left: 3px;
+}
+a:hover {
+  color: #fda363;
+}
+
+
+
+.grid .tick {
+    stroke: #eee;
+}
+.grid path {
+      stroke-width: 0;
+}
